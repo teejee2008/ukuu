@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-04-17 15:25+0530\n"
+"POT-Creation-Date: 2016-04-17 15:32+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: Console/AppConsole.vala:89
+#: Console/AppConsole.vala:94
 msgid "Admin access is required for running this application."
 msgstr ""
 
@@ -52,7 +52,7 @@ msgid "Changes"
 msgstr ""
 
 #: Console/AppConsole.vala:82
-msgid "Check for updates"
+msgid "Check for kernel updates"
 msgstr ""
 
 #: Gtk/TerminalWindow.vala:175 Gtk/AboutWindow.vala:295
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
-#: Console/AppConsole.vala:179
+#: Console/AppConsole.vala:184
 msgid "Could not find requested version"
 msgstr ""
 
@@ -128,6 +128,10 @@ msgstr ""
 #: Gtk/AboutWindow.vala:354
 #, c-format
 msgid "Donations"
+msgstr ""
+
+#: Console/AppConsole.vala:87
+msgid "Download packages for specified kernel"
 msgstr ""
 
 #: Common/LinuxKernel.vala:632
@@ -224,6 +228,10 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
+#: Console/AppConsole.vala:85
+msgid "Install specified mainline kernel"
+msgstr ""
+
 #: Common/LinuxKernel.vala:795 Common/LinuxKernel.vala:829
 msgid "Installation completed"
 msgstr ""
@@ -236,7 +244,7 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#: Gtk/MainWindow.vala:367 Console/AppConsole.vala:232
+#: Gtk/MainWindow.vala:367 Console/AppConsole.vala:237
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -246,6 +254,10 @@ msgstr ""
 
 #: Gtk/MainWindow.vala:351
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr ""
+
+#: Console/AppConsole.vala:84
+msgid "List all available mainline kernels"
 msgstr ""
 
 #: Gtk/GtkHelper.vala:169
@@ -266,6 +278,10 @@ msgstr ""
 
 #: Gtk/SettingsDialog.vala:86
 msgid "Notify if a point release is available for current kernel"
+msgstr ""
+
+#: Console/AppConsole.vala:83
+msgid "Notify if kernel update is available"
 msgstr ""
 
 #: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:647
@@ -293,6 +309,10 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
+#: Console/AppConsole.vala:86
+msgid "Remove specified mainline kernel"
+msgstr ""
+
 #: Gtk/AppGtk.vala:94
 msgid "Root Access Required"
 msgstr ""
@@ -301,11 +321,11 @@ msgstr ""
 msgid "Root access is required for running this application."
 msgstr ""
 
-#: Console/AppConsole.vala:180
+#: Console/AppConsole.vala:185
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 
-#: Gtk/AppGtk.vala:93 Console/AppConsole.vala:90
+#: Gtk/AppGtk.vala:93 Console/AppConsole.vala:95
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
@@ -346,11 +366,11 @@ msgstr ""
 msgid "Third Party Tools &amp; Software"
 msgstr ""
 
-#: Console/AppConsole.vala:193
+#: Console/AppConsole.vala:198
 msgid "This kernel is already installed."
 msgstr ""
 
-#: Console/AppConsole.vala:186
+#: Console/AppConsole.vala:191
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -361,7 +381,7 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Gtk/AppGtk.vala:116 Console/AppConsole.vala:221
+#: Gtk/AppGtk.vala:116 Console/AppConsole.vala:226
 msgid "Unknown option"
 msgstr ""
 

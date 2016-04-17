@@ -79,7 +79,12 @@ public class AppConsole : GLib.Object {
 		msg += "\n";
 		msg += _("Options") + ":\n";
 		msg += "\n";
-		msg += "  --check    " + _("Check for updates") + "\n";
+		msg += "  --check           " + _("Check for kernel updates") + "\n";
+		msg += "  --notify          " + _("Notify if kernel update is available") + "\n";
+		msg += "  --list            " + _("List all available mainline kernels") + "\n";
+		msg += "  --install <name>  " + _("Install specified mainline kernel") + "\n";
+		msg += "  --remove <name>   " + _("Remove specified mainline kernel") + "\n";
+		msg += "  --download <name> " + _("Download packages for specified kernel") + "\n";
 		msg += "\n";
 		return msg;
 	}

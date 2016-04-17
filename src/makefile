@@ -24,7 +24,7 @@ all:
 	find . -iname "*.vala" | xargs xgettext --language=C --keyword=_ --copyright-holder='Tony George (teejeetech@gmail.com)' --package-name='${app_name}' --package-version='2.2' --msgid-bugs-address='teejeetech@gmail.com' --escape --sort-output -o ../${app_name}.pot
 
 clean:
-	rm -rf *.o ${app_name}
+	rm -rf *.o ${app_name} ${app_name}-gtk
 
 install:
 	mkdir -p "$(DESTDIR)$(bindir)"
@@ -38,12 +38,17 @@ install:
 
 	#binary
 	install -m 0755 ${app_name} "$(DESTDIR)$(bindir)"
+	install -m 0755 ${app_name}-gtk "$(DESTDIR)$(bindir)"
+	install -m 0755 ${app_name}-launcher "$(DESTDIR)$(bindir)"
 	install -m 0755 ${app_name}-uninstall "$(DESTDIR)$(bindir)"
 
 	#shared files
 	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(sharedir)/${app_name}" ./share/${app_name}/*
 	chmod --recursive 0755 $(DESTDIR)$(sharedir)/${app_name}/*
 
+	#polkit policy file
+	install -m 0644 ./share/polkit-1/actions/in.teejeetech.pkexec.ukuu-gtk.policy "$(DESTDIR)$(polkitdir)"
+	
 	#launcher
 	install -m 0755 ${app_name}.desktop "$(DESTDIR)$(launcherdir)"
 
@@ -51,14 +56,9 @@ install:
 	install -m 0755 ./share/pixmaps/${app_name}.* "$(DESTDIR)$(sharedir)/pixmaps"
 
 	#translations
-	mkdir -p "$(DESTDIR)$(localedir)/ms/LC_MESSAGES"
-	msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/ms/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-ms.po
-	mkdir -p "$(DESTDIR)$(localedir)/ko/LC_MESSAGES"
-	msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/ko/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-ko.po
-	mkdir -p "$(DESTDIR)$(localedir)/es/LC_MESSAGES"
-	msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/es/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-es.po
-	mkdir -p "$(DESTDIR)$(localedir)/cs/LC_MESSAGES"
-	msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/cs/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-cs.po
+	#mkdir -p "$(DESTDIR)$(localedir)/ms/LC_MESSAGES"
+	#msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/ms/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-ms.po
+
 	
 uninstall:
 	#binary
@@ -68,6 +68,9 @@ uninstall:
 	#shared files
 	rm -rf "$(DESTDIR)$(sharedir)/${app_name}"
 
+	#polkit policy file
+	rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu-gtk.policy"
+	
 	#launcher
 	rm -f "$(DESTDIR)$(launcherdir)/${app_name}.desktop"
 
@@ -75,4 +78,4 @@ uninstall:
 	rm -f "$(DESTDIR)$(sharedir)/pixmaps/${app_name}.png"
 
     #translations
-	rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/${app_name}.mo
+	#rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/${app_name}.mo
