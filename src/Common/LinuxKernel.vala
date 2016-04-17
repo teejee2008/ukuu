@@ -216,18 +216,21 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		
 			if (!kern.cached_page_exists){
 				while (LinuxKernel.download_count > 20){
-					sleep(100); // wait
+					sleep(100); // wait for counter to decrease
 				}
 				kern.download_cached_page(false);
 			}
 
-			kern.load_cached_page();
-			
 			progress_count++;
 		}
 
 		while (LinuxKernel.download_count > 0){
-			sleep(500); // wait
+			sleep(500); // wait for all downloads to complete
+		}
+
+		// load downloaded files
+		foreach(var kern in kernel_list){
+			kern.load_cached_page();
 		}
 
 		check_installed();
@@ -235,7 +238,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		task_is_running = false;
 	}
 	
-	public static bool download_index(){
+	private static bool download_index(){
 
 		check_if_initialized();
 		
@@ -270,7 +273,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	public static void load_index(){
+	private static void load_index(){
 
 		var list = new Gee.ArrayList<LinuxKernel>();
 
@@ -532,7 +535,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// download
 	
-	public bool download_cached_page(bool wait){
+	private bool download_cached_page(bool wait){
 		
 		// fetch index-<version>.html --------------------------------------
 
@@ -615,56 +618,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return true;	
 	}
 
-	public bool download_packages(){
-		bool ok = true;
-
-		check_if_initialized();
-
-		foreach(string file_name in deb_list.keys){
-			string file_path = "%s/%s/%s".printf(cache_subdir, NATIVE_ARCH, file_name);
-
-			if (file_exists(file_path)){
-				continue;
-			}
-
-			dir_create(file_parent(file_path));
-
-			stdout.printf("\n" + _("Downloading") + ": '%s'... \n".printf(file_name));
-			stdout.flush();
-			
-			var mgr = new DownloadManager(file_basename(file_path), file_parent(file_path), TEMP_DIR, deb_list[file_name]);
-			mgr.status_in_kb = true;
-			mgr.download_begin();
-
-			while (mgr.is_running){
-				sleep(200);
-
-				stdout.printf("\r%-70s".printf(mgr.status_line));
-				stdout.flush();
-			}
-
-			if (file_exists(file_path)){
-				stdout.printf("\r%-70s\n".printf(_("OK")));
-				stdout.flush();
-			}
-			else{
-				stdout.printf("\r%-70s\n".printf(_("ERROR")));
-				stdout.flush();
-				ok = false;
-			}
-		}
-		
-		return ok;
-	}
 
 	// load
 	
-	public void load_cached_page(){
+	private void load_cached_page(){
 		
 		var list = new Gee.HashMap<string,string>();
 
 		if (!file_exists(cached_page)){
 			log_error("load_cached_page: " + _("File not found") + ": %s".printf(cached_page));
+			is_valid = false;
 			return;
 		}
 
@@ -723,7 +686,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		deb_list = list;
 	}
 
-	public void get_package_version(){
+	private void get_package_version(){
 
 		if (NATIVE_ARCH.length == 0){
 			log_error("Native architecture is unknown!");
@@ -767,6 +730,48 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+	public bool download_packages(){
+		bool ok = true;
+
+		check_if_initialized();
+
+		foreach(string file_name in deb_list.keys){
+			string file_path = "%s/%s/%s".printf(cache_subdir, NATIVE_ARCH, file_name);
+
+			if (file_exists(file_path)){
+				continue;
+			}
+
+			dir_create(file_parent(file_path));
+
+			stdout.printf("\n" + _("Downloading") + ": '%s'... \n".printf(file_name));
+			stdout.flush();
+			
+			var mgr = new DownloadManager(file_basename(file_path), file_parent(file_path), TEMP_DIR, deb_list[file_name]);
+			mgr.status_in_kb = true;
+			mgr.download_begin();
+
+			while (mgr.is_running){
+				sleep(200);
+
+				stdout.printf("\r%-70s".printf(mgr.status_line));
+				stdout.flush();
+			}
+
+			if (file_exists(file_path)){
+				stdout.printf("\r%-70s\n".printf(_("OK")));
+				stdout.flush();
+			}
+			else{
+				stdout.printf("\r%-70s\n".printf(_("ERROR")));
+				stdout.flush();
+				ok = false;
+			}
+		}
+		
+		return ok;
+	}
+
 	public bool install(bool write_to_terminal){
 		bool ok = download_packages();
 		int status = -1;
@@ -792,7 +797,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			ok = (status == 0);
 			if (ok){
-				log_msg(_("Installation completed"));
+				log_msg(_("Installation completed. A reboot is required to use the new kernel."));
 			}
 			else{
 				log_error(_("Installation completed with errors"));

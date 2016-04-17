@@ -214,7 +214,7 @@ public class TerminalWindow : Gtk.Window {
 
 			term.fork_command_full(
 				Vte.PtyFlags.DEFAULT, //pty_flags
-				App.temp_dir, //working_directory
+				TEMP_DIR, //working_directory
 				argv, //argv
 				env, //env
 				GLib.SpawnFlags.SEARCH_PATH, //spawn_flags

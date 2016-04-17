@@ -68,7 +68,7 @@ public class DonationWindow : Dialog {
 		Button btn_donate_paypal = new Button.with_label("   " + _("Donate with PayPal") + "   ");
 		vbox_actions.add(btn_donate_paypal);
 		btn_donate_paypal.clicked.connect(()=>{
-			xdg_open("https://www.paypal.com/cgi-bin/webscr?business=teejeetech@gmail.com&cmd=_xclick&currency_code=USD&amount=10&item_name=Selene%20Donation");
+			xdg_open("https://www.paypal.com/cgi-bin/webscr?business=teejeetech@gmail.com&cmd=_xclick&currency_code=USD&amount=10&item_name=Ukuu%20Donation");
 		});
 
 		//btn_donate_wallet

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-04-17 15:32+0530\n"
+"POT-Creation-Date: 2016-04-17 20:30+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:758
+#: Common/LinuxKernel.vala:721
 msgid "Available Kernels"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:632
+#: Common/LinuxKernel.vala:747
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -143,7 +143,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:651
+#: Common/LinuxKernel.vala:766
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -188,17 +188,17 @@ msgstr ""
 msgid "Failed to write file"
 msgstr ""
 
-#: Common/LinuxKernel.vala:611
+#: Common/LinuxKernel.vala:614
 #, c-format
 msgid "Fetching changelog for"
 msgstr ""
 
-#: Common/LinuxKernel.vala:572
+#: Common/LinuxKernel.vala:575
 #, c-format
 msgid "Fetching index for"
 msgstr ""
 
-#: Common/LinuxKernel.vala:253
+#: Common/LinuxKernel.vala:256
 msgid "Fetching index from site"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgstr ""
 msgid "File is missing"
 msgstr ""
 
-#: Common/LinuxKernel.vala:667 Common/DownloadManager.vala:331
+#: Common/LinuxKernel.vala:629 Common/DownloadManager.vala:331
 #: Common/Utility.vala:271 Common/Utility.vala:417
 msgid "File not found"
 msgstr ""
@@ -232,15 +232,19 @@ msgstr ""
 msgid "Install specified mainline kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:795 Common/LinuxKernel.vala:829
+#: Common/LinuxKernel.vala:834
 msgid "Installation completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:798 Common/LinuxKernel.vala:832
+#: Common/LinuxKernel.vala:803 Common/LinuxKernel.vala:837
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:764
+#: Common/LinuxKernel.vala:800
+msgid "Installation completed. A reboot is required to use the new kernel."
+msgstr ""
+
+#: Common/LinuxKernel.vala:727
 msgid "Installed"
 msgstr ""
 
@@ -284,7 +288,7 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:647
+#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:762
 #, c-format
 msgid "OK"
 msgstr ""
@@ -329,7 +333,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:764
+#: Common/LinuxKernel.vala:727
 msgid "Running"
 msgstr ""
 
