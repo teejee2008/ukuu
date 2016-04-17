@@ -1,0 +1,378 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Tony George (teejeetech@gmail.com)
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ukuu 2.2\n"
+"Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
+"POT-Creation-Date: 2016-04-17 15:25+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: Gtk/MainWindow.vala:323
+msgid "About"
+msgstr ""
+
+#: Console/AppConsole.vala:89
+msgid "Admin access is required for running this application."
+msgstr ""
+
+#: Gtk/AboutWindow.vala:322
+#, c-format
+msgid "Artists"
+msgstr ""
+
+#: Gtk/AboutWindow.vala:314
+#, c-format
+msgid "Authors"
+msgstr ""
+
+#: Common/LinuxKernel.vala:758
+msgid "Available Kernels"
+msgstr ""
+
+#: Gtk/AboutWindow.vala:285
+msgid "Back"
+msgstr ""
+
+#: Gtk/ProgressWindow.vala:139 Gtk/TerminalWindow.vala:165
+msgid "Cancel"
+msgstr ""
+
+#: Gtk/MainWindow.vala:289
+msgid "Changes"
+msgstr ""
+
+#: Console/AppConsole.vala:82
+msgid "Check for updates"
+msgstr ""
+
+#: Gtk/TerminalWindow.vala:175 Gtk/AboutWindow.vala:295
+msgid "Close"
+msgstr ""
+
+#: Common/Main.vala:93
+msgid "Commands listed below are not available on this system"
+msgstr ""
+
+#: Console/AppConsole.vala:179
+msgid "Could not find requested version"
+msgstr ""
+
+#: Gtk/AboutWindow.vala:272 Gtk/AboutWindow.vala:289
+msgid "Credits"
+msgstr ""
+
+#: Common/CronTab.vala:65
+msgid "Cron job added"
+msgstr ""
+
+#: Common/CronTab.vala:115
+msgid "Cron job removed"
+msgstr ""
+
+#: Gtk/DonationWindow.vala:55
+msgid ""
+"Did you find this software useful?\n"
+"\n"
+"You can buy me a coffee or make a donation via PayPal to show your support. "
+"Or just drop me an email and say Hi. This application is completely free and "
+"will continue to remain that way. Your contributions will help in keeping "
+"this project alive and improving it further.\n"
+"\n"
+"Feel free to send me an email if you find any issues in this application or "
+"if you need any changes. Suggestions and feedback are always welcome.\n"
+"\n"
+"Thanks,\n"
+"Tony George\n"
+"(teejeetech@gmail.com)"
+msgstr ""
+
+#: Common/Utility.vala:390
+msgid "Dir not found"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:97
+msgid "Display"
+msgstr ""
+
+#: Common/LinuxKernel.vala:71
+msgid "Distribution"
+msgstr ""
+
+#: Gtk/AboutWindow.vala:346
+#, c-format
+msgid "Documenters"
+msgstr ""
+
+#: Gtk/MainWindow.vala:311 Gtk/DonationWindow.vala:36
+msgid "Donate"
+msgstr ""
+
+#: Gtk/DonationWindow.vala:75
+msgid "Donate with Google Wallet"
+msgstr ""
+
+#: Gtk/DonationWindow.vala:68
+msgid "Donate with PayPal"
+msgstr ""
+
+#: Gtk/AboutWindow.vala:354
+#, c-format
+msgid "Donations"
+msgstr ""
+
+#: Common/LinuxKernel.vala:632
+#, c-format
+msgid "Downloading"
+msgstr ""
+
+#: Common/Utility.vala:100
+msgid "E"
+msgstr ""
+
+#: Common/LinuxKernel.vala:651
+#, c-format
+msgid "ERROR"
+msgstr ""
+
+#: Gtk/GtkHelper.vala:18
+msgid "Error"
+msgstr ""
+
+#: Common/CronTab.vala:61
+msgid "Failed to add cron job"
+msgstr ""
+
+#: Common/Utility.vala:257
+msgid "Failed to copy file"
+msgstr ""
+
+#: Common/Utility.vala:335
+msgid "Failed to create dir"
+msgstr ""
+
+#: Common/Utility.vala:196
+msgid "Failed to delete file"
+msgstr ""
+
+#: Common/Utility.vala:276
+msgid "Failed to move file"
+msgstr ""
+
+#: Common/CronTab.vala:18
+msgid "Failed to read cron tab"
+msgstr ""
+
+#: Common/Utility.vala:214
+msgid "Failed to read file"
+msgstr ""
+
+#: Common/CronTab.vala:111
+msgid "Failed to remove cron job"
+msgstr ""
+
+#: Common/Utility.vala:241
+msgid "Failed to write file"
+msgstr ""
+
+#: Common/LinuxKernel.vala:611
+#, c-format
+msgid "Fetching changelog for"
+msgstr ""
+
+#: Common/LinuxKernel.vala:572
+#, c-format
+msgid "Fetching index for"
+msgstr ""
+
+#: Common/LinuxKernel.vala:253
+msgid "Fetching index from site"
+msgstr ""
+
+#: Common/Utility.vala:524 Common/Utility.vala:562
+msgid "File is missing"
+msgstr ""
+
+#: Common/LinuxKernel.vala:667 Common/DownloadManager.vala:331
+#: Common/Utility.vala:271 Common/Utility.vala:417
+msgid "File not found"
+msgstr ""
+
+#: Common/Package.vala:133
+#, c-format
+msgid "File not found: %s"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:114
+msgid "Hide kernels older than 4.0"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:103
+msgid "Hide unstable and RC releases"
+msgstr ""
+
+#: Gtk/MainWindow.vala:228
+msgid "Install"
+msgstr ""
+
+#: Common/LinuxKernel.vala:795 Common/LinuxKernel.vala:829
+msgid "Installation completed"
+msgstr ""
+
+#: Common/LinuxKernel.vala:798 Common/LinuxKernel.vala:832
+msgid "Installation completed with errors"
+msgstr ""
+
+#: Common/LinuxKernel.vala:764
+msgid "Installed"
+msgstr ""
+
+#: Gtk/MainWindow.vala:367 Console/AppConsole.vala:232
+msgid "Internet connection is not active"
+msgstr ""
+
+#: Gtk/MainWindow.vala:109
+msgid "Kernel"
+msgstr ""
+
+#: Gtk/MainWindow.vala:351
+msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr ""
+
+#: Gtk/GtkHelper.vala:169
+msgid "Missing Icon"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:69
+msgid "Notification"
+msgstr ""
+
+#: Common/Main.vala:176
+msgid "Notifications are disabled"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:75
+msgid "Notify if a major kernel release is available"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:86
+msgid "Notify if a point release is available for current kernel"
+msgstr ""
+
+#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:647
+#, c-format
+msgid "OK"
+msgstr ""
+
+#: Gtk/AppGtk.vala:131 Console/AppConsole.vala:80
+msgid "Options"
+msgstr ""
+
+#: Common/Main.vala:94
+msgid "Please install required packages and try again"
+msgstr ""
+
+#: Gtk/AppGtk.vala:133
+msgid "Print debug information"
+msgstr ""
+
+#: Gtk/MainWindow.vala:371
+msgid "Refreshing ..."
+msgstr ""
+
+#: Gtk/MainWindow.vala:259
+msgid "Remove"
+msgstr ""
+
+#: Gtk/AppGtk.vala:94
+msgid "Root Access Required"
+msgstr ""
+
+#: Gtk/AppGtk.vala:92
+msgid "Root access is required for running this application."
+msgstr ""
+
+#: Console/AppConsole.vala:180
+msgid "Run 'ukuu --list' and use the version string listed in first column"
+msgstr ""
+
+#: Gtk/AppGtk.vala:93 Console/AppConsole.vala:90
+msgid "Run the application as root or using gksu/sudo."
+msgstr ""
+
+#: Common/LinuxKernel.vala:764
+msgid "Running"
+msgstr ""
+
+#: Gtk/DonationWindow.vala:82
+msgid "Send Email"
+msgstr ""
+
+#: Gtk/MainWindow.vala:300 Gtk/SettingsDialog.vala:59
+msgid "Settings"
+msgstr ""
+
+#: Gtk/AppGtk.vala:134
+msgid "Show all options"
+msgstr ""
+
+#: Gtk/MainWindow.vala:153
+msgid "Status"
+msgstr ""
+
+#: Common/Utility.vala:1117
+msgid "Stopped"
+msgstr ""
+
+#: Gtk/AppGtk.vala:129 Console/AppConsole.vala:78
+msgid "Syntax"
+msgstr ""
+
+#: Common/LinuxKernel.vala:85
+msgid "System architecture"
+msgstr ""
+
+#: Gtk/AboutWindow.vala:338
+#, c-format
+msgid "Third Party Tools &amp; Software"
+msgstr ""
+
+#: Console/AppConsole.vala:193
+msgid "This kernel is already installed."
+msgstr ""
+
+#: Console/AppConsole.vala:186
+msgid ""
+"This kernel is currently running and cannot be removed.\n"
+" Install another kernel before removing this one."
+msgstr ""
+
+#: Gtk/AboutWindow.vala:330
+#, c-format
+msgid "Translators"
+msgstr ""
+
+#: Gtk/AppGtk.vala:116 Console/AppConsole.vala:221
+msgid "Unknown option"
+msgstr ""
+
+#: Gtk/MainWindow.vala:136
+msgid "Version"
+msgstr ""
+
+#: Gtk/DonationWindow.vala:89
+msgid "Visit Website"
+msgstr ""
+
+#: Common/Utility.vala:100
+msgid "W"
+msgstr ""

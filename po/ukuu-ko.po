@@ -1,0 +1,1193 @@
+# Korean translation for ukuu
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the ukuu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ukuu\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2015-01-25 23:25+0530\n"
+"PO-Revision-Date: 2015-01-26 03:19+0000\n"
+"Last-Translator: B. W. Knight <kbd0651@gmail.com>\n"
+"Language-Team: Korean <ko@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-01-26 10:04+0000\n"
+"X-Generator: Launchpad (build 17306)\n"
+
+#: EncoderConfigWindow.vala:2304
+msgid ""
+"\n"
+"\n"
+"Subtitle files should be present in the same folder\n"
+"and should start with same name."
+msgstr ""
+"\n"
+"\n"
+"자막 파일은 같은 폴더에 있어야 하며\n"
+"같은 이름이어야 합니다."
+
+#: EncoderConfigWindow.vala:490
+msgid ""
+"<b>Additional Options</b>\n"
+"These options will be passed to the encoder\n"
+"on the command line. Please do not specify\n"
+"any options that are already provided by the GUI."
+msgstr ""
+"<b>추가 선택 사항</b>\n"
+"이 선택 사항들은 명령어 줄에 있는\n"
+"인코더로 넘겨질 것입니다. 그래픽 사용자 인터페이스에 의해 제공된\n"
+"아무 옵션을 지정하지 말아 주십시오."
+
+#: EncoderConfigWindow.vala:899
+msgid "<b>Adjustments:</b>"
+msgstr "<b>조정:</b>"
+
+#: AppConfigWindow.vala:88
+msgid "<b>Backup Folder</b>"
+msgstr "<b>백업 폴더</b>"
+
+#: EncoderConfigWindow.vala:818
+msgid "<b>Channels &amp; Sampling:</b>"
+msgstr "<b>채널 &amp; 셈플링:</b>"
+
+#: EncoderConfigWindow.vala:458
+msgid ""
+"<b>Compression Vs Device Compatibility</b>\n"
+"'High' profile gives the best compression.\n"
+"Change this to 'Baseline' or 'Main' only if you are encoding\n"
+"for a particular device (mobiles,PMPs,etc) which does not\n"
+"support the 'High' profile"
+msgstr ""
+"<b>압축 대 장치 호환성</b>\n"
+"'높음' 프로필은 최상의 압축을 제공합니다.\n"
+"'높음' 프로필을 지원하지 않는 특정 장치로(휴대 전화, PMP, 등등)\n"
+"인코딩하는 중일 경우에만 '기본값' 혹은 '주 설정'으로\n"
+"변경하십시오"
+
+#: EncoderConfigWindow.vala:426
+msgid ""
+"<b>Compression Vs Encoding Speed</b>\n"
+"Slower presets give better compression and smaller files\n"
+"but take more time to encode."
+msgstr ""
+"<b>압축 대 인코딩 속도</b>\n"
+"느린 미리 설정일수록 더 나은 압축률과 더 작은 파일을 제공해주지만\n"
+"그만큼 인코딩을 하는데 더 많은 시간이 필요합니다."
+
+#: EncoderConfigWindow.vala:411
+msgid ""
+"<b>Compression Vs Quality</b>\n"
+"Smaller values give better quality video and larger files"
+msgstr ""
+"<b>압축 대 품질</b>\n"
+"작은 값일수록 더 나은 비디오 및 더 큰 파일을 제공해줍니다"
+
+#: EncoderConfigWindow.vala:1141
+msgid ""
+"<b>Embed</b> - Subtitle files will be combined with the output file.\n"
+"These subtitles can be switched off since they are added as a separate track"
+msgstr ""
+"<b>임베드</b> - 자막 파일은 출력 파일과 함께 결합할 것입니다.\n"
+"이 자막들은 별개의 트랙으로써 추가되었기 때문에 끌 수 있습니다"
+
+#: EncoderConfigWindow.vala:1012
+msgid "<b>Fade:</b>"
+msgstr "<b>페이드:</b>"
+
+#: EncoderConfigWindow.vala:241
+msgid "<b>File Format:</b>"
+msgstr "<b>파일 형식:</b>"
+
+#: EncoderConfigWindow.vala:1077
+msgid "<b>Other Effects:</b>"
+msgstr "<b>다른 효과:</b>"
+
+#: AppConfigWindow.vala:63
+msgid "<b>Output Folder</b>"
+msgstr "<b>출력 폴더</b>"
+
+#: EncoderConfigWindow.vala:298
+msgid "<b>Preset:</b>"
+msgstr "<b>미리 설정:</b>"
+
+#: EncoderConfigWindow.vala:474
+msgid ""
+"<b>Quality Vs Encoding Speed</b>\n"
+"Higher values speed-up encoding at the expense of quality.\n"
+"Lower values improve quality at the expense of encoding speed."
+msgstr ""
+"<b>품질 대 인코딩 속도</b>\n"
+"큰 값은 품질을 희생하고 빠른-속도로 인코딩해줍니다.\n"
+"작은 값은 인코딩 속도를 희생하고 품질을 향상하도록 해줍니다."
+
+#: EncoderConfigWindow.vala:1143
+msgid ""
+"<b>Render</b> - Subtitles are rendered/burned on the video.\n"
+"These subtitles cannot be switched off since they become a part of the video"
+msgstr ""
+"<b>렌더</b> - 자막을 비디오에 렌더/굽습니다.\n"
+"이 자막들은 비디오의 한 부분이 되었기 때문에 끌 수 없습니다"
+
+#: EncoderConfigWindow.vala:639
+msgid "<b>Resample:</b>"
+msgstr "<b>재샘플:</b>"
+
+#: EncoderConfigWindow.vala:538
+msgid "<b>Resize:</b>"
+msgstr "<b>조절:</b>"
+
+#: EncoderConfigWindow.vala:868
+msgid "<b>SOX Audio Processing:</b>"
+msgstr "<b>SOX 오디오 프로세싱:</b>"
+
+#: EncoderConfigWindow.vala:265
+msgid "AC3 Audio (*.ac3)"
+msgstr "AC3 오디오(*.ac3)"
+
+#: MainWindow.vala:189
+msgid "Abort"
+msgstr "중단"
+
+#: MainWindow.vala:237
+msgid "About"
+msgstr "설명"
+
+#: MainWindow.vala:1383
+msgid "Add File(s)"
+msgstr "파일(들)을 추가합니다"
+
+#: MainWindow.vala:144
+msgid "Add Files"
+msgstr "파일을 추가합니다"
+
+#: MainWindow.vala:365
+msgid "Add New Preset"
+msgstr "새 미리 설정을 추가합니다"
+
+#: MainWindow.vala:363
+msgid "Add Preset"
+msgstr "미리 설정을 추가합니다"
+
+#: MainWindow.vala:147
+msgid "Add file(s)"
+msgstr "파일(들)을 추가합니다"
+
+#: EncoderConfigWindow.vala:1108
+msgid "Adjust Stereo for Headphones"
+msgstr "헤드폰의 스테레오를 조정합니다"
+
+#: Main.vala:592
+msgid "All files removed"
+msgstr "모든 파일이 제거되었습니다"
+
+#: MainWindow.vala:1453
+msgid "An audio-video converter for Linux"
+msgstr "리눅스용 오디오-비디오 변환기입니다"
+
+#: MainWindow.vala:213
+msgid "Application Settings"
+msgstr "프로그램 설정"
+
+#: AboutWindow.vala:330
+#, c-format
+msgid "Artists"
+msgstr "아티스트"
+
+#: EncoderConfigWindow.vala:708
+msgid "Audio"
+msgstr "오디오"
+
+#: EncoderConfigWindow.vala:329
+msgid "Author"
+msgstr "저자"
+
+#: AboutWindow.vala:314
+#, c-format
+msgid "Authors"
+msgstr "저자"
+
+#: MainWindow.vala:467
+msgid "AutoCrop Video"
+msgstr "비디오를 자동으로 자릅니다"
+
+#: EncoderConfigWindow.vala:1547 EncoderConfigWindow.vala:1572
+#: EncoderConfigWindow.vala:1603 EncoderConfigWindow.vala:1620
+#: EncoderConfigWindow.vala:1971 EncoderConfigWindow.vala:1994
+#: EncoderConfigWindow.vala:2017
+msgid "Average Bitrate"
+msgstr "평균 비트 전송률"
+
+#: EncoderConfigWindow.vala:1973 EncoderConfigWindow.vala:1996
+#: EncoderConfigWindow.vala:2019
+msgid "Average Bitrate (2-pass)"
+msgstr "평균 비트 전송률(2-단계)"
+
+#: AboutWindow.vala:285
+msgid "Back"
+msgstr "뒤로"
+
+#: MainWindow.vala:252
+msgid "Background"
+msgstr "배경"
+
+#: AppConfigWindow.vala:96
+msgid "Backup Location"
+msgstr "백업 경로"
+
+#: EncoderConfigWindow.vala:913
+msgid "Bass (lower freq)"
+msgstr "베이스(낮은 주파수)"
+
+#: EncoderConfigWindow.vala:400 EncoderConfigWindow.vala:748
+msgid "Bitrate (kbps)"
+msgstr "비트 전송률(kbps)"
+
+#: EncoderConfigWindow.vala:911
+msgid "Boost or cut the bass (lower) frequencies of the audio."
+msgstr "오디오의 베이스(낮은) 주파수를 증량 혹은 감량합니다."
+
+#: EncoderConfigWindow.vala:937
+msgid "Boost or cut the treble (upper) frequencies of the audio."
+msgstr "오디오의 고음(높은) 주파수를 증량 혹은 감량합니다."
+
+#: MainWindow.vala:385
+msgid "Browse"
+msgstr "찾아보기"
+
+#: MainWindow.vala:1725
+msgid "CPU: "
+msgstr "CPU: "
+
+#: Main.vala:1147 Main.vala:1161
+msgid "Cancelled"
+msgstr "취소되었습니다"
+
+#: EncoderConfigWindow.vala:963
+msgid "Change audio pitch (shrillness) without changing audio tempo (speed)."
+msgstr "오디오 박자의(속도) 변화 없이 오디오 피치를(날카로운 소리) 변경합니다."
+
+#: EncoderConfigWindow.vala:989
+msgid ""
+"Change audio tempo (speed) without changing audio pitch (shrillness).\n"
+"\n"
+"WARNING: This will change the duration of the audio track"
+msgstr ""
+"오디오 피치의(날카로운 소리) 변화 없이 오디오 박자를(속도) 변경합니다.\n"
+"\n"
+"경고: 이는 오디오 트랙의 시간 길이를 변경할 것입니다"
+
+#: EncoderConfigWindow.vala:837
+msgid "Channels"
+msgstr "채널"
+
+#: AboutWindow.vala:295
+msgid "Close"
+msgstr "닫기"
+
+#: Main.vala:986 Main.vala:996 Main.vala:1004
+msgid "Completed"
+msgstr "완료되었습니다"
+
+#: EncoderConfigWindow.vala:1549 EncoderConfigWindow.vala:1574
+#: EncoderConfigWindow.vala:1605 EncoderConfigWindow.vala:2043
+msgid "Constant Bitrate"
+msgstr "일정 비트 전송률"
+
+#: EncoderConfigWindow.vala:1551
+msgid "Constant Bitrate (Strict)"
+msgstr "일정 비트 전송률(엄격함)"
+
+#: Main.vala:902 Main.vala:1195
+msgid "Converting..."
+msgstr "변환 중입니다..."
+
+#: MainWindow.vala:1000
+#, c-format
+msgid "Converting: '%s'"
+msgstr "변환 중입니다: '%s'"
+
+#: Main.vala:900 Main.vala:1193
+msgid "Converting: Enter (q) to quit or (p) to pause..."
+msgstr "변환 중입니다: (q)를 입력하셔서 종료하시거나 (p)를 입력하셔서 일시 정지를 하십시오..."
+
+#: AboutWindow.vala:272 AboutWindow.vala:289
+msgid "Credits"
+msgstr "제작자"
+
+#: MainWindow.vala:312
+msgid "CropVideo (L:T:R:B)"
+msgstr "비디오를 자릅니다(L:T:R:B)"
+
+#: EncoderConfigWindow.vala:554 EncoderConfigWindow.vala:657
+msgid "Custom"
+msgstr "사용자 설정"
+
+#: MainWindow.vala:372
+msgid "Delete Preset"
+msgstr "미리 설정을 지웁니다"
+
+#: EncoderConfigWindow.vala:702
+msgid "Denominator"
+msgstr "분모"
+
+#: EncoderStatusWindow.vala:91
+msgid "Description"
+msgstr "설명"
+
+#: DonationWindow.vala:53
+msgid ""
+"Did you find this software useful?\n"
+"\n"
+"You can buy me a coffee or make a donation via PayPal to show your support. "
+"Or just drop me an email and say Hi.\n"
+"\n"
+"This application is completely free and will continue to remain that way. "
+"Your contributions will help in keeping this project alive and to develop it "
+"further.\n"
+"\n"
+"Feel free to drop me an email if you find any issues or if you have "
+"suggestions for improvement.\n"
+"\n"
+"Regards,\n"
+"Tony George\n"
+"teejeetech@gmail.com"
+msgstr ""
+"이 소프트웨어가 쓸만하시다고 생각하십니까?\n"
+"\n"
+"당신은 저에게 커피를 사주시거나 페이팔을 통한 기부와 같은 지원으로 저를 도와주실 수 있습니다. 혹은 저에게 이메일로 인사하실 수 "
+"있습니다.\n"
+"\n"
+"이 프로그램은 완전히 무료이며 이 방식대로 할 것입니다. 당신의 기여는 이 프로젝트가 계속해서 지속하여지는 것뿐만 아니라 더 나아갈 수 "
+"있도록 해줍니다.\n"
+"\n"
+"만약 당신이 아무 문제를 찾으셨거나 이 프로그램이 향상되기를 바라는 제안이 있으시면 언제든지 이메일로 보내십시오.\n"
+"\n"
+"안부를 전하며,\n"
+"토니 조지\n"
+"teejeetech@gmail.com"
+
+#: EncoderConfigWindow.vala:1308 EncoderConfigWindow.vala:1318
+#: EncoderConfigWindow.vala:1327
+msgid "Disable Audio"
+msgstr "오디오를 사용하지 않습니다"
+
+#: EncoderConfigWindow.vala:1281
+msgid "Disable Video"
+msgstr "비디오를 사용하지 않습니다"
+
+#: AppConfigWindow.vala:106
+msgid "Do not move input files"
+msgstr "입력 파일을 이동하지 않습니다"
+
+#: EncoderConfigWindow.vala:625
+msgid "Do not stretch or squeeze the video (Fit-To-Box)"
+msgstr "비디오를 늘리거나 줄이지 않습니다(화면에-알맞게-조정합니다)"
+
+#: AboutWindow.vala:346
+#, c-format
+msgid "Documenters"
+msgstr "문서 작성자"
+
+#: DonationWindow.vala:36 MainWindow.vala:226 MainWindow.vala:227
+msgid "Donate"
+msgstr "기부하기"
+
+#: DonationWindow.vala:66
+msgid "Donate via PayPal"
+msgstr "페이팔을 통해 기부합니다"
+
+#: AboutWindow.vala:354
+#, c-format
+msgid "Donations"
+msgstr "기부"
+
+#: Main.vala:981
+msgid "Done"
+msgstr "마쳤습니다"
+
+#: MainWindow.vala:988
+msgid "Drag files on this window or click the 'Add' button"
+msgstr "이 창에 파일을 끌거나 '추가하기' 버튼을 누르십시오"
+
+#: MainWindow.vala:304
+msgid "Duration"
+msgstr "시간 길이"
+
+#: MainWindow.vala:379
+msgid "Edit Preset"
+msgstr "미리 설정을 편집합니다"
+
+#: EncoderConfigWindow.vala:340
+msgid "Email"
+msgstr "이메일"
+
+#: EncoderConfigWindow.vala:1417
+msgid "Embed / Soft Subs"
+msgstr "임베드 / 닫힌 자막"
+
+#: EncoderConfigWindow.vala:2339
+msgid "Empty Preset Name"
+msgstr "미리 설정 이름을 비웁니다"
+
+#: EncoderStatusWindow.vala:45 MainWindow.vala:219
+msgid "Encoders"
+msgstr "인코더"
+
+#: EncoderConfigWindow.vala:387 EncoderConfigWindow.vala:735
+msgid "Encoding Mode"
+msgstr "인코딩 모드"
+
+#: MainWindow.vala:444
+msgid "Encoding Script or Preset File"
+msgstr "스크립트 혹은 현재 파일을 인코딩합니다"
+
+#: EncoderStatusWindow.vala:83
+msgid "Encoding Tool"
+msgstr "인코딩 도구"
+
+#: Main.vala:673
+msgid "Enter any key to Cancel..."
+msgstr "아무 키를 입력하셔서 취소하십시오..."
+
+#: Main.vala:991 Utility.vala:108
+msgid "Error"
+msgstr "오류"
+
+#: Main.vala:708
+msgid "Error: File missing"
+msgstr "오류: 파일이 없습니다"
+
+#: EncoderConfigWindow.vala:678
+msgid "Examples:"
+msgstr "예:"
+
+#: EncoderConfigWindow.vala:287
+msgid "Extension"
+msgstr "확장 프로그램"
+
+#: EncoderConfigWindow.vala:493
+msgid "Extra Options"
+msgstr "추가 선택 사항"
+
+#: EncoderConfigWindow.vala:267
+msgid "FLAC Audio (*.flac)"
+msgstr "FLAC 오디오(*.flac)"
+
+#: EncoderConfigWindow.vala:675
+msgid "FPS Ratio"
+msgstr "FPS 비율"
+
+#: EncoderConfigWindow.vala:1024
+msgid "Fade In (seconds)"
+msgstr "페이드 인(초당)"
+
+#: EncoderConfigWindow.vala:1038
+msgid "Fade Out (seconds)"
+msgstr "페이드 아웃(초당)"
+
+#: EncoderConfigWindow.vala:1052
+msgid "Fade Type"
+msgstr "페이드 형태"
+
+#: Main.vala:1007
+msgid "Failed"
+msgstr "실패했습니다"
+
+#: Utility.vala:1396
+msgid "Failed to set ownership"
+msgstr "소유권을 설정하는 걸 실패했습니다"
+
+#: EncoderConfigWindow.vala:441
+msgid "Fast"
+msgstr "빠름"
+
+#: MainWindow.vala:286
+msgid "File"
+msgstr "파일"
+
+#: MainWindow.vala:529
+msgid "File Info (Output)"
+msgstr "파일 정보(출력)"
+
+#: MainWindow.vala:523
+msgid "File Info (Source)"
+msgstr "파일 정보(소스)"
+
+#: Main.vala:572
+msgid "File added:"
+msgstr "파일이 추가됐습니다:"
+
+#: MainWindow.vala:1016
+#, c-format
+msgid "File added: '%s'"
+msgstr "파일이 추가됐습니다: '%s'"
+
+#: Main.vala:586
+msgid "File removed:"
+msgstr "파일이 제거됐습니다:"
+
+#: MainWindow.vala:273
+msgid "File(s) to convert"
+msgstr "변환할 파일(들)"
+
+#: Main.vala:609
+#, c-format
+msgid "Files will be saved in '%s'"
+msgstr "파일은 '%s'로 저장될 것입니다"
+
+#: Main.vala:612
+msgid "Files will be saved in source directory"
+msgstr "파일은 소스 디렉터리에 저장될 것입니다"
+
+#: EncoderConfigWindow.vala:525 EncoderConfigWindow.vala:804
+msgid "Filters"
+msgstr "필터"
+
+#: MainWindow.vala:197 MainWindow.vala:199
+msgid "Finish"
+msgstr "완료"
+
+#: EncoderConfigWindow.vala:622
+msgid "Fits the video in a box of given width and height."
+msgstr "비디오를 화면에 맞게 너비 및 높이를 조정합니다."
+
+#: EncoderConfigWindow.vala:1637
+msgid "Fixed Bitrate"
+msgstr "고정 비트 전송률"
+
+#: MainWindow.vala:419 MainWindow.vala:429
+msgid "Folder"
+msgstr "폴더"
+
+#: Main.vala:308
+msgid "Following encoders are not installed on your system:"
+msgstr "다음과 인코더는 당신의 시스템에 설치되지 않았습니다:"
+
+#: MainWindow.vala:1564
+msgid "Following encoders were not found on your system:"
+msgstr "다음과 같은 인코더는 당신의 시스템에서 찾지 못했습니다:"
+
+#: EncoderConfigWindow.vala:249
+msgid "Format"
+msgstr "형식"
+
+#: EncoderConfigWindow.vala:373 EncoderConfigWindow.vala:721
+msgid "Format / Codec"
+msgstr "형식 / 코덱"
+
+#: MainWindow.vala:1400
+msgid "Format not supported:"
+msgstr "지원되지 않는 형식입니다:"
+
+#: EncoderStatusWindow.vala:143
+msgid "Found"
+msgstr "찾았습니다"
+
+#: EncoderConfigWindow.vala:647
+msgid "Frame Rate"
+msgstr "프레임 전송률"
+
+#: EncoderConfigWindow.vala:649
+msgid "Frames/sec"
+msgstr "프레임/초당"
+
+#: EncoderConfigWindow.vala:228
+msgid "General"
+msgstr "일반 설정"
+
+#: EncoderConfigWindow.vala:1067
+msgid "Half Sine"
+msgstr "반 사인파"
+
+#: EncoderConfigWindow.vala:601
+msgid "Height"
+msgstr "높이"
+
+#: MainWindow.vala:400 MainWindow.vala:402 MainWindow.vala:944
+msgid "Info"
+msgstr "정보"
+
+#: MainWindow.vala:1542
+msgid ""
+"Input queue is empty!\n"
+"Please add some files.\n"
+msgstr ""
+"입력 칸이 비워져 있습니다!\n"
+"몇몇 파일을 추가하십시오.\n"
+
+#: Main.vala:600
+msgid "Input queue is empty! Please add some files."
+msgstr "입력 칸이 비워져 있습니다! 몇몇 파일을 추가하십시오."
+
+#: Main.vala:234
+msgid "Input queue is empty! Please select files to convert."
+msgstr "입력 칸이 비워져 있습니다! 변환할 파일을 선택하십시오."
+
+#: EncoderConfigWindow.vala:1073
+msgid "Inverted Parabola"
+msgstr "정 반대 포물면"
+
+#: FileInfoWindow.vala:65
+msgid "Key"
+msgstr "키"
+
+#: EncoderConfigWindow.vala:1069
+msgid "Linear"
+msgstr "선형"
+
+#: Main.vala:356
+msgid "Loading presets from:"
+msgstr "현재로부터 불러오는 중입니다:"
+
+#: Main.vala:355
+msgid "Loading scripts from:"
+msgstr "스크립트로부터 불러오는 중입니다:"
+
+#: EncoderConfigWindow.vala:1071
+msgid "Logarithmic"
+msgstr "로그"
+
+#: EncoderConfigWindow.vala:1664
+msgid "Lossless"
+msgstr "무손실"
+
+#: Main.vala:722 Main.vala:725
+msgid "Lyrics:"
+msgstr "가사:"
+
+#: EncoderConfigWindow.vala:269
+msgid "MP3 Audio (*.mp3)"
+msgstr "MP3 오디오(*.mp3)"
+
+#: EncoderConfigWindow.vala:271
+msgid "MP4 Audio (*.mp4)"
+msgstr "MP4 오디오(*.mp4)"
+
+#: EncoderConfigWindow.vala:259
+msgid "MPEG4 Video (*.mp4)"
+msgstr "MPEG4 비디오(*.mp4)"
+
+#: EncoderConfigWindow.vala:1106
+msgid ""
+"Makes audio easier to listen to on headphones. Adds 'cues' to the audio so "
+"that when listened to on headphones the stereo image is moved from inside "
+"your head (standard for headphones) to outside and in front of the listener "
+"(standard for speakers)."
+msgstr ""
+"헤드폰으로 오디오를 쉽게 감상할 수 있도록 해줍니다. 오디오에 '큐'를 추가해서 헤드폰으로 감상하실 때 스테레오 이미지가 당신의 "
+"머리에서(헤드폰의 표준) 머리 밖 및 듣는 사람의 앞으로(스피커의 표준) 움직이게 해줍니다."
+
+#: EncoderConfigWindow.vala:257
+msgid "Matroska Video (*.mkv)"
+msgstr "마트료시카 비디오(*.mkv)"
+
+#: EncoderConfigWindow.vala:1091
+msgid "Maximize Volume Level (Normalize)"
+msgstr "음량 단계를 최대화 합니다(보통화)"
+
+#: EncoderConfigWindow.vala:1089
+msgid "Maximize the volume level (loudness)"
+msgstr "음량 단계를 최대화 합니다(큰 소리)"
+
+#: EncoderConfigWindow.vala:443
+msgid "Medium"
+msgstr "보통"
+
+#: EncoderStatusWindow.vala:143
+msgid "Missing"
+msgstr "없음"
+
+#: Main.vala:308 MainWindow.vala:1564
+msgid "Missing Encoders"
+msgstr "없는 인코더"
+
+#: Utility.vala:1025
+msgid "Missing Icon"
+msgstr "없는 아이콘"
+
+#: EncoderConfigWindow.vala:791
+msgid "Music"
+msgstr "음악"
+
+#: Main.vala:2819 MainWindow.vala:1209
+msgid "N/A"
+msgstr "사용 불가능합니다"
+
+#: EncoderConfigWindow.vala:306
+msgid "Name"
+msgstr "이름"
+
+#: EncoderConfigWindow.vala:313
+msgid "New Preset"
+msgstr "새 미리 설정"
+
+#: EncoderConfigWindow.vala:552 EncoderConfigWindow.vala:655
+#: EncoderConfigWindow.vala:678 EncoderConfigWindow.vala:1684
+#: EncoderConfigWindow.vala:1724 EncoderConfigWindow.vala:1752
+#: EncoderConfigWindow.vala:1766 EncoderConfigWindow.vala:1795
+#: EncoderConfigWindow.vala:1815
+msgid "No Change"
+msgstr "그대로 둡니다"
+
+#: EncoderConfigWindow.vala:1415
+msgid "No Subtitles"
+msgstr "자막이 없습니다"
+
+#: EncoderConfigWindow.vala:633
+msgid "No Up-Scaling"
+msgstr "업-스케일링이 없습니다"
+
+#: EncoderConfigWindow.vala:787
+msgid "None"
+msgstr "사용 안 함"
+
+#: Main.vala:308
+msgid "Not possible to continue!"
+msgstr "계속해서 진행할 수 없습니다!"
+
+#: EncoderConfigWindow.vala:693
+msgid "Numerator"
+msgstr "분자"
+
+#: EncoderConfigWindow.vala:261
+msgid "OGG Theora Video (*.ogv)"
+msgstr "OGG 테오라 비디오(*.ogv)"
+
+#: EncoderConfigWindow.vala:273
+msgid "OGG Vorbis Audio (*.ogg)"
+msgstr "OGG 보비스 오디오(*.ogg)"
+
+#: MainWindow.vala:387
+msgid "Open Folder"
+msgstr "폴더를 엽니다"
+
+#: MainWindow.vala:500
+msgid "Open Log File"
+msgstr "로그 파일을 엽니다"
+
+#: MainWindow.vala:494
+msgid "Open Output Folder"
+msgstr "출력 폴더를 엽니다"
+
+#: MainWindow.vala:488
+msgid "Open Temp Folder"
+msgstr "임시 폴더를 엽니다"
+
+#: MainWindow.vala:265
+msgid "Open output folder"
+msgstr "출력 폴더를 엽니다"
+
+#: EncoderConfigWindow.vala:770
+msgid "Optimization"
+msgstr "최적화"
+
+#: EncoderConfigWindow.vala:275
+msgid "Opus Audio (*.opus)"
+msgstr "오푸스 오디오(*.opus)"
+
+#: MainWindow.vala:263
+msgid "Output"
+msgstr "출력"
+
+#: AppConfigWindow.vala:71
+msgid "Output Location"
+msgstr "출력 위치"
+
+#: MainWindow.vala:180 MainWindow.vala:1523 MainWindow.vala:1525
+msgid "Pause"
+msgstr "일시 정지"
+
+#: Main.vala:1174 Main.vala:1179
+msgid "Paused"
+msgstr "일시 정지되었습니다"
+
+#: Main.vala:1177
+msgid "Paused: Enter (r) to resume..."
+msgstr "일시 정지되었습니다: (r)을 입력하셔서 재개하십시오..."
+
+#: EncoderConfigWindow.vala:965
+msgid "Pitch (shrillness)"
+msgstr "피치(날카로운 소리)"
+
+#: MainWindow.vala:517
+msgid "Play File (Output)"
+msgstr "파일을 재생합니다(출력)"
+
+#: MainWindow.vala:511
+msgid "Play File (Source)"
+msgstr "파일을 재생합니다(소스)"
+
+#: EncoderConfigWindow.vala:2337
+msgid "Please enter a name for this preset"
+msgstr "이 미리 설정의 이름을 입력하십시오"
+
+#: MainWindow.vala:1564
+msgid "Please install required packages or select another preset"
+msgstr "요구 패키지를 설치하시거나 다른 미리 설정을 선택하십시오"
+
+#: EncoderConfigWindow.vala:889
+msgid "Please install the 'sox' package on your system to use this feature"
+msgstr "이 기능을 당신의 시스템에서 사용하시려면 'sox' 패키지를 설치하십시오"
+
+#: EncoderConfigWindow.vala:429 MainWindow.vala:434
+msgid "Preset"
+msgstr "미리 설정"
+
+#: MainWindow.vala:882
+msgid "Preset deleted"
+msgstr "미리 설정이 지워졌습니다"
+
+#: MainWindow.vala:1661
+msgid "Press 'Cancel' to abort shutdown"
+msgstr "'취소'를 누르셔서 종료를 중단하십시오"
+
+#: MainWindow.vala:472
+msgid "Preview File"
+msgstr "파일 미리 보기"
+
+#: EncoderConfigWindow.vala:461
+msgid "Profile"
+msgstr "프로필"
+
+#: FileInfoWindow.vala:44
+msgid "Properties"
+msgstr "속성"
+
+#: EncoderConfigWindow.vala:414 EncoderConfigWindow.vala:759
+msgid "Quality"
+msgstr "품질"
+
+#: EncoderConfigWindow.vala:1065
+msgid "Quarter Sine"
+msgstr "쿼터 사인파"
+
+#: MainWindow.vala:1544
+msgid "Queue is Empty"
+msgstr "칸이 비어있습니다"
+
+#: Main.vala:630 Main.vala:689 Main.vala:2585
+msgid "Queued"
+msgstr "대기 된"
+
+#: EncoderStatusWindow.vala:109
+msgid "Refresh"
+msgstr "새로 고침"
+
+#: MainWindow.vala:161
+msgid "Remove all file(s)"
+msgstr "모든 파일(들)을 제거합니다"
+
+#: MainWindow.vala:154
+msgid "Remove selected file(s)"
+msgstr "선택한 파일(들)을 제거합니다"
+
+#: EncoderConfigWindow.vala:930 EncoderConfigWindow.vala:956
+#: EncoderConfigWindow.vala:982 EncoderConfigWindow.vala:1008
+msgid "Reset"
+msgstr "초기화"
+
+#: EncoderConfigWindow.vala:607
+msgid "Resizing Method"
+msgstr "조절 방법"
+
+#: EncoderConfigWindow.vala:545
+msgid "Resolution"
+msgstr "해상도"
+
+#: MainWindow.vala:1517 MainWindow.vala:1519
+msgid "Resume"
+msgstr "재개"
+
+#: MainWindow.vala:257
+msgid "Run processes with lower priority"
+msgstr "낮은 우선순위로 프로세스를 실행합니다"
+
+#: EncoderConfigWindow.vala:855
+msgid "SOX"
+msgstr "SOX"
+
+#: EncoderConfigWindow.vala:824
+msgid "Sampling Rate (Hz)"
+msgstr "셈플링 비율(Hz)"
+
+#: AppConfigWindow.vala:81
+msgid "Save in input file location"
+msgstr "입력 파일 위치에 저장합니다"
+
+#: MainWindow.vala:986
+msgid "Select a script from the dropdown and click 'Start' to begin"
+msgstr "드롭다운 메뉴에서 스크립트를 선택하시고 '시작'을 누르셔서 시작하십시오"
+
+#: DonationWindow.vala:73
+msgid "Send Email"
+msgstr "이메일을 보냅니다"
+
+#: EncoderConfigWindow.vala:572
+msgid ""
+"Set either Width or Height and leave the other as 0.\n"
+"It will be calculated automatically.\n"
+"\n"
+"Setting both width and height is not recommended\n"
+"since the video may get stretched or squeezed.\n"
+"\n"
+"Enable the 'Fit-To-Box' option to avoid changes to aspect ratio."
+msgstr ""
+"너비 혹은 높이 중에 하나를 설정하시고 다른 것들을 0으로 놔두십시오.\n"
+"이는 자동으로 계산될 것입니다.\n"
+"\n"
+"비디오가 늘리거나 줄어둘 수 있기 때문에\n"
+"너비와 높이를 동시에 설정하는 건 추천하지 않습니다.\n"
+"\n"
+"'화면에 알맞게 조정합니다' 선택 사항을 사용하셔서 화면 비율을 바꿔야 하는 경우를 피하십시오."
+
+#: MainWindow.vala:242
+msgid "Shutdown"
+msgstr "종료"
+
+#: MainWindow.vala:1496
+msgid "Shutdown Disabled"
+msgstr "종료를 사용하지 않습니다"
+
+#: MainWindow.vala:1493
+msgid "Shutdown Enabled"
+msgstr "종료를 사용합니다"
+
+#: MainWindow.vala:247
+msgid "Shutdown system after completion"
+msgstr "완료 후에 시스템을 종료합니다"
+
+#: MainWindow.vala:296
+msgid "Size"
+msgstr "크기"
+
+#: MainWindow.vala:462
+msgid "Skip File"
+msgstr "파일을 건너뜁니다"
+
+#: EncoderConfigWindow.vala:445
+msgid "Slow"
+msgstr "느림"
+
+#: EncoderConfigWindow.vala:447
+msgid "Slower"
+msgstr "더 느림"
+
+#: Main.vala:618
+#, c-format
+msgid "Source files will be moved to '%s'"
+msgstr "소스 파일은 '%s'로 이동될 것입니다"
+
+#: Main.vala:720
+msgid "Source:"
+msgstr "소스:"
+
+#: EncoderConfigWindow.vala:889
+msgid "Sox Not Installed"
+msgstr "Sox가 설치되지 않았습니다"
+
+#: EncoderConfigWindow.vala:789
+msgid "Speech"
+msgstr "음성"
+
+#: EncoderConfigWindow.vala:477
+msgid "Speed"
+msgstr "속도"
+
+#: MainWindow.vala:171 MainWindow.vala:173
+msgid "Start"
+msgstr "시작하기"
+
+#: Main.vala:604
+#, c-format
+msgid "Starting batch of %d file(s):"
+msgstr "%d 파일(들)의 일괄 작업을 시작하는 중입니다:"
+
+#: EncoderStatusWindow.vala:99 MainWindow.vala:323
+msgid "Status"
+msgstr "상태"
+
+#: Utility.vala:753
+msgid "Stopped"
+msgstr "정지되었습니다"
+
+#: Main.vala:1001
+msgid "Stopped!"
+msgstr "정지되었습니다!"
+
+#: EncoderConfigWindow.vala:1129
+msgid "Subs"
+msgstr "자막"
+
+#: EncoderConfigWindow.vala:1146
+msgid "Subtitle Mode"
+msgstr "자막 모드"
+
+#: EncoderConfigWindow.vala:1162
+msgid "Subtitles"
+msgstr "자막"
+
+#: Main.vala:722 Main.vala:725
+msgid "Subtitles:"
+msgstr "자막:"
+
+#: EncoderConfigWindow.vala:439
+msgid "SuperFast"
+msgstr "매우 빠름"
+
+#: EncoderConfigWindow.vala:2310 EncoderConfigWindow.vala:2313
+#: EncoderConfigWindow.vala:2316 EncoderConfigWindow.vala:2319
+msgid "Supported Formats:"
+msgstr "지원되는 형식입니다:"
+
+#: MainWindow.vala:1663
+msgid "System shutdown"
+msgstr "시스템 종료"
+
+#: MainWindow.vala:1670
+#, c-format
+msgid "System shutdown was cancelled by user!"
+msgstr "시스템 종료가 사용자에 의해 취소되었습니다!"
+
+#: Main.vala:209
+msgid "System will be shutdown after completion"
+msgstr "완료 후에 시스템이 종료될 것입니다"
+
+#: Main.vala:672 MainWindow.vala:1660
+msgid "System will shutdown in one minute!"
+msgstr "일 분 뒤에 시스템이 종료될 것입니다!"
+
+#: EncoderConfigWindow.vala:991
+msgid "Tempo (speed)"
+msgstr "박자(속도)"
+
+#: EncoderConfigWindow.vala:889
+msgid "The Sox utility was not found on your system"
+msgstr "당신의 시스템에서 Sox 프로그램을 찾을 수 없습니다"
+
+#: EncoderConfigWindow.vala:604
+msgid ""
+"The resizing filter affects the sharpness and compressibility of the video.\n"
+"For example, the 'Lanzos' filter gives sharper video but the extra detail\n"
+"makes the video more difficult to compress resulting in slightly bigger "
+"files.\n"
+"The 'Bilinear' filter gives smoother video (less detail) and smaller files."
+msgstr ""
+"조절 필터는 비디오의 선명도 및 압축에 영향을 끼칩니다.\n"
+"예를 들어, '란조스' 필터는 비디오를 더 선명하게 해주지만\n"
+"더 자세한 요소는 비디오를 압축하는 걸 어렵게 만들며 살짝 더 큰 파일을 생성합니다.\n"
+"'이중선형' 필터는 완만한 비디오(덜 자세하게) 및 더 작은 파일을 줍니다."
+
+#: AboutWindow.vala:322
+#, c-format
+msgid "Third Party Tools"
+msgstr "제삼자 도구"
+
+#: AboutWindow.vala:338
+#, c-format
+msgid "Translators"
+msgstr "번역가"
+
+#: EncoderConfigWindow.vala:939
+msgid "Treble (upper freq)"
+msgstr "고음(높은 주파수)"
+
+#: EncoderConfigWindow.vala:437
+msgid "UltraFast"
+msgstr "가장 빠름"
+
+#: Main.vala:577
+msgid "Unknown format:"
+msgstr "알려지지 않은 형식입니다:"
+
+#: MainWindow.vala:1013
+#, c-format
+msgid "Unknown format: '%s'"
+msgstr "알려지지 않은 형식입니다: '%s'"
+
+#: Main.vala:357
+msgid "Using temp folder:"
+msgstr "임시 폴더를 사용하는 중입니다:"
+
+#: FileInfoWindow.vala:66
+msgid "Value"
+msgstr "값"
+
+#: EncoderConfigWindow.vala:1545 EncoderConfigWindow.vala:1570
+#: EncoderConfigWindow.vala:1601 EncoderConfigWindow.vala:1618
+#: EncoderConfigWindow.vala:2015 EncoderConfigWindow.vala:2039
+msgid "Variable Bitrate"
+msgstr "가변 비트 전송률"
+
+#: EncoderConfigWindow.vala:2041
+msgid "Variable Bitrate (2pass)"
+msgstr "가변 비트 전송률(2단계)"
+
+#: EncoderConfigWindow.vala:1969 EncoderConfigWindow.vala:1992
+msgid "Variable Bitrate / CRF"
+msgstr "가변 비트 전송률 / CRF"
+
+#: EncoderConfigWindow.vala:318
+msgid "Version"
+msgstr "버전"
+
+#: EncoderConfigWindow.vala:449
+msgid "VerySlow"
+msgstr "매우 느림"
+
+#: EncoderConfigWindow.vala:360
+msgid "Video"
+msgstr "비디오"
+
+#: EncoderConfigWindow.vala:630
+msgid ""
+"Video will not be resized if it's smaller than the given width and height"
+msgstr "비디오가 기본으로 주어진 너비 및 높잇값보다 더 작다면 조절되지 않을 것입니다"
+
+#: DonationWindow.vala:80
+msgid "Visit Website"
+msgstr "웹사이트를 방문합니다"
+
+#: EncoderConfigWindow.vala:277
+msgid "WAV Audio (*.wav)"
+msgstr "WAV 오디오(*.wav)"
+
+#: Utility.vala:108
+msgid "Warning"
+msgstr "주의"
+
+#: Main.vala:212
+msgid ""
+"Warning: User does not have Admin priviledges. '--shutdown' will be ignored."
+msgstr "주의: 사용자는 권리자 권한을 가지고 있지 않습니다. '--shutdown'은 무시될 것입니다."
+
+#: EncoderConfigWindow.vala:263
+msgid "WebM Video (*.webm)"
+msgstr "웹엠 비디오(*.webm)"
+
+#: EncoderConfigWindow.vala:592
+msgid "Width"
+msgstr "너비"
+
+#: EncoderConfigWindow.vala:575
+msgid "Width x Height"
+msgstr "너비 x 높이"
+
+#: MainWindow.vala:992
+msgid ""
+"[Batch completed] Right-click for options or click 'Finish' to continue."
+msgstr "[일괄 작업이 완료되었습니다] 오른쪽 마우스 버튼을 누르셔서 선택 사항을 사용하시거나 '완료'를 누르셔서 계속하십시오"
+
+#: MainWindow.vala:996
+msgid "[Paused] Click 'Resume' to continue or 'Stop' to abort."
+msgstr "[일시 정지되었습니다] '재개'를 누르셔서 계속하시거나 '정지'를 누르셔서 중단하십시오."
+
+#: MainWindow.vala:595
+msgid "presets"
+msgstr "미리 설정"
+
+#: MainWindow.vala:591
+msgid "scripts"
+msgstr "스크립트"

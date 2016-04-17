@@ -1,0 +1,91 @@
+[indentation]
+indent_width=4
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=false
+detect_indent_width=false
+indent_mode=2
+
+[project]
+name=ukuu
+base_path=/home/teejee/projects/linux/ukuu
+description=
+file_patterns=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=80
+
+[files]
+current_page=15
+FILE_NAME_0=5818;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FMain.vala;0;4
+FILE_NAME_1=3745;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FConsole%2FAppConsole.vala;0;4
+FILE_NAME_2=8925;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FAboutWindow.vala;0;4
+FILE_NAME_3=1761;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FAppGtk.vala;0;4
+FILE_NAME_4=234;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FCustomMessageDialog.vala;0;4
+FILE_NAME_5=926;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FDonationWindow.vala;0;4
+FILE_NAME_6=8900;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FMainWindow.vala;0;4
+FILE_NAME_7=2091;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2Fmakefile;0;4
+FILE_NAME_8=1;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FDownloadManager.vala;0;4
+FILE_NAME_9=2672;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FUtility.vala;0;4
+FILE_NAME_10=2477;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FPackage.vala;0;4
+FILE_NAME_11=8395;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FLinuxKernel.vala;0;4
+FILE_NAME_12=6770;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FTerminalWindow.vala;0;4
+FILE_NAME_13=1849;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FProgressWindow.vala;0;4
+FILE_NAME_14=13906;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Faptik%2Fsrc%2FThemeWindow.vala;0;4
+FILE_NAME_15=21719;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Faptik-archive-manager%2Fsrc%2FViewArchiveWindow.vala;0;4
+FILE_NAME_16=5;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fmakefile;0;4
+FILE_NAME_17=8874;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Faptik%2Fsrc%2FDownloadWindow.vala;0;4
+FILE_NAME_18=31692;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Faptik%2Fsrc%2FPackageWindow.vala;0;4
+FILE_NAME_19=21018;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Faptik%2Fsrc%2FMainWindow.vala;0;4
+FILE_NAME_20=1538;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FSettingsDialog.vala;0;4
+FILE_NAME_21=1900;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FCronTab.vala;0;4
+FILE_NAME_22=2885;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FGtkHelper.vala;0;4
+FILE_NAME_23=261;Conf;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2Fukuu.desktop;0;4
+
+[VTE]
+last_dir=/home/teejee
+
+[build-menu]
+ValaFT_00_LB=_Compile
+ValaFT_00_CM=
+ValaFT_00_WD=
+filetypes=Vala;Make;
+NF_00_LB=
+NF_00_CM=
+NF_00_WD=
+EX_00_LB=_Execute (debug)
+EX_00_CM=./ukuu-gtk --debug
+EX_00_WD=/home/teejee/projects/linux/ukuu/src
+EX_01_LB=Execute
+EX_01_CM=./ukuu-gtk
+EX_01_WD=/home/teejee/projects/linux/ukuu/src
+ValaFT_01_LB=_Build
+ValaFT_01_CM=make all
+ValaFT_01_WD=/home/teejee/projects/linux/ukuu
+NF_01_LB=
+NF_01_CM=
+NF_01_WD=
+NF_02_LB=
+NF_02_CM=
+NF_02_WD=
+MakeFT_00_LB=Make All
+MakeFT_00_CM=make all
+MakeFT_00_WD=/home/teejee/projects/linux/ukuu
+MakeFT_01_LB=Make Install
+MakeFT_01_CM=make install
+MakeFT_01_WD=/home/teejee/projects/linux/ukuu
+MakeFT_02_LB=
+MakeFT_02_CM=
+MakeFT_02_WD=
+
+[file_prefs]
+final_new_line=true
+ensure_convert_new_lines=false
+strip_trailing_spaces=false
+replace_tabs=false
+
+[editor]
+line_wrapping=true
+line_break_column=80
+auto_continue_multiline=true

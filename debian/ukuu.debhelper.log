@@ -1,0 +1,6 @@
+dh_autotools-dev_updateconfig
+dh_auto_configure
+dh_auto_build
+dh_auto_test
+dh_prep
+dh_installdirs
