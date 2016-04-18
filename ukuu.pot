@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-04-17 20:30+0530\n"
+"POT-Creation-Date: 2016-04-18 17:00+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:747
+#: Common/LinuxKernel.vala:748
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -143,7 +143,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:766
+#: Common/LinuxKernel.vala:767
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -232,15 +232,15 @@ msgstr ""
 msgid "Install specified mainline kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:834
+#: Common/LinuxKernel.vala:837
 msgid "Installation completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:803 Common/LinuxKernel.vala:837
+#: Common/LinuxKernel.vala:805 Common/LinuxKernel.vala:840
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:800
+#: Common/LinuxKernel.vala:802
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
@@ -288,12 +288,12 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:762
+#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:763
 #, c-format
 msgid "OK"
 msgstr ""
 
-#: Gtk/AppGtk.vala:131 Console/AppConsole.vala:80
+#: Gtk/AppGtk.vala:132 Console/AppConsole.vala:80
 msgid "Options"
 msgstr ""
 
@@ -301,7 +301,7 @@ msgstr ""
 msgid "Please install required packages and try again"
 msgstr ""
 
-#: Gtk/AppGtk.vala:133
+#: Gtk/AppGtk.vala:134
 msgid "Print debug information"
 msgstr ""
 
@@ -317,11 +317,11 @@ msgstr ""
 msgid "Remove specified mainline kernel"
 msgstr ""
 
-#: Gtk/AppGtk.vala:94
+#: Gtk/AppGtk.vala:95
 msgid "Root Access Required"
 msgstr ""
 
-#: Gtk/AppGtk.vala:92
+#: Gtk/AppGtk.vala:93
 msgid "Root access is required for running this application."
 msgstr ""
 
@@ -329,7 +329,7 @@ msgstr ""
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 
-#: Gtk/AppGtk.vala:93 Console/AppConsole.vala:95
+#: Gtk/AppGtk.vala:94 Console/AppConsole.vala:95
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
@@ -345,7 +345,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: Gtk/AppGtk.vala:134
+#: Gtk/AppGtk.vala:135
 msgid "Show all options"
 msgstr ""
 
@@ -357,7 +357,7 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
-#: Gtk/AppGtk.vala:129 Console/AppConsole.vala:78
+#: Gtk/AppGtk.vala:130 Console/AppConsole.vala:78
 msgid "Syntax"
 msgstr ""
 
@@ -385,7 +385,7 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Gtk/AppGtk.vala:116 Console/AppConsole.vala:226
+#: Gtk/AppGtk.vala:117 Console/AppConsole.vala:226
 msgid "Unknown option"
 msgstr ""
 

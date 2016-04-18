@@ -1378,11 +1378,38 @@ namespace TeeJee.System{
 	}
 
 	public bool check_internet_connectivity(){
+		bool connected = false;
+		connected = check_internet_connectivity_test1();
+
+		if (connected){
+			return connected;
+		}
+		
+		if (!connected){
+			connected = check_internet_connectivity_test2();
+		}
+
+	    return connected;
+	}
+
+	public bool check_internet_connectivity_test1(){
 		int exit_code = -1;
 		string std_err;
 		string std_out;
 
 		string cmd = "ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3`\n";
+		cmd += "exit $?";
+		exit_code = exec_script_sync(cmd, out std_out, out std_err, false);
+
+	    return (exit_code == 0);
+	}
+
+	public bool check_internet_connectivity_test2(){
+		int exit_code = -1;
+		string std_err;
+		string std_out;
+
+		string cmd = "ping -q -w 1 -c 1 google.com\n";
 		cmd += "exit $?";
 		exit_code = exec_script_sync(cmd, out std_out, out std_err, false);
 

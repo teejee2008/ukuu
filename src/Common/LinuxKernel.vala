@@ -730,6 +730,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+	// dep: aria2c
 	public bool download_packages(){
 		bool ok = true;
 
@@ -772,6 +773,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return ok;
 	}
 
+	// dep: dpkg
 	public bool install(bool write_to_terminal){
 		bool ok = download_packages();
 		int status = -1;
@@ -807,6 +809,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return ok;
 	}
 
+	// dep: dpkg
 	public bool remove(bool write_to_terminal){
 		bool ok = true;
 		int status = -1;

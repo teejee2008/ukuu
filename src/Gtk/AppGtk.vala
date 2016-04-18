@@ -76,6 +76,7 @@ public class AppGtk : GLib.Object {
 		Gtk.main();
 
 		App.save_app_config();
+		App.update_cron_jobs();
 
 		return 0;
 	}
