@@ -1,5 +1,7 @@
-ukuu (16.4.1) trusty; urgency=medium
+ukuu (16.4.2) trusty; urgency=medium
 
   * Initial release
 
- -- Tony George <tony.george.kol@gmail.com>  Sun, 17 Apr 2016 14:00:00 +0530
+  * Updated test for checking internet connectivity
+
+ -- Tony George <tony.george.kol@gmail.com>  Mon, 18 Apr 2016 10:00:00 +0530

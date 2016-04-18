@@ -253,7 +253,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		var mgr = new DownloadManager("index.html", CACHE_DIR, create_temp_subdir(), URI_KERNEL_UBUNTU_MAINLINE);
 		mgr.download_begin();
 
-		var msg = _("Fetching index from site") + " '%s' ...".printf(URI_KERNEL_UBUNTU_MAINLINE);
+		var msg = _("Fetching index from kernel.ubuntu.com...");
 		log_msg(msg);
 		status_line = msg.strip();
 
