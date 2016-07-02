@@ -22,7 +22,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public bool is_installed = false;
 	public bool is_running = false;
-
+	public bool is_mainline = false;
+	public bool is_mainline_package = false; // TODO: remove this
+	
 	public string deb_header = "";
 	public string deb_header_all = "";
 	public string deb_image = "";
@@ -57,7 +59,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// class initialize
 	
 	public static void initialize(){
-		new LinuxKernel("",""); // instance must be created before setting static members
+		new LinuxKernel("", false); // instance must be created before setting static members
 
 		LINUX_DISTRO = check_distribution();
 		NATIVE_ARCH = check_package_architecture();
@@ -101,7 +103,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		exec_sync("uname -r", out std_out, null);
 		ver = std_out.strip().replace("\n","");
 		log_msg("Running kernel" + ": %s".printf(ver));
-
+		
 		return ver;
 	}
 
@@ -144,18 +146,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// contructor
 	
-	public LinuxKernel(string name, string subdir_path){
+	public LinuxKernel(string _name, bool is_mainline){
 
-		if (name.has_suffix("/")){
-			this.name = name[0: name.length - 1];
+		if (_name.has_suffix("/")){
+			this.name = _name[0: _name.length - 1];
 		}
 		else{
-			this.name = name;
+			this.name = _name;
 		}
 
 		// parse version string ---------
 
-		version = name;
+		version = _name;
 
 		// remove "v"
 		if (version.has_prefix("v")){
@@ -166,7 +168,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// set page URI -----------
 		
-		page_uri = "%s%s".printf(URI_KERNEL_UBUNTU_MAINLINE, subdir_path);
+		page_uri = "%s%s".printf(URI_KERNEL_UBUNTU_MAINLINE, _name);
 	}
 
 	public LinuxKernel.from_version(string version){
@@ -352,7 +354,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 						continue;
 					}
 					
-					var kern = new LinuxKernel(match.fetch(2),match.fetch(1));
+					var kern = new LinuxKernel(match.fetch(1), true);
 					list.add(kern);
 				}
 			}
@@ -401,8 +403,29 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		foreach(var pkg in list.values){
 			if (pkg.name.contains("linux-image")){
 				if (!pkg_versions.contains(pkg.version_installed)){
+					
 					pkg_versions.add(pkg.version_installed);
 					log_msg("Found installed" + ": %s".printf(pkg.version_installed));
+
+					string kern_name = "v%s".printf(pkg.version_installed);
+					var kern = new LinuxKernel(kern_name, false);
+					kern.is_installed = true;
+					
+					if (kern.is_mainline_package){
+						continue;
+					}
+					
+					bool found = false;
+					foreach(var kernel in kernel_list){
+						if (kernel.name == kern.name){
+							found = true;
+							break;
+						}
+					}
+					
+					if (!found){
+						kernel_list.add(kern);
+					}
 				}
 			}
 		}
@@ -414,15 +437,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				}
 			}
 		}
+
+		kernel_list.sort((a,b)=>{
+			return a.compare_to(b) * -1;
+		});
 	}
 
 	// helpers
 	
-	public static void split_version_string(
+	public void split_version_string(
 		string version_string,
 		out string ver_main,
 		out string ver_extra){
-			
+
 		string[] arr = version_string.split("-");
 
 		if (arr.length == 0){
@@ -442,20 +469,66 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		// append rc number
-		if (arr.length >= 2){
+		if (i < arr.length){
+
+			// v3.11-rc1-saucy
 			if (arr[i].contains("rc")){
 				ver_main += "-%s".printf(arr[i++]);
 			}
 
-			if (arr[i].contains("ckt")){
-				ver_main += ".%s".printf(arr[i++].replace("ckt",""));
+			// 4.4.0-28.47
+			if (i < arr.length){
+				if (arr[i].contains(".")){
+					var sub_arr = arr[i].split(".");
+					var x = long.parse(sub_arr[0]);
+					if ((x > 0) && (sub_arr[0].length <= 3)){
+						if (sub_arr.length > 1){
+							var y = long.parse(sub_arr[1]);
+							if ((y > 0) && (sub_arr[1].length <= 3)){
+								ver_main += ".%ld".printf(x);
+								ver_main += ".%ld".printf(y);
+								i++;
+							}
+						}
+					}
+				}
+			}
+
+			// 4.6.3-040603.201606241434
+			// this version string is the package version of a mainline kernel
+			
+			if (i < arr.length){
+				if (arr[i].contains(".")){
+					var sub_arr = arr[i].split(".");
+					var x = long.parse(sub_arr[0]);
+					if ((x > 0) && (sub_arr[0].length == 6)){
+						if (sub_arr.length > 1){
+							var y = long.parse(sub_arr[1]);
+							if ((y > 0) && (sub_arr[1].length == 12)){
+								ver_main += ".%ld".printf(x);
+								ver_main += ".%ld".printf(y);
+								is_mainline_package = true;
+								i++;
+							}
+						}
+					}
+				}
+			}
+
+			// v3.16.7-ckt26-trusty
+			if (i < arr.length){
+				if (arr[i].contains("ckt")){
+					ver_main += ".%s".printf(arr[i++].replace("ckt",""));
+				}
 			}
 		}
 
 		// get remaining part
 		ver_extra = "";
-		for(; i < arr.length; i++){
-			ver_extra += "-%s".printf(arr[i]);
+		if (i < arr.length){
+			for(; i < arr.length; i++){
+				ver_extra += "-%s".printf(arr[i]);
+			}
 		}
 	}
 
