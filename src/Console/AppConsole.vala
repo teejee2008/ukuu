@@ -170,10 +170,13 @@ public class AppConsole : GLib.Object {
 			case "--install":
 			case "--remove":
 
+				//if (args[k].down() != "--remove"){
+					
+				//}
+
 				check_if_internet_is_active();
-
 				LinuxKernel.query(false, true);
-
+			
 				k++;
 
 				LinuxKernel kern_requested = null;

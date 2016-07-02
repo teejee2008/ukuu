@@ -383,13 +383,7 @@ public class MainWindow : Gtk.Window{
 		dlg.show_all();
 		gtk_do_events();
 		
-		var yesterday = (new DateTime.now_local()).add_days(-1);
-		if (LinuxKernel.last_refreshed_date.compare(yesterday) < 0){
-			LinuxKernel.query(true, false);
-		}
-		else{
-			LinuxKernel.query(false, false);
-		}
+		LinuxKernel.query(true, false);
 
 		var timer = timer_start();
 

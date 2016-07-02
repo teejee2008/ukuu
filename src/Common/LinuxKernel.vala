@@ -19,7 +19,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public int version_point;
 	
 	public Gee.HashMap<string,string> deb_list = new Gee.HashMap<string,string>();
+	public Gee.HashMap<string,string> apt_pkg_list = new Gee.HashMap<string,string>();
 
+	public static Gee.HashMap<string,Package> pkg_list_installed;
+	
 	public bool is_installed = false;
 	public bool is_running = false;
 	public bool is_mainline = false;
@@ -40,7 +43,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static bool skip_older = true;
 	public static bool skip_unstable = true;
 	
-	public static Gee.ArrayList<LinuxKernel> kernel_list;
+	public static Gee.ArrayList<LinuxKernel> kernel_list = new Gee.ArrayList<LinuxKernel>();
 	public static int download_count = 0;
 
 	public static Regex rex_header = null;
@@ -186,12 +189,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		check_if_initialized();
 		
-		var yesterday = (new DateTime.now_local()).add_days(-1);
-		if (last_refreshed_date.compare(yesterday) < 0){
+		var one_hour_before = (new DateTime.now_local()).add_hours(-1);
+		if ((kernel_list.size == 0) || (last_refreshed_date.compare(one_hour_before) < 0)){
 			refresh = true;
 		}
-
-		refresh = true;
 
 		_temp_refresh = refresh;
 		
@@ -396,11 +397,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-		var list = Package.query_installed_packages();
+		pkg_list_installed = Package.query_installed_packages();
 
 		var pkg_versions = new Gee.ArrayList<string>();
 		
-		foreach(var pkg in list.values){
+		foreach(var pkg in pkg_list_installed.values){
 			if (pkg.name.contains("linux-image")){
 				if (!pkg_versions.contains(pkg.version_installed)){
 					
@@ -410,6 +411,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					string kern_name = "v%s".printf(pkg.version_installed);
 					var kern = new LinuxKernel(kern_name, false);
 					kern.is_installed = true;
+					kern.set_apt_pkg_list();
 					
 					if (kern.is_mainline_package){
 						continue;
@@ -443,6 +445,47 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		});
 	}
 
+	public static void check_available(){
+
+		var list = Package.query_available_packages("^linux-'");
+
+		var pkg_versions = new Gee.ArrayList<string>();
+		
+		foreach(var pkg in list.values){
+			if (pkg.name.contains("linux-image")){
+				if (!pkg_versions.contains(pkg.version_installed)){
+					
+					pkg_versions.add(pkg.version_installed);
+					log_msg("Found upgrade" + ": %s".printf(pkg.version_installed));
+
+					string kern_name = "v%s".printf(pkg.version_installed);
+					var kern = new LinuxKernel(kern_name, false);
+					kern.is_installed = false;
+
+					if (kern.is_mainline_package){
+						continue;
+					}
+					
+					bool found = false;
+					foreach(var kernel in kernel_list){
+						if (kernel.name == kern.name){
+							found = true;
+							break;
+						}
+					}
+					
+					if (!found){
+						kernel_list.add(kern);
+					}
+				}
+			}
+		}
+
+		kernel_list.sort((a,b)=>{
+			return a.compare_to(b) * -1;
+		});
+	}
+	
 	// helpers
 	
 	public void split_version_string(
@@ -597,6 +640,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public void mark_invalid(){
 		file_write("%s/invalid".printf(cache_subdir), "1");
+	}
+
+	public void set_apt_pkg_list(){
+		foreach(var pkg in pkg_list_installed.values){
+			if (!pkg.name.has_prefix("linux-")){
+				continue;
+			}
+			if (pkg.version_installed == version){
+				apt_pkg_list[pkg.name] = pkg.name;
+				log_debug("kern %s: pkg: %s".printf(name, pkg.name));
+			}
+		}
 	}
 	
 	// properties
@@ -962,10 +1017,26 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_msg("Preparing to remove '%s'".printf(name));
 		
 		var cmd = "dpkg -r ";
-		
-		// get package names from deb file names
-		foreach(string file_name in deb_list.keys){
-			cmd += "'%s' ".printf(file_name.split("_")[0]);
+
+		if (apt_pkg_list.size > 0){
+			foreach(var pkg_name in apt_pkg_list.values){
+				if (!pkg_name.has_prefix("linux-tools")
+					&& !pkg_name.has_prefix("linux-libc")){
+						
+					cmd += "'%s' ".printf(pkg_name);
+				}
+			}
+		}
+		else if (deb_list.size > 0){
+			// get package names from deb file names
+			foreach(string file_name in deb_list.keys){
+				cmd += "'%s' ".printf(file_name.split("_")[0]);
+			}
+		}
+		else{
+			stdout.printf("");
+			log_error("Could not find the packages to remove!");
+			return false;
 		}
 
 		if (write_to_terminal){
@@ -979,10 +1050,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		ok = (status == 0);
 		if (ok){
-			log_msg(_("Installation completed"));
+			log_msg(_("Un-install completed"));
 		}
 		else{
-			log_error(_("Installation completed with errors"));
+			log_error(_("Un-install completed with errors"));
 		}
 
 		return ok;

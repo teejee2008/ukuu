@@ -140,4 +140,65 @@ public class Package : GLib.Object {
 		return list;
 	}
 
+	public static Gee.HashMap<string,Package> query_available_packages(string search_string) {
+
+		var list = new Gee.HashMap<string,Package>();
+
+		string temp_file = get_temp_file_path();
+		
+		// get installed packages from aptitude --------------
+		
+		string std_out, std_err;
+		string cmd = "aptitude search --disable-columns -F '%p|%v|%M|%d' '!installed ?architecture(native) %s".printf(search_string);
+		int status = exec_sync(cmd, out std_out, out std_err);
+		file_write(temp_file, std_out);
+
+		// parse ------------------------
+
+		try {
+			string line;
+			var file = File.new_for_path (temp_file);
+			if (file.query_exists ()) {
+				var dis = new DataInputStream (file.read());
+				while ((line = dis.read_line (null)) != null) {
+					string[] arr = line.split("|");
+					if (arr.length != 4) {
+						continue;
+					}
+
+					string name = arr[0].strip();
+					string arch = (name.contains(":")) ? name.split(":")[1].strip() : "";
+					if (name.contains(":")) { name = name.split(":")[0]; }
+					string version = arr[1].strip();
+					string auto = arr[2].strip();
+					string desc = arr[3].strip();
+					
+					string id = Package.get_id(name,arch);
+
+					Package pkg = null;
+					if (!list.has_key(id)) {
+						pkg = new Package(name);
+						pkg.arch = arch;
+						pkg.description = desc;
+						pkg.id = Package.get_id(pkg.name,pkg.arch);
+						list[pkg.id] = pkg;
+					}
+
+					if (pkg != null){
+						pkg.is_installed = true;
+						pkg.is_automatic = (auto == "A");
+						pkg.version_installed = version;
+					}
+				}
+			}
+			else {
+				log_error (_("File not found: %s").printf(temp_file));
+			}
+		}
+		catch (Error e) {
+			log_error (e.message);
+		}
+
+		return list;
+	}
 }
