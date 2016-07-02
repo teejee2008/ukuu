@@ -144,6 +144,8 @@ public class DownloadManager : GLib.Object{
 	}
 
 	public bool download_begin() {
+		LinuxKernel.download_count++;
+		
 		status = DownloadManager.Status.STARTED;
 
 		dir_create(partial_dir);

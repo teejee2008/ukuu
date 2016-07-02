@@ -560,9 +560,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return true; 
 		}
 
-		var mgr = new DownloadManager(file_basename(cached_page), cache_subdir, create_temp_subdir(), page_uri);
-		
-		LinuxKernel.download_count++;
+		var mgr = new DownloadManager(
+			file_basename(cached_page),
+			cache_subdir,
+			create_temp_subdir(),
+			page_uri);
 		
 		mgr.download_complete.connect(() => {
 			LinuxKernel.download_count--;
@@ -580,6 +582,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				is_valid = false;
 			}
 		});
+
+		mgr.connect_timeout_secs = 10;
+		mgr.timeout_secs = 10;
 		
 		mgr.download_begin();
 
@@ -600,9 +605,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return true; // do not download again
 		}
 
-		var mgr = new DownloadManager(file_basename(changes_file), file_parent(changes_file), create_temp_subdir(), "%s%s".printf(page_uri, "CHANGES"));
-		
-		LinuxKernel.download_count++;
+		var mgr = new DownloadManager(
+			file_basename(changes_file),
+			file_parent(changes_file),
+			create_temp_subdir(),
+			"%s%s".printf(page_uri, "CHANGES"));
 		
 		mgr.download_complete.connect(() => {
 			LinuxKernel.download_count--;
@@ -619,6 +626,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				is_valid = false;
 			}
 		});
+
+		mgr.connect_timeout_secs = 10;
+		mgr.timeout_secs = 10;
 		
 		mgr.download_begin();
 
