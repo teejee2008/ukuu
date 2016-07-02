@@ -67,11 +67,11 @@ public class Main : GLib.Object{
 
 		init_paths();
 
-		load_app_config();
-
 		Package.initialize();
 		
 		LinuxKernel.initialize();
+
+		load_app_config();
 	}
 
 	// helpers ------------
@@ -100,10 +100,6 @@ public class Main : GLib.Object{
 		}
 	}
 
-	private void init_members(){
-		//
-	}
-	
 	private void init_paths(){
 		// TEMP_DIR 
 		init_tmp(AppShortName);
@@ -151,6 +147,9 @@ public class Main : GLib.Object{
 		notify_minor = json_get_bool(config, "notify_minor", true);
 		hide_unstable = json_get_bool(config, "hide_unstable", true);
 		hide_older = json_get_bool(config, "hide_older", true);
+
+		LinuxKernel.skip_older = hide_older;
+		LinuxKernel.skip_unstable = hide_unstable;
 	}
 
 	public void exit_app(){

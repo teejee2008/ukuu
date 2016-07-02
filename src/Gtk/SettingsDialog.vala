@@ -134,6 +134,9 @@ public class SettingsDialog : Gtk.Dialog {
 	private void btn_ok_click(){
 		App.update_cron_jobs();
 		App.save_app_config();
+
+		LinuxKernel.skip_older = App.hide_older;
+		LinuxKernel.skip_unstable = App.hide_unstable;
 	}
 }
 

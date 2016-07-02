@@ -62,13 +62,22 @@ public class DownloadManager : GLib.Object{
 		ERROR
 	}
 	
-	public DownloadManager(string _file_name, string _download_dir, string? _partial_dir , string _source_uri){
+	public DownloadManager(
+		string _file_name,
+		string _download_dir,
+		string? _partial_dir ,
+		string _source_uri){
+			
 		file_name = _file_name;
 		download_dir = _download_dir;
 		partial_dir = (_partial_dir == null) ? create_temp_subdir() : _partial_dir;
 		source_uri = _source_uri;
 		name = _file_name.split("_")[0];
 
+		download_complete.connect(() => {
+			LinuxKernel.download_count--;
+		});
+			
 		try {
 			//Sample:
 			//[#4df0c7 19283968B/45095814B(42%) CN:1 DL:105404B ETA:4m4s]
@@ -96,6 +105,8 @@ public class DownloadManager : GLib.Object{
 			cmd += " --summary-interval=1";
 			cmd += " --human-readable=false";
 			cmd += " --allow-overwrite";
+			cmd += " --connect-timeout=%d".printf(connect_timeout_secs);
+			cmd += " --timeout=%d".printf(timeout_secs);
 			//cmd += " --direct-file-mapping=false";
 			cmd += " '%s'".printf(source_uri);
 		}

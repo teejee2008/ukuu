@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-07-02 19:39+0530\n"
+"POT-Creation-Date: 2016-07-02 21:48+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Gtk/MainWindow.vala:323
+#: Gtk/MainWindow.vala:333
 msgid "About"
 msgstr ""
 
@@ -35,7 +35,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:741
+#: Common/LinuxKernel.vala:793
 msgid "Available Kernels"
 msgstr ""
 
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Display"
 msgstr ""
 
-#: Common/LinuxKernel.vala:71
+#: Common/LinuxKernel.vala:76
 msgid "Distribution"
 msgstr ""
 
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Documenters"
 msgstr ""
 
-#: Gtk/MainWindow.vala:311 Gtk/DonationWindow.vala:36
+#: Gtk/MainWindow.vala:321 Gtk/DonationWindow.vala:36
 msgid "Donate"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:768
+#: Common/LinuxKernel.vala:820
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -143,7 +143,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:787
+#: Common/LinuxKernel.vala:839
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -188,17 +188,17 @@ msgstr ""
 msgid "Failed to write file"
 msgstr ""
 
-#: Common/LinuxKernel.vala:635
+#: Common/LinuxKernel.vala:688
 #, c-format
 msgid "Fetching changelog for"
 msgstr ""
 
-#: Common/LinuxKernel.vala:591
+#: Common/LinuxKernel.vala:646
 #, c-format
 msgid "Fetching index for"
 msgstr ""
 
-#: Common/LinuxKernel.vala:267
+#: Common/LinuxKernel.vala:311
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr ""
 
@@ -206,7 +206,7 @@ msgstr ""
 msgid "File is missing"
 msgstr ""
 
-#: Common/LinuxKernel.vala:649 Common/DownloadManager.vala:335
+#: Common/LinuxKernel.vala:702 Common/DownloadManager.vala:346
 #: Common/Utility.vala:271 Common/Utility.vala:457
 msgid "File not found"
 msgstr ""
@@ -232,23 +232,23 @@ msgstr ""
 msgid "Install specified mainline kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:857
+#: Common/LinuxKernel.vala:909
 msgid "Installation completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:825 Common/LinuxKernel.vala:860
+#: Common/LinuxKernel.vala:877 Common/LinuxKernel.vala:912
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:822
+#: Common/LinuxKernel.vala:874
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:747
+#: Common/LinuxKernel.vala:799
 msgid "Installed"
 msgstr ""
 
-#: Gtk/MainWindow.vala:367 Console/AppConsole.vala:242
+#: Gtk/MainWindow.vala:377 Console/AppConsole.vala:242
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr ""
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:351
+#: Gtk/MainWindow.vala:361
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
@@ -272,7 +272,7 @@ msgstr ""
 msgid "Notification"
 msgstr ""
 
-#: Common/Main.vala:176
+#: Common/Main.vala:175
 msgid "Notifications are disabled"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:783
+#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:835
 #, c-format
 msgid "OK"
 msgstr ""
@@ -303,6 +303,10 @@ msgstr ""
 
 #: Gtk/AppGtk.vala:134
 msgid "Print debug information"
+msgstr ""
+
+#: Gtk/MainWindow.vala:381
+msgid "Refreshing cache..."
 msgstr ""
 
 #: Gtk/MainWindow.vala:259
@@ -333,7 +337,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:747
+#: Common/LinuxKernel.vala:799
 msgid "Running"
 msgstr ""
 
@@ -361,7 +365,7 @@ msgstr ""
 msgid "Syntax"
 msgstr ""
 
-#: Common/LinuxKernel.vala:85
+#: Common/LinuxKernel.vala:90
 msgid "System architecture"
 msgstr ""
 
@@ -387,10 +391,6 @@ msgstr ""
 
 #: Gtk/AppGtk.vala:117 Console/AppConsole.vala:231
 msgid "Unknown option"
-msgstr ""
-
-#: Gtk/MainWindow.vala:371
-msgid "Updating list of available kernels..."
 msgstr ""
 
 #: Gtk/MainWindow.vala:136

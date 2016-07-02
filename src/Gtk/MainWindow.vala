@@ -301,9 +301,19 @@ public class MainWindow : Gtk.Window{
 		hbox.pack_start (button, true, true, 0);
 
 		button.clicked.connect(() => {
+
+			bool prev_hide_older = App.hide_older;
+			bool prev_hide_unstable = App.hide_unstable
+			;
 			var dlg = new SettingsDialog.with_parent(this);
 			dlg.run();
 			dlg.destroy();
+
+			if (((prev_hide_older == true) && (App.hide_older == false))
+				|| ((prev_hide_unstable == true) && (App.hide_unstable == false))){
+				refresh_cache();
+			}
+			
 			tv_refresh();
 		});
 
@@ -368,7 +378,7 @@ public class MainWindow : Gtk.Window{
 			exit(1);
 		}
 		
-		string message = _("Updating list of available kernels...");
+		string message = _("Refreshing cache...");
 		var dlg = new ProgressWindow.with_parent(this, message, false);
 		dlg.show_all();
 		gtk_do_events();
@@ -381,18 +391,44 @@ public class MainWindow : Gtk.Window{
 			LinuxKernel.query(false, false);
 		}
 
+		var timer = timer_start();
+
 		App.progress_total = 1;
 		App.progress_count = 0;
+
+		string msg_remaining = "";
+		long count = 0;
 		
 		while (LinuxKernel.task_is_running) {
 			App.status_line = LinuxKernel.status_line;
 			App.progress_total = LinuxKernel.progress_total;
 			App.progress_count = LinuxKernel.progress_count;
+
+			ulong ms_elapsed = timer_elapsed(timer, false);
+			int remaining_count = App.progress_total - App.progress_count;
+			ulong ms_remaining = (ulong)((ms_elapsed * 1.0) / App.progress_count) * remaining_count;
+
+			if ((count % 5) == 0){
+				msg_remaining = "%.0fm %.0fs".printf(
+					((ms_remaining * 1.0) / (60000)),
+					((ms_remaining * 1.0) % (60000)) / 1000);
+			}
+			
+			dlg.update_message(
+				message + " %ld/%ld (%s left)".printf(
+					App.progress_count,
+					App.progress_total,
+					msg_remaining));
+					
 			dlg.update_status_line();
 			dlg.update_progressbar();
 			dlg.sleep(200);
 			gtk_do_events();
+
+			count++;
 		}
+
+		timer_elapsed(timer, true);
 
 		dlg.destroy();
 		gtk_do_events();

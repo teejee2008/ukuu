@@ -13,10 +13,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string version_package = "";
 	public string type = "";
 	public string page_uri = "";
+
+	public int version_maj;
+	public int version_min;
+	public int version_point;
 	
 	public Gee.HashMap<string,string> deb_list = new Gee.HashMap<string,string>();
 
-	public bool is_valid = true;
 	public bool is_installed = false;
 	public bool is_running = false;
 
@@ -32,6 +35,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string NATIVE_ARCH = "";
 	public static string LINUX_DISTRO = "";
 	public static string RUNNING_KERNEL = "";
+	public static bool skip_older = true;
+	public static bool skip_unstable = true;
 	
 	public static Gee.ArrayList<LinuxKernel> kernel_list;
 	public static int download_count = 0;
@@ -205,43 +210,77 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	private static void query_thread() {
+
+		log_debug("query: skip_older: %s".printf(skip_older.to_string()));
+		log_debug("query: skip_unstable: %s".printf(skip_unstable.to_string()));
+
+		LinuxKernel.download_count = 0;
+		
 		if (_temp_refresh){
 			download_index();
 		}
 
 		load_index();
 
-		status_line = "";
-		progress_total = kernel_list.size;
-		progress_count = 0;
+		var kern_4 = new LinuxKernel.from_version("4.0");
 		
+		status_line = "";
+		progress_total = 0;
+		progress_count = 0;
+		foreach(var kern in kernel_list){
+			if (skip_older && (kern.compare_to(kern_4) < 0)){
+				continue;
+			}
+
+			if (skip_unstable && kern.is_unstable){
+				continue;
+			}
+			
+			if (kern.is_valid && !kern.cached_page_exists){
+				progress_total++;
+			}
+		}
+
 		foreach(var kern in kernel_list){
 			if (cancelled){
 				break;
 			}
 
-			if (file_exists(kern.cached_page + ".404")){
-				kern.is_valid = false; // invalid
+			if (kern.cached_page_exists){
+				log_debug("cached page exists: %s".printf(kern.version_main));
+				kern.load_cached_page();
+				continue;
+			}
+
+			if (!kern.is_valid){
+				log_debug("invalid: %s".printf(kern.version_main));
+				continue;
+			}
+
+			if (skip_older && (kern.compare_to(kern_4) < 0)){
+				log_debug("older than 4.0: %s".printf(kern.version_main));
+				continue;
+			}
+
+			if (skip_unstable && kern.is_unstable){
+				log_debug("not stable: %s".printf(kern.version_main));
 				continue;
 			}
 		
 			if (!kern.cached_page_exists){
-				while (LinuxKernel.download_count > 1){
+				while (LinuxKernel.download_count > 3){
 					sleep(100); // wait for counter to decrease
 				}
 				kern.download_cached_page(false);
+				progress_count++;
 			}
-
-			progress_count++;
 		}
 
-		while (LinuxKernel.download_count > 0){
-			sleep(500); // wait for all downloads to complete
-		}
+		// No need to wait for downloads to complete
+		// Cached index files will be loaded once downloads is complete
 
-		// load downloaded files
-		foreach(var kern in kernel_list){
-			kern.load_cached_page();
+		if (LinuxKernel.download_count > 0){
+			sleep(1000); // wait a sec
 		}
 
 		check_installed();
@@ -261,7 +300,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			file_delete(index_page);
 		}
 		
-		var mgr = new DownloadManager("index.html", CACHE_DIR, create_temp_subdir(), URI_KERNEL_UBUNTU_MAINLINE);
+		var mgr = new DownloadManager(
+			"index.html",
+			CACHE_DIR,
+			create_temp_subdir(),
+			URI_KERNEL_UBUNTU_MAINLINE);
+			
 		mgr.download_begin();
 
 		var msg = _("Fetching index from kernel.ubuntu.com...");
@@ -374,7 +418,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// helpers
 	
-	public static void split_version_string(string version_string, out string ver_main, out string ver_extra){
+	public static void split_version_string(
+		string version_string,
+		out string ver_main,
+		out string ver_extra){
+			
 		string[] arr = version_string.split("-");
 
 		if (arr.length == 0){
@@ -473,7 +521,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		return (arr_a.length - arr_b.length) * -1; // smaller array is larger version
 	}
-	 
+
+	public void mark_invalid(){
+		file_write("%s/invalid".printf(cache_subdir), "1");
+	}
+	
 	// properties
 
 	public bool is_rc{
@@ -485,6 +537,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public bool is_unstable{
 		get {
 			return version.contains("-rc") || version.contains("-unstable");
+		}
+	}
+
+	public bool is_valid {
+		get {
+			return !file_exists("%s/invalid".printf(cache_subdir));
 		}
 	}
 	
@@ -555,8 +613,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (file_exists(cached_page)){
 			return true; // do not download again
 		}
-		else if (file_exists(cached_page + ".404")){
-			is_valid = false; // invalid
+		else if (!is_valid){
 			return true; 
 		}
 
@@ -567,19 +624,17 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			page_uri);
 		
 		mgr.download_complete.connect(() => {
-			LinuxKernel.download_count--;
-	
 			if (mgr.status_code == 0){
 				load_cached_page();
 				download_changes_file();
 			}
 			else if (mgr.status_code == 3){
 				file_write("%s/index.html.404".printf(cache_subdir), "");
-				is_valid = false;
+				mark_invalid();
 			}
 			else{
 				file_write("%s/index.html.%d".printf(cache_subdir, mgr.status_code), "");
-				is_valid = false;
+				mark_invalid();
 			}
 		});
 
@@ -590,7 +645,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		var msg = "%-60s".printf(_("Fetching index for") + " '%s'... ".printf(name));
 		log_msg(msg);
-		status_line = "Linux %s ...".printf(name);
+		status_line = "> Linux %s".printf(name);
 
 		return true;	
 	}
@@ -612,18 +667,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			"%s%s".printf(page_uri, "CHANGES"));
 		
 		mgr.download_complete.connect(() => {
-			LinuxKernel.download_count--;
-	
 			if (mgr.status_code == 0){
 				// do nothing
 			}
 			else if (mgr.status_code == 3){
-				file_write("%s/%s.%s".printf(cache_subdir, file_basename(changes_file), "404"), "");
-				is_valid = false;
+				file_write("%s.%s".printf(changes_file, "404"), "");
+				mark_invalid();
 			}
 			else{
-				file_write("%s/%s.%d".printf(cache_subdir, file_basename(changes_file), mgr.status_code), "");
-				is_valid = false;
+				file_write("%s.%d".printf(changes_file, mgr.status_code), "");
+				mark_invalid();
 			}
 		});
 
@@ -634,7 +687,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		var msg = "%-60s".printf(_("Fetching changelog for") + " '%s'... ".printf(name));
 		log_msg(msg);
-		status_line = "Linux %s ...".printf(name);
+		status_line = "> Linux %s".printf(name);
 
 		return true;	
 	}
@@ -647,7 +700,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		if (!file_exists(cached_page)){
 			log_error("load_cached_page: " + _("File not found") + ": %s".printf(cached_page));
-			is_valid = false;
 			return;
 		}
 
@@ -696,7 +748,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			if ((deb_header.length == 0) || (deb_header_all.length == 0) || (deb_image.length == 0)){
-				is_valid = false;
+				mark_invalid();
 			}
 		}
 		catch (Error e) {
