@@ -15,6 +15,8 @@ public class DownloadManager : GLib.Object{
 	public string source_uri = "";
 	public int64 size = 0;
 	public int64 download_rate = 0;
+	public int connect_timeout_secs = 60;
+	public int timeout_secs = 60;
 	public string md5hash = "";
 	public Status status = Status.PENDING;
 

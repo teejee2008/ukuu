@@ -368,7 +368,7 @@ public class MainWindow : Gtk.Window{
 			exit(1);
 		}
 		
-		string message = _("Refreshing ...");
+		string message = _("Updating list of available kernels...");
 		var dlg = new ProgressWindow.with_parent(this, message, false);
 		dlg.show_all();
 		gtk_do_events();

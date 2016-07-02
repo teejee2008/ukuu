@@ -130,7 +130,7 @@ namespace TeeJee.Logging{
 		if (!LOG_ENABLE) { return; }
 
 		if (LOG_DEBUG){
-			log_msg (message);
+			log_msg ("D: " + message);
 		}
 
 		try {
@@ -277,6 +277,7 @@ namespace TeeJee.FileSystem{
 		}
 	}
 
+	
 	// file info -----------------
 
 	public int64 file_get_size(string file_path){
@@ -337,6 +338,39 @@ namespace TeeJee.FileSystem{
 		}
 	}
 
+	public bool dir_delete (string dir_path){
+		
+		/* Recursively deletes directory along with contents */
+		
+		string cmd = "rm -rf '%s'".printf(escape_single_quote(dir_path));
+		int status = exec_sync(cmd);
+		return (status == 0);
+	}
+
+	public bool dir_is_empty (string dir_path){
+
+		/* Check if directory is empty */
+
+		try{
+			bool is_empty = true;
+			var dir = File.parse_name (dir_path);
+			if (dir.query_exists()) {
+				FileInfo info;
+				var enu = dir.enumerate_children ("%s".printf(FileAttribute.STANDARD_NAME), 0);
+				while ((info = enu.next_file()) != null) {
+					is_empty = false;
+					break;
+				}
+			}
+			return is_empty;
+		}
+		catch (Error e) {
+			log_error (e.message);
+			return false;
+		}
+	}
+
+
 	public Gee.ArrayList<string> dir_list_names(string path){
 		var list = new Gee.ArrayList<string>();
 		
@@ -373,7 +407,11 @@ namespace TeeJee.FileSystem{
 			var src_parent = file_parent(src_dir);
 			var src_name = file_basename(src_dir);
 			
-			string cmd = "tar cvf '%s' --overwrite --%srecursion -C '%s' '%s'\n".printf(tar_file, (recursion ? "" : "no-"), src_parent, src_name);
+			string cmd = "tar cvf '%s' --overwrite --%srecursion -C '%s' '%s'\n".printf(
+				escape_single_quote(tar_file),
+				(recursion ? "" : "no-"),
+				escape_single_quote(src_parent),
+				escape_single_quote(src_name));
 
 			log_debug(cmd);
 			
@@ -400,7 +438,9 @@ namespace TeeJee.FileSystem{
 				dir_create(dst_dir);
 			}
 			
-			string cmd = "tar xvf '%s' --overwrite --same-permissions -C '%s'\n".printf(tar_file, dst_dir);
+			string cmd = "tar xvf '%s' --overwrite --same-permissions -C '%s'\n".printf(
+				escape_single_quote(tar_file),
+				escape_single_quote(dst_dir));
 
 			log_debug(cmd);
 			
@@ -421,7 +461,7 @@ namespace TeeJee.FileSystem{
 	}
 
 	public bool chown(string dir_path, string user, string group = user){
-		string cmd = "chown %s:%s -R '%s'".printf(user, group, dir_path);
+		string cmd = "chown %s:%s -R '%s'".printf(user, group, escape_single_quote(dir_path));
 		int status = exec_sync(cmd, null, null);
 		return (status == 0);
 	}
@@ -438,7 +478,7 @@ namespace TeeJee.FileSystem{
 		string std_err;
 		int ret_val;
 
-		cmd = "find \"%s\" | wc -l".printf(path);
+		cmd = "find '%s' | wc -l".printf(escape_single_quote(path));
 		ret_val = exec_script_sync(cmd, out std_out, out std_err);
 		return long.parse(std_out);
 	}
@@ -448,10 +488,7 @@ namespace TeeJee.FileSystem{
 
 		/* Returns size of files and directories in KB*/
 
-		string cmd = "";
-		string output = "";
-
-		cmd = "du -s \"%s\"".printf(path);
+		string cmd = "du -s '%s'".printf(escape_single_quote(path));
 		string std_out, std_err;
 		exec_sync(cmd, out std_out, out std_err);
 		return long.parse(std_out.split("\t")[0]);
@@ -474,9 +511,17 @@ namespace TeeJee.FileSystem{
 			var tar_name = dst_name[0 : dst_name.index_of(".gpg")];
 			var tar_file = "%s/%s".printf(dst_dir, tar_name);
 			
-			string cmd = "tar cvf '%s' --overwrite -C '%s' '%s'\n".printf(tar_file, src_dir, src_name);
-			cmd += "gpg --passphrase '%s' -o '%s' --symmetric '%s'\n".printf(password, dst_file, tar_file);
-			cmd += "rm -f '%s'\n".printf(tar_file);
+			string cmd = "tar cvf '%s' --overwrite -C '%s' '%s'\n".printf(
+				escape_single_quote(tar_file),
+				escape_single_quote(src_dir),
+				escape_single_quote(src_name));
+				
+			cmd += "gpg --passphrase '%s' -o '%s' --symmetric '%s'\n".printf(
+				password,
+				escape_single_quote(dst_file),
+				escape_single_quote(tar_file));
+				
+			cmd += "rm -f '%s'\n".printf(escape_single_quote(tar_file));
 
 			log_debug(cmd);
 			
@@ -504,7 +549,11 @@ namespace TeeJee.FileSystem{
 			//var temp_file = "%s/%s".printf(TEMP_DIR, random_string());
 
 			string cmd = "";
-			cmd += "gpg --quiet --no-verbose --passphrase '%s' -o- --decrypt '%s'".printf(password, src_file);
+			
+			cmd += "gpg --quiet --no-verbose --passphrase '%s' -o- --decrypt '%s'".printf(
+				password,
+				escape_single_quote(src_file));
+				
 			cmd += " | tar xf - --to-stdout 2>/dev/null\n";
 			cmd += "exit $?\n";
 			
@@ -540,11 +589,22 @@ namespace TeeJee.FileSystem{
 			var tar_file = "%s/%s".printf(src_dir, tar_name);
 
 			string cmd = "";
-			cmd += "rm -f '%s'\n".printf(tar_file); // gpg cannot overwrite - remove tar file if it exists
-			cmd += "gpg --passphrase '%s' -o '%s' --decrypt '%s'\n".printf(password, tar_file, src_file);
+			
+			// gpg cannot overwrite - remove tar file if it exists
+			cmd += "rm -f '%s'\n".printf(escape_single_quote(tar_file));
+			
+			cmd += "gpg --passphrase '%s' -o '%s' --decrypt '%s'\n".printf(
+				password,
+				escape_single_quote(tar_file),
+				escape_single_quote(src_file));
+				
 			cmd += "status=$?; if [ $status -ne 0 ]; then exit $status; fi\n";
-			cmd += "tar xvf '%s' --overwrite --same-permissions -C '%s'\n".printf(tar_file, file_parent(dst_file));
-			cmd += "rm -f '%s'\n".printf(tar_file);
+			
+			cmd += "tar xvf '%s' --overwrite --same-permissions -C '%s'\n".printf(
+				escape_single_quote(tar_file),
+				escape_single_quote(file_parent(dst_file)));
+				
+			cmd += "rm -f '%s'\n".printf(escape_single_quote(tar_file));
 
 			log_debug(cmd);
 			
@@ -607,12 +667,17 @@ namespace TeeJee.FileSystem{
 		}
 	}
 
+	public string escape_single_quote(string file_path){
+		return file_path.replace("'","'\\''");
+	}
+
+
 	// dep: chmod
 	public int chmod (string file, string permission){
 
 		/* Change file permissions */
-
-		return exec_sync ("chmod " + permission + " \"%s\"".printf(file), null, null);
+		string cmd = "chmod %s '%s'".printf(permission, escape_single_quote(file));
+		return exec_sync (cmd, null, null);
 	}
 
 	// dep: realpath
@@ -627,7 +692,8 @@ namespace TeeJee.FileSystem{
 
 		try {
 			string output = "";
-			Process.spawn_command_line_sync("realpath \"%s\"".printf(filePath2), out output);
+			string cmd = "realpath '%s'".printf(escape_single_quote(filePath2));
+			Process.spawn_command_line_sync(cmd, out output);
 			output = output.strip ();
 			if (FileUtils.test(output, GLib.FileTest.EXISTS)){
 				return output;
@@ -647,8 +713,8 @@ namespace TeeJee.FileSystem{
 		string cmd = "rsync -avh";
 		cmd += updateExisting ? "" : " --ignore-existing";
 		cmd += deleteExtra ? " --delete" : "";
-		cmd += " \"%s\"".printf(sourceDirectory + "//");
-		cmd += " \"%s\"".printf(destDirectory);
+		cmd += " '%s'".printf(escape_single_quote(sourceDirectory) + "//");
+		cmd += " '%s'".printf(escape_single_quote(destDirectory));
 		return exec_sync (cmd, null, null);
 	}
 }
@@ -682,6 +748,25 @@ namespace TeeJee.JSON{
 	public int json_get_int(Json.Object jobj, string member, int def_value){
 		if (jobj.has_member(member)){
 			return int.parse(jobj.get_string_member(member));
+		}
+		else{
+			log_error ("Member not found in JSON object: " + member, false, true);
+			return def_value;
+		}
+	}
+
+	public Gee.ArrayList<string> json_get_array(
+		Json.Object jobj,
+		string member,
+		Gee.ArrayList<string> def_value){
+			
+		if (jobj.has_member(member)){
+			var jarray = jobj.get_array_member(member);
+			var list = new Gee.ArrayList<string>();
+			foreach(var node in jarray.get_elements()){
+				list.add(node.get_string());
+			}
+			return list;
 		}
 		else{
 			log_error ("Member not found in JSON object: " + member, false, true);
@@ -741,7 +826,10 @@ namespace TeeJee.ProcessManagement{
 	    }
 	}
 	
-	public int exec_script_sync (string script, out string? std_out = null, out string? std_err = null, bool supress_errors = false){
+	public int exec_script_sync (string script,
+		out string? std_out = null, out string? std_err = null,
+		bool supress_errors = false, bool run_as_admin = false,
+		bool cleanup_tmp = true){
 
 		/* Executes commands synchronously.
 		 * Pipes and multiple commands are fully supported.
@@ -749,12 +837,23 @@ namespace TeeJee.ProcessManagement{
 		 * std_out, std_err can be null. Output will be written to terminal if null.
 		 * */
 
-		string path = save_bash_script_temp(script, supress_errors);
+		string sh_file = save_bash_script_temp(script, null, supress_errors);
+		string sh_file_main = "";
+		if (run_as_admin){
+			string script_main = "pkexec '%s'".printf(escape_single_quote(sh_file));
+			string dir = file_parent(sh_file);
+			sh_file_main = GLib.Path.build_filename(dir,"script-admin.sh");
+			save_bash_script_temp(script_main, sh_file_main);
+		}
 
 		try {
-
 			string[] argv = new string[1];
-			argv[0] = path;
+			if (run_as_admin){
+				argv[0] = sh_file_main;
+			}
+			else{
+				argv[0] = sh_file;
+			}
 
 			string[] env = Environ.get();
 			
@@ -771,6 +870,13 @@ namespace TeeJee.ProcessManagement{
 			    out exit_code
 			    );
 
+			if (cleanup_tmp){
+				file_delete(sh_file);
+				if (run_as_admin){
+					file_delete(sh_file_main);
+				}
+			}
+			
 			return exit_code;
 		}
 		catch (Error e){
@@ -815,7 +921,10 @@ namespace TeeJee.ProcessManagement{
 	    }
 	}
 
-	public string? save_bash_script_temp (string commands, bool force_locale = true, bool supress_errors = false){
+	public string? save_bash_script_temp (string commands, string? script_path = null,
+		bool force_locale = true, bool supress_errors = false){
+
+		string sh_path = script_path;
 
 		/* Creates a temporary bash script with given commands
 		 * Returns the script file path */
@@ -832,21 +941,25 @@ namespace TeeJee.ProcessManagement{
 		script.append ("echo ${exitCode} > ${exitCode}\n");
 		script.append ("echo ${exitCode} > status\n");
 		
-		string script_path = get_temp_file_path() + ".sh";
+		if ((sh_path == null) || (sh_path.length == 0)){
+			sh_path = get_temp_file_path() + ".sh";
+		}
 
 		try{
 			//write script file
-			var file = File.new_for_path (script_path);
-			if (file.query_exists ()) { file.delete (); }
+			var file = File.new_for_path (sh_path);
+			if (file.query_exists ()) {
+				file.delete ();
+			}
 			var file_stream = file.create (FileCreateFlags.REPLACE_DESTINATION);
 			var data_stream = new DataOutputStream (file_stream);
 			data_stream.put_string (script.str);
 			data_stream.close();
 
 			// set execute permission
-			chmod (script_path, "u+x");
+			chmod (sh_path, "u+x");
 
-			return script_path;
+			return sh_path;
 		}
 		catch (Error e) {
 			if (!supress_errors){
@@ -1435,10 +1548,10 @@ namespace TeeJee.System{
 	 // open files -----------------------------------
 	 
 	public bool xdg_open (string file){
-		string path;
-		path = get_cmd_path ("xdg-open");
+		string path = get_cmd_path ("xdg-open");
 		if ((path != null)&&(path != "")){
-			int status = exec_script_async ("xdg-open \"" + file + "\"");
+			string cmd = "xdg-open '%s'".printf(escape_single_quote(file));
+			int status = exec_script_async(cmd);
 			return (status == 0);
 		}
 		return false;
@@ -1462,46 +1575,29 @@ namespace TeeJee.System{
 			//try using xdg-open
 			path = get_cmd_path ("xdg-open");
 			if ((path != null)&&(path != "")){
-				status = exec_script_async ("xdg-open \"" + dir_path + "\"");
+				string cmd = "xdg-open '%s'".printf(escape_single_quote(dir_path));
+				status = exec_script_async (cmd);
 				return (status == 0);
 			}
 		}
 
-		path = get_cmd_path ("nemo");
+		foreach(string app_name in
+			new string[]{ "nemo", "nautilus", "thunar", "pantheon-files", "marlin"}){
+				
+			path = get_cmd_path (app_name);
 		if ((path != null)&&(path != "")){
-			status = exec_script_async ("nemo \"" + dir_path + "\"");
+				string cmd = "%s '%s'".printf(app_name, escape_single_quote(dir_path));
+				status = exec_script_async (cmd);
 			return (status == 0);
 		}
-
-		path = get_cmd_path ("nautilus");
-		if ((path != null)&&(path != "")){
-			status = exec_script_async ("nautilus \"" + dir_path + "\"");
-			return (status == 0);
-		}
-
-		path = get_cmd_path ("thunar");
-		if ((path != null)&&(path != "")){
-			status = exec_script_async ("thunar \"" + dir_path + "\"");
-			return (status == 0);
-		}
-
-		path = get_cmd_path ("pantheon-files");
-		if ((path != null)&&(path != "")){
-			status = exec_script_async ("pantheon-files \"" + dir_path + "\"");
-			return (status == 0);
-		}
-
-		path = get_cmd_path ("marlin");
-		if ((path != null)&&(path != "")){
-			status = exec_script_async ("marlin \"" + dir_path + "\"");
-			return (status == 0);
 		}
 
 		if (xdg_open_try_first == false){
 			//try using xdg-open
 			path = get_cmd_path ("xdg-open");
 			if ((path != null)&&(path != "")){
-				status = exec_script_async ("xdg-open \"" + dir_path + "\"");
+				string cmd = "xdg-open '%s'".printf(escape_single_quote(dir_path));
+				status = exec_script_async (cmd);
 				return (status == 0);
 			}
 		}
@@ -1509,22 +1605,25 @@ namespace TeeJee.System{
 		return false;
 	}
 
-	public bool exo_open_textfile (string txt){
+	public bool exo_open_textfile (string txt_file){
 
 		/* Tries to open the given text file in a text editor */
 
 		string path;
 		int status;
+		string cmd;
 		
 		path = get_cmd_path ("exo-open");
 		if ((path != null)&&(path != "")){
-			status = exec_script_async ("exo-open \"" + txt + "\"");
+			cmd = "exo-open '%s'".printf(escape_single_quote(txt_file));
+			status = exec_script_async (cmd);
 			return (status == 0);
 		}
 
 		path = get_cmd_path ("gedit");
 		if ((path != null)&&(path != "")){
-			status = exec_script_async ("gedit --new-document \"" + txt + "\"");
+			cmd = "gedit --new-document '%s'".printf(escape_single_quote(txt_file));
+			status = exec_script_async (cmd);
 			return (status == 0);
 		}
 
@@ -1537,6 +1636,7 @@ namespace TeeJee.System{
 
 		string path;
 		int status;
+		string cmd;
 		
 		path = get_cmd_path ("exo-open");
 		if ((path != null)&&(path != "")){
@@ -1567,11 +1667,14 @@ namespace TeeJee.System{
 		return timer;
 	}
 
-	public ulong timer_elapsed(GLib.Timer timer){
+	public ulong timer_elapsed(GLib.Timer timer, bool stop = true){
 		ulong microseconds;
 		double seconds;
 		seconds = timer.elapsed (out microseconds);
-		return microseconds;
+		if (stop){
+			timer.stop();
+		}
+		return (ulong)((seconds * 1000 ) + (microseconds / 1000));
 	}
 
 	public void sleep(int milliseconds){

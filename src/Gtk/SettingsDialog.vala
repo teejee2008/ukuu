@@ -52,9 +52,6 @@ public class SettingsDialog : Gtk.Dialog {
 		resizable = false;
 		
 		icon = get_app_icon(16,".svg");
-		
-		set_transient_for(parent);
-		set_modal(true);
 
 		title = _("Settings");
 		

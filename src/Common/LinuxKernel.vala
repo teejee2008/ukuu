@@ -128,6 +128,15 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return ok;
 	}
 
+	public static void clean_cache(){
+		if (dir_exists(CACHE_DIR)){
+			bool ok = dir_delete(CACHE_DIR);
+			if (ok){
+				log_msg("Removed cached files in '%s'".printf(CACHE_DIR));
+			}
+		}
+	}
+	
 	// contructor
 	
 	public LinuxKernel(string name, string subdir_path){
@@ -175,6 +184,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			refresh = true;
 		}
 
+		refresh = true;
+
 		_temp_refresh = refresh;
 		
 		try {
@@ -215,7 +226,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		
 			if (!kern.cached_page_exists){
-				while (LinuxKernel.download_count > 20){
+				while (LinuxKernel.download_count > 1){
 					sleep(100); // wait for counter to decrease
 				}
 				kern.download_cached_page(false);
@@ -234,7 +245,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		check_installed();
-
+		
 		task_is_running = false;
 	}
 	
@@ -618,7 +629,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return true;	
 	}
 
-
 	// load
 	
 	private void load_cached_page(){
@@ -842,6 +852,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		return ok;
 	}
+
+
 
 }
 

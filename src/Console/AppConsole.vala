@@ -85,6 +85,7 @@ public class AppConsole : GLib.Object {
 		msg += "  --install <name>  " + _("Install specified mainline kernel") + "\n";
 		msg += "  --remove <name>   " + _("Remove specified mainline kernel") + "\n";
 		msg += "  --download <name> " + _("Download packages for specified kernel") + "\n";
+		msg += "  --clean-cache     " + _("Remove files from application cache") + "\n";
 		msg += "\n";
 		return msg;
 	}
@@ -151,6 +152,10 @@ public class AppConsole : GLib.Object {
 				
 				LinuxKernel.query(false, true);
 				App.notify_user();
+				break;
+
+			case "--clean-cache":
+				LinuxKernel.clean_cache();
 				break;
 				
 			case "--list":

@@ -127,7 +127,7 @@ public class AppGtk : GLib.Object {
 	public static string help_message() {
 		string msg = "\n" + AppName + " v" + AppVersion + " by Tony George (teejeetech@gmail.com)" + "\n";
 		msg += "\n";
-		msg += _("Syntax") + ": aptik-gtk [options]\n";
+		msg += _("Syntax") + ": ukuu-gtk [options]\n";
 		msg += "\n";
 		msg += _("Options") + ":\n";
 		msg += "\n";
