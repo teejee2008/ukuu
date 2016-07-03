@@ -42,6 +42,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string RUNNING_KERNEL = "";
 	public static bool skip_older = true;
 	public static bool skip_unstable = true;
+
+	public static LinuxKernel kernel_active = null;
+	public static LinuxKernel kernel_update_major = null;
+	public static LinuxKernel kernel_update_minor = null;
+	public static LinuxKernel kernel_latest_stable = null;
 	
 	public static Gee.ArrayList<LinuxKernel> kernel_list = new Gee.ArrayList<LinuxKernel>();
 	public static int download_count = 0;
@@ -149,7 +154,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// contructor
 	
-	public LinuxKernel(string _name, bool is_mainline){
+	public LinuxKernel(string _name, bool _is_mainline){
 
 		if (_name.has_suffix("/")){
 			this.name = _name[0: _name.length - 1];
@@ -160,7 +165,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		// parse version string ---------
 
-		version = _name;
+		version = this.name;
 
 		// remove "v"
 		if (version.has_prefix("v")){
@@ -172,6 +177,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// set page URI -----------
 		
 		page_uri = "%s%s".printf(URI_KERNEL_UBUNTU_MAINLINE, _name);
+
+		is_mainline = _is_mainline;
 	}
 
 	public LinuxKernel.from_version(string version){
@@ -190,7 +197,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		check_if_initialized();
 		
 		var one_hour_before = (new DateTime.now_local()).add_hours(-1);
-		if ((kernel_list.size == 0) || (last_refreshed_date.compare(one_hour_before) < 0)){
+		if (last_refreshed_date.compare(one_hour_before) < 0){
 			refresh = true;
 		}
 
@@ -250,23 +257,23 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			if (kern.cached_page_exists){
-				log_debug("cached page exists: %s".printf(kern.version_main));
+				//log_debug("cached page exists: %s".printf(kern.version_main));
 				kern.load_cached_page();
 				continue;
 			}
 
 			if (!kern.is_valid){
-				log_debug("invalid: %s".printf(kern.version_main));
+				//log_debug("invalid: %s".printf(kern.version_main));
 				continue;
 			}
 
 			if (skip_older && (kern.compare_to(kern_4) < 0)){
-				log_debug("older than 4.0: %s".printf(kern.version_main));
+				//log_debug("older than 4.0: %s".printf(kern.version_main));
 				continue;
 			}
 
 			if (skip_unstable && kern.is_unstable){
-				log_debug("not stable: %s".printf(kern.version_main));
+				//log_debug("not stable: %s".printf(kern.version_main));
 				continue;
 			}
 		
@@ -287,6 +294,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		check_installed();
+
+		check_updates();
 		
 		task_is_running = false;
 	}
@@ -373,28 +382,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public static void check_installed(){
 
+		log_debug("check_installed");
+		
 		foreach(var kern in kernel_list){
 			kern.is_installed = false;
 			kern.is_running = false;
-		}
-
-		// Running: 4.2.7-040207-generic
-		// Package: 4.2.7-040207.201512091533
-		
-		string ver_running = RUNNING_KERNEL.replace("-generic","");
-		
-		foreach(var kern in kernel_list){
-			if (!kern.is_valid){
-				continue;
-			}
-
-			string ver_pkg_short = kern.version_package[0 : kern.version_package.last_index_of(".")];
-
-			if (ver_pkg_short == ver_running){
-				kern.is_running = true;
-				kern.is_installed = true;
-				break;
-			}
 		}
 
 		pkg_list_installed = Package.query_installed_packages();
@@ -440,6 +432,81 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
+		// Find and tag the running kernel in list ------------------
+		
+		// Running: 4.2.7-040207-generic
+		// Package: 4.2.7-040207.201512091533
+
+		// Running: 4.4.0-28-generic
+		// Package: 4.4.0-28.47
+		
+		string ver_running = RUNNING_KERNEL.replace("-generic","");
+		//var running_kern = new LinuxKernel.from_version(ver_running);
+		kernel_active = null;
+		
+		foreach(var kern in kernel_list){
+			if (!kern.is_valid){
+				continue;
+			}
+
+			// check mainline kernels only
+			if (!kern.is_mainline){
+				continue;
+			}
+
+			// compare version_package strings for mainline kernels
+			if (kern.version_package.length > 0) {
+				string ver_pkg_short = kern.version_package[0 : kern.version_package.last_index_of(".")];
+
+				if (ver_pkg_short == ver_running){
+					kern.is_running = true;
+					kern.is_installed = true;
+					kernel_active = kern;
+					break;
+				}
+			}
+		}
+
+		if (kernel_active == null){
+			foreach(var kern in kernel_list){
+				if (!kern.is_valid){
+					continue;
+				}
+
+				// check ubuntu kernels only
+				if (kern.is_mainline){
+					continue;
+				}
+
+				var running_kern = new LinuxKernel.from_version(ver_running);
+				
+				if (kern.version_main == "4.4.0.28.47"){
+					log_debug("checking: " + kern.version_main.to_string());
+					log_debug("with: " + running_kern.version_main.to_string());
+				}
+
+				string[] arr_r = running_kern.version_main.split(".");
+				string[] arr= kern.version_main.split(".");
+				int i = 0;
+
+				// compare first 4 numbers in version_main for ubuntu kernels
+				while ((i < arr.length) && (i < arr_r.length)){
+					if (arr[i] == arr_r[i]){
+						if (i == 3){
+							// First 4 numbers in version_main have compared equal
+							// We will assume both version strings represent the same kernel
+							kern.is_running = true;
+							kern.is_installed = true;
+							kernel_active = kern;
+							break;
+						}
+					}
+					
+					i++;
+				}
+			}
+		}
+		
 		kernel_list.sort((a,b)=>{
 			return a.compare_to(b) * -1;
 		});
@@ -447,6 +514,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public static void check_available(){
 
+		log_debug("check_available");
+		
 		var list = Package.query_available_packages("^linux-'");
 
 		var pkg_versions = new Gee.ArrayList<string>();
@@ -485,7 +554,67 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			return a.compare_to(b) * -1;
 		});
 	}
-	
+
+	public static void check_updates(){
+
+		log_debug("check_updates");
+		
+		kernel_update_major = null;
+		kernel_update_minor = null;
+		kernel_latest_stable = null;
+		
+		var kern_running = new LinuxKernel.from_version(LinuxKernel.RUNNING_KERNEL);
+		foreach(var kern in LinuxKernel.kernel_list){
+			// skip invalid
+			if (!kern.is_valid){
+				continue;
+			}
+			// skip unstable
+			if (kern.is_unstable){
+				continue;
+			}
+
+			if (kernel_latest_stable == null){
+				kernel_latest_stable = kern;
+			}
+
+			bool major_available = false;
+			bool minor_available = false;
+			
+			string[] arr = kern.version_main.split_set (".-");
+			string[] arr_r = kern_running.version_main.split_set (".-");
+
+			if (arr[0] > arr_r[0]){
+				major_available = true;
+			}
+			else if (arr[0] == arr_r[0]){
+				if (arr[1] > arr_r[1]){
+					major_available = true;
+				}
+				else if (arr[1] == arr_r[1]){
+					if (arr[2] > arr_r[2]){
+						minor_available = true;
+					}
+				}
+			}
+			
+			if (major_available && (kernel_update_major == null)){
+				kernel_update_major = kern;
+			}
+			
+			if (minor_available && (kernel_update_minor == null)){
+				kernel_update_minor = kern;
+			}
+
+			if ((kernel_update_major != null)
+				&& (kernel_update_minor != null)
+				&& (kernel_latest_stable != null)){
+					
+				break;
+			}
+		}
+	}
+
 	// helpers
 	
 	public void split_version_string(
@@ -493,7 +622,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		out string ver_main,
 		out string ver_extra){
 
-		string[] arr = version_string.split("-");
+		string[] arr = version_string.split_set (".-_");
 
 		if (arr.length == 0){
 			ver_main = "";
@@ -511,58 +640,41 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			ver_main = ver_main[1:ver_main.length];
 		}
 
-		// append rc number
+		// append all numbers which are 3 digits or less
+		while (i < arr.length){
+			if (is_numeric(arr[i]) && (arr[i].length <= 3)){
+				ver_main += ".%s".printf(arr[i++]);
+			}
+			else{
+				break;
+			}
+		}
+		
+		// v3.11-rc1-saucy
 		if (i < arr.length){
-
-			// v3.11-rc1-saucy
+			// append rc number
 			if (arr[i].contains("rc")){
 				ver_main += "-%s".printf(arr[i++]);
 			}
+		}
 
-			// 4.4.0-28.47
-			if (i < arr.length){
-				if (arr[i].contains(".")){
-					var sub_arr = arr[i].split(".");
-					var x = long.parse(sub_arr[0]);
-					if ((x > 0) && (sub_arr[0].length <= 3)){
-						if (sub_arr.length > 1){
-							var y = long.parse(sub_arr[1]);
-							if ((y > 0) && (sub_arr[1].length <= 3)){
-								ver_main += ".%ld".printf(x);
-								ver_main += ".%ld".printf(y);
-								i++;
-							}
-						}
-					}
-				}
+		// v3.16.7-ckt26-trusty
+		if (i < arr.length){
+			if (arr[i].contains("ckt")){
+				ver_main += ".%s".printf(arr[i++].replace("ckt",""));
 			}
-
-			// 4.6.3-040603.201606241434
-			// this version string is the package version of a mainline kernel
-			
-			if (i < arr.length){
-				if (arr[i].contains(".")){
-					var sub_arr = arr[i].split(".");
-					var x = long.parse(sub_arr[0]);
-					if ((x > 0) && (sub_arr[0].length == 6)){
-						if (sub_arr.length > 1){
-							var y = long.parse(sub_arr[1]);
-							if ((y > 0) && (sub_arr[1].length == 12)){
-								ver_main += ".%ld".printf(x);
-								ver_main += ".%ld".printf(y);
-								is_mainline_package = true;
-								i++;
-							}
-						}
-					}
-				}
-			}
-
-			// v3.16.7-ckt26-trusty
-			if (i < arr.length){
-				if (arr[i].contains("ckt")){
-					ver_main += ".%s".printf(arr[i++].replace("ckt",""));
-				}
+		}
+		
+		// 4.6.3-040603.201606241434
+		// this version string is the package version of a mainline kernel
+		
+		if ((i < arr.length) && ((i+1) < arr.length)){
+			if (is_numeric(arr[i]) && (arr[i].length == 6)
+				&& is_numeric(arr[i+1]) && (arr[i+1].length == 12)){
+					
+				ver_main += ".%s".printf(arr[i++]);
+				ver_main += ".%s".printf(arr[i++]);
+				is_mainline_package = true;
 			}
 		}
 
@@ -573,6 +685,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				ver_extra += "-%s".printf(arr[i]);
 			}
 		}
+
+		//log_debug("split: %s, version_main: %s".printf(version_string, ver_main));
 	}
 
 	public int compare_to(LinuxKernel b){
@@ -649,7 +763,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 			if (pkg.version_installed == version){
 				apt_pkg_list[pkg.name] = pkg.name;
-				log_debug("kern %s: pkg: %s".printf(name, pkg.name));
+				log_debug("Package: %s".printf(pkg.name));
 			}
 		}
 	}
@@ -682,7 +796,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	public static DateTime last_refreshed_date{
 		owned get{
-			return file_get_modified_date(index_page);
+			if (file_get_size(index_page) < 300000){
+				return (new DateTime.now_local()).add_years(-1);
+			}
+			else{
+				return file_get_modified_date(index_page);
+			}
 		}
 	}
 

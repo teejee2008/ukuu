@@ -2778,4 +2778,12 @@ namespace TeeJee.Misc {
 		return random;
 	}
 
+	public bool is_numeric(string text){
+		for (int i = 0; i < text.length; i++){
+			if (!text[i].isdigit()){
+				return false;
+			}
+		}
+		return true;
+	}
 }

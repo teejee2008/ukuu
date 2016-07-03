@@ -40,7 +40,9 @@ public class MainWindow : Gtk.Window{
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_remove;
 	private Gtk.Button btn_changes;
-
+	private Gtk.InfoBar infobar;
+	private Gtk.Label lbl_info;
+	
 	// helper members
 
 	private int window_width = 400;
@@ -86,6 +88,7 @@ public class MainWindow : Gtk.Window{
 	private void init_ui(){
 		init_treeview();
 		init_actions();
+		init_infobar();
 	}
 	
 	private void init_treeview(){
@@ -113,12 +116,13 @@ public class MainWindow : Gtk.Window{
 		
 		// cell icon
 		var cell_pix = new Gtk.CellRendererPixbuf ();
+		cell_pix.xpad = 2;
 		col.pack_start (cell_pix, false);
 		col.set_cell_data_func (cell_pix, (cell_layout, cell, model, iter)=>{
 			Gdk.Pixbuf pix;
 			model.get (iter, 1, out pix, -1);
 			(cell as Gtk.CellRendererPixbuf).pixbuf = pix;
-			(cell as Gtk.CellRendererPixbuf).visible = !(App.hide_unstable);
+			//(cell as Gtk.CellRendererPixbuf).visible = !(App.hide_unstable);
 		});
 		
 		//cell text
@@ -207,6 +211,71 @@ public class MainWindow : Gtk.Window{
 		set_button_state();
 	}
 
+	private void tv_refresh(){
+		var model = new Gtk.ListStore(2, typeof(LinuxKernel), typeof(Gdk.Pixbuf));
+
+		Gdk.Pixbuf pix_green = null;
+		Gdk.Pixbuf pix_red = null;
+		Gdk.Pixbuf pix_ubuntu = null;
+		Gdk.Pixbuf pix_mainline = null;
+		Gdk.Pixbuf pix_mainline_rc = null;
+		
+		try {
+			pix_green = new Gdk.Pixbuf.from_file_at_scale (
+							"/usr/share/ukuu/images/item-green.png", 16, 16, true);
+				
+			pix_red = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/item-red.png");
+			
+			pix_ubuntu = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/ubuntu-logo.png");
+
+			pix_mainline = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/tux.png");
+
+			pix_mainline_rc = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/tux-red.png");
+		}
+		catch (Error e) {
+			log_error (e.message);
+		}
+
+		var kern_4 = new LinuxKernel.from_version("4.0");
+		
+		TreeIter iter;
+		foreach(var kern in LinuxKernel.kernel_list) {
+			if (!kern.is_valid){
+				continue;
+			}
+			if (App.hide_unstable && kern.is_unstable){
+				continue;
+			}
+			if (App.hide_older && (kern.compare_to(kern_4) < 0)){
+				continue;
+			}
+
+			//add row
+			model.append(out iter);
+			model.set (iter, 0, kern);
+
+			if (kern.is_mainline){
+				if (kern.is_unstable){
+					model.set (iter, 1, pix_mainline_rc);
+				}
+				else{
+					model.set (iter, 1, pix_mainline);
+				}
+			}
+			else{
+				model.set (iter, 1, pix_ubuntu);
+			}
+		}
+
+		tv.set_model(model);
+		tv.columns_autosize();
+
+		selected_kernel = null;
+		set_button_state();
+
+		set_infobar();
+	}
+
 	private void set_button_state(){
 		if (selected_kernel == null){
 			btn_install.sensitive = false;
@@ -219,6 +288,7 @@ public class MainWindow : Gtk.Window{
 			btn_changes.sensitive = file_exists(selected_kernel.changes_file);
 		}
 	}
+
 	
 	private void init_actions(){
 		var hbox = new Box (Orientation.HORIZONTAL, 6);
@@ -428,51 +498,43 @@ public class MainWindow : Gtk.Window{
 		gtk_do_events();
 	}
 
-	private void tv_refresh(){
-		var model = new Gtk.ListStore(2, typeof(LinuxKernel), typeof(Gdk.Pixbuf));
 
-		Gdk.Pixbuf pix_green = null;
-		Gdk.Pixbuf pix_red = null;
+	private void init_infobar(){
+		infobar = new Gtk.InfoBar ();
+		infobar.message_type = MessageType.INFO;
+		//infobar.show_close_button = true;
+		infobar.close.connect(()=>{
+			infobar.visible = false;
+		});
+		vbox_main.add(infobar);
 		
-		try {
-			pix_green = new Gdk.Pixbuf.from_file_at_scale ("/usr/share/ukuu/images/item-green.png", 16, 16, true);
-			pix_red = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/item-red.png");
-		}
-		catch (Error e) {
-			log_error (e.message);
-		}
-
-		var kern_4 = new LinuxKernel.from_version("4.0");
+		lbl_info = new Gtk.Label("");
+		lbl_info.set_use_markup(true);
 		
-		TreeIter iter;
-		foreach(var kern in LinuxKernel.kernel_list) {
-			if (!kern.is_valid){
-				continue;
-			}
-			if (App.hide_unstable && kern.is_unstable){
-				continue;
-			}
-			if (App.hide_older && (kern.compare_to(kern_4) < 0)){
-				continue;
-			}
+		var content = infobar.get_content_area();
+		content.add(lbl_info);
+	}
 
-			//add row
-			model.append(out iter);
-			model.set (iter, 0, kern);
+	private void set_infobar(){
+		if (LinuxKernel.kernel_active != null){
+			lbl_info.label = "Running <b>Linux %s</b>".printf(
+				LinuxKernel.kernel_active.version_main);
 
-			if (kern.is_unstable){
-				model.set (iter, 1, pix_red);
+			if (LinuxKernel.kernel_active.is_mainline){
+				lbl_info.label += " (mainline)";
 			}
 			else{
-				model.set (iter, 1, pix_green);
+				lbl_info.label += " (ubuntu)";
+			}
+			
+			if (LinuxKernel.kernel_latest_stable.compare_to(LinuxKernel.kernel_active) > 0){
+				lbl_info.label += " ~ <b>Linux %s</b> available".printf(
+					LinuxKernel.kernel_latest_stable.version_main);
 			}
 		}
-
-		tv.set_model(model);
-		tv.columns_autosize();
-
-		selected_kernel = null;
-		set_button_state();
+		else{
+			lbl_info.label = "Running <b>Linux %s</b>".printf(LinuxKernel.RUNNING_KERNEL);
+		}
 	}
 }
 

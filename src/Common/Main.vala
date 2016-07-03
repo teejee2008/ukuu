@@ -160,60 +160,28 @@ public class Main : GLib.Object{
 	// begin ------------
 
 	public void notify_user(){
-		var kern_running = new LinuxKernel.from_version(LinuxKernel.RUNNING_KERNEL);
-		foreach(var kern in LinuxKernel.kernel_list){
-			// skip invalid
-			if (!kern.is_valid){
-				continue;
-			}
-			// skip unstable
-			if (kern.is_unstable){
-				continue;
-			}
 
-			if (!notify_major && !notify_minor){
-				log_msg(_("Notifications are disabled"));
-				break;
-			}
-			
-			bool major_available = false;
-			bool minor_available = false;
-			
-			string[] arr = kern.version_main.split_set (".-");
-			string[] arr_r = kern_running.version_main.split_set (".-");
+		LinuxKernel.check_updates();
 
-			if (arr[0] > arr_r[0]){
-				major_available = true;
-			}
-			else if (arr[0] == arr_r[0]){
-				if (arr[1] > arr_r[1]){
-					major_available = true;
-				}
-				else if (arr[1] == arr_r[1]){
-					if (arr[2] > arr_r[2]){
-						minor_available = true;
-					}
-				}
-			}
-			
-			if (major_available && notify_major){
-				var title = "Linux %s Available".printf(kern.version_main);
-				var message = "Running kernel is %s".printf(kern_running.version_main);
-				OSDNotify.notify_send(title,"\n" + message,3000,"normal","info");
-				log_msg(title);
-				log_msg(message);
-				break;
-			}
-			
-			if (minor_available && notify_minor && !notify_major){
-				var title = "Linux %s Available".printf(kern.version_main);
-				var message = "Running kernel is %s".printf(kern_running.version_main);
-				message += "\nInstalling this update is recommended";
-				OSDNotify.notify_send(title,"\n" + message,3000,"normal","info");
-				log_msg(title);
-				log_msg(message);
-				break;
-			}
+		var kern = LinuxKernel.kernel_update_major;
+		if ((kern != null) && notify_major){
+			var title = "Linux %s Available".printf(kern.version_main);
+			var message = "Running kernel is %s".printf(LinuxKernel.kernel_active.version_main);
+			OSDNotify.notify_send(title,"\n" + message,3000,"normal","info");
+			log_msg(title);
+			log_msg(message);
+			return;
+		}
+
+		kern = LinuxKernel.kernel_update_minor;
+		if ((kern != null) && notify_minor && !notify_major){
+			var title = "Linux %s Available".printf(kern.version_main);
+			var message = "Running kernel is %s".printf(LinuxKernel.kernel_active.version_main);
+			message += "\nInstalling this update is recommended";
+			OSDNotify.notify_send(title,"\n" + message,3000,"normal","info");
+			log_msg(title);
+			log_msg(message);
+			return;
 		}
 	}
 
