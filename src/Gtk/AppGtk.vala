@@ -38,7 +38,7 @@ using TeeJee.Misc;
 public Main App;
 public const string AppName = "Ubuntu Kernel Upgrade Utility";
 public const string AppShortName = "ukuu";
-public const string AppVersion = "16.4.2";
+public const string AppVersion = "16.6";
 public const string AppAuthor = "Tony George";
 public const string AppAuthorEmail = "teejeetech@gmail.com";
 
@@ -76,7 +76,6 @@ public class AppGtk : GLib.Object {
 		Gtk.main();
 
 		App.save_app_config();
-		App.update_cron_jobs();
 
 		return 0;
 	}

@@ -52,7 +52,7 @@ public class MainWindow : Gtk.Window{
 	private LinuxKernel selected_kernel;
 	
 	public MainWindow() {
-		title = "Ubuntu Kernel Update Utility";
+		title = "Ukuu v%s".printf(AppVersion);
         window_position = WindowPosition.CENTER;
         icon = get_app_icon(16,".svg");
 

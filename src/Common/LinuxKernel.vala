@@ -753,7 +753,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	public void mark_invalid(){
-		file_write("%s/invalid".printf(cache_subdir), "1");
+		string file = "%s/invalid".printf(cache_subdir);
+		if (!file_exists(file)){
+			file_write(file, "1");
+		}
 	}
 
 	public void set_apt_pkg_list(){

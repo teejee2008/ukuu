@@ -41,7 +41,12 @@ public class Main : GLib.Object{
 	// constants ----------
 	
 	public string APP_CONFIG_FILE = "";
-
+	public string STARTUP_SCRIPT_FILE = "";
+	public string STARTUP_DESKTOP_FILE = "";
+	public int startup_delay = 180;
+	public string user_login = "";
+	public string user_home = "";
+	
 	// global progress ----------------
 	
 	public string status_line = "";
@@ -101,12 +106,17 @@ public class Main : GLib.Object{
 	}
 
 	private void init_paths(){
-		// TEMP_DIR 
+		// temp dir 
 		init_tmp(AppShortName);
 
-		// APP_CONFIG_FILE
-		string home = Environment.get_home_dir();
-		APP_CONFIG_FILE = home + "/.config/ukuu.json";
+		// user info
+		user_login = get_user_login();
+		user_home = get_user_home();
+
+		// app config files
+		APP_CONFIG_FILE = user_home + "/.config/ukuu.json";
+		STARTUP_SCRIPT_FILE = user_home + "/.config/ukuu-notify.sh";
+		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/ukuu.desktop";
 	}
 	
 	public void save_app_config(){
@@ -128,6 +138,13 @@ public class Main : GLib.Object{
 		} catch (Error e) {
 	        log_error (e.message);
 	    }
+
+		// change owner to current user so that ukuu can access in normal mode
+	    chown(APP_CONFIG_FILE, user_login, user_login);
+
+		//update_startup_script();
+	    //update_startup_desktop_file();
+	    remove_cron_jobs();
 	}
 
 	public void load_app_config(){
@@ -185,15 +202,9 @@ public class Main : GLib.Object{
 		}
 	}
 
-	public void update_cron_jobs(){
-		if (notify_major || notify_minor){
-			CronTab.add_job(get_crontab_entry_scheduled());
-			CronTab.add_job(get_crontab_entry_boot());
-		}
-		else{
-			CronTab.remove_job(get_crontab_entry_scheduled());
-			CronTab.remove_job(get_crontab_entry_boot());
-		}
+	public void remove_cron_jobs(){
+		CronTab.remove_job(get_crontab_entry_scheduled());
+		CronTab.remove_job(get_crontab_entry_boot());
 	}
 
 	private string get_crontab_entry_scheduled(){
@@ -202,6 +213,57 @@ public class Main : GLib.Object{
 
 	private string get_crontab_entry_boot(){
 		return "@reboot sleep %dm && ukuu --notify".printf(20);
+	}
+
+	private void update_startup_script(){
+
+		string txt = "";
+		txt += "sleep %ds\n".printf(startup_delay);
+		txt += "ukuu --notify\n";
+		
+		if (file_exists(STARTUP_SCRIPT_FILE)){
+			file_delete(STARTUP_SCRIPT_FILE);
+		}
+
+		if (notify_minor || notify_major){
+			file_write(
+				STARTUP_SCRIPT_FILE,
+				txt);
+		}
+		else{
+			file_write(
+				STARTUP_SCRIPT_FILE,
+				"# Notifications are disabled\n\nexit 0"); // write dummy script
+		}
+
+		chown(STARTUP_SCRIPT_FILE, user_login, user_login);
+	}
+
+	private void update_startup_desktop_file(){
+		if (notify_minor || notify_major){
+			
+			string txt =
+"""[Desktop Entry]
+Type=Application
+Exec={command}
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_IN]=Ukuu Notification
+Name=Ukuu Notification
+Comment[en_IN]=Ukuu Notification
+Comment=Ukuu Notification
+""";
+
+			txt = txt.replace("{command}", "sh \"%s\"".printf(STARTUP_SCRIPT_FILE));
+
+			file_write(STARTUP_DESKTOP_FILE, txt);
+
+			chown(STARTUP_DESKTOP_FILE, user_login, user_login);
+		}
+		else{
+			file_delete(STARTUP_DESKTOP_FILE);
+		}
 	}
 }
 

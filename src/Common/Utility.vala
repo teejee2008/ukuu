@@ -463,6 +463,7 @@ namespace TeeJee.FileSystem{
 	public bool chown(string dir_path, string user, string group = user){
 		string cmd = "chown %s:%s -R '%s'".printf(user, group, escape_single_quote(dir_path));
 		int status = exec_sync(cmd, null, null);
+		log_debug(cmd);
 		return (status == 0);
 	}
 	
@@ -1418,6 +1419,16 @@ namespace TeeJee.System{
 		}
 
 		return user_name;
+	}
+
+	public string get_user_home(){
+		string user_login = get_user_login();
+		if (user_login == "root"){
+			return "/root";
+		}
+		else{
+			return "/home/%s".printf(user_login);
+		}
 	}
 
 	// dep: id

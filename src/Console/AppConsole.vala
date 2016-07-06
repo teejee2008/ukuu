@@ -38,7 +38,7 @@ using TeeJee.Misc;
 public Main App;
 public const string AppName = "Ubuntu Kernel Upgrade Utility";
 public const string AppShortName = "ukuu";
-public const string AppVersion = "16.4.2";
+public const string AppVersion = "16.6";
 public const string AppAuthor = "Tony George";
 public const string AppAuthorEmail = "teejeetech@gmail.com";
 
@@ -52,7 +52,7 @@ public class AppConsole : GLib.Object {
 
 		init_tmp(AppShortName);
 
-		check_if_admin();
+		//check_if_admin();
 		
 		LOG_TIMESTAMP = false;
 
@@ -142,8 +142,11 @@ public class AppConsole : GLib.Object {
 				check_if_internet_is_active();
 				
 				LinuxKernel.query(true, true);
+				
 				LinuxKernel.print_list();
+				
 				App.notify_user();
+				
 				break;
 
 			case "--notify":
@@ -151,30 +154,37 @@ public class AppConsole : GLib.Object {
 				check_if_internet_is_active();
 				
 				LinuxKernel.query(false, true);
+				
 				App.notify_user();
+				
 				break;
 
 			case "--clean-cache":
+			
+				check_if_admin();
+				
 				LinuxKernel.clean_cache();
+				
 				break;
 				
 			case "--list":
-
+				
 				check_if_internet_is_active();
 				
 				LinuxKernel.query(false, true);
+				
 				LinuxKernel.print_list();
+				
 				break;
 
 			case "--download":
 			case "--install":
 			case "--remove":
 
-				//if (args[k].down() != "--remove"){
-					
-				//}
+				check_if_admin();
 
 				check_if_internet_is_active();
+				
 				LinuxKernel.query(false, true);
 			
 				k++;

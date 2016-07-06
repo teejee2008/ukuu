@@ -66,13 +66,13 @@ public class SettingsDialog : Gtk.Dialog {
 		var label = new Label("<b>" + _("Notification") + "</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
-		vbox_main.add (label);
+		//vbox_main.add (label);
 		
 		// chk_notify_major
 		var chk = new Gtk.CheckButton.with_label(_("Notify if a major kernel release is available"));
 		chk.active = App.notify_major;
 		chk.margin_left = 6;
-		vbox_main.add(chk);
+		//vbox_main.add(chk);
 		chk_notify_major = chk;
 
 		chk.toggled.connect(()=>{
@@ -83,7 +83,7 @@ public class SettingsDialog : Gtk.Dialog {
 		chk = new Gtk.CheckButton.with_label(_("Notify if a point release is available for current kernel"));
 		chk.active = App.notify_minor;
 		chk.margin_left = 6;
-		vbox_main.add(chk);
+		//vbox_main.add(chk);
 		chk_notify_minor = chk;
 		
 		chk.toggled.connect(()=>{
@@ -132,7 +132,6 @@ public class SettingsDialog : Gtk.Dialog {
 	}
 
 	private void btn_ok_click(){
-		App.update_cron_jobs();
 		App.save_app_config();
 
 		LinuxKernel.skip_older = App.hide_older;
