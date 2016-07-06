@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-07-06 18:11+0530\n"
+"POT-Creation-Date: 2016-07-06 19:05+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Gtk/MainWindow.vala:403
+#: Gtk/MainWindow.vala:396
 msgid "About"
 msgstr ""
 
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:359
+#: Gtk/MainWindow.vala:352
 msgid "Changes"
 msgstr ""
 
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Documenters"
 msgstr ""
 
-#: Gtk/MainWindow.vala:391 Gtk/DonationWindow.vala:36
+#: Gtk/MainWindow.vala:384 Gtk/DonationWindow.vala:36
 msgid "Donate"
 msgstr ""
 
@@ -224,7 +224,7 @@ msgstr ""
 msgid "Hide unstable and RC releases"
 msgstr ""
 
-#: Gtk/MainWindow.vala:298
+#: Gtk/MainWindow.vala:291
 msgid "Install"
 msgstr ""
 
@@ -244,7 +244,7 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#: Gtk/MainWindow.vala:447 Console/AppConsole.vala:255
+#: Gtk/MainWindow.vala:440 Console/AppConsole.vala:255
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -252,7 +252,7 @@ msgstr ""
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:431
+#: Gtk/MainWindow.vala:424
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
@@ -297,11 +297,11 @@ msgstr ""
 msgid "Print debug information"
 msgstr ""
 
-#: Gtk/MainWindow.vala:451
+#: Gtk/MainWindow.vala:444
 msgid "Refreshing cache..."
 msgstr ""
 
-#: Gtk/MainWindow.vala:329
+#: Gtk/MainWindow.vala:322
 msgid "Remove"
 msgstr ""
 
@@ -337,7 +337,7 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Gtk/MainWindow.vala:370 Gtk/SettingsDialog.vala:56
+#: Gtk/MainWindow.vala:363 Gtk/SettingsDialog.vala:56
 msgid "Settings"
 msgstr ""
 

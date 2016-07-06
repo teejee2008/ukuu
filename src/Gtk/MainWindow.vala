@@ -214,18 +214,11 @@ public class MainWindow : Gtk.Window{
 	private void tv_refresh(){
 		var model = new Gtk.ListStore(2, typeof(LinuxKernel), typeof(Gdk.Pixbuf));
 
-		Gdk.Pixbuf pix_green = null;
-		Gdk.Pixbuf pix_red = null;
 		Gdk.Pixbuf pix_ubuntu = null;
 		Gdk.Pixbuf pix_mainline = null;
 		Gdk.Pixbuf pix_mainline_rc = null;
 		
 		try {
-			pix_green = new Gdk.Pixbuf.from_file_at_scale (
-							"/usr/share/ukuu/images/item-green.png", 16, 16, true);
-				
-			pix_red = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/item-red.png");
-			
 			pix_ubuntu = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/ubuntu-logo.png");
 
 			pix_mainline = new Gdk.Pixbuf.from_file ("/usr/share/ukuu/images/tux.png");
