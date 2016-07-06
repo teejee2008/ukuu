@@ -52,7 +52,7 @@ public class MainWindow : Gtk.Window{
 	private LinuxKernel selected_kernel;
 	
 	public MainWindow() {
-		title = "Ukuu v%s".printf(AppVersion);
+		title = "%s (Ukuu) v%s".printf(AppName, AppVersion);
         window_position = WindowPosition.CENTER;
         icon = get_app_icon(16,".svg");
 
@@ -477,12 +477,14 @@ public class MainWindow : Gtk.Window{
 					((ms_remaining * 1.0) / (60000)),
 					((ms_remaining * 1.0) % (60000)) / 1000);
 			}
-			
-			dlg.update_message(
-				message + " %ld/%ld (%s left)".printf(
-					App.progress_count,
-					App.progress_total,
-					msg_remaining));
+
+			if (App.progress_total > 0){
+				dlg.update_message(
+					message + " %ld/%ld (%s left)".printf(
+						App.progress_count,
+						App.progress_total,
+						msg_remaining));
+			}
 					
 			dlg.update_status_line();
 			dlg.update_progressbar();

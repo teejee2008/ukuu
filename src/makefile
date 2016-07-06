@@ -33,6 +33,7 @@ install:
 	mkdir -p "$(DESTDIR)$(mandir)"
 	mkdir -p "$(DESTDIR)$(man1dir)"
 	mkdir -p "$(DESTDIR)$(launcherdir)"
+	mkdir -p "$(DESTDIR)$(polkitdir)"
 	mkdir -p "$(DESTDIR)$(sharedir)/glib-2.0/schemas/"
 	mkdir -p "$(DESTDIR)$(sharedir)/${app_name}"
 	mkdir -p "$(DESTDIR)$(sharedir)/pixmaps"

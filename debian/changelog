@@ -1,3 +1,29 @@
+ukuu (16.7) trusty; urgency=medium
+
+  * Removed notification functionality
+
+  * Added icons to indicate kernel type
+
+  * Added statusbar in main window
+
+  * Fixed incorrect parsing of active kernel version string
+
+  * Offical Ubuntu kernels installed on the system will also be
+  displayed in the list
+
+  * Added option to uninstall installed Ubuntu kernels
+
+  * Fixed: The progress window would sometimes remain open even after
+  all index files are finished downloading
+
+  * Fixed: Reduced aria2 timeout to 10sec to avoid freezes while
+  downloading index files
+
+  * Added option to clean cache 'sudo ukuu --clean-cache
+
+ -- Tony George <tony.george.kol@gmail.com>  Wed, 06 Jul 2016 10:00:00 +0530
+
+
 ukuu (16.4.2) trusty; urgency=medium
 
   * Initial release
