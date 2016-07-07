@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-07-07 23:50+0530\n"
+"POT-Creation-Date: 2016-07-08 01:03+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
-#: Console/AppConsole.vala:210
+#: Console/AppConsole.vala:200
 msgid "Could not find requested version"
 msgstr ""
 
@@ -207,7 +207,7 @@ msgstr ""
 msgid "Fetching index for"
 msgstr ""
 
-#: Common/LinuxKernel.vala:328
+#: Common/LinuxKernel.vala:348
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr ""
 
@@ -237,11 +237,11 @@ msgstr ""
 msgid "Hour(s)"
 msgstr ""
 
-#: Common/LinuxKernel.vala:231
+#: Common/LinuxKernel.vala:251
 msgid "Index is fresh"
 msgstr ""
 
-#: Common/LinuxKernel.vala:228
+#: Common/LinuxKernel.vala:248
 msgid "Index is stale"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#: Gtk/MainWindow.vala:451 Console/AppConsole.vala:260
+#: Gtk/MainWindow.vala:451 Console/AppConsole.vala:328
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -346,7 +346,7 @@ msgstr ""
 msgid "Root access is required for running this application."
 msgstr ""
 
-#: Console/AppConsole.vala:214
+#: Console/AppConsole.vala:204
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 
@@ -422,7 +422,7 @@ msgstr ""
 msgid "Un-install completed with errors"
 msgstr ""
 
-#: Gtk/AppGtk.vala:119 Console/AppConsole.vala:249
+#: Gtk/AppGtk.vala:119 Console/AppConsole.vala:239
 msgid "Unknown option"
 msgstr ""
 
@@ -430,7 +430,7 @@ msgstr ""
 msgid "Use specified user's cache directory"
 msgstr ""
 
-#: Gtk/AppGtk.vala:102 Console/AppConsole.vala:139
+#: Gtk/AppGtk.vala:102 Console/AppConsole.vala:140
 msgid "Using cache directory"
 msgstr ""
 

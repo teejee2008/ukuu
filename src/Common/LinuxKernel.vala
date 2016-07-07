@@ -111,8 +111,28 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		
 		string std_out;
 		exec_sync("uname -r", out std_out, null);
+		log_debug(std_out);
+		
 		ver = std_out.strip().replace("\n","");
 		log_msg("Running kernel" + ": %s".printf(ver));
+
+		exec_sync("uname -a", out std_out, null);
+		log_debug(std_out);
+
+		string[] arr = std_out.split(ver);
+		if (arr.length > 0){
+			string[] parts = arr[1].strip().split_set(" -_");
+			string partnum = parts[0].strip();
+			if (partnum.has_prefix("#")){
+				partnum = partnum[1:partnum.length];
+				if (is_numeric(partnum) && (partnum.length <= 3)){
+					var kern = new LinuxKernel.from_version(ver);
+					ver = "%s.%s".printf(kern.version_main, partnum);
+				}
+			}
+		}
+
+		log_msg("Kernel version" + ": %s".printf(ver));
 		
 		return ver;
 	}
@@ -446,7 +466,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// Package: 4.4.0-28.47
 		
 		string ver_running = RUNNING_KERNEL.replace("-generic","");
-		//var running_kern = new LinuxKernel.from_version(ver_running);
+		var kern_running = new LinuxKernel.from_version(ver_running);
 		kernel_active = null;
 		
 		foreach(var kern in kernel_list){
@@ -483,31 +503,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					continue;
 				}
 
-				var running_kern = new LinuxKernel.from_version(ver_running);
-				
-				if (kern.version_main == "4.4.0.28.47"){
-					log_debug("checking: " + kern.version_main.to_string());
-					log_debug("with: " + running_kern.version_main.to_string());
-				}
-
-				string[] arr_r = running_kern.version_main.split(".");
-				string[] arr= kern.version_main.split(".");
-				int i = 0;
-
-				// compare first 4 numbers in version_main for ubuntu kernels
-				while ((i < arr.length) && (i < arr_r.length)){
-					if (arr[i] == arr_r[i]){
-						if (i == 3){
-							// First 4 numbers in version_main have compared equal
-							// We will assume both version strings represent the same kernel
-							kern.is_running = true;
-							kern.is_installed = true;
-							kernel_active = kern;
-							break;
-						}
-					}
-					
-					i++;
+				if (kern_running.version_main == kern.version_main){
+					kern.is_running = true;
+					kern.is_installed = true;
+					kernel_active = kern;
+					break;
 				}
 			}
 		}

@@ -154,15 +154,21 @@ public class Main : GLib.Object{
 	        log_error (e.message);
 	    }
 
+	    log_debug("Saved config file: %s".printf(APP_CONFIG_FILE));
+
 		// change owner to current user so that ukuu can access in normal mode
 	    chown(APP_CONFIG_FILE, user_login, user_login);
 
 		update_startup_script();
 	    update_startup_desktop_file();
-	    //remove_cron_jobs();
+
+	    if (user_is_admin()){
+			remove_cron_jobs();
+		}
 	}
 
 	public void load_app_config(){
+	
 		var f = File.new_for_path(APP_CONFIG_FILE);
 		if (!f.query_exists()) { return; }
 
@@ -184,6 +190,8 @@ public class Main : GLib.Object{
 
 		LinuxKernel.skip_older = hide_older;
 		LinuxKernel.skip_unstable = hide_unstable;
+
+		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}
 
 	public void exit_app(){
@@ -192,83 +200,6 @@ public class Main : GLib.Object{
 	}
 
 	// begin ------------
-
-	public void notify_user(){
-
-		LinuxKernel.check_updates();
-
-		var kern = LinuxKernel.kernel_update_major;
-		if ((kern != null) && notify_major){
-			var title = "Linux v%s Available".printf(kern.version_main);
-			var message = "Major update available for installation";
-
-			if (notify_bubble){
-				OSDNotify.notify_send(title,message,3000,"normal","info");
-			}
-			
-			if (notify_dialog){
-				
-				var win = new UpdateNotificationWindow(
-					AppName,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null);
-					
-				win.destroy.connect(Gtk.main_quit);
-				Gtk.main(); // start event loop
-			}
-			
-			log_msg(title);
-			log_msg(message);
-			return;
-		}
-
-		kern = LinuxKernel.kernel_update_minor;
-		if ((kern != null) && notify_minor && !notify_major){
-			var title = "Linux v%s Available".printf(kern.version_main);
-			var message = "Minor update available for installation";
-
-			if (notify_bubble){
-				OSDNotify.notify_send(title,message,3000,"normal","info");
-			}
-			
-			if (notify_dialog){
-				
-				var win = new UpdateNotificationWindow(
-					AppName,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null);
-					
-				win.destroy.connect(Gtk.main_quit);
-				Gtk.main(); // start event loop
-			}
-			
-			log_msg(title);
-			log_msg(message);
-			return;
-		}
-
-		// dummy
-
-		/*
-		var title = "Linux v4.7 Available";
-		var message = "Minor update available for installation";
-		
-		if (notify_bubble){
-			OSDNotify.notify_send(title,message,3000,"normal","info");
-		}
-		
-		if (notify_dialog){
-			
-			var win = new UpdateNotificationWindow(
-					AppName,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null);
-					
-			win.destroy.connect(Gtk.main_quit);
-			Gtk.main(); // start event loop
-		}
-		* */
-	}
 
 	public void remove_cron_jobs(){
 		CronTab.remove_job(get_crontab_entry_scheduled());

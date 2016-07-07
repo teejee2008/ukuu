@@ -127,6 +127,7 @@ public class AppConsole : GLib.Object {
 			case "--user":
 				string custom_user_login = args[++k];
 				App.init_paths(custom_user_login);
+				App.load_app_config();
 				break;
 			case "--help":
 			case "--h":
@@ -147,15 +148,14 @@ public class AppConsole : GLib.Object {
 			// commands ------------------------------------
 			
 			case "--check":
-
+			case "--list":
+			
 				check_if_internet_is_active();
 				
 				LinuxKernel.query(true);
 				
 				LinuxKernel.print_list();
-				
-				App.notify_user();
-				
+
 				break;
 
 			case "--notify":
@@ -164,23 +164,13 @@ public class AppConsole : GLib.Object {
 				
 				LinuxKernel.query(true);
 				
-				App.notify_user();
+				notify_user();
 				
 				break;
 
 			case "--clean-cache":
 
 				LinuxKernel.clean_cache();
-				
-				break;
-				
-			case "--list":
-				
-				check_if_internet_is_active();
-				
-				LinuxKernel.query(true);
-				
-				LinuxKernel.print_list();
 				
 				break;
 
@@ -254,6 +244,84 @@ public class AppConsole : GLib.Object {
 
 		return true;
 	}
+
+	private void notify_user(){
+
+		LinuxKernel.check_updates();
+
+		var kern = LinuxKernel.kernel_update_major;
+		if ((kern != null) && App.notify_major){
+			var title = "Linux v%s Available".printf(kern.version_main);
+			var message = "Major update available for installation";
+
+			if (App.notify_bubble){
+				OSDNotify.notify_send(title,message,3000,"normal","info");
+			}
+			
+			if (App.notify_dialog){
+				
+				var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					null);
+					
+				win.destroy.connect(Gtk.main_quit);
+				Gtk.main(); // start event loop
+			}
+			
+			log_msg(title);
+			log_msg(message);
+			return;
+		}
+
+		kern = LinuxKernel.kernel_update_minor;
+		if ((kern != null) && App.notify_minor && !App.notify_major){
+			var title = "Linux v%s Available".printf(kern.version_main);
+			var message = "Minor update available for installation";
+
+			if (App.notify_bubble){
+				OSDNotify.notify_send(title,message,3000,"normal","info");
+			}
+			
+			if (App.notify_dialog){
+				
+				var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					null);
+					
+				win.destroy.connect(Gtk.main_quit);
+				Gtk.main(); // start event loop
+			}
+			
+			log_msg(title);
+			log_msg(message);
+			return;
+		}
+
+		// dummy
+
+		/*
+		var title = "Linux v4.7 Available";
+		var message = "Minor update available for installation";
+		
+		if (App.notify_bubble){
+			OSDNotify.notify_send(title,message,3000,"normal","info");
+		}
+		
+		if (App.notify_dialog){
+			
+			var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					null);
+					
+			win.destroy.connect(Gtk.main_quit);
+			Gtk.main(); // start event loop
+		}
+		* */
+	}
+
 
 	public void check_if_internet_is_active(){
 		if (!check_internet_connectivity()){
