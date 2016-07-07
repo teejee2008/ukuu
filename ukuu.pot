@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-07-07 22:05+0530\n"
+"POT-Creation-Date: 2016-07-07 22:42+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: Console/AppConsole.vala:96
+#: Console/AppConsole.vala:98
 msgid "Admin access is required for running this application."
 msgstr ""
 
@@ -51,11 +51,11 @@ msgstr ""
 msgid "Changes"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:97
+#: Gtk/SettingsDialog.vala:120
 msgid "Check every"
 msgstr ""
 
-#: Console/AppConsole.vala:82
+#: Console/AppConsole.vala:84
 msgid "Check for kernel updates"
 msgstr ""
 
@@ -63,11 +63,11 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: Common/Main.vala:100
+#: Common/Main.vala:102
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
-#: Console/AppConsole.vala:208
+#: Console/AppConsole.vala:210
 msgid "Could not find requested version"
 msgstr ""
 
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Cron job removed"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:130
+#: Gtk/SettingsDialog.vala:153
 msgid "Day(s)"
 msgstr ""
 
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Dir not found"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:137
+#: Gtk/SettingsDialog.vala:160
 msgid "Display"
 msgstr ""
 
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Donations"
 msgstr ""
 
-#: Console/AppConsole.vala:87
+#: Console/AppConsole.vala:89
 msgid "Download packages for specified kernel"
 msgstr ""
 
@@ -224,15 +224,15 @@ msgstr ""
 msgid "File not found: %s"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:154
+#: Gtk/SettingsDialog.vala:177
 msgid "Hide kernels older than 4.0"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:143
+#: Gtk/SettingsDialog.vala:166
 msgid "Hide unstable and RC releases"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:128
+#: Gtk/SettingsDialog.vala:151
 msgid "Hour(s)"
 msgstr ""
 
@@ -248,7 +248,7 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
-#: Console/AppConsole.vala:85
+#: Console/AppConsole.vala:87
 msgid "Install specified mainline kernel"
 msgstr ""
 
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#: Gtk/MainWindow.vala:451 Console/AppConsole.vala:258
+#: Gtk/MainWindow.vala:451 Console/AppConsole.vala:260
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -276,7 +276,7 @@ msgstr ""
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
-#: Console/AppConsole.vala:84
+#: Console/AppConsole.vala:86
 msgid "List all available mainline kernels"
 msgstr ""
 
@@ -284,19 +284,19 @@ msgstr ""
 msgid "Missing Icon"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:66
+#: Gtk/SettingsDialog.vala:67
 msgid "Notification"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:72
+#: Gtk/SettingsDialog.vala:73
 msgid "Notify if a major kernel release is available"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:83
+#: Gtk/SettingsDialog.vala:84
 msgid "Notify if a point release is available for current kernel"
 msgstr ""
 
-#: Console/AppConsole.vala:83
+#: Console/AppConsole.vala:85
 msgid "Notify if kernel update is available"
 msgstr ""
 
@@ -305,11 +305,15 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: Gtk/AppGtk.vala:134 Console/AppConsole.vala:80
+#: Gtk/UpdateNotificationDialog.vala:135
+msgid "Open Ukuu"
+msgstr ""
+
+#: Gtk/AppGtk.vala:134 Console/AppConsole.vala:82
 msgid "Options"
 msgstr ""
 
-#: Common/Main.vala:101
+#: Common/Main.vala:103
 msgid "Please install required packages and try again"
 msgstr ""
 
@@ -325,11 +329,11 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: Console/AppConsole.vala:89
+#: Console/AppConsole.vala:91
 msgid "Remove files from application cache"
 msgstr ""
 
-#: Console/AppConsole.vala:86
+#: Console/AppConsole.vala:88
 msgid "Remove specified mainline kernel"
 msgstr ""
 
@@ -341,11 +345,11 @@ msgstr ""
 msgid "Root access is required for running this application."
 msgstr ""
 
-#: Console/AppConsole.vala:212
+#: Console/AppConsole.vala:214
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 
-#: Gtk/AppGtk.vala:93 Console/AppConsole.vala:97
+#: Gtk/AppGtk.vala:93 Console/AppConsole.vala:99
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
@@ -357,12 +361,20 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Gtk/MainWindow.vala:374 Gtk/SettingsDialog.vala:56
+#: Gtk/MainWindow.vala:374 Gtk/SettingsDialog.vala:57
 msgid "Settings"
 msgstr ""
 
 #: Gtk/AppGtk.vala:137
 msgid "Show all options"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:95
+msgid "Show notification bubble on desktop"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:106
+msgid "Show notification dialog"
 msgstr ""
 
 #: Gtk/MainWindow.vala:157
@@ -373,7 +385,7 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
-#: Gtk/AppGtk.vala:132 Console/AppConsole.vala:78
+#: Gtk/AppGtk.vala:132 Console/AppConsole.vala:80
 msgid "Syntax"
 msgstr ""
 
@@ -409,15 +421,15 @@ msgstr ""
 msgid "Un-install completed with errors"
 msgstr ""
 
-#: Gtk/AppGtk.vala:119 Console/AppConsole.vala:247
+#: Gtk/AppGtk.vala:119 Console/AppConsole.vala:249
 msgid "Unknown option"
 msgstr ""
 
-#: Console/AppConsole.vala:88
+#: Console/AppConsole.vala:90
 msgid "Use specified user's cache directory"
 msgstr ""
 
-#: Gtk/AppGtk.vala:102 Console/AppConsole.vala:137
+#: Gtk/AppGtk.vala:102 Console/AppConsole.vala:139
 msgid "Using cache directory"
 msgstr ""
 
@@ -433,6 +445,6 @@ msgstr ""
 msgid "W"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:132
+#: Gtk/SettingsDialog.vala:155
 msgid "Week(s)"
 msgstr ""

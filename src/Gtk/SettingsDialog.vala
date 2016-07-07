@@ -36,9 +36,10 @@ using TeeJee.Misc;
 
 public class SettingsDialog : Gtk.Dialog {
 
-	private Gtk.TreeView tv;
 	private Gtk.CheckButton chk_notify_major;
 	private Gtk.CheckButton chk_notify_minor;
+	private Gtk.CheckButton chk_notify_bubble;
+	private Gtk.CheckButton chk_notify_dialog;
 	private Gtk.CheckButton chk_hide_unstable;
 	private Gtk.CheckButton chk_hide_older;
 		
@@ -88,6 +89,28 @@ public class SettingsDialog : Gtk.Dialog {
 		
 		chk.toggled.connect(()=>{
 			App.notify_minor = chk_notify_minor.active;
+		});
+
+		// show bubble
+		chk = new Gtk.CheckButton.with_label(_("Show notification bubble on desktop"));
+		chk.active = App.notify_bubble;
+		chk.margin_left = 6;
+		vbox_main.add(chk);
+		chk_notify_bubble = chk;
+
+		chk.toggled.connect(()=>{
+			App.notify_bubble = chk_notify_bubble.active;
+		});
+		
+		// show window
+		chk = new Gtk.CheckButton.with_label(_("Show notification dialog"));
+		chk.active = App.notify_dialog;
+		chk.margin_left = 6;
+		vbox_main.add(chk);
+		chk_notify_dialog = chk;
+		
+		chk.toggled.connect(()=>{
+			App.notify_dialog = chk_notify_dialog.active;
 		});
 
 		// notification interval

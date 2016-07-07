@@ -50,6 +50,8 @@ public class AppConsole : GLib.Object {
 	public static int main (string[] args) {
 		set_locale();
 
+		Gtk.init(ref args);
+
 		init_tmp(AppShortName);
 
 		//check_if_admin();

@@ -59,6 +59,8 @@ public class Main : GLib.Object{
 	public bool GUI_MODE = false;
 	public bool notify_major = true;
 	public bool notify_minor = true;
+	public bool notify_bubble = true;
+	public bool notify_dialog = true;
 	public bool hide_unstable = true;
 	public bool hide_older = true;
 	public int notify_interval_unit = 0;
@@ -198,8 +200,15 @@ public class Main : GLib.Object{
 		var kern = LinuxKernel.kernel_update_major;
 		if ((kern != null) && notify_major){
 			var title = "Linux %s Available".printf(kern.version_main);
-			var message = "Running kernel is %s".printf(LinuxKernel.kernel_active.version_main);
-			OSDNotify.notify_send(title,message,3000,"normal","info");
+			var message = "Major kernel update %s is available for installation".printf(kern.version_main);
+
+			if (notify_bubble){
+				OSDNotify.notify_send(title,message,3000,"normal","info");
+			}
+			if (notify_dialog){
+				new UpdateNotificationDialog(title, message, null);
+			}
+			
 			log_msg(title);
 			log_msg(message);
 			return;
@@ -208,17 +217,19 @@ public class Main : GLib.Object{
 		kern = LinuxKernel.kernel_update_minor;
 		if ((kern != null) && notify_minor && !notify_major){
 			var title = "Linux %s Available".printf(kern.version_main);
-			var message = "Running kernel is %s".printf(LinuxKernel.kernel_active.version_main);
-			message += "\nInstalling this update is recommended";
-			OSDNotify.notify_send(title,message,3000,"normal","info");
+			var message = "Minor kernel update %s is available for installation".printf(kern.version_main);
+
+			if (notify_bubble){
+				OSDNotify.notify_send(title,message,3000,"normal","info");
+			}
+			if (notify_dialog){
+				new UpdateNotificationDialog(title, message, null);
+			}
+			
 			log_msg(title);
 			log_msg(message);
 			return;
 		}
-
-		//var message = "Your kernel is up-to-date";
-		//OSDNotify.notify_send(message,"\n" + message,3000,"normal","info");
-		//log_msg(message);
 	}
 
 	public void remove_cron_jobs(){
