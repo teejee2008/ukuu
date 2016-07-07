@@ -1,5 +1,5 @@
 /*
- * UpdateNotificationDialog.vala
+ * UpdateNotificationWindow.vala
  *
  * Copyright 2015 Tony George <teejee2008@gmail.com>
  *
@@ -34,7 +34,7 @@ using TeeJee.Multimedia;
 using TeeJee.System;
 using TeeJee.Misc;
 
-public class UpdateNotificationDialog : Gtk.Dialog {
+public class UpdateNotificationWindow : Gtk.Window {
 	private Gtk.Box vbox_main;
 	private Gtk.Label lbl_msg;
 	private Gtk.ScrolledWindow sw_msg;
@@ -43,7 +43,7 @@ public class UpdateNotificationDialog : Gtk.Dialog {
 	private string msg_body;
 	private Gtk.MessageType msg_type;
 	
-	public UpdateNotificationDialog(
+	public UpdateNotificationWindow(
 		string _msg_title, string _msg_body, Window? parent) {
 			
 		set_transient_for(parent);
@@ -77,9 +77,10 @@ public class UpdateNotificationDialog : Gtk.Dialog {
 		skip_pager_hint = true;
 		
 		//vbox_main
-		vbox_main = get_content_area () as Gtk.Box;
+		vbox_main = new Box (Orientation.VERTICAL, 6);
 		vbox_main.margin = 6;
-
+		add(vbox_main);
+		
 		//hbox_contents
 		var hbox_contents = new Box (Orientation.HORIZONTAL, 6);
 		hbox_contents.margin = 6;
@@ -102,20 +103,26 @@ public class UpdateNotificationDialog : Gtk.Dialog {
 			break;
 		}
 
-		//img
+		// img
 		var img = new Image.from_icon_name(icon_name, Gtk.IconSize.DIALOG);
 		img.margin_right = 12;
 		hbox_contents.add(img);
-		
-		//lbl_msg
+
+		// vbox_msg
+		var vbox_msg = new Box (Orientation.VERTICAL, 24);
+		vbox_msg.margin_right = 6;
+		hbox_contents.add(vbox_msg);
+
+		// lbl_msg
 		lbl_msg = new Gtk.Label(msg_body);
+		lbl_msg.set_use_markup(true);
 		lbl_msg.xalign = (float) 0.0;
 		lbl_msg.max_width_chars = 70;
 		lbl_msg.wrap = true;
 		lbl_msg.wrap_mode = Pango.WrapMode.WORD;
 		//hbox_contents.add(lbl_msg);
 
-		//sw_msg
+		// sw_msg
 		sw_msg = new ScrolledWindow(null, null);
 		//sw_msg.set_shadow_type (ShadowType.ETCHED_IN);
 		sw_msg.add (lbl_msg);
@@ -123,22 +130,35 @@ public class UpdateNotificationDialog : Gtk.Dialog {
 		sw_msg.hscrollbar_policy = PolicyType.NEVER;
 		sw_msg.vscrollbar_policy = PolicyType.AUTOMATIC;
 		//sw_msg.set_size_request();
-		hbox_contents.add(sw_msg);
+		vbox_msg.add(sw_msg);
 
 		// actions
-		var button = (Gtk.Button) add_button ("_Ok", Gtk.ResponseType.OK);
-		button.clicked.connect(()=>{
-			this.close();
-		});
+		var hbox_actions = new Box (Orientation.HORIZONTAL, 6);
+		//hbox_actions.margin = 6;
+		vbox_msg.add (hbox_actions);
 
-		// open Ukuu
-		button = (Gtk.Button) add_button (_("Open Ukuu"), Gtk.ResponseType.OK);
+		//var size_group = new Gtk.SizeGroup(SizeGroupMode.HORIZONTAL);
+		
+		// open ukuu
+		var button = new Gtk.Button.with_label("    " + _("Open Ukuu") + "    ");
+		hbox_actions.add(button);
+		//size_group.add_widget(button);
+		
 		button.clicked.connect(()=>{
-			exec_script_async("ukuu-gtk");
+			exec_script_async("ukuu-gtk &");
+			//Gtk.main_quit();
 			exit(0);
 		});
+
+		// ignore
+		button = new Gtk.Button.with_label("    " + _("Cancel") + "    ");
+		hbox_actions.add(button);
+		//size_group.add_widget(button);
 		
-		//btn_cancel = (Gtk.Button) add_button ("_Cancel", Gtk.ResponseType.CANCEL);
+		button.clicked.connect(()=>{
+			this.destroy();
+		});
+
 	}
 }
 

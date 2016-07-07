@@ -199,14 +199,22 @@ public class Main : GLib.Object{
 
 		var kern = LinuxKernel.kernel_update_major;
 		if ((kern != null) && notify_major){
-			var title = "Linux %s Available".printf(kern.version_main);
-			var message = "Major kernel update %s is available for installation".printf(kern.version_main);
+			var title = "Linux v%s Available".printf(kern.version_main);
+			var message = "Major update available for installation";
 
 			if (notify_bubble){
 				OSDNotify.notify_send(title,message,3000,"normal","info");
 			}
+			
 			if (notify_dialog){
-				new UpdateNotificationDialog(title, message, null);
+				
+				var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					null);
+					
+				win.destroy.connect(Gtk.main_quit);
+				Gtk.main(); // start event loop
 			}
 			
 			log_msg(title);
@@ -216,20 +224,50 @@ public class Main : GLib.Object{
 
 		kern = LinuxKernel.kernel_update_minor;
 		if ((kern != null) && notify_minor && !notify_major){
-			var title = "Linux %s Available".printf(kern.version_main);
-			var message = "Minor kernel update %s is available for installation".printf(kern.version_main);
+			var title = "Linux v%s Available".printf(kern.version_main);
+			var message = "Minor update available for installation";
 
 			if (notify_bubble){
 				OSDNotify.notify_send(title,message,3000,"normal","info");
 			}
+			
 			if (notify_dialog){
-				new UpdateNotificationDialog(title, message, null);
+				
+				var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					null);
+					
+				win.destroy.connect(Gtk.main_quit);
+				Gtk.main(); // start event loop
 			}
 			
 			log_msg(title);
 			log_msg(message);
 			return;
 		}
+
+		// dummy
+
+		/*
+		var title = "Linux v4.7 Available";
+		var message = "Minor update available for installation";
+		
+		if (notify_bubble){
+			OSDNotify.notify_send(title,message,3000,"normal","info");
+		}
+		
+		if (notify_dialog){
+			
+			var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					null);
+					
+			win.destroy.connect(Gtk.main_quit);
+			Gtk.main(); // start event loop
+		}
+		* */
 	}
 
 	public void remove_cron_jobs(){
@@ -270,8 +308,7 @@ public class Main : GLib.Object{
 		txt += "sleep %ds\n".printf(startup_delay);
 		txt += "while true\n";
 		txt += "do\n";
-		txt += "  ukuu --notify\n";
-		txt += "  sleep %d%s\n".printf(count, suffix);
+		txt += "  ukuu --notify && sleep %d%s \n".printf(count, suffix);
 		txt += "done\n";
 		
 		if (file_exists(STARTUP_SCRIPT_FILE)){

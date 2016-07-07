@@ -70,7 +70,7 @@ public class SettingsDialog : Gtk.Dialog {
 		vbox_main.add (label);
 		
 		// chk_notify_major
-		var chk = new Gtk.CheckButton.with_label(_("Notify if a major kernel release is available"));
+		var chk = new Gtk.CheckButton.with_label(_("Notify if a major release is available"));
 		chk.active = App.notify_major;
 		chk.margin_left = 6;
 		vbox_main.add(chk);
@@ -81,7 +81,7 @@ public class SettingsDialog : Gtk.Dialog {
 		});
 		
 		// chk_notify_minor
-		chk = new Gtk.CheckButton.with_label(_("Notify if a point release is available for current kernel"));
+		chk = new Gtk.CheckButton.with_label(_("Notify if a point release is available"));
 		chk.active = App.notify_minor;
 		chk.margin_left = 6;
 		vbox_main.add(chk);
@@ -160,6 +160,7 @@ public class SettingsDialog : Gtk.Dialog {
 		label = new Label("<b>" + _("Display") + "</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
+		label.margin_top = 12;
 		vbox_main.add (label);
 
 		// chk_hide_unstable
