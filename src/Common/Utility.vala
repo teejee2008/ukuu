@@ -1421,8 +1421,13 @@ namespace TeeJee.System{
 		return user_name;
 	}
 
-	public string get_user_home(){
+	public string get_user_home(string custom_user_login = ""){
 		string user_login = get_user_login();
+
+		if (custom_user_login.length > 0){
+			user_login = custom_user_login;
+		}
+		
 		if (user_login == "root"){
 			return "/root";
 		}
@@ -2682,7 +2687,9 @@ namespace TeeJee.Misc {
 		return millis;
 	}
 
-	public string string_replace(string str, string search, string replacement, int count = -1){
+	public string string_replace(
+		string str, string search, string replacement, int count = -1){
+			
 		string[] arr = str.split(search);
 		string new_txt = "";
 		bool first = true;
@@ -2777,7 +2784,10 @@ namespace TeeJee.Misc {
 		return c;
 	}
 
-	public string random_string(int length = 8, string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"){
+	public string random_string(
+		int length = 8,
+		string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"){
+
 		string random = "";
 
 		for(int i=0;i<length;i++){
@@ -2796,5 +2806,16 @@ namespace TeeJee.Misc {
 			}
 		}
 		return true;
+	}
+
+	public string format_time_left(ulong millis){
+		double mins = (millis * 1.0) / 60000;
+		double secs = ((millis * 1.0) % 60000) / 1000;
+		string txt = "";
+		if (mins >= 1){
+			txt = "%.0fm".printf(mins);
+		}
+		txt = "%.0fs".printf(secs);
+		return txt;
 	}
 }

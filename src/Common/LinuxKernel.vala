@@ -36,10 +36,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// static
 	
 	public static const string URI_KERNEL_UBUNTU_MAINLINE = "http://kernel.ubuntu.com/~kernel-ppa/mainline/";
-	public static const string CACHE_DIR = "/var/cache/ukuu";
+	public static string CACHE_DIR = "/var/cache/ukuu";
 	public static string NATIVE_ARCH = "";
 	public static string LINUX_DISTRO = "";
 	public static string RUNNING_KERNEL = "";
+	public static string CURRENT_USER = "";
+	public static string CURRENT_USER_HOME = "";
 	public static bool skip_older = true;
 	public static bool skip_unstable = true;
 
@@ -192,17 +194,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// static
 	
-	public static void query(bool refresh, bool wait){
+	public static void query(bool wait){
 
 		check_if_initialized();
-		
-		var one_hour_before = (new DateTime.now_local()).add_hours(-1);
-		if (last_refreshed_date.compare(one_hour_before) < 0){
-			refresh = true;
-		}
 
-		_temp_refresh = refresh;
-		
 		try {
 			task_is_running = true;
 			cancelled = false;
@@ -225,8 +220,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_debug("query: skip_unstable: %s".printf(skip_unstable.to_string()));
 
 		LinuxKernel.download_count = 0;
-		
-		if (_temp_refresh){
+
+		bool refresh = false;
+		var one_hour_before = (new DateTime.now_local()).add_hours(-1);
+		if (last_refreshed_date.compare(one_hour_before) < 0){
+			refresh = true;
+			log_debug(_("Index is stale"));
+		}
+		else{
+			log_debug(_("Index is fresh"));
+		}
+
+		if (refresh){
 			download_index();
 		}
 
@@ -1042,8 +1047,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_draw_line();
 		log_msg(_("Available Kernels"));
 		log_draw_line();
-		
+
+		var kern_4 = new LinuxKernel.from_version("4.0");
 		foreach(var kern in kernel_list){
+			if (!kern.is_valid){
+				continue;
+			}
+			if (skip_unstable && kern.is_unstable){
+				continue;
+			}
+			if (skip_older && (kern.compare_to(kern_4) < 0)){
+				continue;
+			}
+			
 			var extra = kern.version_extra;
 			extra = extra.has_prefix("-") ? extra[1:extra.length] : extra;
 			var desc = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
@@ -1081,9 +1097,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				stdout.flush();
 			}
 
-			if (file_exists(file_path)){
+			if (file_exists(file_path)){				
 				stdout.printf("\r%-70s\n".printf(_("OK")));
 				stdout.flush();
+				
+				if (user_is_admin()){
+					chown(file_path, CURRENT_USER, CURRENT_USER);
+				}
 			}
 			else{
 				stdout.printf("\r%-70s\n".printf(_("ERROR")));
@@ -1097,6 +1117,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	// dep: dpkg
 	public bool install(bool write_to_terminal){
+
+		// check if installed
+		if (is_installed){
+			log_error(_("This kernel is already installed."));
+			return false;
+		}
+					
 		bool ok = download_packages();
 		int status = -1;
 		
@@ -1135,7 +1162,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public bool remove(bool write_to_terminal){
 		bool ok = true;
 		int status = -1;
-		
+
+		// check if running
+		if (is_running){
+			log_error(_("This kernel is currently running and cannot be removed.\n Install another kernel before removing this one."));
+			return false;
+		}
+					
 		log_msg("Preparing to remove '%s'".printf(name));
 		
 		var cmd = "dpkg -r ";

@@ -54,7 +54,7 @@ public class AppGtk : GLib.Object {
 
 		init_tmp(AppShortName);
 		
-		check_if_admin();
+		//check_if_admin();
 
 		LOG_TIMESTAMP = false;
 
@@ -67,7 +67,7 @@ public class AppGtk : GLib.Object {
 
 		App = new Main(args, true);
 		parse_arguments(args);
-
+		
 		var window = new MainWindow ();
 		window.destroy.connect(Gtk.main_quit);
 		window.show_all();
@@ -98,6 +98,9 @@ public class AppGtk : GLib.Object {
 	}
 
 	public static bool parse_arguments(string[] args) {
+
+		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
+		
 		//parse options
 		for (int k = 1; k < args.length; k++) // Oth arg is app path
 		{

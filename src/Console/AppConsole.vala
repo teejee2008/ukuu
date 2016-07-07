@@ -85,6 +85,7 @@ public class AppConsole : GLib.Object {
 		msg += "  --install <name>  " + _("Install specified mainline kernel") + "\n";
 		msg += "  --remove <name>   " + _("Remove specified mainline kernel") + "\n";
 		msg += "  --download <name> " + _("Download packages for specified kernel") + "\n";
+		msg += "  --user <username> " + _("Use specified user's cache directory") + "\n";
 		msg += "  --clean-cache     " + _("Remove files from application cache") + "\n";
 		msg += "\n";
 		return msg;
@@ -121,6 +122,10 @@ public class AppConsole : GLib.Object {
 			case "--debug":
 				LOG_DEBUG = true;
 				break;
+			case "--user":
+				string custom_user_login = args[++k];
+				App.init_paths(custom_user_login);
+				break;
 			case "--help":
 			case "--h":
 			case "-h":
@@ -128,6 +133,8 @@ public class AppConsole : GLib.Object {
 				return true;
 			}
 		}
+
+		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
 
 		// then parse commands ---------------------------
 		
@@ -141,7 +148,7 @@ public class AppConsole : GLib.Object {
 
 				check_if_internet_is_active();
 				
-				LinuxKernel.query(true, true);
+				LinuxKernel.query(true);
 				
 				LinuxKernel.print_list();
 				
@@ -153,16 +160,14 @@ public class AppConsole : GLib.Object {
 
 				check_if_internet_is_active();
 				
-				LinuxKernel.query(false, true);
+				LinuxKernel.query(true);
 				
 				App.notify_user();
 				
 				break;
 
 			case "--clean-cache":
-			
-				check_if_admin();
-				
+
 				LinuxKernel.clean_cache();
 				
 				break;
@@ -171,7 +176,7 @@ public class AppConsole : GLib.Object {
 				
 				check_if_internet_is_active();
 				
-				LinuxKernel.query(false, true);
+				LinuxKernel.query(true);
 				
 				LinuxKernel.print_list();
 				
@@ -185,7 +190,7 @@ public class AppConsole : GLib.Object {
 
 				check_if_internet_is_active();
 				
-				LinuxKernel.query(false, true);
+				LinuxKernel.query(true);
 			
 				k++;
 
@@ -199,23 +204,20 @@ public class AppConsole : GLib.Object {
 				}
 
 				if (kern_requested == null){
-					log_error(_("Could not find requested version") + ": %s".printf(requested_version));
+					
+					var msg = _("Could not find requested version");
+					msg += ": %s".printf(requested_version);
+					log_error(msg);
+					
 					log_error(_("Run 'ukuu --list' and use the version string listed in first column"));
+					
 					exit(1);
 				}
 
 				if (args[k-1] == "--remove"){
-					if (kern_requested.is_running){
-						log_error(_("This kernel is currently running and cannot be removed.\n Install another kernel before removing this one."));
-						exit(1);
-					}
 					return kern_requested.remove(true);
 				}
 				else if (args[k-1] == "--install"){
-					if (kern_requested.is_installed){
-						log_error(_("This kernel is already installed."));
-						exit(1);
-					}
 					return kern_requested.install(true);
 				}
 				else{
@@ -224,7 +226,7 @@ public class AppConsole : GLib.Object {
 
 			// options without argument --------------------------
 			
-			case "--option-without-argument":
+			case "--option-without-argument": //dummy
 			case "--help":
 			case "--h":
 			case "-h":
@@ -234,7 +236,8 @@ public class AppConsole : GLib.Object {
 
 			// options with argument --------------------------
 
-			case "--option-with-argument":
+			case "--option-with-argument": //dummy
+			case "--user":
 				k += 1;
 				// already handled - do nothing
 				break;

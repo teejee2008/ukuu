@@ -45,7 +45,7 @@ public class MainWindow : Gtk.Window{
 	
 	// helper members
 
-	private int window_width = 400;
+	private int window_width = 600;
 	private int window_height = 400;
 	private uint tmr_init = -1;
 
@@ -308,7 +308,12 @@ public class MainWindow : Gtk.Window{
 				});
 
 				string sh = "";
-				sh += "ukuu --install %s\n".printf(selected_kernel.name);
+				sh += "pkexec ukuu --user %s".printf(App.user_login);
+				if (LOG_DEBUG){
+					sh += " --debug";
+				}
+				sh += " --install %s\n".printf(selected_kernel.name);
+					
 				sh += "echo ''\n";
 				sh += "echo 'Close window to exit...'\n";
 
@@ -338,7 +343,13 @@ public class MainWindow : Gtk.Window{
 				});
 
 				string sh = "";
-				sh += "ukuu --remove %s\n".printf(selected_kernel.name);
+				
+				sh += "pkexec ukuu --user %s".printf(App.user_login);
+				if (LOG_DEBUG){
+					sh += " --debug";
+				}
+				sh += " --remove %s\n".printf(selected_kernel.name);
+					
 				sh += "echo ''\n";
 				sh += "echo 'Close window to exit...'\n";
 
@@ -434,19 +445,19 @@ public class MainWindow : Gtk.Window{
 		dialog.show_all();
 	}
 
-	private void refresh_cache(){
+	private void refresh_cache(bool download_index = true){
 
 		if (!check_internet_connectivity()){
 			gtk_messagebox("",_("Internet connection is not active"),this,true);
 			exit(1);
 		}
 		
-		string message = _("Refreshing cache...");
+		string message = _("Refreshing...");
 		var dlg = new ProgressWindow.with_parent(this, message, false);
 		dlg.show_all();
 		gtk_do_events();
 		
-		LinuxKernel.query(true, false);
+		LinuxKernel.query(false);
 
 		var timer = timer_start();
 
@@ -466,9 +477,7 @@ public class MainWindow : Gtk.Window{
 			ulong ms_remaining = (ulong)((ms_elapsed * 1.0) / App.progress_count) * remaining_count;
 
 			if ((count % 5) == 0){
-				msg_remaining = "%.0fm %.0fs".printf(
-					((ms_remaining * 1.0) / (60000)),
-					((ms_remaining * 1.0) % (60000)) / 1000);
+				msg_remaining = format_time_left(ms_remaining);
 			}
 
 			if (App.progress_total > 0){

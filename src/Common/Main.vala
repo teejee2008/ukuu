@@ -70,11 +70,11 @@ public class Main : GLib.Object{
 		
 		LOG_TIMESTAMP = false;
 
-		init_paths();
-
 		Package.initialize();
 		
 		LinuxKernel.initialize();
+
+		init_paths();
 
 		load_app_config();
 	}
@@ -105,18 +105,27 @@ public class Main : GLib.Object{
 		}
 	}
 
-	private void init_paths(){
+	public void init_paths(string custom_user_login = ""){
 		// temp dir 
 		init_tmp(AppShortName);
 
 		// user info
 		user_login = get_user_login();
-		user_home = get_user_home();
 
+		if (custom_user_login.length > 0){
+			user_login = custom_user_login;
+		}
+		
+		user_home = get_user_home(user_login);
+		
 		// app config files
 		APP_CONFIG_FILE = user_home + "/.config/ukuu.json";
 		STARTUP_SCRIPT_FILE = user_home + "/.config/ukuu-notify.sh";
 		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/ukuu.desktop";
+
+		LinuxKernel.CACHE_DIR = user_home + "/.config/ukuu";
+		LinuxKernel.CURRENT_USER = user_login;
+		LinuxKernel.CURRENT_USER_HOME = user_home;
 	}
 	
 	public void save_app_config(){
