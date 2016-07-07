@@ -41,7 +41,6 @@ install:
 	#binary
 	install -m 0755 ${app_name} "$(DESTDIR)$(bindir)"
 	install -m 0755 ${app_name}-gtk "$(DESTDIR)$(bindir)"
-	install -m 0755 ${app_name}-launcher "$(DESTDIR)$(bindir)"
 	install -m 0755 ${app_name}-uninstall "$(DESTDIR)$(bindir)"
 
 	#shared files
@@ -51,9 +50,6 @@ install:
 	#polkit policy file
 	install -m 0644 ./share/polkit-1/actions/in.teejeetech.pkexec.ukuu-gtk.policy "$(DESTDIR)$(polkitdir)"
 	
-	#launcher
-	install -m 0755 ${app_name}.desktop "$(DESTDIR)$(launcherdir)"
-
 	#app icon
 	install -m 0755 ./share/pixmaps/${app_name}.* "$(DESTDIR)$(sharedir)/pixmaps"
 
@@ -73,9 +69,6 @@ uninstall:
 	#polkit policy file
 	rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu-gtk.policy"
 	
-	#launcher
-	rm -f "$(DESTDIR)$(launcherdir)/${app_name}.desktop"
-
 	#app icon
 	rm -f "$(DESTDIR)$(sharedir)/pixmaps/${app_name}.png"
 

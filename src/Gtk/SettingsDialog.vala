@@ -66,13 +66,13 @@ public class SettingsDialog : Gtk.Dialog {
 		var label = new Label("<b>" + _("Notification") + "</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
-		//vbox_main.add (label);
+		vbox_main.add (label);
 		
 		// chk_notify_major
 		var chk = new Gtk.CheckButton.with_label(_("Notify if a major kernel release is available"));
 		chk.active = App.notify_major;
 		chk.margin_left = 6;
-		//vbox_main.add(chk);
+		vbox_main.add(chk);
 		chk_notify_major = chk;
 
 		chk.toggled.connect(()=>{
@@ -83,13 +83,56 @@ public class SettingsDialog : Gtk.Dialog {
 		chk = new Gtk.CheckButton.with_label(_("Notify if a point release is available for current kernel"));
 		chk.active = App.notify_minor;
 		chk.margin_left = 6;
-		//vbox_main.add(chk);
+		vbox_main.add(chk);
 		chk_notify_minor = chk;
 		
 		chk.toggled.connect(()=>{
 			App.notify_minor = chk_notify_minor.active;
 		});
 
+		// notification interval
+		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		vbox_main.add (hbox);
+		
+		label = new Label(_("Check every"));
+		label.xalign = (float) 0.0;
+		label.margin_left = 6;
+		hbox.add (label);
+
+		var adjustment = new Gtk.Adjustment(App.notify_interval_value, 1, 52, 1, 1, 0);
+		var spin = new Gtk.SpinButton (adjustment, 1, 0);
+		spin.xalign = (float) 0.5;
+		hbox.add(spin);
+
+		spin.changed.connect(()=>{
+			App.notify_interval_value = (int) spin.get_value();
+			//log_debug("spin: %lf".printf(spin.get_value()));
+		});
+
+		// combo
+		var combo = new Gtk.ComboBox();
+		var cell_text = new Gtk.CellRendererText();
+        combo.pack_start(cell_text, false);
+        combo.set_attributes(cell_text, "text", 0);
+        hbox.add(combo);
+
+        combo.changed.connect(()=>{
+			App.notify_interval_unit = combo.active;
+			//log_debug("combo: %lf".printf(combo.active));
+		});
+
+        //populate
+        TreeIter iter;
+		var model = new Gtk.ListStore (2, typeof (string), typeof (string));
+		model.append (out iter);
+		model.set (iter,0,_("Hour(s)"),1,"hour");
+		model.append (out iter);
+		model.set (iter,0,_("Day(s)"),1,"day");
+		model.append (out iter);
+		model.set (iter,0,_("Week(s)"),1,"week");
+		combo.set_model(model);
+		combo.set_active(App.notify_interval_unit);
+		
 		// display
 		label = new Label("<b>" + _("Display") + "</b>");
 		label.set_use_markup(true);

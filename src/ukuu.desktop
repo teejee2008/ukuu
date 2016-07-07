@@ -1,12 +1,12 @@
 [Desktop Entry]
-Name=Kernel Upgrade Utility
+Name=Ukuu Kernel Update Utility
 MimeType=
-Exec=ukuu-launcher
+Exec=ukuu-gtk
 Type=Application
-GenericName=Kernel Upgrade Utility
+GenericName=Kernel Update Utility
 Terminal=false
 Icon=ukuu
-Comment=Kernel Upgrade Utility
+Comment=Kernel Update Utility
 X-KDE-StartupNotify=false
 Categories=System;
-Name[en_IN]=Kernel Upgrade Utility
+Name[en_IN]=Kernel Update Utility

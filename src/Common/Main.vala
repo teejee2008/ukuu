@@ -43,7 +43,7 @@ public class Main : GLib.Object{
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
-	public int startup_delay = 180;
+	public int startup_delay = 300;
 	public string user_login = "";
 	public string user_home = "";
 	
@@ -61,6 +61,8 @@ public class Main : GLib.Object{
 	public bool notify_minor = true;
 	public bool hide_unstable = true;
 	public bool hide_older = true;
+	public int notify_interval_unit = 0;
+	public int notify_interval_value = 2;
 	
 	// constructors ------------
 	
@@ -134,6 +136,8 @@ public class Main : GLib.Object{
 		config.set_string_member("notify_minor", notify_minor.to_string());
 		config.set_string_member("hide_unstable", hide_unstable.to_string());
 		config.set_string_member("hide_older", hide_older.to_string());
+		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
+		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -151,9 +155,9 @@ public class Main : GLib.Object{
 		// change owner to current user so that ukuu can access in normal mode
 	    chown(APP_CONFIG_FILE, user_login, user_login);
 
-		//update_startup_script();
-	    //update_startup_desktop_file();
-	    remove_cron_jobs();
+		update_startup_script();
+	    update_startup_desktop_file();
+	    //remove_cron_jobs();
 	}
 
 	public void load_app_config(){
@@ -173,6 +177,8 @@ public class Main : GLib.Object{
 		notify_minor = json_get_bool(config, "notify_minor", true);
 		hide_unstable = json_get_bool(config, "hide_unstable", true);
 		hide_older = json_get_bool(config, "hide_older", true);
+		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
+		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
 
 		LinuxKernel.skip_older = hide_older;
 		LinuxKernel.skip_unstable = hide_unstable;
@@ -193,7 +199,7 @@ public class Main : GLib.Object{
 		if ((kern != null) && notify_major){
 			var title = "Linux %s Available".printf(kern.version_main);
 			var message = "Running kernel is %s".printf(LinuxKernel.kernel_active.version_main);
-			OSDNotify.notify_send(title,"\n" + message,3000,"normal","info");
+			OSDNotify.notify_send(title,message,3000,"normal","info");
 			log_msg(title);
 			log_msg(message);
 			return;
@@ -204,11 +210,15 @@ public class Main : GLib.Object{
 			var title = "Linux %s Available".printf(kern.version_main);
 			var message = "Running kernel is %s".printf(LinuxKernel.kernel_active.version_main);
 			message += "\nInstalling this update is recommended";
-			OSDNotify.notify_send(title,"\n" + message,3000,"normal","info");
+			OSDNotify.notify_send(title,message,3000,"normal","info");
 			log_msg(title);
 			log_msg(message);
 			return;
 		}
+
+		//var message = "Your kernel is up-to-date";
+		//OSDNotify.notify_send(message,"\n" + message,3000,"normal","info");
+		//log_msg(message);
 	}
 
 	public void remove_cron_jobs(){
@@ -226,9 +236,32 @@ public class Main : GLib.Object{
 
 	private void update_startup_script(){
 
+		int count = App.notify_interval_value;
+		
+		string suffix = "h";
+		switch (App.notify_interval_unit){
+		case 0: // hour
+			suffix = "h";
+			break;
+		case 1: // day
+			suffix = "d";
+			break;
+		case 2: // week
+			suffix = "d";
+			count = App.notify_interval_value * 7;
+			break;
+		}
+
+		//count = 20;
+		//suffix = "s";
+		
 		string txt = "";
 		txt += "sleep %ds\n".printf(startup_delay);
-		txt += "ukuu --notify\n";
+		txt += "while true\n";
+		txt += "do\n";
+		txt += "  ukuu --notify\n";
+		txt += "  sleep %d%s\n".printf(count, suffix);
+		txt += "done\n";
 		
 		if (file_exists(STARTUP_SCRIPT_FILE)){
 			file_delete(STARTUP_SCRIPT_FILE);

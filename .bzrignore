@@ -1,0 +1,6 @@
+src/ukuu
+src/ukuu-gtk
+installer/amd64
+installer/i386
+installer/*.deb
+installer/*.run
