@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-07-07 21:05+0530\n"
+"POT-Creation-Date: 2016-07-07 21:11+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1050
+#: Common/LinuxKernel.vala:1048
 msgid "Available Kernels"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1088
+#: Common/LinuxKernel.vala:1086
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -143,7 +143,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1111
+#: Common/LinuxKernel.vala:1109
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -188,17 +188,17 @@ msgstr ""
 msgid "Failed to write file"
 msgstr ""
 
-#: Common/LinuxKernel.vala:945
+#: Common/LinuxKernel.vala:943
 #, c-format
 msgid "Fetching changelog for"
 msgstr ""
 
-#: Common/LinuxKernel.vala:903
+#: Common/LinuxKernel.vala:901
 #, c-format
 msgid "Fetching index for"
 msgstr ""
 
-#: Common/LinuxKernel.vala:330
+#: Common/LinuxKernel.vala:328
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr ""
 
@@ -206,7 +206,7 @@ msgstr ""
 msgid "File is missing"
 msgstr ""
 
-#: Common/LinuxKernel.vala:959 Common/DownloadManager.vala:346
+#: Common/LinuxKernel.vala:957 Common/DownloadManager.vala:346
 #: Common/Utility.vala:271 Common/Utility.vala:457
 msgid "File not found"
 msgstr ""
@@ -240,15 +240,15 @@ msgstr ""
 msgid "Install specified mainline kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1156
+#: Common/LinuxKernel.vala:1154
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1153
+#: Common/LinuxKernel.vala:1151
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1067
+#: Common/LinuxKernel.vala:1065
 msgid "Installed"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:1103
+#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:1101
 #, c-format
 msgid "OK"
 msgstr ""
@@ -337,7 +337,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1067
+#: Common/LinuxKernel.vala:1065
 msgid "Running"
 msgstr ""
 
@@ -374,11 +374,11 @@ msgstr ""
 msgid "Third Party Tools &amp; Software"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1125
+#: Common/LinuxKernel.vala:1123
 msgid "This kernel is already installed."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1170
+#: Common/LinuxKernel.vala:1168
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -389,11 +389,11 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1210
+#: Common/LinuxKernel.vala:1208
 msgid "Un-install completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1213
+#: Common/LinuxKernel.vala:1211
 msgid "Un-install completed with errors"
 msgstr ""
 

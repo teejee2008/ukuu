@@ -2813,9 +2813,9 @@ namespace TeeJee.Misc {
 		double secs = ((millis * 1.0) % 60000) / 1000;
 		string txt = "";
 		if (mins >= 1){
-			txt = "%.0fm".printf(mins);
+			txt += "%.0fm ".printf(mins);
 		}
-		txt = "%.0fs".printf(secs);
+		txt += "%.0fs".printf(secs);
 		return txt;
 	}
 }
