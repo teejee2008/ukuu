@@ -47,7 +47,9 @@ public class UpdateNotificationWindow : Gtk.Window {
 	
 	public UpdateNotificationWindow(
 		string _msg_title, string _msg_body, Window? parent, LinuxKernel _kern_update) {
-			
+
+		window_position = WindowPosition.CENTER;
+		
 		set_transient_for(parent);
 		set_modal(true);
 
