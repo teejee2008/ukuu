@@ -841,7 +841,8 @@ namespace TeeJee.ProcessManagement{
 		string sh_file = save_bash_script_temp(script, null, supress_errors);
 		string sh_file_main = "";
 		if (run_as_admin){
-			string script_main = "pkexec '%s'".printf(escape_single_quote(sh_file));
+			string script_main = "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY";
+			script_main += " '%s'".printf(escape_single_quote(sh_file));
 			string dir = file_parent(sh_file);
 			sh_file_main = GLib.Path.build_filename(dir,"script-admin.sh");
 			save_bash_script_temp(script_main, sh_file_main);
