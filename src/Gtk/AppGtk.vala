@@ -78,7 +78,10 @@ public class AppGtk : GLib.Object {
 			Gtk.main_quit();
 			return true;
 		});
-		window.show_all();
+		
+		if (!App.INSTALL_MODE){
+			window.show_all();
+		}
 
 		//start event loop
 		Gtk.main();

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-07-08 21:53+0530\n"
+"POT-Creation-Date: 2016-07-08 21:56+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -314,7 +314,7 @@ msgstr ""
 msgid "Open Ukuu"
 msgstr ""
 
-#: Gtk/AppGtk.vala:176 Console/AppConsole.vala:82
+#: Gtk/AppGtk.vala:179 Console/AppConsole.vala:82
 msgid "Options"
 msgstr ""
 
@@ -322,7 +322,7 @@ msgstr ""
 msgid "Please install required packages and try again"
 msgstr ""
 
-#: Gtk/AppGtk.vala:178
+#: Gtk/AppGtk.vala:181
 msgid "Print debug information"
 msgstr ""
 
@@ -342,11 +342,11 @@ msgstr ""
 msgid "Remove specified mainline kernel"
 msgstr ""
 
-#: Gtk/AppGtk.vala:102
+#: Gtk/AppGtk.vala:105
 msgid "Root Access Required"
 msgstr ""
 
-#: Gtk/AppGtk.vala:100
+#: Gtk/AppGtk.vala:103
 msgid "Root access is required for running this application."
 msgstr ""
 
@@ -354,7 +354,7 @@ msgstr ""
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 
-#: Gtk/AppGtk.vala:101 Console/AppConsole.vala:99
+#: Gtk/AppGtk.vala:104 Console/AppConsole.vala:99
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
@@ -370,7 +370,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: Gtk/AppGtk.vala:179
+#: Gtk/AppGtk.vala:182
 msgid "Show all options"
 msgstr ""
 
@@ -390,7 +390,7 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
-#: Gtk/AppGtk.vala:174 Console/AppConsole.vala:80
+#: Gtk/AppGtk.vala:177 Console/AppConsole.vala:80
 msgid "Syntax"
 msgstr ""
 
@@ -426,7 +426,7 @@ msgstr ""
 msgid "Un-install completed with errors"
 msgstr ""
 
-#: Gtk/AppGtk.vala:162 Console/AppConsole.vala:239
+#: Gtk/AppGtk.vala:165 Console/AppConsole.vala:239
 msgid "Unknown option"
 msgstr ""
 
@@ -434,7 +434,7 @@ msgstr ""
 msgid "Use specified user's cache directory"
 msgstr ""
 
-#: Gtk/AppGtk.vala:110 Gtk/AppGtk.vala:128 Console/AppConsole.vala:140
+#: Gtk/AppGtk.vala:113 Gtk/AppGtk.vala:131 Console/AppConsole.vala:140
 msgid "Using cache directory"
 msgstr ""
 
