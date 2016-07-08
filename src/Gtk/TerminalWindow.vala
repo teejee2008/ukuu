@@ -303,7 +303,7 @@ public class TerminalWindow : Gtk.Window {
 
 		btn_cancel.visible = false;
 		btn_close.visible = true;
-		
+
 		script_complete();
 	}
 

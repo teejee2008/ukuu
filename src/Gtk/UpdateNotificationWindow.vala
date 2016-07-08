@@ -155,16 +155,8 @@ public class UpdateNotificationWindow : Gtk.Window {
 			//exit(0);
 		});
 
-		// ignore
-		button = new Gtk.Button.with_label("    " + _("Cancel") + "    ");
-		hbox_actions.add(button);
-
-		button.clicked.connect(()=>{
-			this.destroy();
-		});
-		
 		// open ukuu
-		button = new Gtk.Button.with_label("    " + _("Open Ukuu") + "    ");
+		button = new Gtk.Button.with_label("    " + _("Run Ukuu") + "    ");
 		hbox_actions.add(button);
 
 		button.clicked.connect(()=>{
@@ -175,6 +167,14 @@ public class UpdateNotificationWindow : Gtk.Window {
 			//sh += " &";
 			exec_script_async(sh);
 			Gtk.main_quit();
+		});
+		
+		// ignore
+		button = new Gtk.Button.with_label("    " + _("Cancel") + "    ");
+		hbox_actions.add(button);
+
+		button.clicked.connect(()=>{
+			this.destroy();
 		});
 	}
 }
