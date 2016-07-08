@@ -137,7 +137,8 @@ public class MainWindow : Gtk.Window{
 		
 		// cell icon
 		var cell_pix = new Gtk.CellRendererPixbuf ();
-		cell_pix.xpad = 2;
+		cell_pix.xpad = 4;
+		cell_pix.ypad = 6;
 		col.pack_start (cell_pix, false);
 		col.set_cell_data_func (cell_pix, (cell_layout, cell, model, iter)=>{
 			Gdk.Pixbuf pix;
