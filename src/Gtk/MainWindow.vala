@@ -45,7 +45,7 @@ public class MainWindow : Gtk.Window{
 	
 	// helper members
 
-	private int window_width = 600;
+	private int window_width = 550;
 	private int window_height = 400;
 	private uint tmr_init = -1;
 
@@ -144,6 +144,16 @@ public class MainWindow : Gtk.Window{
 			model.get (iter, 1, out pix, -1);
 			(cell as Gtk.CellRendererPixbuf).pixbuf = pix;
 			//(cell as Gtk.CellRendererPixbuf).visible = !(App.hide_unstable);
+
+			bool odd_row;
+			model.get (iter, 2, out odd_row, -1);
+			
+			if (odd_row){
+				(cell as Gtk.CellRendererPixbuf).cell_background = "#F4F6F7";
+			}
+			else{
+				(cell as Gtk.CellRendererPixbuf).cell_background = "#FFFFFF";
+			}
 		});
 		
 		//cell text
@@ -154,6 +164,16 @@ public class MainWindow : Gtk.Window{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
 			(cell as Gtk.CellRendererText).text = "Linux " + kern.version_main;
+
+			bool odd_row;
+			model.get (iter, 2, out odd_row, -1);
+			
+			if (odd_row){
+				(cell as Gtk.CellRendererText).background = "#F4F6F7";
+			}
+			else{
+				(cell as Gtk.CellRendererText).background = "#FFFFFF";
+			}
 		});
 
 		//column
@@ -171,6 +191,16 @@ public class MainWindow : Gtk.Window{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
 			(cell as Gtk.CellRendererText).text = kern.name;
+
+			bool odd_row;
+			model.get (iter, 2, out odd_row, -1);
+			
+			if (odd_row){
+				(cell as Gtk.CellRendererText).background = "#F4F6F7";
+			}
+			else{
+				(cell as Gtk.CellRendererText).background = "#FFFFFF";
+			}
 		});
 		
 		//column
@@ -188,6 +218,16 @@ public class MainWindow : Gtk.Window{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
 			(cell as Gtk.CellRendererText).text = kern.is_running ? "Running" : (kern.is_installed ? "Installed" : "");
+
+			bool odd_row;
+			model.get (iter, 2, out odd_row, -1);
+			
+			if (odd_row){
+				(cell as Gtk.CellRendererText).background = "#F4F6F7";
+			}
+			else{
+				(cell as Gtk.CellRendererText).background = "#FFFFFF";
+			}
 		});
 		
 		//column
@@ -200,6 +240,18 @@ public class MainWindow : Gtk.Window{
 		cellText.width = 10;
 		cellText.ellipsize = Pango.EllipsizeMode.END;
 		col.pack_start (cellText, false);
+
+		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
+			bool odd_row;
+			model.get (iter, 2, out odd_row, -1);
+			
+			if (odd_row){
+				(cell as Gtk.CellRendererText).background = "#F4F6F7";
+			}
+			else{
+				(cell as Gtk.CellRendererText).background = "#FFFFFF";
+			}
+		});
 	}
 
 	private void tv_row_activated(TreePath path, TreeViewColumn column){
@@ -233,7 +285,7 @@ public class MainWindow : Gtk.Window{
 	}
 
 	private void tv_refresh(){
-		var model = new Gtk.ListStore(2, typeof(LinuxKernel), typeof(Gdk.Pixbuf));
+		var model = new Gtk.ListStore(3, typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(bool));
 
 		Gdk.Pixbuf pix_ubuntu = null;
 		Gdk.Pixbuf pix_mainline = null;
@@ -253,6 +305,7 @@ public class MainWindow : Gtk.Window{
 		var kern_4 = new LinuxKernel.from_version("4.0");
 		
 		TreeIter iter;
+		bool odd_row = false;
 		foreach(var kern in LinuxKernel.kernel_list) {
 			if (!kern.is_valid){
 				continue;
@@ -264,6 +317,8 @@ public class MainWindow : Gtk.Window{
 				continue;
 			}
 
+			odd_row = !odd_row;
+			
 			//add row
 			model.append(out iter);
 			model.set (iter, 0, kern);
@@ -279,6 +334,8 @@ public class MainWindow : Gtk.Window{
 			else{
 				model.set (iter, 1, pix_ubuntu);
 			}
+
+			model.set (iter, 2, odd_row);
 		}
 
 		tv.set_model(model);
