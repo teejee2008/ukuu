@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-07-08 22:03+0530\n"
+"POT-Creation-Date: 2016-07-08 22:08+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: Gtk/UpdateNotificationWindow.vala:175 Gtk/ProgressWindow.vala:139
+#: Gtk/UpdateNotificationWindow.vala:177 Gtk/ProgressWindow.vala:139
 #: Gtk/TerminalWindow.vala:165
 msgid "Cancel"
 msgstr ""
@@ -237,6 +237,10 @@ msgstr ""
 msgid "Hour(s)"
 msgstr ""
 
+#: Gtk/UpdateNotificationWindow.vala:178
+msgid "Ignore this update"
+msgstr ""
+
 #: Common/LinuxKernel.vala:251
 msgid "Index is fresh"
 msgstr ""
@@ -251,6 +255,10 @@ msgstr ""
 
 #: Console/AppConsole.vala:87
 msgid "Install specified mainline kernel"
+msgstr ""
+
+#: Gtk/UpdateNotificationWindow.vala:146
+msgid "Install this kernel"
 msgstr ""
 
 #: Common/LinuxKernel.vala:1154
@@ -310,6 +318,14 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
+#: Gtk/UpdateNotificationWindow.vala:162
+msgid "Open"
+msgstr ""
+
+#: Gtk/UpdateNotificationWindow.vala:163
+msgid "Open Ukuu"
+msgstr ""
+
 #: Gtk/AppGtk.vala:179 Console/AppConsole.vala:82
 msgid "Options"
 msgstr ""
@@ -348,10 +364,6 @@ msgstr ""
 
 #: Console/AppConsole.vala:204
 msgid "Run 'ukuu --list' and use the version string listed in first column"
-msgstr ""
-
-#: Gtk/UpdateNotificationWindow.vala:161
-msgid "Run Ukuu"
 msgstr ""
 
 #: Gtk/AppGtk.vala:104 Console/AppConsole.vala:99

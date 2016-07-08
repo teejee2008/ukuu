@@ -143,6 +143,7 @@ public class UpdateNotificationWindow : Gtk.Window {
 
 		// install
 		var button = new Gtk.Button.with_label("    " + _("Install") + "    ");
+		button.set_tooltip_text(_("Install this kernel"));
 		hbox_actions.add(button);
 
 		button.clicked.connect(()=>{
@@ -158,7 +159,8 @@ public class UpdateNotificationWindow : Gtk.Window {
 		});
 
 		// open ukuu
-		button = new Gtk.Button.with_label("    " + _("Run Ukuu") + "    ");
+		button = new Gtk.Button.with_label("    " + _("Open") + "    ");
+		button.set_tooltip_text(_("Open Ukuu"));
 		hbox_actions.add(button);
 
 		button.clicked.connect(()=>{
@@ -173,6 +175,7 @@ public class UpdateNotificationWindow : Gtk.Window {
 		
 		// ignore
 		button = new Gtk.Button.with_label("    " + _("Cancel") + "    ");
+		button.set_tooltip_text(_("Ignore this update"));
 		hbox_actions.add(button);
 
 		button.clicked.connect(()=>{
