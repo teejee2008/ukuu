@@ -67,9 +67,17 @@ public class AppGtk : GLib.Object {
 
 		App = new Main(args, true);
 		parse_arguments(args);
-		
+
 		var window = new MainWindow ();
-		window.destroy.connect(Gtk.main_quit);
+		window.destroy.connect(()=>{
+			log_debug("MainWindow destroyed");
+			Gtk.main_quit();
+		});
+		window.delete_event.connect((event)=>{
+			log_debug("MainWindow closed");
+			Gtk.main_quit();
+			return true;
+		});
 		window.show_all();
 
 		//start event loop
@@ -114,11 +122,45 @@ public class AppGtk : GLib.Object {
 				log_msg(help_message());
 				exit(0);
 				return true;
+			}
+		}
+
+		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
+
+		for (int k = 1; k < args.length; k++) // Oth arg is app path
+		{
+			switch (args[k].down()) {
+
+			// commands ------------------------------------
+
+			case "--install":
+			
+				App.INSTALL_MODE = true;
+				App.requested_version = args[++k];
+				break;
+
+			// options without argument --------------------------
+			
+			case "--option-without-argument": //dummy
+			case "--help":
+			case "--h":
+			case "-h":
+			case "--debug":
+				// already handled - do nothing
+				break;
+
+			// options with argument --------------------------
+
+			case "--option-with-argument": //dummy
+			case "--user":
+				k += 1;
+				// already handled - do nothing
+				break;
+
 			default:
 				//unknown option - show help and exit
 				log_error(_("Unknown option") + ": %s".printf(args[k]));
 				log_msg(help_message());
-				exit(1);
 				return false;
 			}
 		}

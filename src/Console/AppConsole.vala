@@ -263,9 +263,14 @@ public class AppConsole : GLib.Object {
 				var win = new UpdateNotificationWindow(
 					AppName,
 					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null);
+					null,
+					kern);
 					
-				win.destroy.connect(Gtk.main_quit);
+				win.destroy.connect(()=>{
+					log_debug("UpdateNotificationWindow destroyed");
+					Gtk.main_quit();
+				});
+				
 				Gtk.main(); // start event loop
 			}
 			
@@ -288,9 +293,14 @@ public class AppConsole : GLib.Object {
 				var win = new UpdateNotificationWindow(
 					AppName,
 					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null);
+					null,
+					kern);
 					
-				win.destroy.connect(Gtk.main_quit);
+				win.destroy.connect(()=>{
+					log_debug("UpdateNotificationWindow destroyed");
+					Gtk.main_quit();
+				});
+				
 				Gtk.main(); // start event loop
 			}
 			
@@ -320,6 +330,8 @@ public class AppConsole : GLib.Object {
 			Gtk.main(); // start event loop
 		}
 		* */
+
+		log_msg(_("No updates found"));
 	}
 
 

@@ -57,6 +57,9 @@ public class Main : GLib.Object{
 	// state flags ----------
 	
 	public bool GUI_MODE = false;
+	public bool INSTALL_MODE = false;
+	public string requested_version = "";
+	
 	public bool notify_major = true;
 	public bool notify_minor = true;
 	public bool notify_bubble = true;

@@ -81,6 +81,27 @@ public class MainWindow : Gtk.Window{
 		tv_refresh();
 
 		selected_kernel = null;
+
+		if (App.INSTALL_MODE){
+			LinuxKernel kern_requested = null;
+			foreach(var kern in LinuxKernel.kernel_list){
+				if (kern.name == App.requested_version){
+					kern_requested = kern;
+					break;
+				}
+			}
+
+			if (kern_requested == null){
+				var msg = _("Could not find requested version");
+				msg += ": %s".printf(App.requested_version);
+				log_error(msg);
+				
+				exit(1);
+			}
+			else{
+				install(kern_requested);
+			}
+		}
 		
 		return false;
 	}
@@ -294,32 +315,7 @@ public class MainWindow : Gtk.Window{
 		
 		button.clicked.connect(() => {
 			if (selected_kernel != null){
-				
-				var term = new TerminalWindow.with_parent(this, false, true);
-				
-				term.script_complete.connect(()=>{
-					term.allow_window_close();
-				});
-				
-				term.destroy.connect(()=>{
-					this.present();
-					refresh_cache();
-					tv_refresh();
-				});
-
-				string sh = "";
-				sh += "pkexec ukuu --user %s".printf(App.user_login);
-				if (LOG_DEBUG){
-					sh += " --debug";
-				}
-				sh += " --install %s\n".printf(selected_kernel.name);
-					
-				sh += "echo ''\n";
-				sh += "echo 'Close window to exit...'\n";
-
-				this.hide();
-				
-				term.execute_script(save_bash_script_temp(sh));
+				install(selected_kernel);
 			}
 		});
 
@@ -539,6 +535,48 @@ public class MainWindow : Gtk.Window{
 		else{
 			lbl_info.label = "Running <b>Linux %s</b>".printf(LinuxKernel.RUNNING_KERNEL);
 		}
+	}
+
+	public void install(LinuxKernel kern){
+
+		// check if installed
+		if (kern.is_installed){
+			gtk_messagebox("", _("This kernel is already installed."), this, true);
+			return;
+		}
+		
+		this.hide();
+		
+		var term = new TerminalWindow.with_parent(this, false, true);
+				
+		term.script_complete.connect(()=>{
+			term.allow_window_close();
+		});
+		
+		term.destroy.connect(()=>{
+			if (App.INSTALL_MODE){
+				this.close();
+				//Gtk.main_quit();
+				//exit(0);
+			}
+			else{
+				this.present();
+				refresh_cache();
+				tv_refresh();
+			}
+		});
+
+		string sh = "";
+		sh += "pkexec ukuu --user %s".printf(App.user_login);
+		if (LOG_DEBUG){
+			sh += " --debug";
+		}
+		sh += " --install %s\n".printf(kern.name);
+			
+		sh += "echo ''\n";
+		sh += "echo 'Close window to exit...'\n";
+
+		term.execute_script(save_bash_script_temp(sh));
 	}
 }
 

@@ -42,9 +42,11 @@ public class UpdateNotificationWindow : Gtk.Window {
 	private string msg_title;
 	private string msg_body;
 	private Gtk.MessageType msg_type;
+
+	private LinuxKernel kern_update;
 	
 	public UpdateNotificationWindow(
-		string _msg_title, string _msg_body, Window? parent) {
+		string _msg_title, string _msg_body, Window? parent, LinuxKernel _kern_update) {
 			
 		set_transient_for(parent);
 		set_modal(true);
@@ -52,6 +54,7 @@ public class UpdateNotificationWindow : Gtk.Window {
 		msg_title = _msg_title;
 		msg_body = _msg_body;
 		msg_type = Gtk.MessageType.INFO;
+		kern_update = _kern_update;
 		
 		init_window();
 
@@ -134,31 +137,45 @@ public class UpdateNotificationWindow : Gtk.Window {
 
 		// actions
 		var hbox_actions = new Box (Orientation.HORIZONTAL, 6);
-		//hbox_actions.margin = 6;
 		vbox_msg.add (hbox_actions);
 
-		//var size_group = new Gtk.SizeGroup(SizeGroupMode.HORIZONTAL);
-		
-		// open ukuu
-		var button = new Gtk.Button.with_label("    " + _("Open Ukuu") + "    ");
+		// install
+		var button = new Gtk.Button.with_label("    " + _("Install") + "    ");
 		hbox_actions.add(button);
-		//size_group.add_widget(button);
-		
+
 		button.clicked.connect(()=>{
-			exec_script_async("ukuu-gtk &");
-			//Gtk.main_quit();
-			exit(0);
+			string sh = "ukuu-gtk";
+			if (LOG_DEBUG){
+				sh += " --debug";
+			}
+			sh += " --install %s".printf(kern_update.name);
+			//sh += " &";
+			exec_script_async(sh);
+			Gtk.main_quit();
+			//exit(0);
 		});
 
 		// ignore
 		button = new Gtk.Button.with_label("    " + _("Cancel") + "    ");
 		hbox_actions.add(button);
-		//size_group.add_widget(button);
-		
+
 		button.clicked.connect(()=>{
 			this.destroy();
 		});
+		
+		// open ukuu
+		button = new Gtk.Button.with_label("    " + _("Open Ukuu") + "    ");
+		hbox_actions.add(button);
 
+		button.clicked.connect(()=>{
+			string sh = "ukuu-gtk";
+			if (LOG_DEBUG){
+				sh += " --debug";
+			}
+			//sh += " &";
+			exec_script_async(sh);
+			Gtk.main_quit();
+		});
 	}
 }
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-07-08 01:03+0530\n"
+"POT-Creation-Date: 2016-07-08 21:31+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Gtk/MainWindow.vala:407
+#: Gtk/MainWindow.vala:403
 msgid "About"
 msgstr ""
 
@@ -43,12 +43,12 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: Gtk/UpdateNotificationWindow.vala:154 Gtk/ProgressWindow.vala:139
+#: Gtk/UpdateNotificationWindow.vala:159 Gtk/ProgressWindow.vala:139
 #: Gtk/TerminalWindow.vala:165
 msgid "Cancel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:363
+#: Gtk/MainWindow.vala:359
 msgid "Changes"
 msgstr ""
 
@@ -64,11 +64,11 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: Common/Main.vala:102
+#: Common/Main.vala:105
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
-#: Console/AppConsole.vala:200
+#: Gtk/MainWindow.vala:95 Console/AppConsole.vala:200
 msgid "Could not find requested version"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr ""
 msgid "Documenters"
 msgstr ""
 
-#: Gtk/MainWindow.vala:395 Gtk/DonationWindow.vala:36
+#: Gtk/MainWindow.vala:391 Gtk/DonationWindow.vala:36
 msgid "Donate"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgstr ""
 msgid "Index is stale"
 msgstr ""
 
-#: Gtk/MainWindow.vala:291
+#: Gtk/MainWindow.vala:312 Gtk/UpdateNotificationWindow.vala:143
 msgid "Install"
 msgstr ""
 
@@ -265,15 +265,15 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#: Gtk/MainWindow.vala:451 Console/AppConsole.vala:328
+#: Gtk/MainWindow.vala:447 Console/AppConsole.vala:340
 msgid "Internet connection is not active"
 msgstr ""
 
-#: Gtk/MainWindow.vala:112
+#: Gtk/MainWindow.vala:133
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:435
+#: Gtk/MainWindow.vala:431
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
@@ -283,6 +283,10 @@ msgstr ""
 
 #: Gtk/GtkHelper.vala:169
 msgid "Missing Icon"
+msgstr ""
+
+#: Console/AppConsole.vala:334
+msgid "No updates found"
 msgstr ""
 
 #: Gtk/SettingsDialog.vala:67
@@ -306,27 +310,27 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: Gtk/UpdateNotificationWindow.vala:143
+#: Gtk/UpdateNotificationWindow.vala:167
 msgid "Open Ukuu"
 msgstr ""
 
-#: Gtk/AppGtk.vala:134 Console/AppConsole.vala:82
+#: Gtk/AppGtk.vala:176 Console/AppConsole.vala:82
 msgid "Options"
 msgstr ""
 
-#: Common/Main.vala:103
+#: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr ""
 
-#: Gtk/AppGtk.vala:136
+#: Gtk/AppGtk.vala:178
 msgid "Print debug information"
 msgstr ""
 
-#: Gtk/MainWindow.vala:455
+#: Gtk/MainWindow.vala:451
 msgid "Refreshing..."
 msgstr ""
 
-#: Gtk/MainWindow.vala:327
+#: Gtk/MainWindow.vala:323
 msgid "Remove"
 msgstr ""
 
@@ -338,11 +342,11 @@ msgstr ""
 msgid "Remove specified mainline kernel"
 msgstr ""
 
-#: Gtk/AppGtk.vala:94
+#: Gtk/AppGtk.vala:102
 msgid "Root Access Required"
 msgstr ""
 
-#: Gtk/AppGtk.vala:92
+#: Gtk/AppGtk.vala:100
 msgid "Root access is required for running this application."
 msgstr ""
 
@@ -350,7 +354,7 @@ msgstr ""
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 
-#: Gtk/AppGtk.vala:93 Console/AppConsole.vala:99
+#: Gtk/AppGtk.vala:101 Console/AppConsole.vala:99
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
@@ -362,11 +366,11 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Gtk/MainWindow.vala:374 Gtk/SettingsDialog.vala:57
+#: Gtk/MainWindow.vala:370 Gtk/SettingsDialog.vala:57
 msgid "Settings"
 msgstr ""
 
-#: Gtk/AppGtk.vala:137
+#: Gtk/AppGtk.vala:179
 msgid "Show all options"
 msgstr ""
 
@@ -378,7 +382,7 @@ msgstr ""
 msgid "Show notification dialog"
 msgstr ""
 
-#: Gtk/MainWindow.vala:157
+#: Gtk/MainWindow.vala:178
 msgid "Status"
 msgstr ""
 
@@ -386,7 +390,7 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
-#: Gtk/AppGtk.vala:132 Console/AppConsole.vala:80
+#: Gtk/AppGtk.vala:174 Console/AppConsole.vala:80
 msgid "Syntax"
 msgstr ""
 
@@ -399,7 +403,7 @@ msgstr ""
 msgid "Third Party Tools &amp; Software"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1123
+#: Gtk/MainWindow.vala:544 Common/LinuxKernel.vala:1123
 msgid "This kernel is already installed."
 msgstr ""
 
@@ -422,7 +426,7 @@ msgstr ""
 msgid "Un-install completed with errors"
 msgstr ""
 
-#: Gtk/AppGtk.vala:119 Console/AppConsole.vala:239
+#: Gtk/AppGtk.vala:162 Console/AppConsole.vala:239
 msgid "Unknown option"
 msgstr ""
 
@@ -430,11 +434,11 @@ msgstr ""
 msgid "Use specified user's cache directory"
 msgstr ""
 
-#: Gtk/AppGtk.vala:102 Console/AppConsole.vala:140
+#: Gtk/AppGtk.vala:110 Gtk/AppGtk.vala:128 Console/AppConsole.vala:140
 msgid "Using cache directory"
 msgstr ""
 
-#: Gtk/MainWindow.vala:140
+#: Gtk/MainWindow.vala:161
 msgid "Version"
 msgstr ""
 
