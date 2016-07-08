@@ -1,6 +1,10 @@
 ukuu (16.7) trusty; urgency=medium
 
-  * Removed notification functionality
+  * Fixed notifications
+
+  * Added notification dialog with options to install the update
+
+  * Added option to set notify interval
 
   * Added icons to indicate kernel type
 
@@ -21,7 +25,7 @@ ukuu (16.7) trusty; urgency=medium
 
   * Added option to clean cache 'sudo ukuu --clean-cache
 
- -- Tony George <tony.george.kol@gmail.com>  Wed, 06 Jul 2016 10:00:00 +0530
+ -- Tony George <tony.george.kol@gmail.com>  Fri, 08 Jul 2016 10:00:00 +0530
 
 
 ukuu (16.4.2) trusty; urgency=medium

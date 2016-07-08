@@ -151,22 +151,7 @@ public class ProgressWindow : Gtk.Window {
 
 		//btn_cancel.visible = allow_cancel;
 		btn_cancel.sensitive = allow_cancel;
-		
-		//tmr_init = Timeout.add(100, init_delayed);
 	}
-
-	/*private bool init_delayed() {
-
-		// any actions that need to run after window has been displayed
-
-		if (tmr_init > 0) {
-			Source.remove(tmr_init);
-			tmr_init = 0;
-		}
-
-		return false;
-	}*/
-
 
 	// common
 

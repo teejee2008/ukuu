@@ -218,7 +218,7 @@ public class MainWindow : Gtk.Window{
 		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
-			(cell as Gtk.CellRendererText).text = kern.is_running ? "Running" : (kern.is_installed ? "Installed" : "");
+			(cell as Gtk.CellRendererText).text = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
 
 			bool odd_row;
 			model.get (iter, 2, out odd_row, -1);
