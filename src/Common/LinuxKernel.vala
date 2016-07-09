@@ -574,8 +574,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (!kern.is_valid){
 				continue;
 			}
+			
 			// skip unstable
 			if (kern.is_unstable){
+				continue;
+			}
+
+			// skip installed
+			if (kern.is_installed){
 				continue;
 			}
 
