@@ -41,8 +41,8 @@ public class TerminalWindow : Gtk.Window {
 	private Gtk.Button btn_close;
 	private Gtk.ScrolledWindow scroll_win;
 
-	private int def_width = 800;
-	private int def_height = 600;
+	private int def_width = 600;
+	private int def_height = 400;
 
 	private Pid child_pid;
 	private Gtk.Window parent_win = null;
@@ -107,6 +107,8 @@ public class TerminalWindow : Gtk.Window {
 		scroll_win.set_shadow_type (ShadowType.ETCHED_IN);
 		scroll_win.add (term);
 		scroll_win.expand = true;
+		scroll_win.hscrollbar_policy = PolicyType.AUTOMATIC;
+		scroll_win.vscrollbar_policy = PolicyType.AUTOMATIC;
 		vbox_main.add(scroll_win);
 		
 		#if VTE_291
