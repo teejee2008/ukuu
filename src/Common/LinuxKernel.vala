@@ -121,7 +121,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		string[] arr = std_out.split(ver);
 		if (arr.length > 0){
-			string[] parts = arr[1].strip().split_set(" -_");
+			string[] parts = arr[1].strip().split_set(" -_~");
 			string partnum = parts[0].strip();
 			if (partnum.has_prefix("#")){
 				partnum = partnum[1:partnum.length];
