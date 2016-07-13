@@ -38,7 +38,7 @@ using TeeJee.Misc;
 public Main App;
 public const string AppName = "Ubuntu Kernel Update Utility";
 public const string AppShortName = "ukuu";
-public const string AppVersion = "16.7.1";
+public const string AppVersion = "16.7.2";
 public const string AppAuthor = "Tony George";
 public const string AppAuthorEmail = "teejeetech@gmail.com";
 
