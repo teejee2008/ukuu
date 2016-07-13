@@ -1,3 +1,18 @@
+ukuu (16.7.1) trusty; urgency=medium
+
+  * Fixed: Update notification is not diplayed for minor update if the
+  'notify major' option is selected in settings dialog
+
+  * Fixed: Update notification should not be shown if the new kernel is
+  already installed on the system but not active
+
+  * Fixed parsing of version string in format like '#40~14.04.1'(trusty)
+
+  * Moved cache directory to ~/.cache/ukuu
+
+ -- Tony George <tony.george.kol@gmail.com>  Tue, 12 Jul 2016 10:00:00 +0530
+
+
 ukuu (16.7) trusty; urgency=medium
 
   * Fixed notifications

@@ -130,7 +130,7 @@ public class Main : GLib.Object{
 		STARTUP_SCRIPT_FILE = user_home + "/.config/ukuu-notify.sh";
 		STARTUP_DESKTOP_FILE = user_home + "/.config/autostart/ukuu.desktop";
 
-		LinuxKernel.CACHE_DIR = user_home + "/.config/ukuu";
+		LinuxKernel.CACHE_DIR = user_home + "/.cache/ukuu";
 		LinuxKernel.CURRENT_USER = user_login;
 		LinuxKernel.CURRENT_USER_HOME = user_home;
 	}
