@@ -280,7 +280,7 @@ public class AppConsole : GLib.Object {
 		}
 
 		kern = LinuxKernel.kernel_update_minor;
-		if ((kern != null) && App.notify_minor && !App.notify_major){
+		if ((kern != null) && App.notify_minor){
 			var title = "Linux v%s Available".printf(kern.version_main);
 			var message = "Minor update available for installation";
 

@@ -585,8 +585,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				continue;
 			}
 
+			//log_msg("check: %s".printf(kern.version_main));
+
 			if (kernel_latest_stable == null){
 				kernel_latest_stable = kern;
+				log_debug("latest stable kernel -> %s".printf(kern.version_main));
 			}
 
 			bool major_available = false;
@@ -611,10 +614,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			
 			if (major_available && (kernel_update_major == null)){
 				kernel_update_major = kern;
+				log_debug("major update -> %s".printf(kern.version_main));
 			}
 			
 			if (minor_available && (kernel_update_minor == null)){
 				kernel_update_minor = kern;
+				log_debug("minor update -> %s".printf(kern.version_main));
 			}
 
 			if ((kernel_update_major != null)
