@@ -309,14 +309,14 @@ public class DownloadManager : GLib.Object{
 					format_file_size(progress_count, false, true),
 					format_file_size(size, false, true),
 					format_file_size(download_rate, false, true),
-					eta);
+					eta).replace("\n","");
 			}
 			else{
 				status_line = "%s / %s, %s/s (%s)".printf(
 					format_file_size(progress_count),
 					format_file_size(size),
 					format_file_size(download_rate),
-					eta);
+					eta).replace("\n","");
 			}
 					
 			//log_msg(status_line);

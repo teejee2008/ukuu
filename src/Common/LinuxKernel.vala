@@ -1104,7 +1104,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			while (mgr.is_running){
 				sleep(200);
 
-				stdout.printf("\r%-70s".printf(mgr.status_line));
+				stdout.printf("\r%-60s".printf(mgr.status_line.replace("\n","")));
 				stdout.flush();
 			}
 
