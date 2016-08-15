@@ -150,10 +150,10 @@ public class MainWindow : Gtk.Window{
 			model.get (iter, 2, out odd_row, -1);
 			
 			if (odd_row){
-				(cell as Gtk.CellRendererPixbuf).cell_background = "#F4F6F7";
+				//(cell as Gtk.CellRendererPixbuf).cell_background = "#F4F6F7";
 			}
 			else{
-				(cell as Gtk.CellRendererPixbuf).cell_background = "#FFFFFF";
+				//(cell as Gtk.CellRendererPixbuf).cell_background = "#FFFFFF";
 			}
 		});
 		
@@ -170,10 +170,10 @@ public class MainWindow : Gtk.Window{
 			model.get (iter, 2, out odd_row, -1);
 			
 			if (odd_row){
-				(cell as Gtk.CellRendererText).background = "#F4F6F7";
+				//(cell as Gtk.CellRendererText).background = "#F4F6F7";
 			}
 			else{
-				(cell as Gtk.CellRendererText).background = "#FFFFFF";
+				//(cell as Gtk.CellRendererText).background = "#FFFFFF";
 			}
 		});
 
@@ -197,10 +197,10 @@ public class MainWindow : Gtk.Window{
 			model.get (iter, 2, out odd_row, -1);
 			
 			if (odd_row){
-				(cell as Gtk.CellRendererText).background = "#F4F6F7";
+				//(cell as Gtk.CellRendererText).background = "#F4F6F7";
 			}
 			else{
-				(cell as Gtk.CellRendererText).background = "#FFFFFF";
+				//(cell as Gtk.CellRendererText).background = "#FFFFFF";
 			}
 		});
 		
@@ -224,10 +224,10 @@ public class MainWindow : Gtk.Window{
 			model.get (iter, 2, out odd_row, -1);
 			
 			if (odd_row){
-				(cell as Gtk.CellRendererText).background = "#F4F6F7";
+				//(cell as Gtk.CellRendererText).background = "#F4F6F7";
 			}
 			else{
-				(cell as Gtk.CellRendererText).background = "#FFFFFF";
+				//(cell as Gtk.CellRendererText).background = "#FFFFFF";
 			}
 		});
 		
@@ -247,10 +247,10 @@ public class MainWindow : Gtk.Window{
 			model.get (iter, 2, out odd_row, -1);
 			
 			if (odd_row){
-				(cell as Gtk.CellRendererText).background = "#F4F6F7";
+				//(cell as Gtk.CellRendererText).background = "#F4F6F7";
 			}
 			else{
-				(cell as Gtk.CellRendererText).background = "#FFFFFF";
+				//(cell as Gtk.CellRendererText).background = "#FFFFFF";
 			}
 		});
 	}
