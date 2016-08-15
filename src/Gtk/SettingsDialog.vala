@@ -67,6 +67,7 @@ public class SettingsDialog : Gtk.Dialog {
 		var label = new Label("<b>" + _("Notification") + "</b>");
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
+		label.margin_bottom = 6;
 		vbox_main.add (label);
 		
 		// chk_notify_major
@@ -106,6 +107,7 @@ public class SettingsDialog : Gtk.Dialog {
 		chk = new Gtk.CheckButton.with_label(_("Show notification dialog"));
 		chk.active = App.notify_dialog;
 		chk.margin_left = 6;
+		chk.margin_bottom = 6;
 		vbox_main.add(chk);
 		chk_notify_dialog = chk;
 		
@@ -161,6 +163,7 @@ public class SettingsDialog : Gtk.Dialog {
 		label.set_use_markup(true);
 		label.xalign = (float) 0.0;
 		label.margin_top = 12;
+		label.margin_bottom = 6;
 		vbox_main.add (label);
 
 		// chk_hide_unstable
