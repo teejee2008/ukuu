@@ -38,6 +38,8 @@ public class DownloadManager : GLib.Object{
 	public string out_line = "";
 	public string status_line = "";
 
+	private static int _download_count = 0;
+
 	// settings
 	public bool status_in_kb = false;
 	
@@ -74,10 +76,6 @@ public class DownloadManager : GLib.Object{
 		source_uri = _source_uri;
 		name = _file_name.split("_")[0];
 
-		download_complete.connect(() => {
-			LinuxKernel.download_count--;
-		});
-			
 		try {
 			//Sample:
 			//[#4df0c7 19283968B/45095814B(42%) CN:1 DL:105404B ETA:4m4s]
@@ -155,8 +153,11 @@ public class DownloadManager : GLib.Object{
 	}
 
 	public bool download_begin() {
-		LinuxKernel.download_count++;
-		
+
+		lock (_download_count) {
+			_download_count++;
+		}
+
 		status = DownloadManager.Status.STARTED;
 
 		dir_create(partial_dir);
@@ -374,11 +375,30 @@ public class DownloadManager : GLib.Object{
 		}
 
 		status_message = status_line;
+
+		lock (_download_count) {
+			_download_count--;
+		}
 		
 		download_complete(); //signal
 
 		is_running = false;
 	}
 
+	public static int download_count{
+		get {
+			int count = 0;
+			lock (_download_count) {
+				count = _download_count;
+			}
+			return count;
+		}
+	}
+
+	public static void reset_counter(){
+		lock (_download_count) {
+			_download_count = 0;
+		}
+	}
 }
 

@@ -51,7 +51,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static LinuxKernel kernel_latest_stable = null;
 	
 	public static Gee.ArrayList<LinuxKernel> kernel_list = new Gee.ArrayList<LinuxKernel>();
-	public static int download_count = 0;
 
 	public static Regex rex_header = null;
 	public static Regex rex_header_all = null;
@@ -217,7 +216,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void query(bool wait){
 
 		check_if_initialized();
-
+		
 		try {
 			task_is_running = true;
 			cancelled = false;
@@ -239,8 +238,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_debug("query: skip_older: %s".printf(skip_older.to_string()));
 		log_debug("query: skip_unstable: %s".printf(skip_unstable.to_string()));
 
-		LinuxKernel.download_count = 0;
-
+		DownloadManager.reset_counter();
+		
 		bool refresh = false;
 		var one_hour_before = (new DateTime.now_local()).add_hours(-1);
 		if (last_refreshed_date.compare(one_hour_before) < 0){
@@ -256,6 +255,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		load_index();
+
+		// TODO: Implement locking for multiple download threads
 
 		var kern_4 = new LinuxKernel.from_version("4.0");
 		
@@ -303,7 +304,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		
 			if (!kern.cached_page_exists){
-				while (LinuxKernel.download_count > 3){
+				while (DownloadManager.download_count > 20){
 					sleep(100); // wait for counter to decrease
 				}
 				kern.download_cached_page(false);
@@ -314,7 +315,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// No need to wait for downloads to complete
 		// Cached index files will be loaded once downloads is complete
 
-		if (LinuxKernel.download_count > 0){
+		if (DownloadManager.download_count > 0){
 			sleep(1000); // wait a sec
 		}
 

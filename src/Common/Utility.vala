@@ -343,6 +343,7 @@ namespace TeeJee.FileSystem{
 		/* Recursively deletes directory along with contents */
 		
 		string cmd = "rm -rf '%s'".printf(escape_single_quote(dir_path));
+		log_debug(cmd);
 		int status = exec_sync(cmd);
 		return (status == 0);
 	}

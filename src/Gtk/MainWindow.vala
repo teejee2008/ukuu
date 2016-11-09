@@ -510,6 +510,8 @@ public class MainWindow : Gtk.Window{
 		var dlg = new ProgressWindow.with_parent(this, message, false);
 		dlg.show_all();
 		gtk_do_events();
+
+		// TODO: Check if kernel.ubuntu.com is down
 		
 		LinuxKernel.query(false);
 

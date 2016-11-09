@@ -192,6 +192,9 @@ public class ProgressWindow : Gtk.Window {
 		else{
 			lbl_status.label = App.status_line;
 		}
+
+		//title = "Threads: %d".printf(DownloadManager.download_count);
+		//gtk_do_events();
 	}
 	
 	public void update_progressbar(){
