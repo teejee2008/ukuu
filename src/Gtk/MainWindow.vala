@@ -507,7 +507,7 @@ public class MainWindow : Gtk.Window{
 		}
 		
 		string message = _("Refreshing...");
-		var dlg = new ProgressWindow.with_parent(this, message, false);
+		var dlg = new ProgressWindow.with_parent(this, message, true);
 		dlg.show_all();
 		gtk_do_events();
 
@@ -524,6 +524,11 @@ public class MainWindow : Gtk.Window{
 		long count = 0;
 		
 		while (LinuxKernel.task_is_running) {
+
+			if (App.cancelled){
+				exit(1);
+			}
+			
 			App.status_line = LinuxKernel.status_line;
 			App.progress_total = LinuxKernel.progress_total;
 			App.progress_count = LinuxKernel.progress_count;

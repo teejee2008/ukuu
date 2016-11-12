@@ -1115,6 +1115,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				
 				if (user_is_admin()){
 					chown(file_path, CURRENT_USER, CURRENT_USER);
+					chmod(file_path, "a+rw");
 				}
 			}
 			else{
