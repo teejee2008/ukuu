@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-11-12 13:27+0530\n"
+"POT-Creation-Date: 2016-11-15 23:50+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Gtk/MainWindow.vala:461
+#: Gtk/MainWindow.vala:473
 msgid "About"
 msgstr ""
 
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:417
+#: Gtk/MainWindow.vala:429
 msgid "Changes"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
-#: Console/AppConsole.vala:200 Gtk/MainWindow.vala:95
+#: Console/AppConsole.vala:200 Gtk/MainWindow.vala:97
 msgid "Could not find requested version"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr ""
 msgid "Documenters"
 msgstr ""
 
-#: Gtk/MainWindow.vala:449 Gtk/DonationWindow.vala:36
+#: Gtk/MainWindow.vala:461 Gtk/DonationWindow.vala:36
 msgid "Donate"
 msgstr ""
 
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Index is stale"
 msgstr ""
 
-#: Gtk/MainWindow.vala:370 Gtk/UpdateNotificationWindow.vala:145
+#: Gtk/MainWindow.vala:382 Gtk/UpdateNotificationWindow.vala:145
 msgid "Install"
 msgstr ""
 
@@ -269,19 +269,19 @@ msgstr ""
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1077 Gtk/MainWindow.vala:221
+#: Common/LinuxKernel.vala:1077 Gtk/MainWindow.vala:229
 msgid "Installed"
 msgstr ""
 
-#: Console/AppConsole.vala:340 Gtk/MainWindow.vala:505
+#: Console/AppConsole.vala:340 Gtk/MainWindow.vala:517
 msgid "Internet connection is not active"
 msgstr ""
 
-#: Gtk/MainWindow.vala:133
+#: Gtk/MainWindow.vala:141
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:489
+#: Gtk/MainWindow.vala:501
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
@@ -289,7 +289,7 @@ msgstr ""
 msgid "List all available mainline kernels"
 msgstr ""
 
-#: Gtk/GtkHelper.vala:169
+#: Gtk/GtkHelper.vala:177
 msgid "Missing Icon"
 msgstr ""
 
@@ -338,11 +338,11 @@ msgstr ""
 msgid "Print debug information"
 msgstr ""
 
-#: Gtk/MainWindow.vala:509
+#: Gtk/MainWindow.vala:521
 msgid "Refreshing..."
 msgstr ""
 
-#: Gtk/MainWindow.vala:381
+#: Gtk/MainWindow.vala:393
 msgid "Remove"
 msgstr ""
 
@@ -370,7 +370,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1077 Gtk/MainWindow.vala:221
+#: Common/LinuxKernel.vala:1077 Gtk/MainWindow.vala:229
 msgid "Running"
 msgstr ""
 
@@ -378,7 +378,7 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:428
+#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:440
 msgid "Settings"
 msgstr ""
 
@@ -394,7 +394,7 @@ msgstr ""
 msgid "Show notification dialog"
 msgstr ""
 
-#: Gtk/MainWindow.vala:209
+#: Gtk/MainWindow.vala:217
 msgid "Status"
 msgstr ""
 
@@ -415,7 +415,7 @@ msgstr ""
 msgid "Third Party Tools &amp; Software"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1136 Gtk/MainWindow.vala:609
+#: Common/LinuxKernel.vala:1136 Gtk/MainWindow.vala:631
 msgid "This kernel is already installed."
 msgstr ""
 
@@ -450,7 +450,7 @@ msgstr ""
 msgid "Using cache directory"
 msgstr ""
 
-#: Gtk/MainWindow.vala:182
+#: Gtk/MainWindow.vala:190
 msgid "Version"
 msgstr ""
 

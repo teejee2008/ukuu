@@ -144,13 +144,21 @@ namespace TeeJee.GtkHelper{
 		}
 	}
 
-	public Gtk.Image? get_shared_icon(string icon_name, string fallback_icon_file_name, int icon_size, string icon_directory = AppShortName + "/images"){
+	public Gtk.Image? get_shared_icon(
+		string icon_name,
+		string fallback_icon_file_name,
+		int icon_size,
+		string icon_directory = AppShortName + "/images"){
+			
 		Gdk.Pixbuf pix_icon = null;
 		Gtk.Image img_icon = null;
 
 		try {
 			Gtk.IconTheme icon_theme = Gtk.IconTheme.get_default();
-			pix_icon = icon_theme.load_icon (icon_name, icon_size, 0);
+			
+			pix_icon = icon_theme.load_icon_for_scale (
+				icon_name, Gtk.IconSize.MENU, icon_size, Gtk.IconLookupFlags.FORCE_SIZE);
+				
 		} catch (Error e) {
 			//log_error (e.message);
 		}
@@ -173,6 +181,16 @@ namespace TeeJee.GtkHelper{
 		}
 
 		return img_icon;
+	}
+
+	public Gdk.Pixbuf? get_shared_icon_pixbuf(string icon_name,
+		string fallback_file_name,
+		int icon_size,
+		string icon_directory = AppShortName + "/images"){
+			
+		var img = get_shared_icon(icon_name, fallback_file_name, icon_size, icon_directory);
+		var pixbuf = (img == null) ? null : img.pixbuf;
+		return pixbuf;
 	}
 
 	// treeview -----------------

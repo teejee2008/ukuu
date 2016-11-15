@@ -36,6 +36,8 @@ using TeeJee.Misc;
 public class MainWindow : Gtk.Window{
 	
 	private Gtk.Box vbox_main;
+	private Gtk.Box hbox_list;
+	
 	private Gtk.TreeView tv;
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_remove;
@@ -113,6 +115,12 @@ public class MainWindow : Gtk.Window{
 	}
 	
 	private void init_treeview(){
+
+		// hbox
+		hbox_list = new Box (Orientation.HORIZONTAL, 6);
+		//hbox.margin = 6;
+		vbox_main.add(hbox_list);
+		
 		//add treeview
 		tv = new TreeView();
 		tv.get_selection().mode = SelectionMode.SINGLE;
@@ -126,7 +134,7 @@ public class MainWindow : Gtk.Window{
 		var scrollwin = new ScrolledWindow(tv.get_hadjustment(), tv.get_vadjustment());
 		scrollwin.set_shadow_type (ShadowType.ETCHED_IN);
 		scrollwin.add (tv);
-		vbox_main.add(scrollwin);
+		hbox_list.add(scrollwin);
 		
 		//column
 		var col = new TreeViewColumn();
@@ -363,8 +371,12 @@ public class MainWindow : Gtk.Window{
 
 	
 	private void init_actions(){
-		var hbox = new Box (Orientation.HORIZONTAL, 6);
-		vbox_main.add (hbox);
+
+
+		
+		
+		var hbox = new Box (Orientation.VERTICAL, 6);
+		hbox_list.add (hbox);
 
 		// install
 		var button = new Gtk.Button.with_label (_("Install"));
@@ -565,19 +577,29 @@ public class MainWindow : Gtk.Window{
 
 
 	private void init_infobar(){
-		infobar = new Gtk.InfoBar ();
-		infobar.message_type = MessageType.INFO;
-		//infobar.show_close_button = true;
-		infobar.close.connect(()=>{
-			infobar.visible = false;
-		});
-		vbox_main.add(infobar);
-		
+		// scrolled
+		var scrolled = new ScrolledWindow(null, null);
+		scrolled.set_shadow_type (ShadowType.ETCHED_IN);
+		//scrolled.margin = 6;
+		scrolled.margin_top = 0;
+		scrolled.hscrollbar_policy = Gtk.PolicyType.NEVER;
+		scrolled.vscrollbar_policy = Gtk.PolicyType.NEVER;
+		vbox_main.add(scrolled);
+
+		// hbox
+		var hbox = new Box (Orientation.HORIZONTAL, 6);
+		//hbox.margin = 6;
+		scrolled.add(hbox);
+
+		var img_status = new Gtk.Image();
+		img_status.pixbuf = get_shared_icon_pixbuf("", "tux.svg", 64);
+		img_status.margin = 6;
+        hbox.add(img_status);
+
 		lbl_info = new Gtk.Label("");
+		lbl_info.margin = 6;
 		lbl_info.set_use_markup(true);
-		
-		var content = infobar.get_content_area();
-		content.add(lbl_info);
+		hbox.add(lbl_info);
 	}
 
 	private void set_infobar(){
@@ -593,7 +615,7 @@ public class MainWindow : Gtk.Window{
 			}
 			
 			if (LinuxKernel.kernel_latest_stable.compare_to(LinuxKernel.kernel_active) > 0){
-				lbl_info.label += " ~ <b>Linux %s</b> available".printf(
+				lbl_info.label += " ~ " + "<b>Linux %s</b> available".printf(
 					LinuxKernel.kernel_latest_stable.version_main);
 			}
 		}
