@@ -1,4 +1,11 @@
 
+ukuu (16.11.1) trusty; urgency=medium
+
+  * Fixed build for xenial: Added dependency for 'valac'
+
+ -- Tony George <tony.george.kol@gmail.com>  Sun, 27 Nov 2016 10:00:00 +0530
+
+ 
 ukuu (16.11) trusty; urgency=medium
 
   * Changed main window layout
