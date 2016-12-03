@@ -545,8 +545,8 @@ public class MainWindow : Gtk.Window{
 			App.progress_count = LinuxKernel.progress_count;
 
 			ulong ms_elapsed = timer_elapsed(timer, false);
-			int remaining_count = App.progress_total - App.progress_count;
-			ulong ms_remaining = (ulong)((ms_elapsed * 1.0) / App.progress_count) * remaining_count;
+			int64 remaining_count = App.progress_total - App.progress_count;
+			int64 ms_remaining = (int64)((ms_elapsed * 1.0) / App.progress_count) * remaining_count;
 
 			if ((count % 5) == 0){
 				msg_remaining = format_time_left(ms_remaining);
@@ -554,7 +554,7 @@ public class MainWindow : Gtk.Window{
 
 			if (App.progress_total > 0){
 				dlg.update_message(
-					message + " %ld/%ld (%s)".printf(
+					message + " %lld/%lld (%s)".printf(
 						App.progress_count,
 						App.progress_total,
 						msg_remaining));

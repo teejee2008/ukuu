@@ -41,6 +41,7 @@ public abstract class AsyncTask : GLib.Object{
 	public int64 prg_count_total = 0;
 	public int64 prg_bytes = 0;
 	public int64 prg_bytes_total = 0;
+	public string eta = "";
 	//public bool is_running = false;
 	
 	// signals
@@ -52,6 +53,8 @@ public abstract class AsyncTask : GLib.Object{
 		working_dir = TEMP_DIR + "/" + timestamp_for_path();
 		script_file = path_combine(working_dir, "script.sh");
 		log_file = path_combine(working_dir, "task.log");
+
+		//regex = new Gee.HashMap<string,Regex>(); // needs to be initialized again in instance constructor
 		
 		dir_create(working_dir);
 	}
@@ -232,7 +235,9 @@ public abstract class AsyncTask : GLib.Object{
 	private void finish(){
 		// dispose stdin
 		try{
-			dos_in.close();
+			if ((dos_in != null) && !dos_in.is_closed()){
+				dos_in.close();
+			}
 		}
 		catch(Error e){
 			// ignore
@@ -265,13 +270,15 @@ public abstract class AsyncTask : GLib.Object{
 		err_line = "";
 		out_line = "";
 
+		timer.stop();
+		
+		finish_task();
+
 		if ((status != AppStatus.CANCELLED) && (status != AppStatus.PASSWORD_REQUIRED)) {
 			status = AppStatus.FINISHED;
 		}
 
-		timer.stop();
-		
-		finish_task();
+		//dir_delete(working_dir);
 		
 		task_complete(); //signal
 	}
@@ -287,6 +294,10 @@ public abstract class AsyncTask : GLib.Object{
 		}
 		log_debug("exit_code: %d".printf(exit_code));
 		return exit_code;
+	}
+
+	public bool is_running(){
+		return (status == AppStatus.RUNNING);
 	}
 	
 	// public actions --------------

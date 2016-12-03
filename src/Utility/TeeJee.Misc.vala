@@ -141,7 +141,7 @@ namespace TeeJee.Misc {
         return "%02.0lf:%02.0lf:%02.0lf".printf (hr, min, sec);
 	}
 
-	public string format_time_left(ulong millis){
+	public string format_time_left(int64 millis){
 		double mins = (millis * 1.0) / 60000;
 		double secs = ((millis * 1.0) % 60000) / 1000;
 		string txt = "";

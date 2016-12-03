@@ -59,8 +59,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		
 	// global progress  ------------
 	public static string status_line = "";
-	public static int progress_total = 0;
-	public static int progress_count = 0;
+	public static int64 progress_total = 0;
+	public static int64 progress_count = 0;
 	public static bool cancelled = false;
 	public static bool task_is_running = false;
 	public static bool _temp_refresh = false;
@@ -238,7 +238,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		log_debug("query: skip_older: %s".printf(skip_older.to_string()));
 		log_debug("query: skip_unstable: %s".printf(skip_unstable.to_string()));
 
-		DownloadManager.reset_counter();
+		//DownloadManager.reset_counter();
 		
 		bool refresh = false;
 		var one_hour_before = (new DateTime.now_local()).add_hours(-1);
@@ -273,10 +273,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 			
 			if (kern.is_valid && !kern.cached_page_exists){
-				progress_total++;
+				progress_total += 2;
 			}
 		}
 
+
+		var downloads = new Gee.ArrayList<DownloadItem>();
+		var kernels_to_update = new Gee.ArrayList<LinuxKernel>();
+		
 		foreach(var kern in kernel_list){
 			if (cancelled){
 				break;
@@ -304,20 +308,50 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		
 			if (!kern.cached_page_exists){
-				while (DownloadManager.download_count > 20){
-					sleep(100); // wait for counter to decrease
-				}
-				kern.download_cached_page(false);
-				progress_count++;
+				//while (DownloadManager.download_count > 20){
+				//	sleep(100); // wait for counter to decrease
+				//}
+				//kern.download_cached_page(false);
+				//progress_count++;
+				var item = new DownloadItem(
+					kern.cached_page_uri,
+					file_parent(kern.cached_page),
+					file_basename(kern.cached_page));
+					
+				downloads.add(item);
+				
+				item = new DownloadItem(
+					kern.changes_file_uri,
+					file_parent(kern.changes_file),
+					file_basename(kern.changes_file));
+					
+				downloads.add(item);
+
+				kernels_to_update.add(kern);
 			}
 		}
 
+		var mgr = new DownloadTask();
+		mgr.downloads = downloads;
+		mgr.status_in_kb = true;
+		mgr.prg_count_total = progress_total;
+		mgr.execute();
+
+		while (mgr.is_running()){
+			progress_count = mgr.prg_count;
+			sleep(300);
+		}
+
+		foreach(var kern in kernels_to_update){
+			kern.load_cached_page();
+		}
+		
 		// No need to wait for downloads to complete
 		// Cached index files will be loaded once downloads is complete
 
-		if (DownloadManager.download_count > 0){
-			sleep(1000); // wait a sec
-		}
+		//if (DownloadManager.download_count > 0){
+		//	sleep(1000); // wait a sec
+		//}
 
 		check_installed();
 
@@ -337,20 +371,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (file_exists(index_page)){
 			file_delete(index_page);
 		}
-		
-		var mgr = new DownloadManager(
-			"index.html",
-			CACHE_DIR,
-			create_temp_subdir(),
-			URI_KERNEL_UBUNTU_MAINLINE);
+
+		var item = new DownloadItem(URI_KERNEL_UBUNTU_MAINLINE, CACHE_DIR, "index.html");
+		var mgr = new DownloadTask();
+		mgr.downloads.add(item);
+		mgr.status_in_kb = true;
+		mgr.execute();
 			
-		mgr.download_begin();
 
 		var msg = _("Fetching index from kernel.ubuntu.com...");
 		log_msg(msg);
 		status_line = msg.strip();
 
-		while (mgr.is_running){
+		while (mgr.is_running()){
 			sleep(500);
 		}
 
@@ -837,9 +870,21 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+	public string cached_page_uri{
+		owned get {
+			return page_uri;
+		}
+	}
+
 	public string changes_file{
 		owned get {
 			return "%s/CHANGES".printf(cache_subdir);
+		}
+	}
+
+	public string changes_file_uri{
+		owned get {
+			return "%s%s".printf(page_uri, "CHANGES");
 		}
 	}
 	
@@ -869,100 +914,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 	
-	// download
-	
-	private bool download_cached_page(bool wait){
-		
-		// fetch index-<version>.html --------------------------------------
-
-		dir_create(file_parent(cached_page));
-		
-		if (file_exists(cached_page)){
-			return true; // do not download again
-		}
-		else if (!is_valid){
-			return true; 
-		}
-
-		var mgr = new DownloadManager(
-			file_basename(cached_page),
-			cache_subdir,
-			create_temp_subdir(),
-			page_uri);
-		
-		mgr.download_complete.connect(() => {
-			if (mgr.status_code == 0){
-				load_cached_page();
-				download_changes_file();
-			}
-			else if (mgr.status_code == 3){
-				file_write("%s/index.html.404".printf(cache_subdir), "");
-				mark_invalid();
-			}
-			else{
-				file_write("%s/index.html.%d".printf(cache_subdir, mgr.status_code), "");
-				mark_invalid();
-			}
-		});
-
-		mgr.connect_timeout_secs = 10;
-		mgr.timeout_secs = 10;
-		
-		mgr.download_begin();
-
-		var msg = "%-60s".printf(_("Fetching index for") + " '%s'... ".printf(name));
-		log_msg(msg);
-		status_line = "> Linux %s".printf(name);
-
-		return true;	
-	}
-
-	private bool download_changes_file(){
-
-		// fetch file --------------------------------------
-
-		dir_create(file_parent(changes_file));
-		
-		if (file_exists(changes_file)){
-			return true; // do not download again
-		}
-
-		var mgr = new DownloadManager(
-			file_basename(changes_file),
-			file_parent(changes_file),
-			create_temp_subdir(),
-			"%s%s".printf(page_uri, "CHANGES"));
-		
-		mgr.download_complete.connect(() => {
-			if (mgr.status_code == 0){
-				// do nothing
-			}
-			else if (mgr.status_code == 3){
-				file_write("%s.%s".printf(changes_file, "404"), "");
-				mark_invalid();
-			}
-			else{
-				file_write("%s.%d".printf(changes_file, mgr.status_code), "");
-				mark_invalid();
-			}
-		});
-
-		mgr.connect_timeout_secs = 10;
-		mgr.timeout_secs = 10;
-		
-		mgr.download_begin();
-
-		var msg = "%-60s".printf(_("Fetching changelog for") + " '%s'... ".printf(name));
-		log_msg(msg);
-		status_line = "> Linux %s".printf(name);
-
-		return true;	
-	}
-
 	// load
 	
 	private void load_cached_page(){
-		
+			
 		var list = new Gee.HashMap<string,string>();
 
 		if (!file_exists(cached_page)){
@@ -1021,7 +976,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		catch (Error e) {
 			log_error (e.message);
 		}
-
+		
+		
 		deb_list = list;
 	}
 
@@ -1097,12 +1053,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			stdout.printf("\n" + _("Downloading") + ": '%s'... \n".printf(file_name));
 			stdout.flush();
-			
-			var mgr = new DownloadManager(file_basename(file_path), file_parent(file_path), TEMP_DIR, deb_list[file_name]);
-			mgr.status_in_kb = true;
-			mgr.download_begin();
 
-			while (mgr.is_running){
+			var item = new DownloadItem(deb_list[file_name], file_parent(file_path), file_basename(file_path));
+			var mgr = new DownloadTask();
+			mgr.downloads.add(item);
+			mgr.status_in_kb = true;
+			mgr.execute();
+
+			while (mgr.is_running()){
 				sleep(200);
 
 				stdout.printf("\r%-60s".printf(mgr.status_line.replace("\n","")));
@@ -1226,8 +1184,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		return ok;
 	}
-
-
 
 }
 

@@ -49,8 +49,8 @@ public class Main : GLib.Object{
 	// global progress ----------------
 	
 	public string status_line = "";
-	public int progress_total = 0;
-	public int progress_count = 0;
+	public int64 progress_total = 0;
+	public int64 progress_count = 0;
 	public bool cancelled = false;
 	
 	// state flags ----------
