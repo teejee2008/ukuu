@@ -22,6 +22,7 @@ public abstract class AsyncTask : GLib.Object{
 	private int input_fd;
 	private int output_fd;
 	private int error_fd;
+	private bool finish_called = false;
 
 	protected string script_file = "";
 	protected string working_dir = "";
@@ -65,6 +66,7 @@ public abstract class AsyncTask : GLib.Object{
 		
 		bool has_started = true;
 		is_terminated = false;
+		finish_called = false;
 		
 		prg_count = 0;
 		prg_bytes = 0;
@@ -233,9 +235,15 @@ public abstract class AsyncTask : GLib.Object{
 	protected abstract void parse_stderr_line(string err_line);
 	
 	private void finish(){
+		// finish() gets called by 2 threads but should be executed only once
+		if (finish_called) { return; }
+		finish_called = true;
+		
+		log_debug("AsyncTask: finish(): enter");
+		
 		// dispose stdin
 		try{
-			if ((dos_in != null) && !dos_in.is_closed()){
+			if ((dos_in != null) && !dos_in.is_closed() && !dos_in.is_closing()){
 				dos_in.close();
 			}
 		}
@@ -286,10 +294,11 @@ public abstract class AsyncTask : GLib.Object{
 	protected abstract void finish_task();
 
 	protected int read_exit_code(){
+		log_debug("read_exit_code: enter");
 		exit_code = -1;
-		var path = file_parent(script_file) + "/status";
-		if (file_exists(path)){
-			var txt = file_read(path);
+		var status_file = file_parent(script_file) + "/status";
+		if (file_exists(status_file)){
+			var txt = file_read(status_file);
 			exit_code = int.parse(txt);
 		}
 		log_debug("exit_code: %d".printf(exit_code));

@@ -127,7 +127,7 @@ public class AppGtk : GLib.Object {
 			}
 		}
 
-		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
+		//log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
 
 		for (int k = 1; k < args.length; k++) // Oth arg is app path
 		{

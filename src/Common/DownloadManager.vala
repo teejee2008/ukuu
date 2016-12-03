@@ -19,10 +19,11 @@ public class DownloadTask : AsyncTask{
 	public bool status_in_kb = false;
 	public int connect_timeout_secs = 60;
 	public int timeout_secs = 60;
+	public int concurrent_downloads = 20;
 
 	public Gee.ArrayList<DownloadItem> downloads;
 
-	protected Gee.HashMap<string,Regex> regex = null;
+	private Gee.HashMap<string,Regex> regex = null;
 
 	public DownloadTask(){
 
@@ -99,7 +100,7 @@ public class DownloadTask : AsyncTask{
 			cmd += " --connect-timeout=%d".printf(connect_timeout_secs);
 			cmd += " --timeout=%d".printf(timeout_secs);
 			//cmd += " --summary-interval=2";
-			cmd += " --max-concurrent-downloads=20";
+			cmd += " --max-concurrent-downloads=%d".printf(concurrent_downloads);
 			//cmd += " --optimize-concurrent-downloads=true";
 			//cmd += " -l download.log";
 			//cmd += " --direct-file-mapping=false";
@@ -158,26 +159,28 @@ public class DownloadTask : AsyncTask{
 
 			//log_msg("match: file-status: " + line);
 			
-			/*prg_count = long.parse(match.fetch(1).strip());
-			size = long.parse(match.fetch(2).strip());
-			percent = double.parse(match.fetch(3).strip());
-			download_rate = long.parse(match.fetch(4).strip());
-			eta = match.fetch(5).strip();
+			if (downloads.size == 1){
+				prg_count = long.parse(match.fetch(1).strip());
+				size = long.parse(match.fetch(2).strip());
+				percent = double.parse(match.fetch(3).strip());
+				download_rate = long.parse(match.fetch(4).strip());
+				eta = match.fetch(5).strip();
 
-			if (status_in_kb){
-				status_line = "%s / %s, %s/s (%s)".printf(
-					format_file_size(prg_count, false, "", true, 1),
-					format_file_size(size, false, "", true, 1),
-					format_file_size(download_rate, false, "", true, 1),
-					eta).replace("\n","");
+				if (status_in_kb){
+					status_line = "%s / %s, %s/s (%s)".printf(
+						format_file_size(prg_count, false, "", true, 1),
+						format_file_size(size, false, "", true, 1),
+						format_file_size(download_rate, false, "", true, 1),
+						eta).replace("\n","");
+				}
+				else{
+					status_line = "%s / %s, %s/s (%s)".printf(
+						format_file_size(prg_count),
+						format_file_size(size),
+						format_file_size(download_rate),
+						eta).replace("\n","");
+				}
 			}
-			else{
-				status_line = "%s / %s, %s/s (%s)".printf(
-					format_file_size(prg_count),
-					format_file_size(size),
-					format_file_size(download_rate),
-					eta).replace("\n","");
-			}*/
 					
 			//log_msg(status_line);
 		}

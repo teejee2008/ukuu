@@ -308,11 +308,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		
 			if (!kern.cached_page_exists){
-				//while (DownloadManager.download_count > 20){
-				//	sleep(100); // wait for counter to decrease
-				//}
-				//kern.download_cached_page(false);
-				//progress_count++;
+
 				var item = new DownloadItem(
 					kern.cached_page_uri,
 					file_parent(kern.cached_page),
