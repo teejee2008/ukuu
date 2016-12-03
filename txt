@@ -1,0 +1,12 @@
+cd src; make all
+make[1]: Entering directory '/mnt/sdcard/Dropbox/projects/linux/ukuu/src'
+#build binaries
+#app-gtk
+valac -X -D'GETTEXT_PACKAGE="ukuu"' --Xcc="-lm" -X -Wl,-rpath,/usr/share/ukuu/libs -D VTE_291 --thread Common/*.vala Gtk/*.vala -o ukuu-gtk --pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg vte-2.91
+Compilation succeeded - 9 warning(s)
+#app
+valac -X -D'GETTEXT_PACKAGE="ukuu"' --Xcc="-lm" -X -Wl,-rpath,/usr/share/ukuu/libs --thread Common/*.vala Console/*.vala Gtk/CustomMessageDialog.vala Gtk/UpdateNotificationWindow.vala Gtk/GtkHelper.vala -o ukuu --pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0 --pkg vte-2.91
+Compilation succeeded - 12 warning(s)
+#update translation template
+find . -iname "*.vala" | xargs xgettext --language=C --keyword=_ --copyright-holder='Tony George (teejeetech@gmail.com)' --package-name='ukuu' --package-version='2.2' --msgid-bugs-address='teejeetech@gmail.com' --escape --sort-output -o ../ukuu.pot
+make[1]: Leaving directory '/mnt/sdcard/Dropbox/projects/linux/ukuu/src'

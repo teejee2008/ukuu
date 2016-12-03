@@ -1,8 +1,8 @@
 /*
  * AboutWindow.vala
  *
- * Copyright 2016 Tony George <teejee2008@gmail.com>
- * 
+ * Copyright 2016 Tony George <teejeetech@gmail.com>
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -25,13 +25,13 @@ using Gtk;
 
 using TeeJee.Logging;
 using TeeJee.FileSystem;
-using TeeJee.JSON;
-using TeeJee.ProcessManagement;
+using TeeJee.JsonHelper;
+using TeeJee.ProcessHelper;
 using TeeJee.GtkHelper;
 using TeeJee.System;
 using TeeJee.Misc;
 
-public class AboutWindow : Gtk.Dialog {
+public class AboutWindow : Dialog {
 	private Box vbox_main;
 	private Box vbox_logo;
 	private Box vbox_credits;
@@ -67,6 +67,16 @@ public class AboutWindow : Gtk.Dialog {
 		}
 	}
 
+	private string[] _contributors;
+	public string[] contributors{
+		get{
+			return _contributors;
+		}
+		set{
+			_contributors = value;
+		}
+	}
+	
 	private string _comments = "";
 	public string comments{
 		get{
@@ -296,14 +306,12 @@ public class AboutWindow : Gtk.Dialog {
 		btn_close.set_image (new Image.from_stock ("gtk-close", IconSize.MENU));
 		hbox_action.add(btn_close);
 
-		btn_close.clicked.connect(() => {
-			this.destroy();
-		});
+		btn_close.clicked.connect(()=>{ this.destroy(); });
 	}
 
 	public void initialize() {
 		title = program_name;
-		img_logo.pixbuf = logo;
+		img_logo.pixbuf = logo.scale_simple(128,128,Gdk.InterpType.HYPER);
 		lbl_program_name.label = "<span size='larger'>%s</span>".printf(program_name);
 		lbl_version.label = "v%s".printf(version);
 		lbl_comments.label = "%s".printf(comments);
@@ -313,15 +321,31 @@ public class AboutWindow : Gtk.Dialog {
 		lbl_copyright.label = "<span>%s</span>".printf(copyright);
 
 		if (authors.length > 0){
-			add_line("<b>%s</b>\n".printf(_("Authors")));
+			add_header("<b>%s</b>\n".printf(_("Authors")));
 			foreach(string name in authors){
 				add_line("%s\n".printf(name));
 			}
 			add_line("\n");
 		}
 
+		if (contributors.length > 0){
+			add_header("<b>%s</b>\n".printf(_("Contributions")));
+			foreach(string name in contributors){
+				add_line("%s\n".printf(name));
+			}
+			add_line("\n");
+		}
+		
+		if (third_party.length > 0){
+			add_header("<b>%s</b>\n".printf(_("Third Party Tools")));
+			foreach(string name in third_party){
+				add_line("%s\n".printf(name));
+			}
+			add_line("\n");
+		}
+
 		if (artists.length > 0){
-			add_line("<b>%s</b>\n".printf(_("Artists")));
+			add_header("<b>%s</b>\n".printf(_("Artists")));
 			foreach(string name in artists){
 				add_line("%s\n".printf(name));
 			}
@@ -329,23 +353,15 @@ public class AboutWindow : Gtk.Dialog {
 		}
 
 		if (translators.length > 0){
-			add_line("<b>%s</b>\n".printf(_("Translators")));
+			add_header("<b>%s</b>\n".printf(_("Translators")));
 			foreach(string name in translators){
 				add_line("%s\n".printf(name));
 			}
 			add_line("\n");
 		}
 
-		if (third_party.length > 0){
-			add_line("<b>%s</b>\n".printf(_("Third Party Tools &amp; Software")));
-			foreach(string name in third_party){
-				add_line("%s\n".printf(name));
-			}
-			add_line("\n");
-		}
-		
 		if (documenters.length > 0){
-			add_line("<b>%s</b>\n".printf(_("Documenters")));
+			add_header("<b>%s</b>\n".printf(_("Documenters")));
 			foreach(string name in documenters){
 				add_line("%s\n".printf(name));
 			}
@@ -353,7 +369,7 @@ public class AboutWindow : Gtk.Dialog {
 		}
 
 		if (donations.length > 0){
-			add_line("<b>%s</b>\n".printf(_("Donations")));
+			add_header("<b>%s</b>\n".printf(_("Donations")));
 			foreach(string name in donations){
 				add_line("%s\n".printf(name));
 			}
@@ -365,17 +381,17 @@ public class AboutWindow : Gtk.Dialog {
 		}
 	}
 
-	public void add_line(string text){
+	public void add_line(string text, bool escape_html_chars = true){
+		
 		if (text.split(":").length >= 2){
-			var txt = break_string_by_word(text.split(":")[0].strip());
-			var link = new LinkButton(txt);
+			var link = new LinkButton(escape_html(text.split(":")[0]));
 			vbox_lines.add(link);
 
-			string val = text[text.index_of(":") + 1:text.length]; //break at first colon
+			string val = text[text.index_of(":") + 1:text.length];
 			if (val.contains("@")){
 				link.uri = "mailto:" + val;
 			}
-			else if(val.has_prefix("http://") || val.has_prefix("https://")){
+			else if(val.has_prefix("http://")){
 				link.uri = val;
 			}
 			else{
@@ -392,7 +408,11 @@ public class AboutWindow : Gtk.Dialog {
 			});
 		}
 		else{
-			var txt = break_string_by_word(text);
+			var txt = text;
+			if (escape_html_chars){
+				txt = escape_html(text);
+			}
+
 			var lbl = new Label(txt);
 			lbl.set_use_markup(true);
 			lbl.valign = Align.START;
@@ -402,22 +422,7 @@ public class AboutWindow : Gtk.Dialog {
 		}
 	}
 
-	public string break_string_by_word(string input_text){
-		string text = "";
-		string line = "";
-		foreach(string part in input_text.split(" ")){
-			line += part + " ";
-			if (line.length > 50){
-				text += line.strip() + "\n";
-				line = "";
-			}
-		}
-		if (line.length > 0){
-			text += line;
-		}
-		if (text.has_suffix("\n")){
-			text = text[0:text.length-1].strip();
-		}
-		return text;
+	public void add_header(string text){
+		add_line(text, false);
 	}
 }

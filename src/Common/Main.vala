@@ -28,9 +28,8 @@ using Json;
 
 using TeeJee.Logging;
 using TeeJee.FileSystem;
-using TeeJee.JSON;
-using TeeJee.ProcessManagement;
-using TeeJee.Multimedia;
+using TeeJee.JsonHelper;
+using TeeJee.ProcessHelper;
 using TeeJee.System;
 using TeeJee.Misc;
 
@@ -164,10 +163,6 @@ public class Main : GLib.Object{
 
 		update_startup_script();
 	    update_startup_desktop_file();
-
-	    if (user_is_admin()){
-			remove_cron_jobs();
-		}
 	}
 
 	public void load_app_config(){
@@ -204,18 +199,6 @@ public class Main : GLib.Object{
 
 	// begin ------------
 
-	public void remove_cron_jobs(){
-		CronTab.remove_job(get_crontab_entry_scheduled());
-		CronTab.remove_job(get_crontab_entry_boot());
-	}
-
-	private string get_crontab_entry_scheduled(){
-		return "@daily ukuu --notify";
-	}
-
-	private string get_crontab_entry_boot(){
-		return "@reboot sleep %dm && ukuu --notify".printf(20);
-	}
 
 	private void update_startup_script(){
 
@@ -242,7 +225,7 @@ public class Main : GLib.Object{
 		txt += "sleep %ds\n".printf(startup_delay);
 		txt += "while true\n";
 		txt += "do\n";
-		txt += "  ukuu --notify && sleep %d%s \n".printf(count, suffix);
+		txt += "  ukuu --notify ; sleep %d%s \n".printf(count, suffix);
 		txt += "done\n";
 		
 		if (file_exists(STARTUP_SCRIPT_FILE)){

@@ -26,10 +26,9 @@ using Gee;
 
 using TeeJee.Logging;
 using TeeJee.FileSystem;
-using TeeJee.JSON;
-using TeeJee.ProcessManagement;
+using TeeJee.JsonHelper;
+using TeeJee.ProcessHelper;
 using TeeJee.GtkHelper;
-using TeeJee.Multimedia;
 using TeeJee.System;
 using TeeJee.Misc;
 

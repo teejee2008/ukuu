@@ -1,8 +1,8 @@
 
 using TeeJee.Logging;
 using TeeJee.FileSystem;
-//using TeeJee.JSON;
-using TeeJee.ProcessManagement;
+//using TeeJee.JsonHelper;
+using TeeJee.ProcessHelper;
 //using TeeJee.Multimedia;
 //using TeeJee.System;
 using TeeJee.Misc;
@@ -307,9 +307,9 @@ public class DownloadManager : GLib.Object{
 
 			if (status_in_kb){
 				status_line = "%s / %s, %s/s (%s)".printf(
-					format_file_size(progress_count, false, true),
-					format_file_size(size, false, true),
-					format_file_size(download_rate, false, true),
+					format_file_size(progress_count, false, "", true, 1),
+					format_file_size(size, false, "", true, 1),
+					format_file_size(download_rate, false, "", true, 1),
 					eta).replace("\n","");
 			}
 			else{
@@ -402,3 +402,8 @@ public class DownloadManager : GLib.Object{
 	}
 }
 
+public class DownloadItem : GLib.Object
+{
+
+
+}

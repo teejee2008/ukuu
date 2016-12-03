@@ -1,7 +1,7 @@
 /*
  * DonationWindow.vala
  *
- * Copyright 2012 Tony George <teejee2008@gmail.com>
+ * Copyright 2016 Tony George <teejeetech@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,8 +25,8 @@ using Gtk;
 
 using TeeJee.Logging;
 using TeeJee.FileSystem;
-using TeeJee.JSON;
-using TeeJee.ProcessManagement;
+using TeeJee.JsonHelper;
+using TeeJee.ProcessHelper;
 using TeeJee.GtkHelper;
 using TeeJee.System;
 using TeeJee.Misc;
@@ -39,7 +39,6 @@ public class DonationWindow : Dialog {
 		set_modal (true);
 		set_deletable(true);
 		set_skip_taskbar_hint(false);
-		
 		set_default_size (400, 20);
 		icon = get_app_icon(16);
 
@@ -68,7 +67,7 @@ public class DonationWindow : Dialog {
 		Button btn_donate_paypal = new Button.with_label("   " + _("Donate with PayPal") + "   ");
 		vbox_actions.add(btn_donate_paypal);
 		btn_donate_paypal.clicked.connect(()=>{
-			xdg_open("https://www.paypal.com/cgi-bin/webscr?business=teejeetech@gmail.com&cmd=_xclick&currency_code=USD&amount=10&item_name=Ukuu%20Donation");
+			xdg_open("https://www.paypal.com/cgi-bin/webscr?business=teejeetech@gmail.com&cmd=_xclick&currency_code=USD&amount=10&item_name=Timeshift%20Donation");
 		});
 
 		//btn_donate_wallet
