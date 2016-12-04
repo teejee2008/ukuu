@@ -94,16 +94,18 @@ public class DownloadTask : AsyncTask{
 			cmd += " -i '%s'".printf(escape_single_quote(list_file));
 			cmd += " --show-console-readout=false";
 			cmd += " --summary-interval=1";
+			cmd += " --auto-save-interval=1"; // save aria2 control file every sec
 			cmd += " --human-readable=false";
-			cmd += " --enable-color=false";
+			cmd += " --enable-color=false"; // enabling color breaks the output parsing
 			cmd += " --allow-overwrite";
 			cmd += " --connect-timeout=%d".printf(connect_timeout_secs);
 			cmd += " --timeout=%d".printf(timeout_secs);
-			//cmd += " --summary-interval=2";
 			cmd += " --max-concurrent-downloads=%d".printf(concurrent_downloads);
-			//cmd += " --optimize-concurrent-downloads=true";
-			//cmd += " -l download.log";
-			//cmd += " --direct-file-mapping=false";
+			//cmd += " --continue"; // never use - this is for continuing files downloaded sequentially by web browser and other programs
+			//cmd += " --optimize-concurrent-downloads=true"; // not supported by all versions
+			//cmd += " -l download.log"; // too much logging
+			//cmd += " --direct-file-mapping=false"; // not required
+			//cmd += " --dry-run";
 		}
 
 		log_debug(cmd);
@@ -131,6 +133,8 @@ public class DownloadTask : AsyncTask{
 		if ((line == null) || (line.length == 0)) {
 			return true;
 		}
+
+		//log_msg(line);
 
 		MatchInfo match;
 		

@@ -327,20 +327,24 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-		var mgr = new DownloadTask();
-		mgr.downloads = downloads;
-		mgr.status_in_kb = true;
-		mgr.prg_count_total = progress_total;
-		mgr.execute();
+		if (downloads.size > 0){
+			
+			var mgr = new DownloadTask();
+			mgr.downloads = downloads;
+			mgr.status_in_kb = true;
+			mgr.prg_count_total = progress_total;
+			mgr.execute();
 
-		while (mgr.is_running()){
-			progress_count = mgr.prg_count;
-			sleep(300);
-		}
+			while (mgr.is_running()){
+				progress_count = mgr.prg_count;
+				sleep(300);
+			}
 
-		foreach(var kern in kernels_to_update){
-			kern.load_cached_page();
+			foreach(var kern in kernels_to_update){
+				kern.load_cached_page();
+			}
 		}
+		
 		
 		// No need to wait for downloads to complete
 		// Cached index files will be loaded once downloads is complete
@@ -1041,7 +1045,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		foreach(string file_name in deb_list.keys){
 			string file_path = "%s/%s/%s".printf(cache_subdir, NATIVE_ARCH, file_name);
 
-			if (file_exists(file_path)){
+			if (file_exists(file_path) && !file_exists(file_path + ".aria2c")){
 				continue;
 			}
 
