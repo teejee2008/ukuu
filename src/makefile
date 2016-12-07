@@ -49,7 +49,7 @@ install:
 
 	#polkit policy file
 	#install -m 0644 ./share/polkit-1/actions/in.teejeetech.pkexec.ukuu-gtk.policy "$(DESTDIR)$(polkitdir)"
-	#rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu-gtk.policy"
+	#rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu-gtk.policy" 
 
 	#launcher
 	install -m 0755 ${app_name}.desktop "$(DESTDIR)$(launcherdir)"
