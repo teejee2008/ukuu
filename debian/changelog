@@ -1,4 +1,21 @@
 
+ukuu (16.12) trusty; urgency=medium
+
+  * Fixed an issue with update check. User would sometimes be prompted
+  to install an older version.
+
+  * Fixed an issue where the update notification script would cause
+  high CPU usage if internet connection was not active.
+
+  * Fixed an issue where the application would quit while refreshing
+  the cache
+
+  * Cache refresh is now much faster. Uses aria2 for running parallel
+  downloads.
+
+ -- Tony George <tony.george.kol@gmail.com>  Wed, 7 Dec 2016 10:00:00 +0530
+ 
+ 
 ukuu (16.11.1) trusty; urgency=medium
 
   * Fixed build for xenial: Added dependency for 'valac'

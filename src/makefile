@@ -58,9 +58,8 @@ install:
 	install -m 0755 ./share/pixmaps/${app_name}.* "$(DESTDIR)$(sharedir)/pixmaps"
 
 	#translations
-	#mkdir -p "$(DESTDIR)$(localedir)/ms/LC_MESSAGES"
-	#msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/ms/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-ms.po
-
+	mkdir -p "$(DESTDIR)$(localedir)/sv/LC_MESSAGES"
+	msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/sv/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-sv.po
 	
 uninstall:
 	#binary
@@ -80,4 +79,7 @@ uninstall:
 	rm -f "$(DESTDIR)$(sharedir)/pixmaps/${app_name}.png"
 
     #translations
+	rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/${app_name}.mo
+
+	#startup scripts
 	#rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/${app_name}.mo

@@ -347,14 +347,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 		
-		
-		// No need to wait for downloads to complete
-		// Cached index files will be loaded once downloads is complete
-
-		//if (DownloadManager.download_count > 0){
-		//	sleep(1000); // wait a sec
-		//}
-
 		check_installed();
 
 		check_updates();

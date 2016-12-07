@@ -489,7 +489,7 @@ public class MainWindow : Gtk.Window{
 		};
 		
 		dialog.translators = {
-
+			"Åke Engelbrektson (Swedish):eson@svenskasprakfiler.se"
 		};
 
 		dialog.documenters = null;

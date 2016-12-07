@@ -1,0 +1,486 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Tony George (teejeetech@gmail.com)
+# This file is distributed under the same license as the ukuu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ukuu 2.2\n"
+"Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
+"POT-Creation-Date: 2016-11-04 19:19+0100\n"
+"PO-Revision-Date: 2016-11-08 10:22+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: Åke Engelbrektson <https://svenskasprakfiler.se>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sv\n"
+
+#: Gtk/MainWindow.vala:461
+msgid "About"
+msgstr "Om"
+
+#: Console/AppConsole.vala:98
+msgid "Admin access is required for running this application."
+msgstr "Root-åtkomst krävs för att köra detta program."
+
+#: Gtk/AboutWindow.vala:324
+#, c-format
+msgid "Artists"
+msgstr "Artister"
+
+#: Gtk/AboutWindow.vala:316
+#, c-format
+msgid "Authors"
+msgstr "Utvecklare"
+
+#: Common/LinuxKernel.vala:1059
+msgid "Available Kernels"
+msgstr "Tillgängliga kärnor"
+
+#: Gtk/AboutWindow.vala:285
+msgid "Back"
+msgstr "Tillbaka"
+
+#: Gtk/UpdateNotificationWindow.vala:177 Gtk/ProgressWindow.vala:139
+#: Gtk/TerminalWindow.vala:167
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: Gtk/MainWindow.vala:417
+msgid "Changes"
+msgstr "Ändringar"
+
+#: Gtk/SettingsDialog.vala:120
+msgid "Check every"
+msgstr "Kontrollera varje"
+
+#: Console/AppConsole.vala:84
+msgid "Check for kernel updates"
+msgstr "Sök efter kärnuppdateringar"
+
+#: Gtk/TerminalWindow.vala:177 Gtk/AboutWindow.vala:295
+msgid "Close"
+msgstr "Stäng"
+
+#: Common/Main.vala:105
+msgid "Commands listed below are not available on this system"
+msgstr "Kommandon listade nedan, finns inte tillgängliga i detta system."
+
+#: Gtk/MainWindow.vala:95 Console/AppConsole.vala:200
+msgid "Could not find requested version"
+msgstr "Kunde inte hitta efterfrågad version"
+
+#: Gtk/AboutWindow.vala:272 Gtk/AboutWindow.vala:289
+msgid "Credits"
+msgstr "Tack"
+
+#: Common/CronTab.vala:65
+msgid "Cron job added"
+msgstr "Cron-jobb tillagt"
+
+#: Common/CronTab.vala:115
+msgid "Cron job removed"
+msgstr "Cron-jobb borttaget"
+
+#: Gtk/SettingsDialog.vala:153
+msgid "Day(s)"
+msgstr "Dag(ar)"
+
+#: Gtk/DonationWindow.vala:55
+msgid ""
+"Did you find this software useful?\n"
+"\n"
+"You can buy me a coffee or make a donation via PayPal to show your support. "
+"Or just drop me an email and say Hi. This application is completely free and "
+"will continue to remain that way. Your contributions will help in keeping "
+"this project alive and improving it further.\n"
+"\n"
+"Feel free to send me an email if you find any issues in this application or "
+"if you need any changes. Suggestions and feedback are always welcome.\n"
+"\n"
+"Thanks,\n"
+"Tony George\n"
+"(teejeetech@gmail.com)"
+msgstr ""
+"Tycker du att detta program är användbart?\n"
+"\n"
+"Du kan bjuda mig på en kopp kaffe eller donera via PayPal för att visa ditt "
+"stöd. Eller bara skicka ett e-postmeddelande och säga Hej! Programmet är "
+"helt gratis och kommer att fortsätta vara så. Ditt bidrag hjälper mig att "
+"hålla projektet levande och att utveckla det vidare.\n"
+"\n"
+"Skicka gärna ett e-postmeddelande om du stöter på några problem med "
+"programmet eller behöver några ändringar. Förslag och återkoppling är alltid "
+"välkommet.\n"
+"\n"
+"Tack!\n"
+"Tony George\n"
+"(teejeetech@gmail.com)"
+
+#: Common/Utility.vala:428
+msgid "Dir not found"
+msgstr "Mappen kan inte hittas"
+
+#: Gtk/SettingsDialog.vala:160
+msgid "Display"
+msgstr "Visa"
+
+#: Common/LinuxKernel.vala:88
+msgid "Distribution"
+msgstr "Distribution"
+
+#: Gtk/AboutWindow.vala:348
+#, c-format
+msgid "Documenters"
+msgstr "Dokumentalister"
+
+#: Gtk/MainWindow.vala:449 Gtk/DonationWindow.vala:36
+msgid "Donate"
+msgstr "Donera"
+
+#: Gtk/DonationWindow.vala:75
+msgid "Donate with Google Wallet"
+msgstr "Donera med Google Wallet"
+
+#: Gtk/DonationWindow.vala:68
+msgid "Donate with PayPal"
+msgstr "Donera med PayPal"
+
+#: Gtk/AboutWindow.vala:356
+#, c-format
+msgid "Donations"
+msgstr "Donationer"
+
+#: Console/AppConsole.vala:89
+msgid "Download packages for specified kernel"
+msgstr "Ladda ner paket för specificerad kärna"
+
+#: Common/LinuxKernel.vala:1097
+#, c-format
+msgid "Downloading"
+msgstr "Laddar ner"
+
+#: Common/Utility.vala:100
+msgid "E"
+msgstr "F"
+
+#: Common/LinuxKernel.vala:1120
+#, c-format
+msgid "ERROR"
+msgstr "FEL"
+
+#: Gtk/GtkHelper.vala:18
+msgid "Error"
+msgstr "Fel"
+
+#: Common/CronTab.vala:61
+msgid "Failed to add cron job"
+msgstr "Kunde inte lägga till Cron-jobb"
+
+#: Common/Utility.vala:257
+msgid "Failed to copy file"
+msgstr "Kunde inte kopiera filen"
+
+#: Common/Utility.vala:336
+msgid "Failed to create dir"
+msgstr "Kunde inte skapa mappen"
+
+#: Common/Utility.vala:196
+msgid "Failed to delete file"
+msgstr "Kunde inte ta bort filen"
+
+#: Common/Utility.vala:276
+msgid "Failed to move file"
+msgstr "Kunde inte flytta filen"
+
+#: Common/CronTab.vala:18
+msgid "Failed to read cron tab"
+msgstr "Kunde inte läsa cron-fliken"
+
+#: Common/Utility.vala:214
+msgid "Failed to read file"
+msgstr "Kunde inte läsa filen"
+
+#: Common/CronTab.vala:111
+msgid "Failed to remove cron job"
+msgstr "Kunde inte ta bort cron-jobbet"
+
+#: Common/Utility.vala:241
+msgid "Failed to write file"
+msgstr "Kunde inte skriva filen"
+
+#: Common/LinuxKernel.vala:954
+#, c-format
+msgid "Fetching changelog for"
+msgstr "Hämtar ändringslogg för"
+
+#: Common/LinuxKernel.vala:912
+#, c-format
+msgid "Fetching index for"
+msgstr "Hämtar index för"
+
+#: Common/LinuxKernel.vala:348
+msgid "Fetching index from kernel.ubuntu.com..."
+msgstr "Hämtar index från kernel.ubuntu.com ..."
+
+#: Common/Utility.vala:574 Common/Utility.vala:623
+msgid "File is missing"
+msgstr "Filen saknas"
+
+#: Common/LinuxKernel.vala:968 Common/DownloadManager.vala:346
+#: Common/Utility.vala:271 Common/Utility.vala:457
+msgid "File not found"
+msgstr "Filen kan inte hittas"
+
+#: Common/Package.vala:133 Common/Package.vala:195
+#, c-format
+msgid "File not found: %s"
+msgstr "Filen kunde inte hittas: %s"
+
+#: Gtk/SettingsDialog.vala:178
+msgid "Hide kernels older than 4.0"
+msgstr "Dölj kärnor, äldre än 4.0"
+
+#: Gtk/SettingsDialog.vala:167
+msgid "Hide unstable and RC releases"
+msgstr "Dölj instabila- och RC-publiceringar"
+
+#: Gtk/SettingsDialog.vala:151
+msgid "Hour(s)"
+msgstr "Timma(r)"
+
+#: Gtk/UpdateNotificationWindow.vala:178
+msgid "Ignore this update"
+msgstr "Undanta denna uppdatering"
+
+#: Common/LinuxKernel.vala:251
+msgid "Index is fresh"
+msgstr "Index är uppdaterat"
+
+#: Common/LinuxKernel.vala:248
+msgid "Index is stale"
+msgstr "Index är inaktuellt"
+
+#: Gtk/MainWindow.vala:370 Gtk/UpdateNotificationWindow.vala:145
+msgid "Install"
+msgstr "Installera"
+
+#: Console/AppConsole.vala:87
+msgid "Install specified mainline kernel"
+msgstr "Installera specificerad kärna"
+
+#: Gtk/UpdateNotificationWindow.vala:146
+msgid "Install this kernel"
+msgstr "Installera denna kärna"
+
+#: Common/LinuxKernel.vala:1165
+msgid "Installation completed with errors"
+msgstr "Installation slutförd med fel"
+
+#: Common/LinuxKernel.vala:1162
+msgid "Installation completed. A reboot is required to use the new kernel."
+msgstr "Installation slutförd. Omstart krävs för att tillämpa den nya kärnan."
+
+#: Gtk/MainWindow.vala:221 Common/LinuxKernel.vala:1076
+msgid "Installed"
+msgstr "Installerad"
+
+#: Gtk/MainWindow.vala:505 Console/AppConsole.vala:340
+msgid "Internet connection is not active"
+msgstr "Internetuppkopplingen är inte aktiv"
+
+#: Gtk/MainWindow.vala:133
+msgid "Kernel"
+msgstr "Kärna"
+
+#: Gtk/MainWindow.vala:489
+msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr "Kärnuppgraderingsverktyg för Ubuntu-baserade distributioner"
+
+#: Console/AppConsole.vala:86
+msgid "List all available mainline kernels"
+msgstr "Lista alla tillgängliga kärnor"
+
+#: Gtk/GtkHelper.vala:169
+msgid "Missing Icon"
+msgstr "Saknad ikon"
+
+#: Console/AppConsole.vala:334
+msgid "No updates found"
+msgstr "Inga uppdateringar hittades"
+
+#: Gtk/SettingsDialog.vala:67
+msgid "Notification"
+msgstr "Avisering"
+
+#: Gtk/SettingsDialog.vala:73
+msgid "Notify if a major release is available"
+msgstr "Meddela om en ny (stor) uppdatering finns tillgänglig"
+
+#: Gtk/SettingsDialog.vala:84
+msgid "Notify if a point release is available"
+msgstr "Meddela om en ny (mindre) uppdatering finns tillgänglig"
+
+#: Console/AppConsole.vala:85
+msgid "Notify if kernel update is available"
+msgstr "Meddela om en kärnuppdatering finns tillgänglig"
+
+#: Gtk/DonationWindow.vala:96 Common/LinuxKernel.vala:1112
+#, c-format
+msgid "OK"
+msgstr "OK"
+
+#: Gtk/UpdateNotificationWindow.vala:162
+msgid "Open"
+msgstr "Öppna"
+
+#: Gtk/UpdateNotificationWindow.vala:163
+msgid "Open Ukuu"
+msgstr "Öppna Ukuu"
+
+#: Gtk/AppGtk.vala:179 Console/AppConsole.vala:82
+msgid "Options"
+msgstr "Alternativ"
+
+#: Common/Main.vala:106
+msgid "Please install required packages and try again"
+msgstr "Installera nödvändiga paket och försök igen"
+
+#: Gtk/AppGtk.vala:181
+msgid "Print debug information"
+msgstr "Skriv ut felsökningsinformation"
+
+#: Gtk/MainWindow.vala:509
+msgid "Refreshing..."
+msgstr "Uppdaterar ..."
+
+#: Gtk/MainWindow.vala:381
+msgid "Remove"
+msgstr "Ta bort"
+
+#: Console/AppConsole.vala:91
+msgid "Remove files from application cache"
+msgstr "Ta bort filer från program-cachen"
+
+#: Console/AppConsole.vala:88
+msgid "Remove specified mainline kernel"
+msgstr "Ta bort specificerad kärna"
+
+#: Gtk/AppGtk.vala:105
+msgid "Root Access Required"
+msgstr "Root-åtkomst krävs"
+
+#: Gtk/AppGtk.vala:103
+msgid "Root access is required for running this application."
+msgstr "Root-åtkomst krävs för att använda det här programmet"
+
+#: Console/AppConsole.vala:204
+msgid "Run 'ukuu --list' and use the version string listed in first column"
+msgstr ""
+"Kör \"ukuu --list\" och använd den versionssträng som listas i första "
+"kolumnen"
+
+#: Gtk/AppGtk.vala:104 Console/AppConsole.vala:99
+msgid "Run the application as root or using gksu/sudo."
+msgstr "Kör programmet som root, eller använd gksu/sudo."
+
+#: Gtk/MainWindow.vala:221 Common/LinuxKernel.vala:1076
+msgid "Running"
+msgstr "Körs"
+
+#: Gtk/DonationWindow.vala:82
+msgid "Send Email"
+msgstr "Skicka e-post"
+
+#: Gtk/MainWindow.vala:428 Gtk/SettingsDialog.vala:57
+msgid "Settings"
+msgstr "Inställningar"
+
+#: Gtk/AppGtk.vala:182
+msgid "Show all options"
+msgstr "Visa alla alternativ"
+
+#: Gtk/SettingsDialog.vala:95
+msgid "Show notification bubble on desktop"
+msgstr "Visa aviseringsruta på skrivbordet"
+
+#: Gtk/SettingsDialog.vala:106
+msgid "Show notification dialog"
+msgstr "Visa aviseringsdialog"
+
+#: Gtk/MainWindow.vala:209
+msgid "Status"
+msgstr "Status"
+
+#: Common/Utility.vala:1232
+msgid "Stopped"
+msgstr "Stoppad"
+
+#: Gtk/AppGtk.vala:177 Console/AppConsole.vala:80
+msgid "Syntax"
+msgstr "Syntax"
+
+#: Common/LinuxKernel.vala:102
+msgid "System architecture"
+msgstr "Systemarkitektur"
+
+#: Gtk/AboutWindow.vala:340
+#, c-format
+msgid "Third Party Tools &amp; Software"
+msgstr "Tredjepartsverktyg &amp; mjukvara"
+
+#: Gtk/MainWindow.vala:602 Common/LinuxKernel.vala:1134
+msgid "This kernel is already installed."
+msgstr "Denna kärna är redan installerad"
+
+#: Common/LinuxKernel.vala:1179
+msgid ""
+"This kernel is currently running and cannot be removed.\n"
+" Install another kernel before removing this one."
+msgstr ""
+"Denna kärna används för tillfället och kan inte tas bort.\n"
+"Installera en annan kärna innan du tar bort den här."
+
+#: Gtk/AboutWindow.vala:332
+#, c-format
+msgid "Translators"
+msgstr "Översättare"
+
+#: Common/LinuxKernel.vala:1219
+msgid "Un-install completed"
+msgstr "Avinstallation slutförd"
+
+#: Common/LinuxKernel.vala:1222
+msgid "Un-install completed with errors"
+msgstr "Avinstallation slutförd med fel"
+
+#: Gtk/AppGtk.vala:165 Console/AppConsole.vala:239
+msgid "Unknown option"
+msgstr "Okänt alternativ"
+
+#: Console/AppConsole.vala:90
+msgid "Use specified user's cache directory"
+msgstr "Använd specificerad användares cache-mapp"
+
+#: Gtk/AppGtk.vala:113 Gtk/AppGtk.vala:131 Console/AppConsole.vala:140
+msgid "Using cache directory"
+msgstr "Använder cache-mapp"
+
+#: Gtk/MainWindow.vala:182
+msgid "Version"
+msgstr "Version"
+
+#: Gtk/DonationWindow.vala:89
+msgid "Visit Website"
+msgstr "Besök hemsidan"
+
+#: Common/Utility.vala:100
+msgid "W"
+msgstr "V"
+
+#: Gtk/SettingsDialog.vala:155
+msgid "Week(s)"
+msgstr "Veckor"
