@@ -82,4 +82,5 @@ uninstall:
 	rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/${app_name}.mo
 
 	#startup scripts
-	#rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/${app_name}.mo
+	rm -f $(DESTDIR)/home/*/.config/ukuu-notify.sh
+	rm -f $(DESTDIR)/home/*/.config/autostart/ukuu.desktop
