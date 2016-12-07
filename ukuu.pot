@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-12-07 20:40+0530\n"
+"POT-Creation-Date: 2016-12-07 21:42+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: Console/AppConsole.vala:97
+#: Console/AppConsole.vala:99
 msgid "Admin access is required for running this application."
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Check every"
 msgstr ""
 
-#: Console/AppConsole.vala:83
+#: Console/AppConsole.vala:85
 msgid "Check for kernel updates"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: Common/Main.vala:115
+#: Common/Main.vala:104
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Could not find file"
 msgstr ""
 
-#: Console/AppConsole.vala:199 Gtk/MainWindow.vala:96
+#: Console/AppConsole.vala:201 Gtk/MainWindow.vala:96
 msgid "Could not find requested version"
 msgstr ""
 
@@ -166,7 +166,7 @@ msgstr ""
 msgid "Donations"
 msgstr ""
 
-#: Console/AppConsole.vala:88
+#: Console/AppConsole.vala:90
 msgid "Download packages for specified kernel"
 msgstr ""
 
@@ -310,7 +310,7 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
-#: Console/AppConsole.vala:86
+#: Console/AppConsole.vala:88
 msgid "Install specified mainline kernel"
 msgstr ""
 
@@ -330,7 +330,7 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#: Console/AppConsole.vala:339 Gtk/MainWindow.vala:516
+#: Console/AppConsole.vala:341 Gtk/MainWindow.vala:516
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -347,7 +347,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: Console/AppConsole.vala:85
+#: Console/AppConsole.vala:87
 msgid "List all available mainline kernels"
 msgstr ""
 
@@ -365,7 +365,7 @@ msgstr ""
 msgid "Mounted"
 msgstr ""
 
-#: Console/AppConsole.vala:333
+#: Console/AppConsole.vala:335
 msgid "No updates found"
 msgstr ""
 
@@ -381,7 +381,7 @@ msgstr ""
 msgid "Notify if a point release is available"
 msgstr ""
 
-#: Console/AppConsole.vala:84
+#: Console/AppConsole.vala:86
 msgid "Notify if kernel update is available"
 msgstr ""
 
@@ -399,7 +399,7 @@ msgstr ""
 msgid "Open Ukuu"
 msgstr ""
 
-#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:178
+#: Console/AppConsole.vala:83 Gtk/AppGtk.vala:178
 msgid "Options"
 msgstr ""
 
@@ -408,7 +408,7 @@ msgstr ""
 msgid "Parent Device"
 msgstr ""
 
-#: Common/Main.vala:116
+#: Common/Main.vala:105
 msgid "Please install required packages and try again"
 msgstr ""
 
@@ -424,11 +424,11 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: Console/AppConsole.vala:90
+#: Console/AppConsole.vala:92
 msgid "Remove files from application cache"
 msgstr ""
 
-#: Console/AppConsole.vala:87
+#: Console/AppConsole.vala:89
 msgid "Remove specified mainline kernel"
 msgstr ""
 
@@ -445,11 +445,11 @@ msgstr ""
 msgid "Root access is required for running this application."
 msgstr ""
 
-#: Console/AppConsole.vala:203
+#: Console/AppConsole.vala:205
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 
-#: Console/AppConsole.vala:98 Gtk/AppGtk.vala:103
+#: Console/AppConsole.vala:100 Gtk/AppGtk.vala:103
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
@@ -495,11 +495,11 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: Utility/TeeJee.Process.vala:507
+#: Utility/TeeJee.Process.vala:511
 msgid "Stopped"
 msgstr ""
 
-#: Console/AppConsole.vala:79 Gtk/AppGtk.vala:176
+#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:176
 msgid "Syntax"
 msgstr ""
 
@@ -554,7 +554,7 @@ msgstr ""
 msgid "Un-install completed with errors"
 msgstr ""
 
-#: Console/AppConsole.vala:238 Gtk/AppGtk.vala:164
+#: Console/AppConsole.vala:240 Gtk/AppGtk.vala:164
 msgid "Unknown option"
 msgstr ""
 
@@ -571,7 +571,7 @@ msgstr ""
 msgid "Unmounting from"
 msgstr ""
 
-#: Console/AppConsole.vala:89
+#: Console/AppConsole.vala:91
 msgid "Use specified user's cache directory"
 msgstr ""
 
@@ -584,7 +584,7 @@ msgstr ""
 msgid "User cancelled the password prompt"
 msgstr ""
 
-#: Console/AppConsole.vala:139 Gtk/AppGtk.vala:112
+#: Console/AppConsole.vala:141 Gtk/AppGtk.vala:112
 msgid "Using cache directory"
 msgstr ""
 

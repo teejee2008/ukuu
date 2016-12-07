@@ -63,6 +63,8 @@ public class AppConsole : GLib.Object {
 		bool is_success = console.parse_arguments(args);
 		//App.exit_app();
 
+		App.fix_startup_script_error();
+
 		return (is_success) ? 0 : 1;
 	}
 
@@ -337,6 +339,7 @@ public class AppConsole : GLib.Object {
 	public void check_if_internet_is_active(){
 		if (!check_internet_connectivity()){
 			log_error(_("Internet connection is not active"));
+			App.fix_startup_script_error();
 			exit(1);
 		}
 	}

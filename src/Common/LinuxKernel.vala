@@ -744,7 +744,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-		log_debug("split: %s, version_main: %s, maj/min/point: %d,%d,%d".printf(version_string, ver_main, version_maj, version_min, version_point));
+		//log_debug("split: %s, version_main: %s, maj/min/point: %d,%d,%d".printf(version_string, ver_main, version_maj, version_min, version_point));
 	}
 
 	public int compare_to(LinuxKernel b){

@@ -161,6 +161,10 @@ public class Main : GLib.Object{
 		// change owner to current user so that ukuu can access in normal mode
 	    chown(APP_CONFIG_FILE, user_login, user_login);
 
+		update_notification_files();
+	}
+
+	public void update_notification_files(){
 		update_startup_script();
 	    update_startup_desktop_file();
 	}
@@ -271,6 +275,25 @@ Comment=Ukuu Notification
 		else{
 			file_delete(STARTUP_DESKTOP_FILE);
 		}
+	}
+
+	public void fix_startup_script_error(){
+		
+		/* This fixes a critical issue with startup script in versions prior to Ukuu v16.12 */
+		
+		if (!file_exists(STARTUP_SCRIPT_FILE)){
+			return;
+		}
+
+		if (!file_read(STARTUP_SCRIPT_FILE).contains("&&")){
+			return;
+		}
+
+		update_startup_script();
+
+		process_quit_by_name("sh", "ukuu-notify.sh", false);
+
+		// don't start script again
 	}
 }
 
