@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-12-04 10:00+0530\n"
+"POT-Creation-Date: 2016-12-07 20:40+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1016
+#: Common/LinuxKernel.vala:1024
 msgid "Available Kernels"
 msgstr ""
 
@@ -47,8 +47,8 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: Utility/GtkHelper.vala:122 Gtk/TerminalWindow.vala:166
-#: Gtk/ProgressWindow.vala:138 Gtk/UpdateNotificationWindow.vala:176
+#: Utility/GtkHelper.vala:122 Gtk/ProgressWindow.vala:138
+#: Gtk/UpdateNotificationWindow.vala:176 Gtk/TerminalWindow.vala:166
 msgid "Cancel"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: Common/Main.vala:104
+#: Common/Main.vala:115
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
@@ -170,7 +170,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1054
+#: Common/LinuxKernel.vala:1062
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -179,7 +179,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1080
+#: Common/LinuxKernel.vala:1088
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -258,7 +258,7 @@ msgstr ""
 msgid "Failed to write file"
 msgstr ""
 
-#: Common/LinuxKernel.vala:382
+#: Common/LinuxKernel.vala:384
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr ""
 
@@ -266,9 +266,9 @@ msgstr ""
 msgid "File is missing"
 msgstr ""
 
-#: Common/LinuxKernel.vala:924 Utility/RsyncTask.vala:226
-#: Utility/TeeJee.FileSystem.vala:205 Utility/TeeJee.FileSystem.vala:478
-#: Utility/CronTab.vala:176
+#: Common/LinuxKernel.vala:932 Utility/RsyncTask.vala:226
+#: Utility/CronTab.vala:176 Utility/TeeJee.FileSystem.vala:205
+#: Utility/TeeJee.FileSystem.vala:478
 msgid "File not found"
 msgstr ""
 
@@ -298,15 +298,15 @@ msgstr ""
 msgid "Ignore this update"
 msgstr ""
 
-#: Common/LinuxKernel.vala:250
+#: Common/LinuxKernel.vala:252
 msgid "Index is fresh"
 msgstr ""
 
-#: Common/LinuxKernel.vala:247
+#: Common/LinuxKernel.vala:249
 msgid "Index is stale"
 msgstr ""
 
-#: Gtk/UpdateNotificationWindow.vala:144 Gtk/MainWindow.vala:381
+#: Gtk/MainWindow.vala:381 Gtk/UpdateNotificationWindow.vala:144
 msgid "Install"
 msgstr ""
 
@@ -318,15 +318,15 @@ msgstr ""
 msgid "Install this kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1125
+#: Common/LinuxKernel.vala:1133
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1122
+#: Common/LinuxKernel.vala:1130
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1033 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1041 Gtk/MainWindow.vala:228
 msgid "Installed"
 msgstr ""
 
@@ -385,8 +385,8 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1071 Utility/GtkHelper.vala:121
-#: Utility/Gtk/DonationWindow.vala:95
+#: Common/LinuxKernel.vala:1079 Utility/Gtk/DonationWindow.vala:95
+#: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
 msgstr ""
@@ -408,7 +408,7 @@ msgstr ""
 msgid "Parent Device"
 msgstr ""
 
-#: Common/Main.vala:105
+#: Common/Main.vala:116
 msgid "Please install required packages and try again"
 msgstr ""
 
@@ -453,7 +453,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1033 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1041 Gtk/MainWindow.vala:228
 msgid "Running"
 msgstr ""
 
@@ -521,11 +521,11 @@ msgstr ""
 msgid "This device is not encrypted"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1094 Gtk/MainWindow.vala:630
+#: Common/LinuxKernel.vala:1102 Gtk/MainWindow.vala:630
 msgid "This kernel is already installed."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1139
+#: Common/LinuxKernel.vala:1147
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -546,11 +546,11 @@ msgstr ""
 msgid "UUID"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1179
+#: Common/LinuxKernel.vala:1187
 msgid "Un-install completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1182
+#: Common/LinuxKernel.vala:1190
 msgid "Un-install completed with errors"
 msgstr ""
 

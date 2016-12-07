@@ -14,9 +14,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string type = "";
 	public string page_uri = "";
 
-	public int version_maj;
-	public int version_min;
-	public int version_point;
+	public int version_maj = -1;
+	public int version_min = -1;
+	public int version_point = -1;
 	
 	public Gee.HashMap<string,string> deb_list = new Gee.HashMap<string,string>();
 	public Gee.HashMap<string,string> apt_pkg_list = new Gee.HashMap<string,string>();
@@ -202,8 +202,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		is_mainline = _is_mainline;
 	}
 
-	public LinuxKernel.from_version(string version){
-	
+	public LinuxKernel.from_version(string _version){
+
+		version = _version;
+		
 		name = "v" + version;
 
 		split_version_string(version, out version_main, out version_extra);
@@ -614,6 +616,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				continue;
 			}
 
+			if (kernel_latest_stable == null){
+				kernel_latest_stable = kern;
+				log_debug("latest stable kernel -> %s".printf(kern.version_main));
+			}
+			
 			// skip installed
 			if (kern.is_installed){
 				continue;
@@ -621,26 +628,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			//log_msg("check: %s".printf(kern.version_main));
 
-			if (kernel_latest_stable == null){
-				kernel_latest_stable = kern;
-				log_debug("latest stable kernel -> %s".printf(kern.version_main));
-			}
-
 			bool major_available = false;
 			bool minor_available = false;
 			
-			string[] arr = kern.version_main.split_set (".-");
-			string[] arr_r = kern_running.version_main.split_set (".-");
-
-			if (arr[0] > arr_r[0]){
+			if (kern.version_maj > kern_running.version_maj){
 				major_available = true;
 			}
-			else if (arr[0] == arr_r[0]){
-				if (arr[1] > arr_r[1]){
+			else if (kern.version_maj == kern_running.version_maj){
+				if (kern.version_min > kern_running.version_min){
 					major_available = true;
 				}
-				else if (arr[1] == arr_r[1]){
-					if (arr[2] > arr_r[2]){
+				else if (kern.version_min == kern_running.version_min){
+					if (kern.version_point > kern_running.version_point){
 						minor_available = true;
 					}
 				}
@@ -690,10 +689,19 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			ver_main = ver_main[1:ver_main.length];
 		}
 
+		version_maj = int.parse(ver_main);
+
 		// append all numbers which are 3 digits or less
 		while (i < arr.length){
 			if (is_numeric(arr[i]) && (arr[i].length <= 3)){
-				ver_main += ".%s".printf(arr[i++]);
+				ver_main += ".%s".printf(arr[i]);
+				if (version_min == -1){
+					version_min = int.parse(arr[i]);
+				}
+				else if (version_point == -1){
+					version_point = int.parse(arr[i]);
+				}
+				i++;
 			}
 			else{
 				break;
@@ -736,7 +744,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-		//log_debug("split: %s, version_main: %s".printf(version_string, ver_main));
+		log_debug("split: %s, version_main: %s, maj/min/point: %d,%d,%d".printf(version_string, ver_main, version_maj, version_min, version_point));
 	}
 
 	public int compare_to(LinuxKernel b){

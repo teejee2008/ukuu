@@ -145,7 +145,7 @@ public class DownloadTask : AsyncTask{
 		else if (regex["file-status"].match(line, 0, out match)) {
 
 			// always display
-			log_msg(line);
+			//log_msg(line);
 			
 			string hash = match.fetch(1).strip();
 			string status = match.fetch(2).strip();
@@ -162,6 +162,8 @@ public class DownloadTask : AsyncTask{
 		else if (regex["file-progress"].match(line, 0, out match)) {
 
 			//log_msg("match: file-status: " + line);
+
+			// Note: HTML files don't have content length, so byte count will be 0
 			
 			if (downloads.size == 1){
 				prg_count = long.parse(match.fetch(1).strip());
