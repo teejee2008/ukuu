@@ -13,6 +13,10 @@ ukuu (16.12) trusty; urgency=medium
   * Cache refresh is now much faster. Uses aria2 for running parallel
   downloads.
 
+  * Added Swedish translation by Åke Engelbrektson
+
+  * Remove startup scripts when application is uninstalled
+
  -- Tony George <tony.george.kol@gmail.com>  Wed, 7 Dec 2016 10:00:00 +0530
  
  

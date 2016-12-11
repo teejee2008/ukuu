@@ -138,6 +138,8 @@ public class Main : GLib.Object{
 		var config = new Json.Object();
 		config.set_string_member("notify_major", notify_major.to_string());
 		config.set_string_member("notify_minor", notify_minor.to_string());
+		config.set_string_member("notify_bubble", notify_bubble.to_string());
+		config.set_string_member("notify_dialog", notify_dialog.to_string());
 		config.set_string_member("hide_unstable", hide_unstable.to_string());
 		config.set_string_member("hide_older", hide_older.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
@@ -185,6 +187,8 @@ public class Main : GLib.Object{
 
 		notify_major = json_get_bool(config, "notify_major", true);
 		notify_minor = json_get_bool(config, "notify_minor", true);
+		notify_bubble = json_get_bool(config, "notify_bubble", true);
+		notify_dialog = json_get_bool(config, "notify_dialog", true);
 		hide_unstable = json_get_bool(config, "hide_unstable", true);
 		hide_older = json_get_bool(config, "hide_older", true);
 		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
