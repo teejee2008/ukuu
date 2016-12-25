@@ -1,4 +1,17 @@
 
+ukuu (16.12.1) trusty; urgency=medium
+
+  * Fixed: Notification options for bubble and dialog were not saved
+  to config file
+
+  * Fixed: List refresh fails on trusty. Older versions of aria2
+  does not support some arguments.
+
+  * Added Russian translation by Иннусик
+
+ -- Tony George <tony.george.kol@gmail.com>  Sun, 25 Dec 2016 10:00:00 +0530
+
+
 ukuu (16.12) trusty; urgency=medium
 
   * Fixed an issue with update check. User would sometimes be prompted
