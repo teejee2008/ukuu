@@ -24,6 +24,7 @@ public class DownloadTask : AsyncTask{
 	public Gee.ArrayList<DownloadItem> downloads;
 
 	private Gee.HashMap<string,Regex> regex = null;
+	private static TeeJee.Version tool_version = null;
 
 	public DownloadTask(){
 
@@ -47,6 +48,36 @@ public class DownloadTask : AsyncTask{
 		}
 		catch (Error e) {
 			log_error (e.message);
+		}
+
+		check_tool_version();
+	}
+
+	public static void check_tool_version(){
+
+		if (tool_version != null){
+			return;
+		}
+
+		log_debug("DownloadTask: check_tool_version()");
+		
+		string std_out, std_err;
+		
+		string cmd = "aria2c --version";
+
+		log_debug(cmd);
+		
+		exec_script_sync(cmd, out std_out, out std_err);
+
+		string line = std_out.split("\n")[0];
+		var arr = line.split(" ");
+		if (arr.length >= 3){
+			string part = arr[2].strip();
+			tool_version = new TeeJee.Version(part);
+			log_msg("aria2c version: %s".printf(tool_version.version));
+		}
+		else{
+			tool_version = new TeeJee.Version("1.19"); // assume
 		}
 	}
 	
@@ -96,7 +127,11 @@ public class DownloadTask : AsyncTask{
 			cmd += " --summary-interval=1";
 			cmd += " --auto-save-interval=1"; // save aria2 control file every sec
 			cmd += " --human-readable=false";
-			cmd += " --enable-color=false"; // enabling color breaks the output parsing
+
+			if (tool_version.is_minimum("1.19")){
+				cmd += " --enable-color=false"; // enabling color breaks the output parsing
+			}
+			
 			cmd += " --allow-overwrite";
 			cmd += " --connect-timeout=%d".printf(connect_timeout_secs);
 			cmd += " --timeout=%d".printf(timeout_secs);

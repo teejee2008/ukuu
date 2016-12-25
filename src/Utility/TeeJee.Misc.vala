@@ -126,6 +126,10 @@ namespace TeeJee.Misc {
 		return date.format ("%Y-%m-%d %H:%M");
 	}
 	
+	public string format_date_12_hour(DateTime date){
+		return date.format ("%Y-%m-%d %I:%M %p");
+	}
+	
 	public string format_duration (long millis){
 
 		/* Converts time in milliseconds to format '00:00:00.0' */

@@ -294,11 +294,10 @@ public abstract class AsyncTask : GLib.Object{
 	protected abstract void finish_task();
 
 	protected int read_exit_code(){
-		log_debug("read_exit_code: enter");
 		exit_code = -1;
-		var status_file = file_parent(script_file) + "/status";
-		if (file_exists(status_file)){
-			var txt = file_read(status_file);
+		var path = file_parent(script_file) + "/status";
+		if (file_exists(path)){
+			var txt = file_read(path);
 			exit_code = int.parse(txt);
 		}
 		log_debug("exit_code: %d".printf(exit_code));

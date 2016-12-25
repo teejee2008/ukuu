@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-12-12 00:09+0530\n"
+"POT-Creation-Date: 2016-12-25 21:45+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Contributions"
 msgstr ""
 
-#: Utility/Device.vala:1101
+#: Utility/Device.vala:1119
 #, c-format
 msgid "Could not find file"
 msgstr ""
@@ -90,11 +90,11 @@ msgstr ""
 msgid "Credits"
 msgstr ""
 
-#: Utility/CronTab.vala:87
+#: Utility/CronTab.vala:106
 msgid "Cron job added"
 msgstr ""
 
-#: Utility/CronTab.vala:168
+#: Utility/CronTab.vala:187
 msgid "Cron job removed"
 msgstr ""
 
@@ -102,16 +102,16 @@ msgstr ""
 msgid "Day(s)"
 msgstr ""
 
-#: Utility/Device.vala:1727 Utility/Device.vala:1737
+#: Utility/Device.vala:1745 Utility/Device.vala:1755
 #, c-format
 msgid "Device"
 msgstr ""
 
-#: Utility/Device.vala:1183
+#: Utility/Device.vala:1201
 msgid "Device is unlocked"
 msgstr ""
 
-#: Utility/Device.vala:1078 Utility/Device.vala:1140
+#: Utility/Device.vala:1096 Utility/Device.vala:1158
 msgid "Device name is empty!"
 msgstr ""
 
@@ -184,11 +184,11 @@ msgstr ""
 msgid "ERROR"
 msgstr ""
 
-#: Utility/Device.vala:1247
+#: Utility/Device.vala:1265
 msgid "Encrypted Device"
 msgstr ""
 
-#: Utility/Device.vala:1248
+#: Utility/Device.vala:1266
 #, c-format
 msgid "Enter passphrase to unlock '%s'"
 msgstr ""
@@ -201,7 +201,7 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: Utility/CronTab.vala:83
+#: Utility/CronTab.vala:102
 msgid "Failed to add cron job"
 msgstr ""
 
@@ -217,15 +217,15 @@ msgstr ""
 msgid "Failed to delete file"
 msgstr ""
 
-#: Utility/CronTab.vala:208
+#: Utility/CronTab.vala:227
 msgid "Failed to export crontab file"
 msgstr ""
 
-#: Utility/Device.vala:541
+#: Utility/Device.vala:559
 msgid "Failed to get partition list"
 msgstr ""
 
-#: Utility/CronTab.vala:191
+#: Utility/CronTab.vala:210
 msgid "Failed to install crontab file"
 msgstr ""
 
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Failed to move file"
 msgstr ""
 
-#: Utility/CronTab.vala:31
+#: Utility/CronTab.vala:50
 msgid "Failed to read cron tab"
 msgstr ""
 
@@ -241,16 +241,16 @@ msgstr ""
 msgid "Failed to read file"
 msgstr ""
 
-#: Utility/CronTab.vala:164
+#: Utility/CronTab.vala:183
 msgid "Failed to remove cron job"
 msgstr ""
 
-#: Utility/Device.vala:1174 Utility/Device.vala:1228 Utility/Device.vala:1253
-#: Utility/Device.vala:1274 Utility/Device.vala:1294
+#: Utility/Device.vala:1192 Utility/Device.vala:1246 Utility/Device.vala:1271
+#: Utility/Device.vala:1292 Utility/Device.vala:1312
 msgid "Failed to unlock device"
 msgstr ""
 
-#: Utility/Device.vala:1528
+#: Utility/Device.vala:1546
 msgid "Failed to unmount"
 msgstr ""
 
@@ -267,7 +267,7 @@ msgid "File is missing"
 msgstr ""
 
 #: Common/LinuxKernel.vala:924 Utility/RsyncTask.vala:226
-#: Utility/CronTab.vala:176 Utility/TeeJee.FileSystem.vala:205
+#: Utility/CronTab.vala:195 Utility/TeeJee.FileSystem.vala:205
 #: Utility/TeeJee.FileSystem.vala:478
 msgid "File not found"
 msgstr ""
@@ -277,7 +277,7 @@ msgstr ""
 msgid "File not found: %s"
 msgstr ""
 
-#: Utility/Device.vala:1745
+#: Utility/Device.vala:1763
 #, c-format
 msgid "Filesystem"
 msgstr ""
@@ -342,7 +342,7 @@ msgstr ""
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
-#: Utility/Device.vala:1746
+#: Utility/Device.vala:1764
 #, c-format
 msgid "Label"
 msgstr ""
@@ -355,12 +355,12 @@ msgstr ""
 msgid "Missing Icon"
 msgstr ""
 
-#: Utility/Device.vala:1729
+#: Utility/Device.vala:1747
 #, c-format
 msgid "Model"
 msgstr ""
 
-#: Utility/Device.vala:1378
+#: Utility/Device.vala:1396
 #, c-format
 msgid "Mounted"
 msgstr ""
@@ -403,7 +403,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: Utility/Device.vala:1741
+#: Utility/Device.vala:1759
 #, c-format
 msgid "Parent Device"
 msgstr ""
@@ -432,7 +432,7 @@ msgstr ""
 msgid "Remove specified mainline kernel"
 msgstr ""
 
-#: Utility/Device.vala:1731
+#: Utility/Device.vala:1749
 #, c-format
 msgid "Revision"
 msgstr ""
@@ -465,7 +465,7 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Utility/Device.vala:1730
+#: Utility/Device.vala:1748
 #, c-format
 msgid "Serial"
 msgstr ""
@@ -486,7 +486,7 @@ msgstr ""
 msgid "Show notification dialog"
 msgstr ""
 
-#: Utility/Device.vala:1733 Utility/Device.vala:1748
+#: Utility/Device.vala:1751 Utility/Device.vala:1766
 #, c-format
 msgid "Size"
 msgstr ""
@@ -503,7 +503,7 @@ msgstr ""
 msgid "Syntax"
 msgstr ""
 
-#: Utility/Device.vala:1754
+#: Utility/Device.vala:1772
 #, c-format
 msgid "System"
 msgstr ""
@@ -517,7 +517,7 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr ""
 
-#: Utility/Device.vala:1173
+#: Utility/Device.vala:1191
 msgid "This device is not encrypted"
 msgstr ""
 
@@ -536,12 +536,12 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Utility/Device.vala:1744
+#: Utility/Device.vala:1762
 #, c-format
 msgid "Type"
 msgstr ""
 
-#: Utility/Device.vala:1743
+#: Utility/Device.vala:1761
 #, c-format
 msgid "UUID"
 msgstr ""
@@ -558,16 +558,16 @@ msgstr ""
 msgid "Unknown option"
 msgstr ""
 
-#: Utility/Device.vala:1184 Utility/Device.vala:1300
+#: Utility/Device.vala:1202 Utility/Device.vala:1318
 #, c-format
 msgid "Unlocked device is mapped to '%s'"
 msgstr ""
 
-#: Utility/Device.vala:1299
+#: Utility/Device.vala:1317
 msgid "Unlocked successfully"
 msgstr ""
 
-#: Utility/Device.vala:1517
+#: Utility/Device.vala:1535
 msgid "Unmounting from"
 msgstr ""
 
@@ -575,12 +575,12 @@ msgstr ""
 msgid "Use specified user's cache directory"
 msgstr ""
 
-#: Utility/Device.vala:1751
+#: Utility/Device.vala:1769
 #, c-format
 msgid "Used"
 msgstr ""
 
-#: Utility/Device.vala:1254
+#: Utility/Device.vala:1272
 msgid "User cancelled the password prompt"
 msgstr ""
 
@@ -588,7 +588,7 @@ msgstr ""
 msgid "Using cache directory"
 msgstr ""
 
-#: Utility/Device.vala:1728
+#: Utility/Device.vala:1746
 #, c-format
 msgid "Vendor"
 msgstr ""
@@ -609,7 +609,7 @@ msgstr ""
 msgid "Week(s)"
 msgstr ""
 
-#: Utility/Device.vala:1227 Utility/Device.vala:1273
+#: Utility/Device.vala:1245 Utility/Device.vala:1291
 msgid "Wrong password"
 msgstr ""
 
@@ -617,14 +617,14 @@ msgstr ""
 msgid "[Warning] Deleted invalid lock"
 msgstr ""
 
-#: Utility/CronTab.vala:212
+#: Utility/CronTab.vala:231
 msgid "crontab file exported"
 msgstr ""
 
-#: Utility/CronTab.vala:195
+#: Utility/CronTab.vala:214
 msgid "crontab file installed"
 msgstr ""
 
-#: Utility/Device.vala:1378
+#: Utility/Device.vala:1396
 msgid "device"
 msgstr ""

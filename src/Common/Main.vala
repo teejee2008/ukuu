@@ -71,7 +71,7 @@ public class Main : GLib.Object{
 	// constructors ------------
 	
 	public Main(string[] arg0, bool _gui_mode){
-		
+
 		GUI_MODE = _gui_mode;
 		
 		LOG_TIMESTAMP = false;
