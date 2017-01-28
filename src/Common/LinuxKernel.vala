@@ -1218,12 +1218,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				file_changed = true;
 			}
 			else if (line.up().contains("GRUB_TIMEOUT=")){
+				
 				int64 seconds = 0;
 				if (int64.try_parse(line.split("=")[1], out seconds)){
 					// value can be 0, > 0 or -1 (indefinite wait)
 					if (seconds == 0){
 						txt += "%s\n".printf("""GRUB_TIMEOUT=2""");
 						file_changed = true;
+					}
+					else{
+						txt += "%s\n".printf(line);
 					}
 				}
 				else{
