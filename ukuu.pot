@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-01-28 19:28+0530\n"
+"POT-Creation-Date: 2017-01-28 19:37+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,6 @@ msgstr ""
 
 #: Gtk/MainWindow.vala:472
 msgid "About"
-msgstr ""
-
-#: Utility/CronTab.vala:305
-msgid "Added cron task"
 msgstr ""
 
 #: Console/AppConsole.vala:99
@@ -81,11 +77,6 @@ msgstr ""
 msgid "Contributions"
 msgstr ""
 
-#: Utility/Device.vala:1119
-#, c-format
-msgid "Could not find file"
-msgstr ""
-
 #: Console/AppConsole.vala:201 Gtk/MainWindow.vala:96
 msgid "Could not find requested version"
 msgstr ""
@@ -98,37 +89,12 @@ msgstr ""
 msgid "Credits"
 msgstr ""
 
-#: Utility/CronTab.vala:136
-msgid "Cron job added"
-msgstr ""
-
-#: Utility/CronTab.vala:217
-msgid "Cron job removed"
-msgstr ""
-
-#: Utility/CronTab.vala:297
-msgid "Cron task exists"
-msgstr ""
-
 #: Gtk/SettingsDialog.vala:155
 msgid "Day(s)"
 msgstr ""
 
 #: Utility/TeeJee.FileSystem.vala:329
 msgid "Deleted directory"
-msgstr ""
-
-#: Utility/Device.vala:1742 Utility/Device.vala:1752
-#, c-format
-msgid "Device"
-msgstr ""
-
-#: Utility/Device.vala:1201
-msgid "Device is unlocked"
-msgstr ""
-
-#: Utility/Device.vala:1096 Utility/Device.vala:1158
-msgid "Device name is empty!"
 msgstr ""
 
 #: Utility/Gtk/DonationWindow.vala:54
@@ -204,25 +170,12 @@ msgstr ""
 msgid "ERROR"
 msgstr ""
 
-#: Utility/Device.vala:1265
-msgid "Encrypted Device"
-msgstr ""
-
-#: Utility/Device.vala:1266
-#, c-format
-msgid "Enter passphrase to unlock '%s'"
-msgstr ""
-
 #: Utility/GtkHelper.vala:870
 msgid "Enter path or browse for directory"
 msgstr ""
 
 #: Utility/GtkHelper.vala:18
 msgid "Error"
-msgstr ""
-
-#: Utility/CronTab.vala:132
-msgid "Failed to add cron job"
 msgstr ""
 
 #: Utility/TeeJee.FileSystem.vala:191
@@ -237,41 +190,12 @@ msgstr ""
 msgid "Failed to delete file"
 msgstr ""
 
-#: Utility/CronTab.vala:257
-msgid "Failed to export crontab file"
-msgstr ""
-
-#: Utility/Device.vala:559
-msgid "Failed to get partition list"
-msgstr ""
-
-#: Utility/CronTab.vala:240
-msgid "Failed to install crontab file"
-msgstr ""
-
 #: Utility/TeeJee.FileSystem.vala:210
 msgid "Failed to move file"
 msgstr ""
 
-#: Utility/CronTab.vala:50
-msgid "Failed to read cron tab"
-msgstr ""
-
 #: Utility/TeeJee.FileSystem.vala:148
 msgid "Failed to read file"
-msgstr ""
-
-#: Utility/CronTab.vala:213
-msgid "Failed to remove cron job"
-msgstr ""
-
-#: Utility/Device.vala:1192 Utility/Device.vala:1246 Utility/Device.vala:1271
-#: Utility/Device.vala:1292 Utility/Device.vala:1312
-msgid "Failed to unlock device"
-msgstr ""
-
-#: Utility/Device.vala:1543
-msgid "Failed to unmount"
 msgstr ""
 
 #: Utility/TeeJee.FileSystem.vala:175
@@ -286,8 +210,7 @@ msgstr ""
 msgid "File is missing"
 msgstr ""
 
-#: Common/LinuxKernel.vala:925 Utility/RsyncTask.vala:249
-#: Utility/CronTab.vala:225 Utility/TeeJee.FileSystem.vala:205
+#: Common/LinuxKernel.vala:925 Utility/TeeJee.FileSystem.vala:205
 #: Utility/TeeJee.FileSystem.vala:488
 msgid "File not found"
 msgstr ""
@@ -295,11 +218,6 @@ msgstr ""
 #: Common/Package.vala:133 Common/Package.vala:195
 #, c-format
 msgid "File not found: %s"
-msgstr ""
-
-#: Utility/Device.vala:1760
-#, c-format
-msgid "Filesystem"
 msgstr ""
 
 #: Gtk/SettingsDialog.vala:192
@@ -366,22 +284,12 @@ msgstr ""
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
-#: Utility/Device.vala:1761
-#, c-format
-msgid "Label"
-msgstr ""
-
 #: Console/AppConsole.vala:87
 msgid "List all available mainline kernels"
 msgstr ""
 
 #: Utility/GtkHelper.vala:272
 msgid "Missing Icon"
-msgstr ""
-
-#: Utility/Device.vala:1744
-#, c-format
-msgid "Model"
 msgstr ""
 
 #: Console/AppConsole.vala:335
@@ -422,11 +330,6 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: Utility/Device.vala:1756
-#, c-format
-msgid "Parent Device"
-msgstr ""
-
 #: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr ""
@@ -449,15 +352,6 @@ msgstr ""
 
 #: Console/AppConsole.vala:89
 msgid "Remove specified mainline kernel"
-msgstr ""
-
-#: Utility/CronTab.vala:334
-msgid "Removed cron task"
-msgstr ""
-
-#: Utility/Device.vala:1746
-#, c-format
-msgid "Revision"
 msgstr ""
 
 #: Gtk/AppGtk.vala:104
@@ -488,11 +382,6 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Utility/Device.vala:1745
-#, c-format
-msgid "Serial"
-msgstr ""
-
 #: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:439
 msgid "Settings"
 msgstr ""
@@ -509,11 +398,6 @@ msgstr ""
 msgid "Show notification dialog"
 msgstr ""
 
-#: Utility/Device.vala:1748 Utility/Device.vala:1763
-#, c-format
-msgid "Size"
-msgstr ""
-
 #: Gtk/MainWindow.vala:216
 msgid "Status"
 msgstr ""
@@ -526,11 +410,6 @@ msgstr ""
 msgid "Syntax"
 msgstr ""
 
-#: Utility/Device.vala:1769
-#, c-format
-msgid "System"
-msgstr ""
-
 #: Common/LinuxKernel.vala:102
 msgid "System architecture"
 msgstr ""
@@ -538,10 +417,6 @@ msgstr ""
 #: Utility/Gtk/AboutWindow.vala:340
 #, c-format
 msgid "Third Party Tools"
-msgstr ""
-
-#: Utility/Device.vala:1191
-msgid "This device is not encrypted"
 msgstr ""
 
 #: Common/LinuxKernel.vala:1095 Gtk/MainWindow.vala:631
@@ -559,16 +434,6 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Utility/Device.vala:1759
-#, c-format
-msgid "Type"
-msgstr ""
-
-#: Utility/Device.vala:1758
-#, c-format
-msgid "UUID"
-msgstr ""
-
 #: Common/LinuxKernel.vala:1189
 msgid "Un-install completed"
 msgstr ""
@@ -579,19 +444,6 @@ msgstr ""
 
 #: Console/AppConsole.vala:240 Gtk/AppGtk.vala:164
 msgid "Unknown option"
-msgstr ""
-
-#: Utility/Device.vala:1202 Utility/Device.vala:1318
-#, c-format
-msgid "Unlocked device is mapped to '%s'"
-msgstr ""
-
-#: Utility/Device.vala:1317
-msgid "Unlocked successfully"
-msgstr ""
-
-#: Utility/Device.vala:1532
-msgid "Unmounting from"
 msgstr ""
 
 #: Gtk/SettingsDialog.vala:201
@@ -610,22 +462,8 @@ msgstr ""
 msgid "Use specified user's cache directory"
 msgstr ""
 
-#: Utility/Device.vala:1766
-#, c-format
-msgid "Used"
-msgstr ""
-
-#: Utility/Device.vala:1272
-msgid "User cancelled the password prompt"
-msgstr ""
-
 #: Console/AppConsole.vala:141 Gtk/AppGtk.vala:112
 msgid "Using cache directory"
-msgstr ""
-
-#: Utility/Device.vala:1743
-#, c-format
-msgid "Vendor"
 msgstr ""
 
 #: Gtk/MainWindow.vala:189
@@ -644,18 +482,6 @@ msgstr ""
 msgid "Week(s)"
 msgstr ""
 
-#: Utility/Device.vala:1245 Utility/Device.vala:1291
-msgid "Wrong password"
-msgstr ""
-
 #: Utility/AppLock.vala:55
 msgid "[Warning] Deleted invalid lock"
-msgstr ""
-
-#: Utility/CronTab.vala:261
-msgid "crontab file exported"
-msgstr ""
-
-#: Utility/CronTab.vala:244
-msgid "crontab file installed"
 msgstr ""
