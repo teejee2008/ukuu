@@ -1,7 +1,7 @@
 /*
  * CustomMessageDialog.vala
  *
- * Copyright 2015 Tony George <teejee2008@gmail.com>
+ * Copyright 2016 Tony George <teejeetech@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -38,18 +38,26 @@ public class CustomMessageDialog : Gtk.Dialog {
 	private Gtk.Label lbl_msg;
 	private Gtk.ScrolledWindow sw_msg;
 	private Gtk.Button btn_ok;
+	private Gtk.Button btn_cancel;
+	private Gtk.Button btn_yes;
+	private Gtk.Button btn_no;
 
 	private string msg_title;
 	private string msg_body;
 	private Gtk.MessageType msg_type;
+	private Gtk.ButtonsType buttons_type;
 	
-	public CustomMessageDialog(string _msg_title, string _msg_body, Gtk.MessageType _msg_type, Window? parent) {
+	public CustomMessageDialog(
+		string _msg_title, string _msg_body,
+		Gtk.MessageType _msg_type, Window? parent, Gtk.ButtonsType _buttons_type) {
+			
 		set_transient_for(parent);
 		set_modal(true);
 
 		msg_title = _msg_title;
 		msg_body = _msg_body;
 		msg_type = _msg_type;
+		buttons_type = _buttons_type;
 		
 		init_window();
 
@@ -66,7 +74,8 @@ public class CustomMessageDialog : Gtk.Dialog {
 	}
 
 	public void init_window () {
-		title = msg_title;
+		title = "";
+		
 		window_position = WindowPosition.CENTER_ON_PARENT;
 		icon = get_app_icon(16);
 		resizable = false;
@@ -100,18 +109,23 @@ public class CustomMessageDialog : Gtk.Dialog {
 			break;
 		}
 
-		//img
+		// image ----------------
+		
 		var img = new Image.from_icon_name(icon_name, Gtk.IconSize.DIALOG);
 		img.margin_right = 12;
 		hbox_contents.add(img);
 		
-		//lbl_msg
-		lbl_msg = new Gtk.Label(msg_body);
+		// label -------------------
+
+		var text = "<span weight=\"bold\" size=\"x-large\">%s</span>\n\n%s".printf(
+			escape_html(msg_title),
+			escape_html(msg_body));
+		lbl_msg = new Gtk.Label(text);
 		lbl_msg.xalign = (float) 0.0;
 		lbl_msg.max_width_chars = 70;
 		lbl_msg.wrap = true;
-		lbl_msg.wrap_mode = Pango.WrapMode.WORD;
-		//hbox_contents.add(lbl_msg);
+		lbl_msg.wrap_mode = Pango.WrapMode.WORD_CHAR;
+		lbl_msg.use_markup = true;
 
 		//sw_msg
 		sw_msg = new ScrolledWindow(null, null);
@@ -123,12 +137,25 @@ public class CustomMessageDialog : Gtk.Dialog {
 		//sw_msg.set_size_request();
 		hbox_contents.add(sw_msg);
 
-		//actions
-		btn_ok = (Gtk.Button) add_button ("_Ok", Gtk.ResponseType.OK);
-		btn_ok.clicked.connect(()=>{
-			this.close();
-		});
-		//btn_cancel = (Gtk.Button) add_button ("_Cancel", Gtk.ResponseType.CANCEL);
+		// actions -------------------------
+		
+		var action_area = get_action_area () as Gtk.Box;
+		action_area.margin_top = 12;
+
+		switch(buttons_type){
+		case Gtk.ButtonsType.OK:
+			btn_ok = (Gtk.Button) add_button ("_Ok", Gtk.ResponseType.OK);
+			break;
+		case Gtk.ButtonsType.OK_CANCEL:
+			btn_ok = (Gtk.Button) add_button ("_Ok", Gtk.ResponseType.OK);
+			btn_cancel = (Gtk.Button) add_button ("_Cancel", Gtk.ResponseType.CANCEL);
+			break;
+		case Gtk.ButtonsType.YES_NO:
+			btn_yes = (Gtk.Button) add_button ("_Yes", Gtk.ResponseType.YES);
+			btn_no = (Gtk.Button) add_button ("_No", Gtk.ResponseType.NO);
+			break;
+			
+		}
 	}
 }
 

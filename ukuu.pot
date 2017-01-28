@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-12-25 21:45+0530\n"
+"POT-Creation-Date: 2017-01-28 19:28+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,10 @@ msgstr ""
 
 #: Gtk/MainWindow.vala:472
 msgid "About"
+msgstr ""
+
+#: Utility/CronTab.vala:305
+msgid "Added cron task"
 msgstr ""
 
 #: Console/AppConsole.vala:99
@@ -39,7 +43,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1016
+#: Common/LinuxKernel.vala:1017
 msgid "Available Kernels"
 msgstr ""
 
@@ -56,7 +60,7 @@ msgstr ""
 msgid "Changes"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:121
+#: Gtk/SettingsDialog.vala:122
 msgid "Check every"
 msgstr ""
 
@@ -68,7 +72,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: Common/Main.vala:104
+#: Common/Main.vala:105
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
@@ -86,23 +90,35 @@ msgstr ""
 msgid "Could not find requested version"
 msgstr ""
 
+#: Utility/TeeJee.FileSystem.vala:306
+msgid "Created directory"
+msgstr ""
+
 #: Utility/Gtk/AboutWindow.vala:282 Utility/Gtk/AboutWindow.vala:299
 msgid "Credits"
 msgstr ""
 
-#: Utility/CronTab.vala:106
+#: Utility/CronTab.vala:136
 msgid "Cron job added"
 msgstr ""
 
-#: Utility/CronTab.vala:187
+#: Utility/CronTab.vala:217
 msgid "Cron job removed"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:154
+#: Utility/CronTab.vala:297
+msgid "Cron task exists"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:155
 msgid "Day(s)"
 msgstr ""
 
-#: Utility/Device.vala:1745 Utility/Device.vala:1755
+#: Utility/TeeJee.FileSystem.vala:329
+msgid "Deleted directory"
+msgstr ""
+
+#: Utility/Device.vala:1742 Utility/Device.vala:1752
 #, c-format
 msgid "Device"
 msgstr ""
@@ -132,15 +148,19 @@ msgid ""
 "(teejeetech@gmail.com)"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:449
+#: Utility/TeeJee.FileSystem.vala:459
 msgid "Dir not found"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:161
+#: Gtk/SettingsDialog.vala:162
 msgid "Display"
 msgstr ""
 
-#: Common/LinuxKernel.vala:87
+#: Gtk/SettingsDialog.vala:200
+msgid "Display GRUB menu at boot time"
+msgstr ""
+
+#: Common/LinuxKernel.vala:88
 msgid "Distribution"
 msgstr ""
 
@@ -170,7 +190,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1054
+#: Common/LinuxKernel.vala:1055
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -179,7 +199,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1080
+#: Common/LinuxKernel.vala:1081
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -193,7 +213,7 @@ msgstr ""
 msgid "Enter passphrase to unlock '%s'"
 msgstr ""
 
-#: Utility/GtkHelper.vala:860
+#: Utility/GtkHelper.vala:870
 msgid "Enter path or browse for directory"
 msgstr ""
 
@@ -201,7 +221,7 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: Utility/CronTab.vala:102
+#: Utility/CronTab.vala:132
 msgid "Failed to add cron job"
 msgstr ""
 
@@ -209,7 +229,7 @@ msgstr ""
 msgid "Failed to copy file"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:310
+#: Utility/TeeJee.FileSystem.vala:313
 msgid "Failed to create dir"
 msgstr ""
 
@@ -217,7 +237,7 @@ msgstr ""
 msgid "Failed to delete file"
 msgstr ""
 
-#: Utility/CronTab.vala:227
+#: Utility/CronTab.vala:257
 msgid "Failed to export crontab file"
 msgstr ""
 
@@ -225,7 +245,7 @@ msgstr ""
 msgid "Failed to get partition list"
 msgstr ""
 
-#: Utility/CronTab.vala:210
+#: Utility/CronTab.vala:240
 msgid "Failed to install crontab file"
 msgstr ""
 
@@ -241,7 +261,7 @@ msgstr ""
 msgid "Failed to read file"
 msgstr ""
 
-#: Utility/CronTab.vala:183
+#: Utility/CronTab.vala:213
 msgid "Failed to remove cron job"
 msgstr ""
 
@@ -250,7 +270,7 @@ msgstr ""
 msgid "Failed to unlock device"
 msgstr ""
 
-#: Utility/Device.vala:1546
+#: Utility/Device.vala:1543
 msgid "Failed to unmount"
 msgstr ""
 
@@ -258,17 +278,17 @@ msgstr ""
 msgid "Failed to write file"
 msgstr ""
 
-#: Common/LinuxKernel.vala:376
+#: Common/LinuxKernel.vala:377
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:602 Utility/TeeJee.FileSystem.vala:651
+#: Utility/TeeJee.FileSystem.vala:612 Utility/TeeJee.FileSystem.vala:661
 msgid "File is missing"
 msgstr ""
 
-#: Common/LinuxKernel.vala:924 Utility/RsyncTask.vala:226
-#: Utility/CronTab.vala:195 Utility/TeeJee.FileSystem.vala:205
-#: Utility/TeeJee.FileSystem.vala:478
+#: Common/LinuxKernel.vala:925 Utility/RsyncTask.vala:249
+#: Utility/CronTab.vala:225 Utility/TeeJee.FileSystem.vala:205
+#: Utility/TeeJee.FileSystem.vala:488
 msgid "File not found"
 msgstr ""
 
@@ -277,20 +297,24 @@ msgstr ""
 msgid "File not found: %s"
 msgstr ""
 
-#: Utility/Device.vala:1763
+#: Utility/Device.vala:1760
 #, c-format
 msgid "Filesystem"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:180
+#: Gtk/SettingsDialog.vala:192
+msgid "GRUB Options"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:181
 msgid "Hide kernels older than 4.0"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:169
+#: Gtk/SettingsDialog.vala:170
 msgid "Hide unstable and RC releases"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:152
+#: Gtk/SettingsDialog.vala:153
 msgid "Hour(s)"
 msgstr ""
 
@@ -298,11 +322,11 @@ msgstr ""
 msgid "Ignore this update"
 msgstr ""
 
-#: Common/LinuxKernel.vala:252
+#: Common/LinuxKernel.vala:253
 msgid "Index is fresh"
 msgstr ""
 
-#: Common/LinuxKernel.vala:249
+#: Common/LinuxKernel.vala:250
 msgid "Index is stale"
 msgstr ""
 
@@ -318,19 +342,19 @@ msgstr ""
 msgid "Install this kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1125
+#: Common/LinuxKernel.vala:1131
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1122
+#: Common/LinuxKernel.vala:1128
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1033 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1034 Gtk/MainWindow.vala:228
 msgid "Installed"
 msgstr ""
 
-#: Console/AppConsole.vala:341 Gtk/MainWindow.vala:516
+#: Console/AppConsole.vala:341 Gtk/MainWindow.vala:517
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -338,11 +362,11 @@ msgstr ""
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:500
+#: Gtk/MainWindow.vala:501
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
-#: Utility/Device.vala:1764
+#: Utility/Device.vala:1761
 #, c-format
 msgid "Label"
 msgstr ""
@@ -351,33 +375,28 @@ msgstr ""
 msgid "List all available mainline kernels"
 msgstr ""
 
-#: Utility/GtkHelper.vala:262
+#: Utility/GtkHelper.vala:272
 msgid "Missing Icon"
 msgstr ""
 
-#: Utility/Device.vala:1747
+#: Utility/Device.vala:1744
 #, c-format
 msgid "Model"
-msgstr ""
-
-#: Utility/Device.vala:1396
-#, c-format
-msgid "Mounted"
 msgstr ""
 
 #: Console/AppConsole.vala:335
 msgid "No updates found"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:66
+#: Gtk/SettingsDialog.vala:67
 msgid "Notification"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:73
+#: Gtk/SettingsDialog.vala:74
 msgid "Notify if a major release is available"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:84
+#: Gtk/SettingsDialog.vala:85
 msgid "Notify if a point release is available"
 msgstr ""
 
@@ -385,7 +404,7 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1071 Utility/Gtk/DonationWindow.vala:95
+#: Common/LinuxKernel.vala:1072 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
@@ -403,12 +422,12 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: Utility/Device.vala:1759
+#: Utility/Device.vala:1756
 #, c-format
 msgid "Parent Device"
 msgstr ""
 
-#: Common/Main.vala:105
+#: Common/Main.vala:106
 msgid "Please install required packages and try again"
 msgstr ""
 
@@ -416,7 +435,7 @@ msgstr ""
 msgid "Print debug information"
 msgstr ""
 
-#: Gtk/MainWindow.vala:520
+#: Gtk/MainWindow.vala:521
 msgid "Refreshing..."
 msgstr ""
 
@@ -432,7 +451,11 @@ msgstr ""
 msgid "Remove specified mainline kernel"
 msgstr ""
 
-#: Utility/Device.vala:1749
+#: Utility/CronTab.vala:334
+msgid "Removed cron task"
+msgstr ""
+
+#: Utility/Device.vala:1746
 #, c-format
 msgid "Revision"
 msgstr ""
@@ -453,11 +476,11 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1033 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1034 Gtk/MainWindow.vala:228
 msgid "Running"
 msgstr ""
 
-#: Utility/GtkHelper.vala:870
+#: Utility/GtkHelper.vala:880
 msgid "Select Path"
 msgstr ""
 
@@ -465,12 +488,12 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Utility/Device.vala:1748
+#: Utility/Device.vala:1745
 #, c-format
 msgid "Serial"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:56 Gtk/MainWindow.vala:439
+#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:439
 msgid "Settings"
 msgstr ""
 
@@ -478,15 +501,15 @@ msgstr ""
 msgid "Show all options"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:95
+#: Gtk/SettingsDialog.vala:96
 msgid "Show notification bubble on desktop"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:106
+#: Gtk/SettingsDialog.vala:107
 msgid "Show notification dialog"
 msgstr ""
 
-#: Utility/Device.vala:1751 Utility/Device.vala:1766
+#: Utility/Device.vala:1748 Utility/Device.vala:1763
 #, c-format
 msgid "Size"
 msgstr ""
@@ -503,12 +526,12 @@ msgstr ""
 msgid "Syntax"
 msgstr ""
 
-#: Utility/Device.vala:1772
+#: Utility/Device.vala:1769
 #, c-format
 msgid "System"
 msgstr ""
 
-#: Common/LinuxKernel.vala:101
+#: Common/LinuxKernel.vala:102
 msgid "System architecture"
 msgstr ""
 
@@ -521,11 +544,11 @@ msgstr ""
 msgid "This device is not encrypted"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1094 Gtk/MainWindow.vala:630
+#: Common/LinuxKernel.vala:1095 Gtk/MainWindow.vala:631
 msgid "This kernel is already installed."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1139
+#: Common/LinuxKernel.vala:1145
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -536,21 +559,21 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Utility/Device.vala:1762
+#: Utility/Device.vala:1759
 #, c-format
 msgid "Type"
 msgstr ""
 
-#: Utility/Device.vala:1761
+#: Utility/Device.vala:1758
 #, c-format
 msgid "UUID"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1179
+#: Common/LinuxKernel.vala:1189
 msgid "Un-install completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1182
+#: Common/LinuxKernel.vala:1192
 msgid "Un-install completed with errors"
 msgstr ""
 
@@ -567,15 +590,27 @@ msgstr ""
 msgid "Unlocked successfully"
 msgstr ""
 
-#: Utility/Device.vala:1535
+#: Utility/Device.vala:1532
 msgid "Unmounting from"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:201
+msgid ""
+"Updates the GRUB menu after installing or removing kernels, so that the menu "
+"is displayed for 2 seconds at boot time. This will help you recover from a "
+"bad kernel update by selecting another kernel to boot. During boot, use the "
+"'Advanced options for Ubuntu' menu entry to select another kernel."
+msgstr ""
+
+#: Common/LinuxKernel.vala:1259
+msgid "Updating GRUB menu timeout"
 msgstr ""
 
 #: Console/AppConsole.vala:91
 msgid "Use specified user's cache directory"
 msgstr ""
 
-#: Utility/Device.vala:1769
+#: Utility/Device.vala:1766
 #, c-format
 msgid "Used"
 msgstr ""
@@ -588,7 +623,7 @@ msgstr ""
 msgid "Using cache directory"
 msgstr ""
 
-#: Utility/Device.vala:1746
+#: Utility/Device.vala:1743
 #, c-format
 msgid "Vendor"
 msgstr ""
@@ -605,7 +640,7 @@ msgstr ""
 msgid "W"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:156
+#: Gtk/SettingsDialog.vala:157
 msgid "Week(s)"
 msgstr ""
 
@@ -617,14 +652,10 @@ msgstr ""
 msgid "[Warning] Deleted invalid lock"
 msgstr ""
 
-#: Utility/CronTab.vala:231
+#: Utility/CronTab.vala:261
 msgid "crontab file exported"
 msgstr ""
 
-#: Utility/CronTab.vala:214
+#: Utility/CronTab.vala:244
 msgid "crontab file installed"
-msgstr ""
-
-#: Utility/Device.vala:1396
-msgid "device"
 msgstr ""

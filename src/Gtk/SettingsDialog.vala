@@ -41,6 +41,7 @@ public class SettingsDialog : Gtk.Dialog {
 	private Gtk.CheckButton chk_notify_dialog;
 	private Gtk.CheckButton chk_hide_unstable;
 	private Gtk.CheckButton chk_hide_older;
+	private Gtk.CheckButton chk_show_grub_menu;
 		
 	public SettingsDialog.with_parent(Window parent) {
 		set_transient_for(parent);
@@ -185,6 +186,26 @@ public class SettingsDialog : Gtk.Dialog {
 		
 		chk.toggled.connect(()=>{
 			App.hide_older = chk_hide_older.active;
+		});
+
+		// grub
+		label = new Label("<b>" + _("GRUB Options") + "</b>");
+		label.set_use_markup(true);
+		label.xalign = (float) 0.0;
+		label.margin_top = 12;
+		label.margin_bottom = 6;
+		vbox_main.add (label);
+
+		// chk_show_grub_menu
+		chk = new CheckButton.with_label(_("Display GRUB menu at boot time"));
+		chk.set_tooltip_text(_("Updates the GRUB menu after installing or removing kernels, so that the menu is displayed for 2 seconds at boot time. This will help you recover from a bad kernel update by selecting another kernel to boot. During boot, use the 'Advanced options for Ubuntu' menu entry to select another kernel."));
+		chk.active = App.show_grub_menu;
+		chk.margin_left = 6;
+		vbox_main.add(chk);
+		chk_show_grub_menu = chk;
+		
+		chk.toggled.connect(()=>{
+			App.show_grub_menu = chk_show_grub_menu.active;
 		});
 		
 		// actions -------------------------

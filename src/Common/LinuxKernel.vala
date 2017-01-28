@@ -35,20 +35,21 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// static
 	
-	public static const string URI_KERNEL_UBUNTU_MAINLINE = "http://kernel.ubuntu.com/~kernel-ppa/mainline/";
+	public static string URI_KERNEL_UBUNTU_MAINLINE = "http://kernel.ubuntu.com/~kernel-ppa/mainline/";
 	public static string CACHE_DIR = "/var/cache/ukuu";
-	public static string NATIVE_ARCH = "";
-	public static string LINUX_DISTRO = "";
-	public static string RUNNING_KERNEL = "";
-	public static string CURRENT_USER = "";
-	public static string CURRENT_USER_HOME = "";
-	public static bool skip_older = true;
-	public static bool skip_unstable = true;
+	public static string NATIVE_ARCH;
+	public static string LINUX_DISTRO;
+	public static string RUNNING_KERNEL;
+	public static string CURRENT_USER;
+	public static string CURRENT_USER_HOME;
+	public static bool skip_older;
+	public static bool skip_unstable;
+	public static bool show_grub_menu;
 
-	public static LinuxKernel kernel_active = null;
-	public static LinuxKernel kernel_update_major = null;
-	public static LinuxKernel kernel_update_minor = null;
-	public static LinuxKernel kernel_latest_stable = null;
+	public static LinuxKernel kernel_active;
+	public static LinuxKernel kernel_update_major;
+	public static LinuxKernel kernel_update_minor;
+	public static LinuxKernel kernel_latest_stable;
 	
 	public static Gee.ArrayList<LinuxKernel> kernel_list = new Gee.ArrayList<LinuxKernel>();
 
@@ -58,12 +59,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static Regex rex_image_extra = null;
 		
 	// global progress  ------------
-	public static string status_line = "";
-	public static int64 progress_total = 0;
-	public static int64 progress_count = 0;
-	public static bool cancelled = false;
-	public static bool task_is_running = false;
-	public static bool _temp_refresh = false;
+	public static string status_line;
+	public static int64 progress_total;
+	public static int64 progress_count;
+	public static bool cancelled;
+	public static bool task_is_running;
+	public static bool _temp_refresh;
 
 	// class initialize
 	
@@ -1118,6 +1119,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 
 			ok = (status == 0);
+
+			if (show_grub_menu){
+				ok = ok && update_grub_menu();
+			}
+			
 			if (ok){
 				log_msg(_("Installation completed. A reboot is required to use the new kernel."));
 			}
@@ -1173,8 +1179,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		else{
 			status = exec_script_sync(cmd); // execute
 		}
-
 		ok = (status == 0);
+
+		if (show_grub_menu){
+			ok = ok && update_grub_menu();
+		}
+
 		if (ok){
 			log_msg(_("Un-install completed"));
 		}
@@ -1185,5 +1195,76 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return ok;
 	}
 
+	public bool update_grub_menu(){
+
+		if (!show_grub_menu){
+			return true;
+		}
+		
+		string grub_file = "/etc/default/grub";
+		if (!file_exists(grub_file)){
+			return false;
+		}
+		
+		string txt = "";
+		bool file_changed = false;
+		bool grub_timeout_found = false;
+		
+		foreach(var line in file_read(grub_file).split("\n")){
+			
+			if (line.up().contains("GRUB_HIDDEN_TIMEOUT=") && !line.strip().has_prefix("#")){
+				// comment the line
+				txt += "#%s\n".printf(line);
+				file_changed = true;
+			}
+			else if (line.up().contains("GRUB_TIMEOUT=")){
+				int64 seconds = 0;
+				if (int64.try_parse(line.split("=")[1], out seconds)){
+					// value can be 0, > 0 or -1 (indefinite wait)
+					if (seconds == 0){
+						txt += "%s\n".printf("""GRUB_TIMEOUT=2""");
+						file_changed = true;
+					}
+				}
+				else{
+					txt += "%s\n".printf("""GRUB_TIMEOUT=2""");
+					file_changed = true;
+				}
+				grub_timeout_found = true;
+			}
+			else if (line.up().contains("GRUB_TIMEOUT_STYLE=") && !line.strip().has_prefix("#")){
+				// comment the line; same as setting value to 'menu'
+				txt += "#%s\n".printf(line);
+				file_changed = true;
+			}
+			else if (line.up().contains("GRUB_HIDDEN_TIMEOUT_QUIET=") && !line.strip().has_prefix("#")){
+				// comment the line; deprecated option
+				txt += "#%s\n".printf(line);
+				file_changed = true;
+			}
+			else{
+				txt += "%s\n".printf(line);
+			}
+		}
+
+		if (!grub_timeout_found){
+			txt += "\n%s\n\n".printf("""GRUB_TIMEOUT=2""");
+			file_changed = true;
+		}
+		
+		if (!file_changed){
+			return true; // no need to continue
+		}
+
+		log_msg(_("Updating GRUB menu timeout"));
+		
+		// save changes
+		file_write(grub_file, txt);
+
+		string cmd = "update-grub";
+		Posix.system(cmd);
+
+		return true;
+	}
 }
 

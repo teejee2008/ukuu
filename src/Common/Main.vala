@@ -67,6 +67,7 @@ public class Main : GLib.Object{
 	public bool hide_older = true;
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
+	public bool show_grub_menu = true;
 	
 	// constructors ------------
 	
@@ -144,6 +145,7 @@ public class Main : GLib.Object{
 		config.set_string_member("hide_older", hide_older.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
 		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
+		config.set_string_member("show_grub_menu", show_grub_menu.to_string());
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -193,9 +195,11 @@ public class Main : GLib.Object{
 		hide_older = json_get_bool(config, "hide_older", true);
 		notify_interval_unit = json_get_int(config, "notify_interval_unit", 0);
 		notify_interval_value = json_get_int(config, "notify_interval_value", 2);
+		show_grub_menu = json_get_bool(config, "show_grub_menu", true);
 
 		LinuxKernel.skip_older = hide_older;
 		LinuxKernel.skip_unstable = hide_unstable;
+		LinuxKernel.show_grub_menu = show_grub_menu;
 
 		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}

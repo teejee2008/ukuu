@@ -76,7 +76,7 @@ namespace TeeJee.GtkHelper{
 		dlg.run();
 		dlg.destroy();*/
 
-		var dlg = new CustomMessageDialog(title,message,type,parent_win);
+		var dlg = new CustomMessageDialog(title,message,type,parent_win, Gtk.ButtonsType.OK);
 		dlg.run();
 		dlg.destroy();
 	}
@@ -145,7 +145,17 @@ namespace TeeJee.GtkHelper{
 		}
 	}
 
-
+	public void wait_and_close_window(int milliseconds, Gtk.Window window){
+		gtk_do_events();
+		int millis = 0;
+		while(millis < milliseconds){
+			sleep(200);
+			millis += 200;
+			gtk_do_events();
+		}
+		window.destroy();
+	}
+	
 	// combo ---------
 	
 	public bool gtk_combobox_set_value (ComboBox combo, int index, string val){
