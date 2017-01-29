@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-01-28 19:39+0530\n"
+"POT-Creation-Date: 2017-01-29 10:25+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1017
+#: Common/LinuxKernel.vala:1018
 msgid "Available Kernels"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: Common/Main.vala:105
+#: Common/Main.vala:102
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
@@ -122,11 +122,11 @@ msgstr ""
 msgid "Display"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:200
-msgid "Display GRUB menu at boot time (recommended)"
+#: Gtk/SettingsDialog.vala:203
+msgid "Display GRUB menu during boot"
 msgstr ""
 
-#: Common/LinuxKernel.vala:88
+#: Common/LinuxKernel.vala:89
 msgid "Distribution"
 msgstr ""
 
@@ -156,7 +156,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1055
+#: Common/LinuxKernel.vala:1056
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -165,7 +165,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1081
+#: Common/LinuxKernel.vala:1082
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -202,7 +202,7 @@ msgstr ""
 msgid "Failed to write file"
 msgstr ""
 
-#: Common/LinuxKernel.vala:377
+#: Common/LinuxKernel.vala:378
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr ""
 
@@ -210,7 +210,7 @@ msgstr ""
 msgid "File is missing"
 msgstr ""
 
-#: Common/LinuxKernel.vala:925 Utility/TeeJee.FileSystem.vala:205
+#: Common/LinuxKernel.vala:926 Utility/TeeJee.FileSystem.vala:205
 #: Utility/TeeJee.FileSystem.vala:488
 msgid "File not found"
 msgstr ""
@@ -240,11 +240,11 @@ msgstr ""
 msgid "Ignore this update"
 msgstr ""
 
-#: Common/LinuxKernel.vala:253
+#: Common/LinuxKernel.vala:254
 msgid "Index is fresh"
 msgstr ""
 
-#: Common/LinuxKernel.vala:250
+#: Common/LinuxKernel.vala:251
 msgid "Index is stale"
 msgstr ""
 
@@ -260,15 +260,15 @@ msgstr ""
 msgid "Install this kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1131
+#: Common/LinuxKernel.vala:1132
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1128
+#: Common/LinuxKernel.vala:1129
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1034 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1035 Gtk/MainWindow.vala:228
 msgid "Installed"
 msgstr ""
 
@@ -312,7 +312,7 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1072 Utility/Gtk/DonationWindow.vala:95
+#: Common/LinuxKernel.vala:1073 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
@@ -330,7 +330,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: Common/Main.vala:106
+#: Common/Main.vala:103
 msgid "Please install required packages and try again"
 msgstr ""
 
@@ -370,7 +370,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1034 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1035 Gtk/MainWindow.vala:228
 msgid "Running"
 msgstr ""
 
@@ -410,7 +410,7 @@ msgstr ""
 msgid "Syntax"
 msgstr ""
 
-#: Common/LinuxKernel.vala:102
+#: Common/LinuxKernel.vala:103
 msgid "System architecture"
 msgstr ""
 
@@ -419,14 +419,22 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1095 Gtk/MainWindow.vala:631
+#: Common/LinuxKernel.vala:1096 Gtk/MainWindow.vala:631
 msgid "This kernel is already installed."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1145
+#: Common/LinuxKernel.vala:1146
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:223
+msgid ""
+"Time (in seconds) to display the GRUB menu\n"
+"\n"
+"0 = Do not show menu\n"
+"-1 = Show indefinitely till user selects"
 msgstr ""
 
 #: Utility/Gtk/AboutWindow.vala:356
@@ -434,11 +442,11 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1189
+#: Common/LinuxKernel.vala:1190
 msgid "Un-install completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1192
+#: Common/LinuxKernel.vala:1193
 msgid "Un-install completed with errors"
 msgstr ""
 
@@ -446,15 +454,18 @@ msgstr ""
 msgid "Unknown option"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:201
+#: Gtk/SettingsDialog.vala:210
 msgid ""
 "Updates the GRUB menu after installing or removing kernels, so that the menu "
 "is displayed for 2 seconds at boot time. This will help you recover from a "
 "bad kernel update by selecting another kernel to boot. During boot, use the "
-"'Advanced options for Ubuntu' menu entry to select another kernel."
+"'Advanced options for Ubuntu' menu entry to select another kernel.\n"
+"\n"
+"0 = Do not show menu\n"
+"-1 = Show indefinitely till user selects"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1259
+#: Common/LinuxKernel.vala:1264
 msgid "Updating GRUB menu timeout"
 msgstr ""
 

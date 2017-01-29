@@ -318,10 +318,10 @@ public class MainWindow : Gtk.Window{
 			if (!kern.is_valid){
 				continue;
 			}
-			if (App.hide_unstable && kern.is_unstable){
+			if (LinuxKernel.hide_unstable && kern.is_unstable){
 				continue;
 			}
-			if (App.hide_older && (kern.compare_to(kern_4) < 0)){
+			if (LinuxKernel.hide_older && (kern.compare_to(kern_4) < 0)){
 				continue;
 			}
 
@@ -441,15 +441,15 @@ public class MainWindow : Gtk.Window{
 
 		button.clicked.connect(() => {
 
-			bool prev_hide_older = App.hide_older;
-			bool prev_hide_unstable = App.hide_unstable
-			;
+			bool prev_hide_older = LinuxKernel.hide_older;
+			bool prev_hide_unstable = LinuxKernel.hide_unstable;
+			
 			var dlg = new SettingsDialog.with_parent(this);
 			dlg.run();
 			dlg.destroy();
 
-			if (((prev_hide_older == true) && (App.hide_older == false))
-				|| ((prev_hide_unstable == true) && (App.hide_unstable == false))){
+			if (((prev_hide_older == true) && (LinuxKernel.hide_older == false))
+				|| ((prev_hide_unstable == true) && (LinuxKernel.hide_unstable == false))){
 				refresh_cache();
 			}
 			

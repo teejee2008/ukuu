@@ -42,9 +42,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string RUNNING_KERNEL;
 	public static string CURRENT_USER;
 	public static string CURRENT_USER_HOME;
-	public static bool skip_older;
-	public static bool skip_unstable;
+	public static bool hide_older;
+	public static bool hide_unstable;
 	public static bool show_grub_menu;
+	public static int grub_timeout;
 
 	public static LinuxKernel kernel_active;
 	public static LinuxKernel kernel_update_major;
@@ -238,8 +239,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 	private static void query_thread() {
 
-		log_debug("query: skip_older: %s".printf(skip_older.to_string()));
-		log_debug("query: skip_unstable: %s".printf(skip_unstable.to_string()));
+		log_debug("query: hide_older: %s".printf(hide_older.to_string()));
+		log_debug("query: hide_unstable: %s".printf(hide_unstable.to_string()));
 
 		//DownloadManager.reset_counter();
 		
@@ -267,11 +268,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		progress_total = 0;
 		progress_count = 0;
 		foreach(var kern in kernel_list){
-			if (skip_older && (kern.compare_to(kern_4) < 0)){
+			if (hide_older && (kern.compare_to(kern_4) < 0)){
 				continue;
 			}
 
-			if (skip_unstable && kern.is_unstable){
+			if (hide_unstable && kern.is_unstable){
 				continue;
 			}
 			
@@ -300,12 +301,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				continue;
 			}
 
-			if (skip_older && (kern.compare_to(kern_4) < 0)){
+			if (hide_older && (kern.compare_to(kern_4) < 0)){
 				//log_debug("older than 4.0: %s".printf(kern.version_main));
 				continue;
 			}
 
-			if (skip_unstable && kern.is_unstable){
+			if (hide_unstable && kern.is_unstable){
 				//log_debug("not stable: %s".printf(kern.version_main));
 				continue;
 			}
@@ -1022,10 +1023,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			if (!kern.is_valid){
 				continue;
 			}
-			if (skip_unstable && kern.is_unstable){
+			if (hide_unstable && kern.is_unstable){
 				continue;
 			}
-			if (skip_older && (kern.compare_to(kern_4) < 0)){
+			if (hide_older && (kern.compare_to(kern_4) < 0)){
 				continue;
 			}
 			
@@ -1222,16 +1223,16 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				int64 seconds = 0;
 				if (int64.try_parse(line.split("=")[1], out seconds)){
 					// value can be 0, > 0 or -1 (indefinite wait)
-					if (seconds == 0){
-						txt += "%s\n".printf("""GRUB_TIMEOUT=2""");
-						file_changed = true;
+					if (seconds == grub_timeout){
+						txt += "%s\n".printf(line);
 					}
 					else{
-						txt += "%s\n".printf(line);
+						txt += "%s=%d\n".printf("GRUB_TIMEOUT", grub_timeout);
+						file_changed = true;
 					}
 				}
 				else{
-					txt += "%s\n".printf("""GRUB_TIMEOUT=2""");
+					txt += "%s=%d\n".printf("GRUB_TIMEOUT", grub_timeout);
 					file_changed = true;
 				}
 				grub_timeout_found = true;
@@ -1252,7 +1253,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		if (!grub_timeout_found){
-			txt += "\n%s\n\n".printf("""GRUB_TIMEOUT=2""");
+			txt += "%s=%d\n".printf("GRUB_TIMEOUT", grub_timeout);
 			file_changed = true;
 		}
 		

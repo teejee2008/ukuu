@@ -61,7 +61,7 @@ public class SettingsDialog : Gtk.Dialog {
 		vbox_main.spacing = 6;
 		vbox_main.margin = 12;
 		//vbox_main.margin_bottom = 12;
-		vbox_main.set_size_request(400,400);
+		vbox_main.set_size_request(400,500);
 
 		// notification
 		var label = new Label("<b>" + _("Notification") + "</b>");
@@ -128,10 +128,10 @@ public class SettingsDialog : Gtk.Dialog {
 		var spin = new Gtk.SpinButton (adjustment, 1, 0);
 		spin.xalign = (float) 0.5;
 		hbox.add(spin);
-
+		var spin_notify = spin;
+		
 		spin.changed.connect(()=>{
-			App.notify_interval_value = (int) spin.get_value();
-			//log_debug("spin: %lf".printf(spin.get_value()));
+			App.notify_interval_value = (int) spin_notify.get_value();
 		});
 
 		// combo
@@ -168,24 +168,24 @@ public class SettingsDialog : Gtk.Dialog {
 
 		// chk_hide_unstable
 		chk = new CheckButton.with_label(_("Hide unstable and RC releases"));
-		chk.active = App.hide_unstable;
+		chk.active = LinuxKernel.hide_unstable;
 		chk.margin_left = 6;
 		vbox_main.add(chk);
 		chk_hide_unstable = chk;
 		
 		chk.toggled.connect(()=>{
-			App.hide_unstable = chk_hide_unstable.active;
+			LinuxKernel.hide_unstable = chk_hide_unstable.active;
 		});
 
 		// chk_hide_older
 		chk = new CheckButton.with_label(_("Hide kernels older than 4.0"));
-		chk.active = App.hide_older;
+		chk.active = LinuxKernel.hide_older;
 		chk.margin_left = 6;
 		vbox_main.add(chk);
 		chk_hide_older = chk;
 		
 		chk.toggled.connect(()=>{
-			App.hide_older = chk_hide_older.active;
+			LinuxKernel.hide_older = chk_hide_older.active;
 		});
 
 		// grub
@@ -196,17 +196,41 @@ public class SettingsDialog : Gtk.Dialog {
 		label.margin_bottom = 6;
 		vbox_main.add (label);
 
+		hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
+		vbox_main.add(hbox);
+		
 		// chk_show_grub_menu
-		chk = new CheckButton.with_label(_("Display GRUB menu at boot time"));
-		chk.set_tooltip_text(_("Updates the GRUB menu after installing or removing kernels, so that the menu is displayed for 2 seconds at boot time. This will help you recover from a bad kernel update by selecting another kernel to boot. During boot, use the 'Advanced options for Ubuntu' menu entry to select another kernel."));
-		chk.active = App.show_grub_menu;
+		chk = new CheckButton.with_label(_("Display GRUB menu during boot"));
+		chk.active = LinuxKernel.show_grub_menu;
 		chk.margin_left = 6;
-		vbox_main.add(chk);
+		chk.hexpand = true;
+		hbox.add(chk);
 		chk_show_grub_menu = chk;
+
+		chk.set_tooltip_text(_("Updates the GRUB menu after installing or removing kernels, so that the menu is displayed for 2 seconds at boot time. This will help you recover from a bad kernel update by selecting another kernel to boot. During boot, use the 'Advanced options for Ubuntu' menu entry to select another kernel.\n\n0 = Do not show menu\n-1 = Show indefinitely till user selects"));
 		
 		chk.toggled.connect(()=>{
-			App.show_grub_menu = chk_show_grub_menu.active;
+			LinuxKernel.show_grub_menu = chk_show_grub_menu.active;
 		});
+
+		adjustment = new Gtk.Adjustment(LinuxKernel.grub_timeout, 1, 9999, 1, 1, 0);
+		spin = new Gtk.SpinButton (adjustment, 1, 0);
+		spin.xalign = (float) 0.5;
+		spin.margin_right = 6;
+		hbox.add(spin);
+		var spin_grub = spin;
+
+		spin.set_tooltip_text(_("Time (in seconds) to display the GRUB menu\n\n0 = Do not show menu\n-1 = Show indefinitely till user selects"));
+		
+		spin.changed.connect(()=>{
+			LinuxKernel.grub_timeout = (int) spin_grub.get_value();
+		});
+
+		chk_show_grub_menu.toggled.connect(()=>{
+			spin_grub.sensitive = chk_show_grub_menu.active;
+		});
+		
+		chk_show_grub_menu.toggled();
 		
 		// actions -------------------------
 		
@@ -223,9 +247,6 @@ public class SettingsDialog : Gtk.Dialog {
 
 	private void btn_ok_click(){
 		App.save_app_config();
-
-		LinuxKernel.skip_older = App.hide_older;
-		LinuxKernel.skip_unstable = App.hide_unstable;
 	}
 }
 
