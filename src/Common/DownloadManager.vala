@@ -208,21 +208,12 @@ public class DownloadTask : AsyncTask{
 			//string file = match.fetch(4).strip();
 
 			if (map.has_key(gid_key)){
-				log_msg("has_key=%s".printf(gid_key));
 				map[gid_key].rate = rate;
 				map[gid_key].status = status;
-			}
-			else{
-				log_msg("!has_key=%s".printf(gid_key));
-			}
-
-			foreach(string key in map.keys){
-				log_msg("keys=%s".printf(key));
 			}
 		}
 		else if (regex["file-progress"].match(line, 0, out match)) {
 
-			
 			//log_debug("match: file-progress: " + line);
 			
 			// Note: HTML files don't have content length, so bytes_total will be 0

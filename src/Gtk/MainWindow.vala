@@ -49,7 +49,7 @@ public class MainWindow : Gtk.Window{
 	private int window_height = 400;
 	private uint tmr_init = -1;
 
-	private LinuxKernel selected_kernel;
+	private Gee.ArrayList<LinuxKernel> selected_kernels;
 	
 	public MainWindow() {
 		title = "%s (Ukuu) v%s".printf(AppName, AppVersion);
@@ -61,6 +61,8 @@ public class MainWindow : Gtk.Window{
         vbox_main.margin = 6;
         vbox_main.set_size_request(window_width, window_height);
         add (vbox_main);
+
+		selected_kernels = new Gee.ArrayList<LinuxKernel>();
 		
         init_ui();
 
@@ -79,8 +81,6 @@ public class MainWindow : Gtk.Window{
 		refresh_cache();
 
 		tv_refresh();
-
-		selected_kernel = null;
 
 		if (App.INSTALL_MODE){
 			LinuxKernel kern_requested = null;
@@ -121,7 +121,7 @@ public class MainWindow : Gtk.Window{
 		
 		//add treeview
 		tv = new TreeView();
-		tv.get_selection().mode = SelectionMode.SINGLE;
+		tv.get_selection().mode = SelectionMode.MULTIPLE;
 		tv.headers_visible = true;
 		tv.expand = true;
 
@@ -220,26 +220,24 @@ public class MainWindow : Gtk.Window{
 		LinuxKernel kern;
 		tv.model.get (iter, 0, out kern, -1);
 
-		selected_kernel = kern;
-		
 		set_button_state();
 	}
 
 	private void tv_selection_changed(){
 		var sel = tv.get_selection();
 
-		if (sel.count_selected_rows() != 1){
-			return;
-		}
-		
 		TreeModel model;
 		TreeIter iter;
-		sel.get_selected (out model, out iter);
-		
-		LinuxKernel kern;
-		model.get (iter, 0, out kern, -1);
+		var paths = sel.get_selected_rows (out model);
 
-		selected_kernel = kern;
+		selected_kernels.clear();
+		foreach(var path in paths){
+			LinuxKernel kern;
+			model.get_iter(out iter, path);
+			model.get (iter, 0, out kern, -1);
+			selected_kernels.add(kern);
+			//log_msg("size=%d".printf(selected_kernels.size));
+		}
 		
 		set_button_state();
 	}
@@ -301,22 +299,22 @@ public class MainWindow : Gtk.Window{
 		tv.set_model(model);
 		tv.columns_autosize();
 
-		selected_kernel = null;
+		selected_kernels.clear();
 		set_button_state();
 
 		set_infobar();
 	}
 
 	private void set_button_state(){
-		if (selected_kernel == null){
+		if (selected_kernels.size == 0){
 			btn_install.sensitive = false;
 			btn_remove.sensitive = false;
 			btn_changes.sensitive = false;
 		}
 		else{
-			btn_install.sensitive = !selected_kernel.is_installed;
-			btn_remove.sensitive = selected_kernel.is_installed && !selected_kernel.is_running;
-			btn_changes.sensitive = file_exists(selected_kernel.changes_file);
+			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
+			btn_remove.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
+			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
 		}
 	}
 
@@ -331,8 +329,14 @@ public class MainWindow : Gtk.Window{
 		btn_install = button;
 		
 		button.clicked.connect(() => {
-			if (selected_kernel != null){
-				install(selected_kernel);
+			if (selected_kernels.size == 1){
+				install(selected_kernels[0]);
+			}
+			else if (selected_kernels.size > 1){
+				gtk_messagebox(_("Multiple Kernels Selected"),_("Select a single kernel to install"), this, true);
+			}
+			else{
+				gtk_messagebox(_("Not Selected"),_("Select the kernel to install"), this, true);
 			}
 		});
 
@@ -342,7 +346,11 @@ public class MainWindow : Gtk.Window{
 		btn_remove = button;
 		
 		button.clicked.connect(() => {
-			if (selected_kernel != null){
+			if (selected_kernels.size == 0){
+				gtk_messagebox(_("Not Selected"),_("Select the kernels to remove"), this, true);
+			}
+			else if (selected_kernels.size > 0){
+				
 				var term = new TerminalWindow.with_parent(this, false, true);
 				
 				term.script_complete.connect(()=>{
@@ -361,8 +369,17 @@ public class MainWindow : Gtk.Window{
 				if (LOG_DEBUG){
 					sh += " --debug";
 				}
-				sh += " --remove %s\n".printf(selected_kernel.name);
-					
+
+				string names = "";
+				foreach(var kern in selected_kernels){
+					if (names.length > 0){
+						names += ",";
+					}
+					names += "%s".printf(kern.name);
+				}
+
+				sh += " --remove %s\n".printf(names);
+				
 				sh += "echo ''\n";
 				sh += "echo 'Close window to exit...'\n";
 
@@ -378,8 +395,8 @@ public class MainWindow : Gtk.Window{
 		btn_changes = button;
 		
 		button.clicked.connect(() => {
-			if ((selected_kernel != null) && file_exists(selected_kernel.changes_file)){
-				exo_open_textfile(selected_kernel.changes_file);
+			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)){
+				exo_open_textfile(selected_kernels[0].changes_file);
 			}
 		});
 

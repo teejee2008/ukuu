@@ -91,6 +91,8 @@ public class AppConsole : GLib.Object {
 		msg += "  --user <username> " + _("Use specified user's cache directory") + "\n";
 		msg += "  --clean-cache     " + _("Remove files from application cache") + "\n";
 		msg += "\n";
+		msg += "Notes:\n";
+		msg += "1. Comma separated list of version strings can be specified for --remove and --download\n";
 		return msg;
 	}
 
