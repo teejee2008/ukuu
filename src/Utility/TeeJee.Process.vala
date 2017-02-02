@@ -49,8 +49,8 @@ namespace TeeJee.ProcessHelper{
 		//log_debug("TEMP_DIR=" + TEMP_DIR);
 	}
 
-	public string create_temp_subdir(){
-		var temp = "%s/%s".printf(TEMP_DIR, random_string());
+	public string create_temp_subdir(string base_dir = ""){
+		var temp = "%s/%s".printf((base_dir.length > 0) ? base_dir : TEMP_DIR, random_string());
 		dir_create(temp);
 		return temp;
 	}

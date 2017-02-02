@@ -85,7 +85,7 @@ namespace TeeJee.FileSystem{
 		&& FileUtils.test(file_path, GLib.FileTest.IS_REGULAR));
 	}
 
-	public bool file_delete(string file_path){
+	public bool file_delete(string file_path, bool show_message = false){
 
 		/* Check and delete file */
 
@@ -93,6 +93,12 @@ namespace TeeJee.FileSystem{
 			var file = File.new_for_path (file_path);
 			if (file.query_exists ()) {
 				file.delete ();
+				if (show_message){
+					log_msg(_("File deleted") + ": %s".printf(file_path));
+				}
+				else{
+					log_debug(_("File deleted") + ": %s".printf(file_path));
+				}
 			}
 			return true;
 		} catch (Error e) {
@@ -132,7 +138,7 @@ namespace TeeJee.FileSystem{
 		return long.parse(std_out.split("\t")[0]);
 	}
 
-	public string? file_read (string file_path){
+	public string? file_read (string file_path, bool show_message = false){
 
 		/* Reads text from file */
 
@@ -141,6 +147,14 @@ namespace TeeJee.FileSystem{
 
 		try{
 			GLib.FileUtils.get_contents (file_path, out txt, out size);
+
+			if (show_message){
+				log_msg(_("File read") + ": %s".printf(file_path));
+			}
+			else{
+				log_debug(_("File read") + ": %s".printf(file_path));
+			}
+				
 			return txt;
 		}
 		catch (Error e){
@@ -151,7 +165,7 @@ namespace TeeJee.FileSystem{
 	    return null;
 	}
 
-	public bool file_write (string file_path, string contents){
+	public bool file_write (string file_path, string contents, bool show_message = false){
 
 		/* Write text to file */
 
@@ -168,6 +182,14 @@ namespace TeeJee.FileSystem{
 			var data_stream = new DataOutputStream (file_stream);
 			data_stream.put_string (contents);
 			data_stream.close();
+
+			if (show_message){
+				log_msg(_("File saved") + ": %s".printf(file_path));
+			}
+			else{
+				log_debug(_("File saved") + ": %s".printf(file_path));
+			}
+				
 			return true;
 		}
 		catch (Error e) {
@@ -177,12 +199,20 @@ namespace TeeJee.FileSystem{
 		}
 	}
 
-	public bool file_copy (string src_file, string dest_file){
+	public bool file_copy (string src_file, string dest_file, bool show_message = false){
 		try{
 			var file_src = File.new_for_path (src_file);
 			if (file_src.query_exists()) {
 				var file_dest = File.new_for_path (dest_file);
 				file_src.copy(file_dest,FileCopyFlags.OVERWRITE,null,null);
+
+				if (show_message){
+					log_msg(_("File copied") + ": '%s' → '%s'".printf(src_file, dest_file));
+				}
+				else{
+					log_debug(_("File copied") + ": '%s' → '%s'".printf(src_file, dest_file));
+				}
+				
 				return true;
 			}
 		}
@@ -194,20 +224,29 @@ namespace TeeJee.FileSystem{
 		return false;
 	}
 
-	public void file_move (string src_file, string dest_file){
+	public void file_move (string src_file, string dest_file, bool show_message = false){
 		try{
 			var file_src = File.new_for_path (src_file);
-			if (file_src.query_exists()) {
-				var file_dest = File.new_for_path (dest_file);
-				file_src.move(file_dest,FileCopyFlags.OVERWRITE,null,null);
+			if (!file_src.query_exists()) {
+				log_error(_("File not found") + ": '%s'".printf(src_file));
+				return;
+			}
+
+			dir_create(file_parent(dest_file));
+
+			var file_dest = File.new_for_path (dest_file);
+			file_src.move(file_dest,FileCopyFlags.OVERWRITE,null,null);
+
+			if (show_message){
+				log_msg(_("File moved") + ": '%s' → '%s'".printf(src_file, dest_file));
 			}
 			else{
-				log_error(_("File not found") + ": '%s'".printf(src_file));
+				log_debug(_("File moved") + ": '%s' → '%s'".printf(src_file, dest_file));
 			}
 		}
 		catch(Error e){
 	        log_error (e.message);
-	        log_error(_("Failed to move file") + ": '%s', '%s'".printf(src_file, dest_file));
+	        log_error(_("Failed to move file") + ": '%s' → '%s'".printf(src_file, dest_file));
 		}
 	}
 
@@ -305,6 +344,9 @@ namespace TeeJee.FileSystem{
 				if (show_message){
 					log_msg(_("Created directory") + ": %s".printf(dir_path));
 				}
+				else{
+					log_debug(_("Created directory") + ": %s".printf(dir_path));
+				}
 			}
 			return true;
 		}
@@ -328,6 +370,10 @@ namespace TeeJee.FileSystem{
 		if (show_message){
 			log_msg(_("Deleted directory") + ": %s".printf(dir_path));
 		}
+		else{
+			log_debug(_("Created directory") + ": %s".printf(dir_path));
+		}
+		
 		return (status == 0);
 	}
 

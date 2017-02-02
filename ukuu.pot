@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-01-29 10:25+0530\n"
+"POT-Creation-Date: 2017-02-02 13:41+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Gtk/MainWindow.vala:472
+#: Gtk/MainWindow.vala:420
 msgid "About"
 msgstr ""
 
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1018
+#: Common/LinuxKernel.vala:1021
 msgid "Available Kernels"
 msgstr ""
 
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:428
+#: Gtk/MainWindow.vala:376
 msgid "Changes"
 msgstr ""
 
@@ -77,11 +77,12 @@ msgstr ""
 msgid "Contributions"
 msgstr ""
 
-#: Console/AppConsole.vala:201 Gtk/MainWindow.vala:96
+#: Console/AppConsole.vala:201 Gtk/MainWindow.vala:95
 msgid "Could not find requested version"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:306
+#: Utility/TeeJee.FileSystem.vala:345 Utility/TeeJee.FileSystem.vala:348
+#: Utility/TeeJee.FileSystem.vala:374
 msgid "Created directory"
 msgstr ""
 
@@ -93,7 +94,7 @@ msgstr ""
 msgid "Day(s)"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:329
+#: Utility/TeeJee.FileSystem.vala:371
 msgid "Deleted directory"
 msgstr ""
 
@@ -114,7 +115,7 @@ msgid ""
 "(teejeetech@gmail.com)"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:459
+#: Utility/TeeJee.FileSystem.vala:505
 msgid "Dir not found"
 msgstr ""
 
@@ -135,7 +136,7 @@ msgstr ""
 msgid "Documenters"
 msgstr ""
 
-#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:460
+#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:408
 msgid "Donate"
 msgstr ""
 
@@ -156,7 +157,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1056
+#: Common/LinuxKernel.vala:1059
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -165,7 +166,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1082
+#: Common/LinuxKernel.vala:1086
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -178,46 +179,66 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:191
+#: Utility/TeeJee.FileSystem.vala:221
 msgid "Failed to copy file"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:313
+#: Utility/TeeJee.FileSystem.vala:355
 msgid "Failed to create dir"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:100
+#: Utility/TeeJee.FileSystem.vala:106
 msgid "Failed to delete file"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:210
+#: Utility/TeeJee.FileSystem.vala:249
 msgid "Failed to move file"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:148
+#: Utility/TeeJee.FileSystem.vala:162
 msgid "Failed to read file"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:175
+#: Utility/TeeJee.FileSystem.vala:197
 msgid "Failed to write file"
 msgstr ""
 
-#: Common/LinuxKernel.vala:378
+#: Common/LinuxKernel.vala:381
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:612 Utility/TeeJee.FileSystem.vala:661
+#: Utility/TeeJee.FileSystem.vala:210 Utility/TeeJee.FileSystem.vala:213
+msgid "File copied"
+msgstr ""
+
+#: Utility/TeeJee.FileSystem.vala:97 Utility/TeeJee.FileSystem.vala:100
+msgid "File deleted"
+msgstr ""
+
+#: Utility/TeeJee.FileSystem.vala:658 Utility/TeeJee.FileSystem.vala:707
 msgid "File is missing"
 msgstr ""
 
-#: Common/LinuxKernel.vala:926 Utility/TeeJee.FileSystem.vala:205
-#: Utility/TeeJee.FileSystem.vala:488
+#: Utility/TeeJee.FileSystem.vala:241 Utility/TeeJee.FileSystem.vala:244
+msgid "File moved"
+msgstr ""
+
+#: Common/LinuxKernel.vala:929 Utility/TeeJee.FileSystem.vala:231
+#: Utility/TeeJee.FileSystem.vala:534
 msgid "File not found"
 msgstr ""
 
 #: Common/Package.vala:133 Common/Package.vala:195
 #, c-format
 msgid "File not found: %s"
+msgstr ""
+
+#: Utility/TeeJee.FileSystem.vala:152 Utility/TeeJee.FileSystem.vala:155
+msgid "File read"
+msgstr ""
+
+#: Utility/TeeJee.FileSystem.vala:187 Utility/TeeJee.FileSystem.vala:190
+msgid "File saved"
 msgstr ""
 
 #: Gtk/SettingsDialog.vala:192
@@ -248,7 +269,7 @@ msgstr ""
 msgid "Index is stale"
 msgstr ""
 
-#: Gtk/MainWindow.vala:381 Gtk/UpdateNotificationWindow.vala:144
+#: Gtk/MainWindow.vala:329 Gtk/UpdateNotificationWindow.vala:144
 msgid "Install"
 msgstr ""
 
@@ -260,27 +281,27 @@ msgstr ""
 msgid "Install this kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1132
+#: Common/LinuxKernel.vala:1136
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1129
+#: Common/LinuxKernel.vala:1133
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1035 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1038 Gtk/MainWindow.vala:197
 msgid "Installed"
 msgstr ""
 
-#: Console/AppConsole.vala:341 Gtk/MainWindow.vala:517
+#: Console/AppConsole.vala:341 Gtk/MainWindow.vala:465
 msgid "Internet connection is not active"
 msgstr ""
 
-#: Gtk/MainWindow.vala:140
+#: Gtk/MainWindow.vala:139
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:501
+#: Gtk/MainWindow.vala:449
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
@@ -312,7 +333,7 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1073 Utility/Gtk/DonationWindow.vala:95
+#: Common/LinuxKernel.vala:1077 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
@@ -338,11 +359,11 @@ msgstr ""
 msgid "Print debug information"
 msgstr ""
 
-#: Gtk/MainWindow.vala:521
+#: Gtk/MainWindow.vala:469
 msgid "Refreshing..."
 msgstr ""
 
-#: Gtk/MainWindow.vala:392
+#: Gtk/MainWindow.vala:340
 msgid "Remove"
 msgstr ""
 
@@ -370,7 +391,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1035 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1038 Gtk/MainWindow.vala:197
 msgid "Running"
 msgstr ""
 
@@ -382,7 +403,7 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:439
+#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:387
 msgid "Settings"
 msgstr ""
 
@@ -398,7 +419,7 @@ msgstr ""
 msgid "Show notification dialog"
 msgstr ""
 
-#: Gtk/MainWindow.vala:216
+#: Gtk/MainWindow.vala:185
 msgid "Status"
 msgstr ""
 
@@ -419,11 +440,11 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1096 Gtk/MainWindow.vala:631
+#: Common/LinuxKernel.vala:1100 Gtk/MainWindow.vala:579
 msgid "This kernel is already installed."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1146
+#: Common/LinuxKernel.vala:1150
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -442,11 +463,11 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1190
+#: Common/LinuxKernel.vala:1194
 msgid "Un-install completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1193
+#: Common/LinuxKernel.vala:1197
 msgid "Un-install completed with errors"
 msgstr ""
 
@@ -465,7 +486,7 @@ msgid ""
 "-1 = Show indefinitely till user selects"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1264
+#: Common/LinuxKernel.vala:1268
 msgid "Updating GRUB menu timeout"
 msgstr ""
 
@@ -477,7 +498,7 @@ msgstr ""
 msgid "Using cache directory"
 msgstr ""
 
-#: Gtk/MainWindow.vala:189
+#: Gtk/MainWindow.vala:168
 msgid "Version"
 msgstr ""
 

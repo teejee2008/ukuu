@@ -41,7 +41,6 @@ public class MainWindow : Gtk.Window{
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_remove;
 	private Gtk.Button btn_changes;
-	private Gtk.InfoBar infobar;
 	private Gtk.Label lbl_info;
 	
 	// helper members
@@ -152,16 +151,6 @@ public class MainWindow : Gtk.Window{
 			model.get (iter, 1, out pix, -1);
 			(cell as Gtk.CellRendererPixbuf).pixbuf = pix;
 			//(cell as Gtk.CellRendererPixbuf).visible = !(App.hide_unstable);
-
-			bool odd_row;
-			model.get (iter, 2, out odd_row, -1);
-			
-			if (odd_row){
-				//(cell as Gtk.CellRendererPixbuf).cell_background = "#F4F6F7";
-			}
-			else{
-				//(cell as Gtk.CellRendererPixbuf).cell_background = "#FFFFFF";
-			}
 		});
 		
 		//cell text
@@ -172,16 +161,6 @@ public class MainWindow : Gtk.Window{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
 			(cell as Gtk.CellRendererText).text = "Linux " + kern.version_main;
-
-			bool odd_row;
-			model.get (iter, 2, out odd_row, -1);
-			
-			if (odd_row){
-				//(cell as Gtk.CellRendererText).background = "#F4F6F7";
-			}
-			else{
-				//(cell as Gtk.CellRendererText).background = "#FFFFFF";
-			}
 		});
 
 		//column
@@ -199,16 +178,6 @@ public class MainWindow : Gtk.Window{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
 			(cell as Gtk.CellRendererText).text = kern.name;
-
-			bool odd_row;
-			model.get (iter, 2, out odd_row, -1);
-			
-			if (odd_row){
-				//(cell as Gtk.CellRendererText).background = "#F4F6F7";
-			}
-			else{
-				//(cell as Gtk.CellRendererText).background = "#FFFFFF";
-			}
 		});
 		
 		//column
@@ -226,16 +195,6 @@ public class MainWindow : Gtk.Window{
 			LinuxKernel kern;
 			model.get (iter, 0, out kern, -1);
 			(cell as Gtk.CellRendererText).text = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
-
-			bool odd_row;
-			model.get (iter, 2, out odd_row, -1);
-			
-			if (odd_row){
-				//(cell as Gtk.CellRendererText).background = "#F4F6F7";
-			}
-			else{
-				//(cell as Gtk.CellRendererText).background = "#FFFFFF";
-			}
 		});
 		
 		//column
@@ -252,13 +211,6 @@ public class MainWindow : Gtk.Window{
 		col.set_cell_data_func (cellText, (cell_layout, cell, model, iter)=>{
 			bool odd_row;
 			model.get (iter, 2, out odd_row, -1);
-			
-			if (odd_row){
-				//(cell as Gtk.CellRendererText).background = "#F4F6F7";
-			}
-			else{
-				//(cell as Gtk.CellRendererText).background = "#FFFFFF";
-			}
 		});
 	}
 
@@ -368,12 +320,8 @@ public class MainWindow : Gtk.Window{
 		}
 	}
 
-	
 	private void init_actions(){
 
-
-		
-		
 		var hbox = new Box (Orientation.VERTICAL, 6);
 		hbox_list.add (hbox);
 

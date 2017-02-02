@@ -334,7 +334,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		if (downloads.size > 0){
 			
 			var mgr = new DownloadTask();
-			mgr.downloads = downloads;
+
+			foreach(var item in downloads){
+				mgr.add_to_queue(item);
+			}
+
 			mgr.status_in_kb = true;
 			mgr.prg_count_total = progress_total;
 			mgr.execute();
@@ -370,11 +374,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		var item = new DownloadItem(URI_KERNEL_UBUNTU_MAINLINE, CACHE_DIR, "index.html");
 		var mgr = new DownloadTask();
-		mgr.downloads.add(item);
+		mgr.add_to_queue(item);
 		mgr.status_in_kb = true;
 		mgr.execute();
 			
-
 		var msg = _("Fetching index from kernel.ubuntu.com...");
 		log_msg(msg);
 		status_line = msg.strip();
@@ -1057,8 +1060,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			stdout.flush();
 
 			var item = new DownloadItem(deb_list[file_name], file_parent(file_path), file_basename(file_path));
+			
 			var mgr = new DownloadTask();
-			mgr.downloads.add(item);
+			mgr.add_to_queue(item);
 			mgr.status_in_kb = true;
 			mgr.execute();
 
