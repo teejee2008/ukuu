@@ -661,6 +661,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+	
 	// helpers
 	
 	public void split_version_string(
@@ -1041,6 +1042,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
+	public static bool download_kernels(Gee.ArrayList<LinuxKernel> selected_kernels){
+		foreach(var kern in selected_kernels){
+			kern.download_packages();
+		}
+		return true;
+	}
+	
 	// dep: aria2c
 	public bool download_packages(){
 		bool ok = true;
@@ -1141,6 +1149,68 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	}
 
 	// dep: dpkg
+	public static bool remove_kernels(Gee.ArrayList<LinuxKernel> selected_kernels){
+		bool ok = true;
+		int status = -1;
+
+		// check if running
+
+		foreach(var kern in selected_kernels){
+			if (kern.is_running){
+				log_error(_("Selected kernel is currently running and cannot be removed.\n Install another kernel before removing this one."));
+				return false;
+			}
+		}
+
+		log_msg(_("Preparing to remove selected kernels"));
+		
+		var cmd = "dpkg -r ";
+
+		foreach(var kern in selected_kernels){
+			
+			if (kern.apt_pkg_list.size > 0){
+				foreach(var pkg_name in kern.apt_pkg_list.values){
+					if (!pkg_name.has_prefix("linux-tools")
+						&& !pkg_name.has_prefix("linux-libc")){
+							
+						cmd += "'%s' ".printf(pkg_name);
+					}
+				}
+			}
+			else if (kern.deb_list.size > 0){
+				// get package names from deb file names
+				foreach(string file_name in kern.deb_list.keys){
+					cmd += "'%s' ".printf(file_name.split("_")[0]);
+				}
+			}
+			else{
+				stdout.printf("");
+				log_error("Could not find the packages to remove!");
+				return false;
+			}
+		}
+
+		log_msg("");
+		status = Posix.system(cmd); // execute
+		log_msg("");
+
+		ok = (status == 0);
+
+		if (show_grub_menu){
+			ok = ok && update_grub_menu();
+		}
+
+		if (ok){
+			log_msg(_("Un-install completed"));
+		}
+		else{
+			log_error(_("Un-install completed with errors"));
+		}
+
+		return ok;
+	}
+
+	// dep: dpkg
 	public bool remove(bool write_to_terminal){
 		bool ok = true;
 		int status = -1;
@@ -1200,7 +1270,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return ok;
 	}
 
-	public bool update_grub_menu(){
+	// dep: update-grub
+	public static bool update_grub_menu(){
 
 		if (!show_grub_menu){
 			return true;

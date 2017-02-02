@@ -184,42 +184,67 @@ public class AppConsole : GLib.Object {
 				check_if_internet_is_active();
 				
 				LinuxKernel.query(true);
-			
-				k++;
 
-				LinuxKernel kern_requested = null;
-				string requested_version = args[k];
-				foreach(var kern in LinuxKernel.kernel_list){
-					if (kern.name == requested_version){
-						kern_requested = kern;
-						break;
-					}
-				}
-
-				if (kern_requested == null){
-					
-					var msg = _("Could not find requested version");
-					msg += ": %s".printf(requested_version);
-					log_error(msg);
-					
-					log_error(_("Run 'ukuu --list' and use the version string listed in first column"));
-					
+				string[] requested_versions = args[++k].split(",");
+				if ((requested_versions.length > 1) && (args[k - 1] == "--install")){
+					log_error(_("Multiple kernels selected for installation. Select only one."));
 					exit(1);
 				}
 
-				if (args[k-1] == "--remove"){
-					return kern_requested.remove(true);
+				var list = new Gee.ArrayList<LinuxKernel>();
+
+				foreach(string requested_version in requested_versions){
+					
+					LinuxKernel kern_requested = null;
+					foreach(var kern in LinuxKernel.kernel_list){
+						if (kern.name == requested_version){
+							kern_requested = kern;
+							break;
+						}
+					}
+
+					if (kern_requested == null){
+						
+						var msg = _("Could not find requested version");
+						msg += ": %s".printf(requested_version);
+						log_error(msg);
+						
+						log_error(_("Run 'ukuu --list' and use the version string listed in first column"));
+						
+						exit(1);
+					}
+
+					list.add(kern_requested);
 				}
-				else if (args[k-1] == "--install"){
-					return kern_requested.install(true);
+
+				if (list.size > 1){
+					if (args[k-1] == "--remove"){
+						return LinuxKernel.remove_kernels(list);
+					}
+					else if (args[k-1] == "--download"){
+						return LinuxKernel.download_kernels(list);
+					}
+					else{
+						exit(1); // not supported
+					}
 				}
 				else{
-					return kern_requested.download_packages();
+					if (args[k-1] == "--remove"){
+						return list[0].remove(true);
+					}
+					else if (args[k-1] == "--install"){
+						return list[0].install(true);
+					}
+					else{
+						return list[0].download_packages();
+					}
 				}
+
+				break;
 
 			// options without argument --------------------------
 			
-			case "--option-without-argument": //dummy
+			//case "--option-without-argument": //dummy
 			case "--help":
 			case "--h":
 			case "-h":
@@ -229,7 +254,7 @@ public class AppConsole : GLib.Object {
 
 			// options with argument --------------------------
 
-			case "--option-with-argument": //dummy
+			//case "--option-with-argument": //dummy
 			case "--user":
 				k += 1;
 				// already handled - do nothing
