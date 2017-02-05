@@ -234,6 +234,10 @@ namespace TeeJee.FileSystem{
 
 			dir_create(file_parent(dest_file));
 
+			if (file_exists(dest_file)){
+				file_delete(dest_file);
+			}
+
 			var file_dest = File.new_for_path (dest_file);
 			file_src.move(file_dest,FileCopyFlags.OVERWRITE,null,null);
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-02-02 14:34+0530\n"
+"POT-Creation-Date: 2017-02-05 13:50+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Gtk/MainWindow.vala:443
+#: Gtk/MainWindow.vala:451
 msgid "About"
 msgstr ""
 
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1022
+#: Common/LinuxKernel.vala:1055
 msgid "Available Kernels"
 msgstr ""
 
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:399
+#: Gtk/MainWindow.vala:407
 msgid "Changes"
 msgstr ""
 
@@ -77,12 +77,12 @@ msgstr ""
 msgid "Contributions"
 msgstr ""
 
-#: Console/AppConsole.vala:210 Gtk/MainWindow.vala:95
+#: Console/AppConsole.vala:210 Gtk/MainWindow.vala:96
 msgid "Could not find requested version"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:345 Utility/TeeJee.FileSystem.vala:348
-#: Utility/TeeJee.FileSystem.vala:374
+#: Utility/TeeJee.FileSystem.vala:349 Utility/TeeJee.FileSystem.vala:352
+#: Utility/TeeJee.FileSystem.vala:378
 msgid "Created directory"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Day(s)"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:371
+#: Utility/TeeJee.FileSystem.vala:375
 msgid "Deleted directory"
 msgstr ""
 
@@ -115,7 +115,7 @@ msgid ""
 "(teejeetech@gmail.com)"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:505
+#: Utility/TeeJee.FileSystem.vala:509
 msgid "Dir not found"
 msgstr ""
 
@@ -136,7 +136,7 @@ msgstr ""
 msgid "Documenters"
 msgstr ""
 
-#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:431
+#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:439
 msgid "Donate"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1067
+#: Common/LinuxKernel.vala:1100
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -166,7 +166,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1094
+#: Common/LinuxKernel.vala:1127
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -183,7 +183,7 @@ msgstr ""
 msgid "Failed to copy file"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:355
+#: Utility/TeeJee.FileSystem.vala:359
 msgid "Failed to create dir"
 msgstr ""
 
@@ -191,7 +191,7 @@ msgstr ""
 msgid "Failed to delete file"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:249
+#: Utility/TeeJee.FileSystem.vala:253
 msgid "Failed to move file"
 msgstr ""
 
@@ -203,7 +203,7 @@ msgstr ""
 msgid "Failed to write file"
 msgstr ""
 
-#: Common/LinuxKernel.vala:381
+#: Common/LinuxKernel.vala:383
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr ""
 
@@ -215,16 +215,16 @@ msgstr ""
 msgid "File deleted"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:658 Utility/TeeJee.FileSystem.vala:707
+#: Utility/TeeJee.FileSystem.vala:662 Utility/TeeJee.FileSystem.vala:711
 msgid "File is missing"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:241 Utility/TeeJee.FileSystem.vala:244
+#: Utility/TeeJee.FileSystem.vala:245 Utility/TeeJee.FileSystem.vala:248
 msgid "File moved"
 msgstr ""
 
-#: Common/LinuxKernel.vala:930 Utility/TeeJee.FileSystem.vala:231
-#: Utility/TeeJee.FileSystem.vala:534
+#: Common/LinuxKernel.vala:963 Utility/TeeJee.FileSystem.vala:231
+#: Utility/TeeJee.FileSystem.vala:538
 msgid "File not found"
 msgstr ""
 
@@ -269,7 +269,7 @@ msgstr ""
 msgid "Index is stale"
 msgstr ""
 
-#: Gtk/MainWindow.vala:327 Gtk/UpdateNotificationWindow.vala:144
+#: Gtk/MainWindow.vala:341 Gtk/UpdateNotificationWindow.vala:144
 msgid "Install"
 msgstr ""
 
@@ -281,27 +281,27 @@ msgstr ""
 msgid "Install this kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1144
+#: Common/LinuxKernel.vala:1175
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1141
+#: Common/LinuxKernel.vala:1172
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1039 Gtk/MainWindow.vala:197 Gtk/MainWindow.vala:335
+#: Common/LinuxKernel.vala:1072 Gtk/MainWindow.vala:198
 msgid "Installed"
 msgstr ""
 
-#: Console/AppConsole.vala:368 Gtk/MainWindow.vala:488
+#: Console/AppConsole.vala:368 Gtk/MainWindow.vala:496
 msgid "Internet connection is not active"
 msgstr ""
 
-#: Gtk/MainWindow.vala:139
+#: Gtk/MainWindow.vala:140
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:472
+#: Gtk/MainWindow.vala:480
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
@@ -313,7 +313,7 @@ msgstr ""
 msgid "Missing Icon"
 msgstr ""
 
-#: Gtk/MainWindow.vala:342
+#: Gtk/MainWindow.vala:350
 msgid "Multiple Kernels Selected"
 msgstr ""
 
@@ -325,7 +325,7 @@ msgstr ""
 msgid "No updates found"
 msgstr ""
 
-#: Gtk/MainWindow.vala:345 Gtk/MainWindow.vala:356
+#: Gtk/MainWindow.vala:353 Gtk/MainWindow.vala:364
 msgid "Not Selected"
 msgstr ""
 
@@ -345,7 +345,7 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1085 Utility/Gtk/DonationWindow.vala:95
+#: Common/LinuxKernel.vala:1118 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
@@ -363,11 +363,21 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
+#: Common/LinuxKernel.vala:942
+#, c-format
+msgid "Packages Available (DEB)"
+msgstr ""
+
+#: Common/LinuxKernel.vala:950
+#, c-format
+msgid "Packages Installed"
+msgstr ""
+
 #: Common/Main.vala:103
 msgid "Please install required packages and try again"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1165
+#: Common/LinuxKernel.vala:1196
 msgid "Preparing to remove selected kernels"
 msgstr ""
 
@@ -375,11 +385,15 @@ msgstr ""
 msgid "Print debug information"
 msgstr ""
 
-#: Gtk/MainWindow.vala:492
+#: Gtk/MainWindow.vala:331
+msgid "Refresh"
+msgstr ""
+
+#: Gtk/MainWindow.vala:500
 msgid "Refreshing..."
 msgstr ""
 
-#: Gtk/MainWindow.vala:350
+#: Gtk/MainWindow.vala:358
 msgid "Remove"
 msgstr ""
 
@@ -407,7 +421,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1039 Gtk/MainWindow.vala:197
+#: Common/LinuxKernel.vala:1072 Gtk/MainWindow.vala:198
 msgid "Running"
 msgstr ""
 
@@ -415,23 +429,19 @@ msgstr ""
 msgid "Select Path"
 msgstr ""
 
-#: Gtk/MainWindow.vala:342
+#: Gtk/MainWindow.vala:350
 msgid "Select a single kernel to install"
 msgstr ""
 
-#: Gtk/MainWindow.vala:345
+#: Gtk/MainWindow.vala:353
 msgid "Select the kernel to install"
 msgstr ""
 
-#: Gtk/MainWindow.vala:356
+#: Gtk/MainWindow.vala:364
 msgid "Select the kernels to remove"
 msgstr ""
 
-#: Gtk/MainWindow.vala:335
-msgid "Selected kernel is already installed"
-msgstr ""
-
-#: Common/LinuxKernel.vala:1160
+#: Common/LinuxKernel.vala:1191
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -441,7 +451,7 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:410
+#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:418
 msgid "Settings"
 msgstr ""
 
@@ -457,7 +467,7 @@ msgstr ""
 msgid "Show notification dialog"
 msgstr ""
 
-#: Gtk/MainWindow.vala:185
+#: Gtk/MainWindow.vala:186
 msgid "Status"
 msgstr ""
 
@@ -478,11 +488,11 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1108 Gtk/MainWindow.vala:602
+#: Common/LinuxKernel.vala:1141 Gtk/MainWindow.vala:610
 msgid "This kernel is already installed."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1220
+#: Common/LinuxKernel.vala:1249
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -501,11 +511,11 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1204 Common/LinuxKernel.vala:1264
+#: Common/LinuxKernel.vala:1233 Common/LinuxKernel.vala:1291
 msgid "Un-install completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1207 Common/LinuxKernel.vala:1267
+#: Common/LinuxKernel.vala:1236 Common/LinuxKernel.vala:1294
 msgid "Un-install completed with errors"
 msgstr ""
 
@@ -524,8 +534,8 @@ msgid ""
 "-1 = Show indefinitely till user selects"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1339
-msgid "Updating GRUB menu timeout"
+#: Common/LinuxKernel.vala:1362
+msgid "Updating GRUB menu"
 msgstr ""
 
 #: Console/AppConsole.vala:91
@@ -536,7 +546,7 @@ msgstr ""
 msgid "Using cache directory"
 msgstr ""
 
-#: Gtk/MainWindow.vala:168
+#: Gtk/MainWindow.vala:169
 msgid "Version"
 msgstr ""
 

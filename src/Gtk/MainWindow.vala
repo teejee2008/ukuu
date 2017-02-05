@@ -38,6 +38,7 @@ public class MainWindow : Gtk.Window{
 	private Gtk.Box hbox_list;
 	
 	private Gtk.TreeView tv;
+	private Gtk.Button btn_refresh;
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_remove;
 	private Gtk.Button btn_changes;
@@ -212,6 +213,8 @@ public class MainWindow : Gtk.Window{
 			bool odd_row;
 			model.get (iter, 2, out odd_row, -1);
 		});
+
+		tv.set_tooltip_column(3);
 	}
 
 	private void tv_row_activated(TreePath path, TreeViewColumn column){
@@ -243,7 +246,7 @@ public class MainWindow : Gtk.Window{
 	}
 
 	private void tv_refresh(){
-		var model = new Gtk.ListStore(3, typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(bool));
+		var model = new Gtk.ListStore(4, typeof(LinuxKernel), typeof(Gdk.Pixbuf), typeof(bool), typeof(string));
 
 		Gdk.Pixbuf pix_ubuntu = null;
 		Gdk.Pixbuf pix_mainline = null;
@@ -294,6 +297,7 @@ public class MainWindow : Gtk.Window{
 			}
 
 			model.set (iter, 2, odd_row);
+			model.set (iter, 3, kern.tooltip_text());
 		}
 
 		tv.set_model(model);
@@ -323,8 +327,18 @@ public class MainWindow : Gtk.Window{
 		var hbox = new Box (Orientation.VERTICAL, 6);
 		hbox_list.add (hbox);
 
+		// refresh
+		var button = new Gtk.Button.with_label (_("Refresh"));
+		hbox.pack_start (button, true, true, 0);
+		btn_refresh = button;
+		
+		button.clicked.connect(() => {
+			refresh_cache();
+			tv_refresh();
+		});
+		
 		// install
-		var button = new Gtk.Button.with_label (_("Install"));
+		button = new Gtk.Button.with_label (_("Install"));
 		hbox.pack_start (button, true, true, 0);
 		btn_install = button;
 		

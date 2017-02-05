@@ -356,6 +356,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		check_installed();
 
 		check_updates();
+
+		//check_available();
 		
 		task_is_running = false;
 	}
@@ -469,8 +471,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					
 					bool found = false;
 					foreach(var kernel in kernel_list){
-						if (kernel.name == kern.name){
+						if (kernel.version_main == kern.version_main){
 							found = true;
+							kernel.apt_pkg_list = kern.apt_pkg_list;
 							break;
 						}
 					}
@@ -554,7 +557,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		log_debug("check_available");
 		
-		var list = Package.query_available_packages("^linux-'");
+		var list = Package.query_available_packages("^linux-image");
 
 		var pkg_versions = new Gee.ArrayList<string>();
 		
@@ -575,7 +578,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					
 					bool found = false;
 					foreach(var kernel in kernel_list){
-						if (kernel.name == kern.name){
+						if (kernel.version_main == kern.version_main){
 							found = true;
 							break;
 						}
@@ -705,6 +708,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				break;
 			}
 		}
+
+		if (version_point == -1){
+			ver_main += ".0";
+			version_point = 0;
+		}
 		
 		// v3.11-rc1-saucy
 		if (i < arr.length){
@@ -715,9 +723,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 
 		// v3.16.7-ckt26-trusty
+		// v3.16.7-040603ckt26-trusty
 		if (i < arr.length){
 			if (arr[i].contains("ckt")){
-				ver_main += ".%s".printf(arr[i++].replace("ckt",""));
+				ver_main += ".%s".printf(arr[i++].split("ckt")[1]);
+				is_mainline_package = false;
+				// -ckt kernels are maintained by the Canonical Kernel Team (CKT)
 			}
 		}
 		
@@ -918,6 +929,28 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 			return version_main;
 		}
+	}
+
+	public string tooltip_text(){
+		string txt = "";
+
+		string list = "";
+		foreach(string deb in deb_list.keys){
+			list += "%s\n".printf(deb);
+		}
+		if (list.length > 0){
+			txt += "<b>%s</b>\n\n%s\n".printf(_("Packages Available (DEB)"), list);
+		}
+
+		list = "";
+		foreach(string deb in apt_pkg_list.keys){
+			list += "%s\n".printf(deb);
+		}
+		if (list.length > 0){
+			txt += "<b>%s</b>\n\n%s\n".printf(_("Packages Installed"), list);
+		}
+		
+		return txt;
 	}
 	
 	// load
@@ -1133,10 +1166,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			ok = (status == 0);
 
-			if (show_grub_menu){
-				ok = ok && update_grub_menu();
-			}
-			
+			update_grub_menu();
+
 			if (ok){
 				log_msg(_("Installation completed. A reboot is required to use the new kernel."));
 			}
@@ -1196,9 +1227,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		ok = (status == 0);
 
-		if (show_grub_menu){
-			ok = ok && update_grub_menu();
-		}
+		update_grub_menu();
 
 		if (ok){
 			log_msg(_("Un-install completed"));
@@ -1256,9 +1285,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 		ok = (status == 0);
 
-		if (show_grub_menu){
-			ok = ok && update_grub_menu();
-		}
+		update_grub_menu();
 
 		if (ok){
 			log_msg(_("Un-install completed"));
@@ -1273,10 +1300,6 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// dep: update-grub
 	public static bool update_grub_menu(){
 
-		if (!show_grub_menu){
-			return true;
-		}
-		
 		string grub_file = "/etc/default/grub";
 		if (!file_exists(grub_file)){
 			return false;
@@ -1332,15 +1355,12 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			file_changed = true;
 		}
 		
-		if (!file_changed){
-			return true; // no need to continue
+		if (file_changed && show_grub_menu){
+			file_write(grub_file, txt);
 		}
 
-		log_msg(_("Updating GRUB menu timeout"));
+		log_msg(_("Updating GRUB menu"));
 		
-		// save changes
-		file_write(grub_file, txt);
-
 		string cmd = "update-grub";
 		Posix.system(cmd);
 
