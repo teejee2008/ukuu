@@ -1,4 +1,21 @@
 
+ukuu (17.2.1) trusty; urgency=medium
+
+  * Added option to set the timeout interval for GRUB menu
+
+  * Verify downloads after completion; Improved parsing for aria2;
+
+  * Added support to download or remove multiple kernels
+
+  * Fixed double entries in list for installed -ckt kernels
+
+  * Added Refresh button to main window
+
+  * Allow kernels to be removed even if internet is not connected
+
+ -- Tony George <tony.george.kol@gmail.com>  Mon, 06 Feb 2016 10:00:00 +0530
+
+ 
 ukuu (17.2) trusty; urgency=medium
 
   * Fixed some minor issues

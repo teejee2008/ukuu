@@ -259,8 +259,11 @@ namespace TeeJee.System{
 			connected = check_internet_connectivity_test2();
 		}
 
-		if (!connected && (window != null)){
-			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), window, true);
+		if (!connected){
+			log_error(_("Internet connection is not active"));
+			if (window != null){
+				gtk_messagebox(_("No Internet"), _("Internet connection is not active"), window, true);
+			}
 		}
 
 	    return connected;

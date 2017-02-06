@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-02-06 20:16+0530\n"
+"POT-Creation-Date: 2017-02-06 20:26+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -293,7 +293,7 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#: Console/AppConsole.vala:370 Utility/TeeJee.System.vala:263
+#: Utility/TeeJee.System.vala:263 Utility/TeeJee.System.vala:265
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -321,7 +321,7 @@ msgstr ""
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 
-#: Utility/TeeJee.System.vala:263
+#: Utility/TeeJee.System.vala:265
 msgid "No Internet"
 msgstr ""
 

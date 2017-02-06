@@ -37,7 +37,7 @@ using TeeJee.Misc;
 public Main App;
 public const string AppName = "Ubuntu Kernel Update Utility";
 public const string AppShortName = "ukuu";
-public const string AppVersion = "17.2";
+public const string AppVersion = "17.2.1";
 public const string AppAuthor = "Tony George";
 public const string AppAuthorEmail = "teejeetech@gmail.com";
 
@@ -153,7 +153,7 @@ public class AppConsole : GLib.Object {
 			case "--check":
 			case "--list":
 			
-				check_if_internet_is_active();
+				check_if_internet_is_active(false);
 				
 				LinuxKernel.query(true);
 				
@@ -163,7 +163,7 @@ public class AppConsole : GLib.Object {
 
 			case "--notify":
 
-				check_if_internet_is_active();
+				check_if_internet_is_active(false);
 				
 				LinuxKernel.query(true);
 				
@@ -365,11 +365,15 @@ public class AppConsole : GLib.Object {
 	}
 
 
-	public void check_if_internet_is_active(){
+	public void check_if_internet_is_active(bool exit_app = true){
+		
 		if (!check_internet_connectivity()){
-			log_error(_("Internet connection is not active"));
+			
 			App.fix_startup_script_error();
-			exit(1);
+			
+			if (exit_app){
+				exit(1);
+			}
 		}
 	}
 }
