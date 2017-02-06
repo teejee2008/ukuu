@@ -183,7 +183,9 @@ public class AppConsole : GLib.Object {
 
 				check_if_admin();
 
-				check_if_internet_is_active();
+				if ((args[k] == "--install") || (args[k] == "--download")){
+					check_if_internet_is_active();
+				}
 				
 				LinuxKernel.query(true);
 

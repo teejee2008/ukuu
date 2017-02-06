@@ -79,6 +79,8 @@ public class MainWindow : Gtk.Window{
 			tmr_init = 0;
 		}
 
+		check_internet_connectivity(this);
+
 		refresh_cache();
 
 		tv_refresh();
@@ -333,6 +335,11 @@ public class MainWindow : Gtk.Window{
 		btn_refresh = button;
 		
 		button.clicked.connect(() => {
+
+			if (!check_internet_connectivity(this)){
+				return;
+			}
+		
 			refresh_cache();
 			tv_refresh();
 		});
@@ -491,12 +498,6 @@ public class MainWindow : Gtk.Window{
 	}
 
 	private void refresh_cache(bool download_index = true){
-
-		if (!check_internet_connectivity()){
-			gtk_messagebox("",_("Internet connection is not active"),this,true);
-			exit(1);
-		}
-		
 		string message = _("Refreshing...");
 		var dlg = new ProgressWindow.with_parent(this, message, true);
 		dlg.show_all();
@@ -607,7 +608,11 @@ public class MainWindow : Gtk.Window{
 
 		// check if installed
 		if (kern.is_installed){
-			gtk_messagebox("", _("This kernel is already installed."), this, true);
+			gtk_messagebox("Already Installed", _("This kernel is already installed."), this, true);
+			return;
+		}
+
+		if (!check_internet_connectivity(this)){
 			return;
 		}
 		

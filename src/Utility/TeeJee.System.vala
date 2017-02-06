@@ -28,6 +28,7 @@ namespace TeeJee.System{
 	using TeeJee.Logging;
 	using TeeJee.Misc;
 	using TeeJee.FileSystem;
+	using GtkHelper;
 	
 	// user ---------------------------------------------------
 	
@@ -246,7 +247,7 @@ namespace TeeJee.System{
 	
 	// internet helpers ----------------------
 	
-	public bool check_internet_connectivity(){
+	public bool check_internet_connectivity(Gtk.Window? window = null){
 		bool connected = false;
 		connected = check_internet_connectivity_test1();
 
@@ -256,6 +257,10 @@ namespace TeeJee.System{
 		
 		if (!connected){
 			connected = check_internet_connectivity_test2();
+		}
+
+		if (!connected && (window != null)){
+			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), window, true);
 		}
 
 	    return connected;

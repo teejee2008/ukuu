@@ -254,6 +254,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			log_debug(_("Index is fresh"));
 		}
 
+		bool is_connected = check_internet_connectivity();
+
 		if (refresh){
 			download_index();
 		}
@@ -331,7 +333,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 		}
 
-		if (downloads.size > 0){
+		if ((downloads.size > 0) && is_connected){
 			
 			var mgr = new DownloadTask();
 
