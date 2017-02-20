@@ -1,4 +1,11 @@
 
+ukuu (17.2.3) trusty; urgency=medium
+
+  * Fixed an issue with previous update
+
+ -- Tony George <tony.george.kol@gmail.com>  Mon, 20 Feb 2016 14:00:00 +0530
+
+
 ukuu (17.2.2) trusty; urgency=medium
 
   * Show a message after install for booting previous kernels

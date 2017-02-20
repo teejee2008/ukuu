@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-02-20 20:03+0530\n"
+"POT-Creation-Date: 2017-02-20 21:21+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: Gtk/MainWindow.vala:657
+#: Gtk/MainWindow.vala:658
 msgid "Booting previous kernels"
 msgstr ""
 
@@ -313,7 +313,7 @@ msgstr ""
 msgid "List all available mainline kernels"
 msgstr ""
 
-#: Gtk/MainWindow.vala:658
+#: Gtk/MainWindow.vala:659
 msgid ""
 "Mainline kernels can sometimes cause problems if there are proprietary "
 "drivers installed on your system. These issues include:\n"

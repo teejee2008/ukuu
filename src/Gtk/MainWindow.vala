@@ -625,6 +625,9 @@ public class MainWindow : Gtk.Window{
 		});
 		
 		term.destroy.connect(()=>{
+			
+			show_grub_message();
+			
 			if (App.INSTALL_MODE){
 				this.close();
 				//Gtk.main_quit();
@@ -649,8 +652,6 @@ public class MainWindow : Gtk.Window{
 		sh += "echo 'Close window to exit...'\n";
 
 		term.execute_script(save_bash_script_temp(sh));
-
-		show_grub_message();
 	}
 
 	public void show_grub_message(){
