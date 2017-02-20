@@ -105,7 +105,7 @@ public class MainWindow : Gtk.Window{
 				install(kern_requested);
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -649,6 +649,14 @@ public class MainWindow : Gtk.Window{
 		sh += "echo 'Close window to exit...'\n";
 
 		term.execute_script(save_bash_script_temp(sh));
+
+		show_grub_message();
+	}
+
+	public void show_grub_message(){
+		string title = _("Booting previous kernels");
+		string msg = _("Mainline kernels can sometimes cause problems if there are proprietary drivers installed on your system. These issues include:\n\n▰ WiFi not working\n▰ Black screen on startup\n▰ Random system freeze\n\nIf you face any of these issues there is no need to panic.\n\n▰ Reboot your system\n▰ Select 'Advanced Boot Options' from the GRUB boot menu\n▰ Select an older kernel from the list displayed on this screen\n▰ Your system will boot using the selected kernel\n▰ You can now uninstall the kernel that is causing issues\n");
+		gtk_messagebox(title, msg, this, false);
 	}
 }
 

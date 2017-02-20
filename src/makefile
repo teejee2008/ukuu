@@ -22,7 +22,7 @@ all:
 	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" -X -Wl,-rpath,/usr/share/${app_name}/libs --thread Common/*.vala Console/*.vala Utility/*.vala Utility/Gtk/*.vala Gtk/UpdateNotificationWindow.vala -o ${app_name} --pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0 --pkg $(vte_version)
 
 	#update translation template
-	find . -iname "*.vala" | xargs xgettext --language=C --keyword=_ --copyright-holder='Tony George (teejeetech@gmail.com)' --package-name='${app_name}' --package-version='2.2' --msgid-bugs-address='teejeetech@gmail.com' --escape --sort-output -o ../${app_name}.pot
+	find . -iname "*.vala" | xargs xgettext --from-code=UTF-8 --language=C --keyword=_ --copyright-holder='Tony George (teejeetech@gmail.com)' --package-name='${app_name}' --package-version='2.2' --msgid-bugs-address='teejeetech@gmail.com' --escape --sort-output -o ../${app_name}.pot
 
 clean:
 	rm -rf *.o ${app_name} ${app_name}-gtk
