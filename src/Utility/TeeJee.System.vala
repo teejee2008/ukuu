@@ -249,15 +249,15 @@ namespace TeeJee.System{
 	
 	public bool check_internet_connectivity(Gtk.Window? window = null){
 		bool connected = false;
-		connected = check_internet_connectivity_test1();
+		connected = check_internet_connectivity_test();
 
 		if (connected){
 			return connected;
 		}
 		
-		if (!connected){
-			connected = check_internet_connectivity_test2();
-		}
+		//if (!connected){
+		//	connected = check_internet_connectivity_test2();
+		//}
 
 		if (!connected){
 			log_error(_("Internet connection is not active"));
@@ -267,6 +267,19 @@ namespace TeeJee.System{
 		}
 
 	    return connected;
+	}
+
+	public bool check_internet_connectivity_test(){
+		int exit_code = -1;
+		string std_err;
+		string std_out;
+
+		string cmd = "url='http://kernel.ubuntu.com/~kernel-ppa/mainline'\n";
+		cmd += "test $(curl -o /dev/null --silent --head --write-out '%{http_code}\n' $url) -lt 400 && test $(curl -o /dev/null --silent --head --write-out '%{http_code}\n' $url) -gt 0\n";
+		cmd += "exit $?";
+		exit_code = exec_script_sync(cmd, out std_out, out std_err, false);
+
+	    return (exit_code == 0);
 	}
 
 	public bool check_internet_connectivity_test1(){
