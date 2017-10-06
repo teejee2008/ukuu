@@ -2,7 +2,7 @@ Source: ukuu
 Section: utils
 Priority: extra
 Maintainer: Tony George <tony.george.kol@gmail.com>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev, valac-0.26 | valac, libgtk-3-dev, libgee-0.8-dev, libjson-glib-dev, libvte-2.91-dev | libvte-2.90-dev
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, valac, libgtk-3-dev, libgee-0.8-dev, libjson-glib-dev, libvte-2.91-dev
 Standards-Version: 3.9.3
 Homepage: http://teejeetech.blogspot.in/p/ukuu.html
 
@@ -10,6 +10,6 @@ Package: ukuu
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, aptitude, aria2
 Recommends: 
-Description: Mainline Kernel Updgrade Utility for Ubuntu-based distributions
+Description: Kernel Update Utility for Ubuntu-based distributions
  Utility for installing mainline Linux kernels on Ubuntu-based distributions.
- Fetches list of availables kernels and packages from kernel.ubuntu.com.
+ Downloads and installs kernel packages from kernel.ubuntu.com.

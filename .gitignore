@@ -6,3 +6,7 @@ installer/*.deb
 installer/*.run
 designs/
 .bzr/
+*.c
+*.o
+
+*.~1~

@@ -6,3 +6,5 @@ installer/*.deb
 installer/*.run
 designs/
 .git/
+*.c
+*.o
