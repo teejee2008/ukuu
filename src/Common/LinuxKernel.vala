@@ -38,6 +38,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string URI_KERNEL_UBUNTU_MAINLINE = "http://kernel.ubuntu.com/~kernel-ppa/mainline/";
 	public static string CACHE_DIR = "/var/cache/ukuu";
 	public static string NATIVE_ARCH;
+	public static string FLAVOR;
 	public static string LINUX_DISTRO;
 	public static string RUNNING_KERNEL;
 	public static string CURRENT_USER;
@@ -75,6 +76,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		LINUX_DISTRO = check_distribution();
 		NATIVE_ARCH = check_package_architecture();
 		RUNNING_KERNEL = check_running_kernel();
+		//FLAVOR = """lowlatency""" ;
+		FLAVOR = check_kernel_flavor(RUNNING_KERNEL);
 		initialize_regex();
 	}
 
@@ -138,19 +141,28 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		return ver;
 	}
 
+	public static string check_kernel_flavor(string kernel) {
+		string flavor = "";
+		string[] parts= kernel.split("-");
+		flavor=parts[parts.length - 1];
+		
+		log_msg("Kernel flavor : %s".printf(flavor));
+		return flavor;
+	}
+
 	public static void initialize_regex(){
 		try{
 			//linux-headers-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_header = new Regex("""linux-headers-[a-zA-Z0-9.\-_]*generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+			rex_header = new Regex("""linux-headers-[a-zA-Z0-9.\-_]*""" + FLAVOR + """_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
 
 			//linux-headers-3.4.75-030475_3.4.75-030475.201312201255_all.deb
 			rex_header_all = new Regex("""linux-headers-[a-zA-Z0-9.\-_]*_all.deb""");
 
 			//linux-image-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image = new Regex("""linux-image-[a-zA-Z0-9.\-_]*generic_([a-zA-Z0-9.\-]*)_""" + NATIVE_ARCH + ".deb");
+			rex_image = new Regex("""linux-image-[a-zA-Z0-9.\-_]*""" + FLAVOR + """_([a-zA-Z0-9.\-]*)_""" + NATIVE_ARCH + ".deb");
 
 			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image_extra = new Regex("""linux-image-extra-[a-zA-Z0-9.\-_]*generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+			rex_image_extra = new Regex("""linux-image-extra-[a-zA-Z0-9.\-_]*""" + FLAVOR + """_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
 		}
 		catch (Error e) {
 			log_error (e.message);
@@ -503,7 +515,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		// Running: 4.4.0-28-generic
 		// Package: 4.4.0-28.47
 		
-		string ver_running = RUNNING_KERNEL.replace("-generic","");
+		string ver_running = RUNNING_KERNEL.replace("-" + FLAVOR,"");
 		var kern_running = new LinuxKernel.from_version(ver_running);
 		kernel_active = null;
 		
@@ -1035,7 +1047,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		
 		try{
 			//linux-image-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
-			rex_image = new Regex("""linux-image-[0-9.\-_]*generic_([0-9.\-]*)_""" + NATIVE_ARCH + ".deb");
+			rex_image = new Regex("""linux-image-[0-9.\-_]*""" + FLAVOR + """_([0-9.\-]*)_""" + NATIVE_ARCH + ".deb");
 		}
 		catch (Error e) {
 			log_error (e.message);
