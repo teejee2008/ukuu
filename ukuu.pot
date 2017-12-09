@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-12-09 16:13+0530\n"
+"POT-Creation-Date: 2017-12-09 18:14+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Gtk/MainWindow.vala:458
+#: Gtk/MainWindow.vala:459
 msgid "About"
 msgstr ""
 
-#: Console/AppConsole.vala:101
+#: Console/AppConsole.vala:105
 msgid "Admin access is required for running this application."
 msgstr ""
 
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1057
+#: Common/LinuxKernel.vala:1035
 msgid "Available Kernels"
 msgstr ""
 
@@ -47,16 +47,17 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: Gtk/MainWindow.vala:658
+#: Gtk/MainWindow.vala:659
 msgid "Booting previous kernels"
 msgstr ""
 
-#: Utility/GtkHelper.vala:122 Gtk/ProgressWindow.vala:138
-#: Gtk/UpdateNotificationWindow.vala:176 Gtk/TerminalWindow.vala:166
+#: Utility/Gtk/CustomMessageDialog.vala:172 Utility/GtkHelper.vala:122
+#: Gtk/ProgressWindow.vala:138 Gtk/UpdateNotificationWindow.vala:176
+#: Gtk/TerminalWindow.vala:168
 msgid "Cancel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:414
+#: Gtk/MainWindow.vala:415
 msgid "Changes"
 msgstr ""
 
@@ -68,7 +69,7 @@ msgstr ""
 msgid "Check for kernel updates"
 msgstr ""
 
-#: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:176
+#: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:178
 msgid "Close"
 msgstr ""
 
@@ -81,7 +82,7 @@ msgstr ""
 msgid "Contributions"
 msgstr ""
 
-#: Console/AppConsole.vala:212 Gtk/MainWindow.vala:98
+#: Console/AppConsole.vala:219 Gtk/MainWindow.vala:99
 msgid "Could not find requested version"
 msgstr ""
 
@@ -140,7 +141,7 @@ msgstr ""
 msgid "Documenters"
 msgstr ""
 
-#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:446
+#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:447
 msgid "Donate"
 msgstr ""
 
@@ -161,7 +162,7 @@ msgstr ""
 msgid "Download packages for specified kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1102
+#: Common/LinuxKernel.vala:1080
 #, c-format
 msgid "Downloading"
 msgstr ""
@@ -170,7 +171,7 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1129
+#: Common/LinuxKernel.vala:1107
 #, c-format
 msgid "ERROR"
 msgstr ""
@@ -227,7 +228,7 @@ msgstr ""
 msgid "File moved"
 msgstr ""
 
-#: Common/LinuxKernel.vala:965 Utility/TeeJee.FileSystem.vala:231
+#: Common/LinuxKernel.vala:943 Utility/TeeJee.FileSystem.vala:231
 #: Utility/TeeJee.FileSystem.vala:538
 msgid "File not found"
 msgstr ""
@@ -273,7 +274,7 @@ msgstr ""
 msgid "Index is stale"
 msgstr ""
 
-#: Gtk/MainWindow.vala:348 Gtk/UpdateNotificationWindow.vala:144
+#: Gtk/MainWindow.vala:349 Gtk/UpdateNotificationWindow.vala:144
 msgid "Install"
 msgstr ""
 
@@ -285,27 +286,27 @@ msgstr ""
 msgid "Install this kernel"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1177
+#: Common/LinuxKernel.vala:1155
 msgid "Installation completed with errors"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1174
+#: Common/LinuxKernel.vala:1152
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1074 Gtk/MainWindow.vala:200
+#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:201
 msgid "Installed"
 msgstr ""
 
-#: Utility/TeeJee.System.vala:263 Utility/TeeJee.System.vala:265
+#: Utility/TeeJee.System.vala:282 Utility/TeeJee.System.vala:284
 msgid "Internet connection is not active"
 msgstr ""
 
-#: Gtk/MainWindow.vala:142
+#: Gtk/MainWindow.vala:143
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:487
+#: Gtk/MainWindow.vala:488
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
@@ -313,7 +314,7 @@ msgstr ""
 msgid "List all available mainline kernels"
 msgstr ""
 
-#: Gtk/MainWindow.vala:659
+#: Gtk/MainWindow.vala:660
 msgid ""
 "Mainline kernels can sometimes cause problems if there are proprietary "
 "drivers installed on your system. These issues include:\n"
@@ -335,23 +336,27 @@ msgstr ""
 msgid "Missing Icon"
 msgstr ""
 
-#: Gtk/MainWindow.vala:357
+#: Gtk/MainWindow.vala:358
 msgid "Multiple Kernels Selected"
 msgstr ""
 
-#: Console/AppConsole.vala:194
+#: Console/AppConsole.vala:201
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 
-#: Utility/TeeJee.System.vala:265
+#: Utility/Gtk/CustomMessageDialog.vala:177
+msgid "No"
+msgstr ""
+
+#: Utility/TeeJee.System.vala:284
 msgid "No Internet"
 msgstr ""
 
-#: Console/AppConsole.vala:364
+#: Console/AppConsole.vala:371
 msgid "No updates found"
 msgstr ""
 
-#: Gtk/MainWindow.vala:360 Gtk/MainWindow.vala:371
+#: Gtk/MainWindow.vala:361 Gtk/MainWindow.vala:372
 msgid "Not Selected"
 msgstr ""
 
@@ -371,30 +376,27 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1120 Utility/Gtk/DonationWindow.vala:95
+#: Common/LinuxKernel.vala:1098 Utility/Gtk/CustomMessageDialog.vala:167
+#: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
 msgstr ""
 
-#: Gtk/UpdateNotificationWindow.vala:161
-msgid "Open"
-msgstr ""
-
-#: Gtk/UpdateNotificationWindow.vala:162
+#: Gtk/UpdateNotificationWindow.vala:161 Gtk/UpdateNotificationWindow.vala:162
 msgid "Open Ukuu"
 msgstr ""
 
-#: Console/AppConsole.vala:83 Gtk/AppGtk.vala:178
+#: Console/AppConsole.vala:83 Gtk/AppGtk.vala:168
 msgid "Options"
 msgstr ""
 
-#: Common/LinuxKernel.vala:944
+#: Common/LinuxKernel.vala:922
 #, c-format
 msgid "Packages Available (DEB)"
 msgstr ""
 
-#: Common/LinuxKernel.vala:952
+#: Common/LinuxKernel.vala:930
 #, c-format
 msgid "Packages Installed"
 msgstr ""
@@ -403,23 +405,23 @@ msgstr ""
 msgid "Please install required packages and try again"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1198
+#: Common/LinuxKernel.vala:1176
 msgid "Preparing to remove selected kernels"
 msgstr ""
 
-#: Gtk/AppGtk.vala:180
+#: Gtk/AppGtk.vala:170
 msgid "Print debug information"
 msgstr ""
 
-#: Gtk/MainWindow.vala:333
+#: Gtk/MainWindow.vala:334
 msgid "Refresh"
 msgstr ""
 
-#: Gtk/MainWindow.vala:501
+#: Gtk/MainWindow.vala:502
 msgid "Refreshing..."
 msgstr ""
 
-#: Gtk/MainWindow.vala:365
+#: Gtk/MainWindow.vala:366
 msgid "Remove"
 msgstr ""
 
@@ -431,23 +433,15 @@ msgstr ""
 msgid "Remove specified mainline kernel"
 msgstr ""
 
-#: Gtk/AppGtk.vala:104
-msgid "Root Access Required"
-msgstr ""
-
-#: Gtk/AppGtk.vala:102
-msgid "Root access is required for running this application."
-msgstr ""
-
-#: Console/AppConsole.vala:216
+#: Console/AppConsole.vala:223
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 
-#: Console/AppConsole.vala:102 Gtk/AppGtk.vala:103
-msgid "Run the application as root or using gksu/sudo."
+#: Console/AppConsole.vala:108
+msgid "Run the application as admin with pkexec or sudo."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1074 Gtk/MainWindow.vala:200
+#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:201
 msgid "Running"
 msgstr ""
 
@@ -455,19 +449,19 @@ msgstr ""
 msgid "Select Path"
 msgstr ""
 
-#: Gtk/MainWindow.vala:357
+#: Gtk/MainWindow.vala:358
 msgid "Select a single kernel to install"
 msgstr ""
 
-#: Gtk/MainWindow.vala:360
+#: Gtk/MainWindow.vala:361
 msgid "Select the kernel to install"
 msgstr ""
 
-#: Gtk/MainWindow.vala:371
+#: Gtk/MainWindow.vala:372
 msgid "Select the kernels to remove"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1193
+#: Common/LinuxKernel.vala:1171
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -477,11 +471,11 @@ msgstr ""
 msgid "Send Email"
 msgstr ""
 
-#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:425
+#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:426
 msgid "Settings"
 msgstr ""
 
-#: Gtk/AppGtk.vala:181
+#: Gtk/AppGtk.vala:171
 msgid "Show all options"
 msgstr ""
 
@@ -493,7 +487,7 @@ msgstr ""
 msgid "Show notification dialog"
 msgstr ""
 
-#: Gtk/MainWindow.vala:188
+#: Gtk/MainWindow.vala:189
 msgid "Status"
 msgstr ""
 
@@ -501,7 +495,7 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
-#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:176
+#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:166
 msgid "Syntax"
 msgstr ""
 
@@ -514,11 +508,11 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1143 Gtk/MainWindow.vala:611
+#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:612
 msgid "This kernel is already installed."
 msgstr ""
 
-#: Common/LinuxKernel.vala:1251
+#: Common/LinuxKernel.vala:1229
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -537,15 +531,15 @@ msgstr ""
 msgid "Translators"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1235 Common/LinuxKernel.vala:1293
+#: Common/LinuxKernel.vala:1213 Common/LinuxKernel.vala:1271
 msgid "Un-install completed"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1238 Common/LinuxKernel.vala:1296
+#: Common/LinuxKernel.vala:1216 Common/LinuxKernel.vala:1274
 msgid "Un-install completed with errors"
 msgstr ""
 
-#: Console/AppConsole.vala:269 Gtk/AppGtk.vala:164
+#: Console/AppConsole.vala:276 Gtk/AppGtk.vala:154
 msgid "Unknown option"
 msgstr ""
 
@@ -560,7 +554,7 @@ msgid ""
 "-1 = Show indefinitely till user selects"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1364
+#: Common/LinuxKernel.vala:1342
 msgid "Updating GRUB menu"
 msgstr ""
 
@@ -568,11 +562,11 @@ msgstr ""
 msgid "Use specified user's cache directory"
 msgstr ""
 
-#: Console/AppConsole.vala:143 Gtk/AppGtk.vala:112
+#: Console/AppConsole.vala:150 Gtk/AppGtk.vala:102
 msgid "Using cache directory"
 msgstr ""
 
-#: Gtk/MainWindow.vala:171
+#: Gtk/MainWindow.vala:172
 msgid "Version"
 msgstr ""
 
@@ -586,6 +580,10 @@ msgstr ""
 
 #: Gtk/SettingsDialog.vala:157
 msgid "Week(s)"
+msgstr ""
+
+#: Utility/Gtk/CustomMessageDialog.vala:176
+msgid "Yes"
 msgstr ""
 
 #: Utility/AppLock.vala:55

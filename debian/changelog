@@ -1,16 +1,26 @@
+ukuu (17.12) xenial; urgency=medium
+
+  * Fixed: Use xdg-open to open CHANGES file instead of exo-open
+  * Fixed: User's home directory was not detected correctly
+  * Fixed sizing issues with message dialog on some versions of GTK+
+  * Fixed an error in parsing kernel version string. This would cause
+   an update notifcation even when there were no updates available.
+
+ -- Tony George <tony.george.kol@gmail.com>  Sat, 09 Dec 2017 14:00:00 +0530
+
 
 ukuu (17.2.3) trusty; urgency=medium
 
   * Fixed an issue with previous update
 
- -- Tony George <tony.george.kol@gmail.com>  Mon, 20 Feb 2016 14:00:00 +0530
+ -- Tony George <tony.george.kol@gmail.com>  Mon, 20 Feb 2017 14:00:00 +0530
 
 
 ukuu (17.2.2) trusty; urgency=medium
 
   * Show a message after install for booting previous kernels
 
- -- Tony George <tony.george.kol@gmail.com>  Mon, 20 Feb 2016 10:00:00 +0530
+ -- Tony George <tony.george.kol@gmail.com>  Mon, 20 Feb 2017 10:00:00 +0530
 
 
 ukuu (17.2.1) trusty; urgency=medium
@@ -27,14 +37,14 @@ ukuu (17.2.1) trusty; urgency=medium
 
   * Allow kernels to be removed even if internet is not connected
 
- -- Tony George <tony.george.kol@gmail.com>  Mon, 06 Feb 2016 10:00:00 +0530
+ -- Tony George <tony.george.kol@gmail.com>  Mon, 06 Feb 2017 10:00:00 +0530
 
  
 ukuu (17.2) trusty; urgency=medium
 
   * Fixed some minor issues
 
- -- Tony George <tony.george.kol@gmail.com>  Sat, 28 Jan 2016 14:00:00 +0530
+ -- Tony George <tony.george.kol@gmail.com>  Sat, 28 Jan 2017 14:00:00 +0530
 
 
 ukuu (17.1) trusty; urgency=medium
@@ -43,7 +53,7 @@ ukuu (17.1) trusty; urgency=medium
 
   * Removed unused code
 
- -- Tony George <tony.george.kol@gmail.com>  Sat, 28 Jan 2016 10:00:00 +0530
+ -- Tony George <tony.george.kol@gmail.com>  Sat, 28 Jan 2017 10:00:00 +0530
 
 
 ukuu (16.12.1) trusty; urgency=medium
