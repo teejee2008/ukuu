@@ -34,6 +34,7 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public class TerminalWindow : Gtk.Window {
+	
 	private Gtk.Box vbox_main;
 	private Vte.Terminal term;
 	private Gtk.Button btn_cancel;
@@ -85,6 +86,7 @@ public class TerminalWindow : Gtk.Window {
 	}
 
 	public void init_window () {
+		
 		title = "";
 		icon = get_app_icon(16);
 		resizable = true;
@@ -92,7 +94,7 @@ public class TerminalWindow : Gtk.Window {
 		
 		// vbox_main ---------------
 		
-		vbox_main = new Box (Orientation.VERTICAL, 6);
+		vbox_main = new Gtk.Box (Orientation.VERTICAL, 0);
 		vbox_main.set_size_request (def_width, def_height);
 		add (vbox_main);
 
@@ -152,7 +154,7 @@ public class TerminalWindow : Gtk.Window {
 		
 		// add cancel button --------------
 
-		var hbox = new Box (Orientation.HORIZONTAL, 6);
+		var hbox = new Gtk.Box (Orientation.HORIZONTAL, 6);
 		hbox.homogeneous = true;
 		vbox_main.add (hbox);
 

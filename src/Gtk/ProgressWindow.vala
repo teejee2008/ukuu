@@ -95,12 +95,12 @@ public class ProgressWindow : Gtk.Window {
 		set_deletable(false);
 		
 		//vbox_main
-		vbox_main = new Box (Orientation.VERTICAL, 6);
+		vbox_main = new Gtk.Box (Orientation.VERTICAL, 6);
 		vbox_main.margin = 12;
 		vbox_main.set_size_request (def_width, def_height);
 		add (vbox_main);
 
-		var hbox_status = new Box (Orientation.HORIZONTAL, 6);
+		var hbox_status = new Gtk.Box (Orientation.HORIZONTAL, 6);
 		vbox_main.add (hbox_status);
 		
 		spinner = new Gtk.Spinner();
@@ -128,7 +128,7 @@ public class ProgressWindow : Gtk.Window {
 		vbox_main.pack_start (lbl_status, false, true, 0);
 
 		//box
-		var box = new Box (Orientation.HORIZONTAL, 6);
+		var box = new Gtk.Box (Orientation.HORIZONTAL, 6);
 		box.set_homogeneous(true);
 		vbox_main.add (box);
 

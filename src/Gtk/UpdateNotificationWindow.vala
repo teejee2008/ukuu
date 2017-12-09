@@ -81,12 +81,12 @@ public class UpdateNotificationWindow : Gtk.Window {
 		skip_pager_hint = true;
 		
 		//vbox_main
-		vbox_main = new Box (Orientation.VERTICAL, 6);
+		vbox_main = new Gtk.Box (Orientation.VERTICAL, 6);
 		vbox_main.margin = 6;
 		add(vbox_main);
 		
 		//hbox_contents
-		var hbox_contents = new Box (Orientation.HORIZONTAL, 6);
+		var hbox_contents = new Gtk.Box (Orientation.HORIZONTAL, 6);
 		hbox_contents.margin = 6;
 		vbox_main.add (hbox_contents);
 
@@ -113,7 +113,7 @@ public class UpdateNotificationWindow : Gtk.Window {
 		hbox_contents.add(img);
 
 		// vbox_msg
-		var vbox_msg = new Box (Orientation.VERTICAL, 24);
+		var vbox_msg = new Gtk.Box (Orientation.VERTICAL, 24);
 		vbox_msg.margin_right = 6;
 		hbox_contents.add(vbox_msg);
 
@@ -137,7 +137,7 @@ public class UpdateNotificationWindow : Gtk.Window {
 		vbox_msg.add(sw_msg);
 
 		// actions
-		var hbox_actions = new Box (Orientation.HORIZONTAL, 6);
+		var hbox_actions = new Gtk.Box (Orientation.HORIZONTAL, 6);
 		vbox_msg.add (hbox_actions);
 
 		// install
