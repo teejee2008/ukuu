@@ -696,11 +696,14 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				}
 				else {
 
-					if ((ver_main.length > 0) && !ver_main.has_suffix("rc")){ 
-						ver_main += ".";
-					}
+					if (num.length <= 3){
+						
+						if ((ver_main.length > 0) && !ver_main.has_suffix("rc")){ 
+							ver_main += ".";
+						}
 
-					ver_main += num;
+						ver_main += num;
+					}
 
 					switch(index){
 					case 0:
@@ -712,6 +715,10 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 					case 2:
 						version_point = int.parse(num);
 						break;
+					}
+
+					if (num.length >= 12){
+						is_mainline = true;
 					}
 				}
 			}
