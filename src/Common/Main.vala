@@ -45,7 +45,7 @@ public class Main : GLib.Object{
 	public int startup_delay = 300;
 	public string user_login = "";
 	public string user_home = "";
-	
+
 	// global progress ----------------
 	
 	public string status_line = "";
@@ -114,14 +114,14 @@ public class Main : GLib.Object{
 		init_tmp(AppShortName);
 
 		// user info
-		user_login = get_user_login();
+		user_login = get_username();
 
 		if (custom_user_login.length > 0){
 			user_login = custom_user_login;
 		}
 		
 		user_home = get_user_home(user_login);
-		
+
 		// app config files
 		APP_CONFIG_FILE = user_home + "/.config/ukuu.json";
 		STARTUP_SCRIPT_FILE = user_home + "/.config/ukuu-notify.sh";
@@ -133,6 +133,7 @@ public class Main : GLib.Object{
 	}
 	
 	public void save_app_config(){
+		
 		var config = new Json.Object();
 		config.set_string_member("notify_major", notify_major.to_string());
 		config.set_string_member("notify_minor", notify_minor.to_string());

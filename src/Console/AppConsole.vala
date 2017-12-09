@@ -97,11 +97,18 @@ public class AppConsole : GLib.Object {
 	}
 
 	private static void check_if_admin(){
-		if (!user_is_admin()) {
-			string msg = _("Admin access is required for running this application.") + "\n";
-			msg += _("Run the application as root or using gksu/sudo.");
-			log_msg(msg);
-			exit(0);
+		
+		if (get_user_id_effective() != 0) {
+
+			log_msg(string.nfill(70,'-'));
+			
+			string msg = _("Admin access is required for running this application.");
+			log_error(msg);
+			
+			msg = _("Run the application as admin with pkexec or sudo.");
+			log_error(msg);
+			
+			exit(1);
 		}
 	}
 

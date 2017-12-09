@@ -32,63 +32,31 @@ namespace TeeJee.System{
 	
 	// user ---------------------------------------------------
 	
-	public bool user_is_admin (){
+	public int get_user_id(){
 
-		/* Check if current application is running with admin priviledges */
+		// returns actual user id of current user (even for applications executed with sudo and pkexec)
+		
+		string pkexec_uid = GLib.Environment.get_variable("PKEXEC_UID");
 
-		try{
-			// create a process
-			string[] argv = { "sleep", "10" };
-			Pid procId;
-			Process.spawn_async(null, argv, null, SpawnFlags.SEARCH_PATH, null, out procId);
-
-			// try changing the priority
-			Posix.setpriority (Posix.PRIO_PROCESS, procId, -5);
-
-			// check if priority was changed successfully
-			if (Posix.getpriority (Posix.PRIO_PROCESS, procId) == -5)
-				return true;
-			else
-				return false;
+		if (pkexec_uid != null){
+			return int.parse(pkexec_uid);
 		}
-		catch (Error e) {
-			log_error (e.message);
-			return false;
+
+		string sudo_user = GLib.Environment.get_variable("SUDO_USER");
+
+		if (sudo_user != null){
+			return get_user_id_from_username(sudo_user);
 		}
+
+		return get_user_id_effective(); // normal user
 	}
 
-	// dep: whoami
-	public string get_user_login(){
-		/*
-		Returns Login ID of current user.
-		If running as 'sudo' it will return Login ID of the actual user.
-		*/
-
-		string cmd = "echo ${SUDO_USER:-$(whoami)}";
-		string std_out;
-		string std_err;
-		int ret_val;
-		ret_val = exec_script_sync(cmd, out std_out, out std_err);
-
-		string user_name;
-		if ((std_out == null) || (std_out.length == 0)){
-			user_name = "root";
-		}
-		else{
-			user_name = std_out.strip();
-		}
-
-		return user_name;
-	}
-
-	// dep: id
-	public int get_user_id(string user_login){
-		/*
-		Returns UID of specified user.
-		*/
+	public int get_user_id_effective(){
+		
+		// returns effective user id (0 for applications executed with sudo and pkexec)
 
 		int uid = -1;
-		string cmd = "id %s -u".printf(user_login);
+		string cmd = "id -u";
 		string std_out, std_err;
 		exec_sync(cmd, out std_out, out std_err);
 		if ((std_out != null) && (std_out.length > 0)){
@@ -97,20 +65,71 @@ namespace TeeJee.System{
 
 		return uid;
 	}
+	
+	public string get_username(){
 
-	public string get_user_home(string custom_user_login = ""){
-		string user_login = get_user_login();
-
-		if (custom_user_login.length > 0){
-			user_login = custom_user_login;
-		}
+		// returns actual username of current user (even for applications executed with sudo and pkexec)
 		
-		if (user_login == "root"){
-			return "/root";
+		return get_username_from_uid(get_user_id());
+	}
+
+	public string get_username_effective(){
+
+		// returns effective user id ('root' for applications executed with sudo and pkexec)
+		
+		return get_username_from_uid(get_user_id_effective());
+	}
+
+	public int get_user_id_from_username(string username){
+		
+		int user_id = -1;
+
+		foreach(var line in file_read("/etc/passwd").split("\n")){
+			var arr = line.split(":");
+			if (arr.length < 3) { continue; }
+			if (arr[0] == username){
+				user_id = int.parse(arr[2]);
+				break;
+			}
 		}
-		else{
-			return "/home/%s".printf(user_login);
+
+		return user_id;
+	}
+
+	public string get_username_from_uid(int user_id){
+		
+		string username = "";
+
+		foreach(var line in file_read("/etc/passwd").split("\n")){
+			var arr = line.split(":");
+			if (arr.length < 3) { continue; }
+			if (int.parse(arr[2]) == user_id){
+				username = arr[0];
+				break;
+			}
 		}
+
+		return username;
+	}
+
+	public string get_user_home(string username = get_username()){
+		
+		string userhome = "";
+
+		foreach(var line in file_read("/etc/passwd").split("\n")){
+			var arr = line.split(":");
+			if (arr.length < 6) { continue; }
+			if (arr[0] == username){
+				userhome = arr[5];
+				break;
+			}
+		}
+
+		return userhome;
+	}
+
+	public string get_user_home_effective(){
+		return get_user_home(get_username_effective());
 	}
 	
 	// application -----------------------------------------------

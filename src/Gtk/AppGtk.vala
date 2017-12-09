@@ -97,16 +97,6 @@ public class AppGtk : GLib.Object {
 		Intl.bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
 	}
 
-	public static void check_if_admin(){
-		if (!user_is_admin()) {
-			string msg = _("Root access is required for running this application.") + "\n";
-			msg += _("Run the application as root or using gksu/sudo.");
-			string title = _("Root Access Required");
-			gtk_messagebox(title, msg, null, true);
-			exit(0);
-		}
-	}
-
 	public static bool parse_arguments(string[] args) {
 
 		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));

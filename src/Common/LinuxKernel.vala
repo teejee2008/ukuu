@@ -1091,7 +1091,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 				stdout.printf("\r%-70s\n".printf(_("OK")));
 				stdout.flush();
 				
-				if (user_is_admin()){
+				if (get_user_id_effective() == 0){
 					chown(file_path, CURRENT_USER, CURRENT_USER);
 					chmod(file_path, "a+rw");
 				}
