@@ -669,89 +669,60 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// helpers
 	
-	public void split_version_string(
-		string version_string,
-		out string ver_main,
-		out string ver_extra){
+	public void split_version_string(string version_string, out string ver_main, out string ver_extra){
 
-		string[] arr = version_string.split_set (".-_");
-
-		if (arr.length == 0){
-			ver_main = "";
-			ver_extra = "";
-			return;
-		}
-		
-		int i = 0;
-
-		// take first part
-		ver_main = arr[i++];
-
-		// remove "v"
-		if (ver_main.has_prefix("v")){
-			ver_main = ver_main[1:ver_main.length];
-		}
-
-		version_maj = int.parse(ver_main);
-
-		// append all numbers which are 3 digits or less
-		while (i < arr.length){
-			if (is_numeric(arr[i]) && (arr[i].length <= 3)){
-				ver_main += ".%s".printf(arr[i]);
-				if (version_min == -1){
-					version_min = int.parse(arr[i]);
-				}
-				else if (version_point == -1){
-					version_point = int.parse(arr[i]);
-				}
-				i++;
-			}
-			else{
-				break;
-			}
-		}
-
-		if (version_point == -1){
-			ver_main += ".0";
-			version_point = 0;
-		}
-		
-		// v3.11-rc1-saucy
-		if (i < arr.length){
-			// append rc number
-			if (arr[i].contains("rc")){
-				ver_main += "-%s".printf(arr[i++]);
-			}
-		}
-
-		// v3.16.7-ckt26-trusty
-		// v3.16.7-040603ckt26-trusty
-		if (i < arr.length){
-			if (arr[i].contains("ckt")){
-				ver_main += ".%s".printf(arr[i++].split("ckt")[1]);
-				is_mainline_package = false;
-				// -ckt kernels are maintained by the Canonical Kernel Team (CKT)
-			}
-		}
-		
-		// 4.6.3-040603.201606241434
-		// this version string is the package version of a mainline kernel
-		
-		if ((i < arr.length) && ((i+1) < arr.length)){
-			if (is_numeric(arr[i]) && (arr[i].length == 6)
-				&& is_numeric(arr[i+1]) && (arr[i+1].length == 12)){
-					
-				ver_main += ".%s".printf(arr[i++]);
-				ver_main += ".%s".printf(arr[i++]);
-				is_mainline_package = true;
-			}
-		}
-
-		// get remaining part
+		ver_main = "";
 		ver_extra = "";
-		if (i < arr.length){
-			for(; i < arr.length; i++){
-				ver_extra += "-%s".printf(arr[i]);
+		version_maj = 0;
+		version_min = 0;
+		version_point = 0;
+
+		if (version_string.length == 0){ return; }
+
+		var match = regex_match("""[v]*([0-9]+|r+c+)""", version_string);
+
+		int index = -1;
+		
+		while (match != null){
+
+			string? num = match.fetch(1);
+
+			if (num != null){
+
+				index++;
+
+				if (num == "rc"){
+					ver_main += ".0-rc";
+				}
+				else {
+
+					if ((ver_main.length > 0) && !ver_main.has_suffix("rc")){ 
+						ver_main += ".";
+					}
+
+					ver_main += num;
+
+					switch(index){
+					case 0:
+						version_maj = int.parse(num);
+						break;
+					case 1:
+						version_min = int.parse(num);
+						break;
+					case 2:
+						version_point = int.parse(num);
+						break;
+					}
+				}
+			}
+
+			try{
+				if (!match.next()){
+					break;
+				}
+			}
+			catch(Error e){
+				break;
 			}
 		}
 
