@@ -417,7 +417,7 @@ public class MainWindow : Gtk.Window{
 		
 		button.clicked.connect(() => {
 			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)){
-				exo_open_textfile(selected_kernels[0].changes_file);
+				xdg_open_textfile(selected_kernels[0].changes_file);
 			}
 		});
 
@@ -485,7 +485,7 @@ public class MainWindow : Gtk.Window{
 
 		dialog.program_name = AppName;
 		dialog.comments = _("Kernel upgrade utility for Ubuntu-based distributions");
-		dialog.copyright = "Copyright © 2016 Tony George (%s)".printf(AppAuthorEmail);
+		dialog.copyright = "Copyright © 2012-17 Tony George (%s)".printf(AppAuthorEmail);
 		dialog.version = AppVersion;
 		dialog.logo = get_app_icon(128);
 

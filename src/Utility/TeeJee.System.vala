@@ -374,7 +374,7 @@ namespace TeeJee.System{
 		return false;
 	}
 
-	public bool exo_open_textfile (string txt_file){
+	public bool xdg_open_textfile (string txt_file){
 
 		/* Tries to open the given text file in a text editor */
 
@@ -382,9 +382,9 @@ namespace TeeJee.System{
 		int status;
 		string cmd;
 		
-		path = get_cmd_path ("exo-open");
+		path = get_cmd_path ("xdg-open");
 		if ((path != null)&&(path != "")){
-			cmd = "exo-open '%s'".printf(escape_single_quote(txt_file));
+			cmd = "xdg-open '%s'".printf(escape_single_quote(txt_file));
 			status = exec_script_async (cmd);
 			return (status == 0);
 		}
