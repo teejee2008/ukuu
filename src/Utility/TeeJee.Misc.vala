@@ -352,4 +352,26 @@ namespace TeeJee.Misc {
 		}
 		return true;
 	}
+
+	public MatchInfo? regex_match(string expression, string line){
+
+		Regex regex = null;
+
+		try {
+			regex = new Regex(expression);
+		}
+		catch (Error e) {
+			log_error (e.message);
+			return null;
+		}
+
+		MatchInfo match;
+		if (regex.match(line, 0, out match)) {
+			return match;
+		}
+		else{
+			return null;
+		}
+	}
+
 }

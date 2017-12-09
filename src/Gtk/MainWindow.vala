@@ -46,7 +46,7 @@ public class MainWindow : Gtk.Window{
 	
 	// helper members
 
-	private int window_width = 550;
+	private int window_width = 600;
 	private int window_height = 400;
 	private uint tmr_init = -1;
 

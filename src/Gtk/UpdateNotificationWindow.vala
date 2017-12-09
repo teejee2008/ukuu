@@ -158,7 +158,7 @@ public class UpdateNotificationWindow : Gtk.Window {
 		});
 
 		// open ukuu
-		button = new Gtk.Button.with_label("    " + _("Open") + "    ");
+		button = new Gtk.Button.with_label("    " + _("Open Ukuu") + "    ");
 		button.set_tooltip_text(_("Open Ukuu"));
 		hbox_actions.add(button);
 
