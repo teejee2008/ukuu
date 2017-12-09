@@ -40,8 +40,8 @@ public class TerminalWindow : Gtk.Window {
 	private Gtk.Button btn_close;
 	private Gtk.ScrolledWindow scroll_win;
 
-	private int def_width = 600;
-	private int def_height = 400;
+	private int def_width = 1100;
+	private int def_height = 600;
 
 	private Pid child_pid;
 	private Gtk.Window parent_win = null;

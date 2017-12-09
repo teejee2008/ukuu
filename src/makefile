@@ -1,3 +1,6 @@
+SHELL=/bin/bash
+CFLAGS=--std=c99
+
 prefix=/usr
 bindir=$(prefix)/bin
 sharedir=$(prefix)/share
@@ -6,7 +9,7 @@ launcherdir=$(sharedir)/applications
 polkitdir=$(sharedir)/polkit-1/actions
 mandir=$(sharedir)/man
 man1dir=$(mandir)/man1
-CFLAGS=--std=c99
+
 app_name=ukuu
 
 vte_version=$(shell { ((ldconfig -p | grep libvte-2.91*.so) >/dev/null && echo 'vte-2.91') || echo 'vte-2.90'; } )
@@ -25,7 +28,10 @@ all:
 	find . -iname "*.vala" | xargs xgettext --from-code=UTF-8 --language=C --keyword=_ --copyright-holder='Tony George (teejeetech@gmail.com)' --package-name='${app_name}' --package-version='2.2' --msgid-bugs-address='teejeetech@gmail.com' --escape --sort-output -o ../${app_name}.pot
 
 clean:
-	rm -rf *.o ${app_name} ${app_name}-gtk
+	rm -rfv ../release/{source,i386,amd64,armel,armhf}
+	rm -rfv ../release/*.{run,deb}
+	rm -rfv *.c *.o *.mo
+	rm -fv ${app_name} ${app_name}-gtk
 
 install:
 	mkdir -p "$(DESTDIR)$(bindir)"
