@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-09-01 16:04+0200\n"
+"POT-Creation-Date: 2017-02-20 21:21+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,8 +51,8 @@ msgstr ""
 msgid "Booting previous kernels"
 msgstr ""
 
-#: Utility/GtkHelper.vala:122 Gtk/TerminalWindow.vala:166
-#: Gtk/UpdateNotificationWindow.vala:176 Gtk/ProgressWindow.vala:138
+#: Utility/GtkHelper.vala:122 Gtk/ProgressWindow.vala:138
+#: Gtk/UpdateNotificationWindow.vala:176 Gtk/TerminalWindow.vala:166
 msgid "Cancel"
 msgstr ""
 
@@ -227,8 +227,8 @@ msgstr ""
 msgid "File moved"
 msgstr ""
 
-#: Utility/TeeJee.FileSystem.vala:231 Utility/TeeJee.FileSystem.vala:538
-#: Common/LinuxKernel.vala:965
+#: Common/LinuxKernel.vala:965 Utility/TeeJee.FileSystem.vala:231
+#: Utility/TeeJee.FileSystem.vala:538
 msgid "File not found"
 msgstr ""
 
@@ -293,7 +293,7 @@ msgstr ""
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 
-#: Gtk/MainWindow.vala:200 Common/LinuxKernel.vala:1074
+#: Common/LinuxKernel.vala:1074 Gtk/MainWindow.vala:200
 msgid "Installed"
 msgstr ""
 
@@ -371,8 +371,8 @@ msgstr ""
 msgid "Notify if kernel update is available"
 msgstr ""
 
-#: Utility/GtkHelper.vala:121 Utility/Gtk/DonationWindow.vala:95
-#: Common/LinuxKernel.vala:1120
+#: Common/LinuxKernel.vala:1120 Utility/Gtk/DonationWindow.vala:95
+#: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
 msgstr ""
@@ -447,7 +447,7 @@ msgstr ""
 msgid "Run the application as root or using gksu/sudo."
 msgstr ""
 
-#: Gtk/MainWindow.vala:200 Common/LinuxKernel.vala:1074
+#: Common/LinuxKernel.vala:1074 Gtk/MainWindow.vala:200
 msgid "Running"
 msgstr ""
 
@@ -514,7 +514,7 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr ""
 
-#: Gtk/MainWindow.vala:611 Common/LinuxKernel.vala:1143
+#: Common/LinuxKernel.vala:1143 Gtk/MainWindow.vala:611
 msgid "This kernel is already installed."
 msgstr ""
 
