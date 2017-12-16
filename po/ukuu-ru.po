@@ -2,31 +2,31 @@
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the ukuu package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-07 22:02+0530\n"
+"Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
+"POT-Creation-Date: 2017-12-16 12:44+0530\n"
 "PO-Revision-Date: 2016-12-13 16:46+0300\n"
 "Last-Translator: Faust3000 <slavusik1988@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2016-12-13 11:48+0000\n"
 "X-Generator: Poedit 1.8.7.1\n"
-"Language: ru\n"
 
-#: Gtk/MainWindow.vala:472
+#: Gtk/MainWindow.vala:462
 msgid "About"
 msgstr "О программе"
 
-#: Console/AppConsole.vala:99
+#: Console/AppConsole.vala:105
 msgid "Admin access is required for running this application."
 msgstr "Для запуска программы требуются права администратора."
 
-#: Utility/AppLock.vala:50
+#: Utility/AppLock.vala:51
 msgid "Another instance of this application is running"
 msgstr "Запущен другой экземпляр программы"
 
@@ -40,7 +40,7 @@ msgstr "Художники"
 msgid "Authors"
 msgstr "Авторы"
 
-#: Common/LinuxKernel.vala:1016
+#: Common/LinuxKernel.vala:1035
 msgid "Available Kernels"
 msgstr "Доступные ядра"
 
@@ -48,16 +48,21 @@ msgstr "Доступные ядра"
 msgid "Back"
 msgstr "Назад"
 
-#: Utility/GtkHelper.vala:122 Gtk/ProgressWindow.vala:138
-#: Gtk/UpdateNotificationWindow.vala:176 Gtk/TerminalWindow.vala:166
+#: Gtk/MainWindow.vala:664
+msgid "Booting previous kernels"
+msgstr ""
+
+#: Utility/Gtk/CustomMessageDialog.vala:172 Utility/GtkHelper.vala:122
+#: Gtk/ProgressWindow.vala:138 Gtk/UpdateNotificationWindow.vala:176
+#: Gtk/TerminalWindow.vala:168
 msgid "Cancel"
 msgstr "Отмена"
 
-#: Gtk/MainWindow.vala:428
+#: Gtk/MainWindow.vala:418
 msgid "Changes"
 msgstr "Изменения"
 
-#: Gtk/SettingsDialog.vala:121
+#: Gtk/SettingsDialog.vala:122
 msgid "Check every"
 msgstr "Проверять каждые"
 
@@ -65,11 +70,11 @@ msgstr "Проверять каждые"
 msgid "Check for kernel updates"
 msgstr "Проверить обновления ядра"
 
-#: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:176
+#: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:178
 msgid "Close"
 msgstr "Закрыть"
 
-#: Common/Main.vala:104
+#: Common/Main.vala:102
 msgid "Commands listed below are not available on this system"
 msgstr "Команды перечисленные ниже недоступны на этой системе"
 
@@ -78,43 +83,27 @@ msgstr "Команды перечисленные ниже недоступны 
 msgid "Contributions"
 msgstr "Взносы"
 
-#: Utility/Device.vala:1101
-#, c-format
-msgid "Could not find file"
-msgstr "Не удалось найти файл"
-
-#: Console/AppConsole.vala:201 Gtk/MainWindow.vala:96
+#: Console/AppConsole.vala:219 Gtk/MainWindow.vala:101
 msgid "Could not find requested version"
 msgstr "Не удалось найти запрошенную версию"
+
+#: Utility/TeeJee.FileSystem.vala:349 Utility/TeeJee.FileSystem.vala:352
+#: Utility/TeeJee.FileSystem.vala:378
+#, fuzzy
+msgid "Created directory"
+msgstr "Используемая кэш-папка"
 
 #: Utility/Gtk/AboutWindow.vala:282 Utility/Gtk/AboutWindow.vala:299
 msgid "Credits"
 msgstr "Создатели"
 
-#: Utility/CronTab.vala:87
-msgid "Cron job added"
-msgstr "Задача для cron добавлена"
-
-#: Utility/CronTab.vala:168
-msgid "Cron job removed"
-msgstr "Задача для cron удалена"
-
-#: Gtk/SettingsDialog.vala:154
+#: Gtk/SettingsDialog.vala:155
 msgid "Day(s)"
 msgstr "День(дней)"
 
-#: Utility/Device.vala:1727 Utility/Device.vala:1737
-#, c-format
-msgid "Device"
-msgstr "Устройство"
-
-#: Utility/Device.vala:1183
-msgid "Device is unlocked"
-msgstr "Устройство разблокировано"
-
-#: Utility/Device.vala:1078 Utility/Device.vala:1140
-msgid "Device name is empty!"
-msgstr "Имя устройства отсутствует!"
+#: Utility/TeeJee.FileSystem.vala:375
+msgid "Deleted directory"
+msgstr ""
 
 #: Utility/Gtk/DonationWindow.vala:54
 msgid ""
@@ -147,15 +136,19 @@ msgstr ""
 "Tony George\n"
 "(teejeetech@gmail.com)"
 
-#: Utility/TeeJee.FileSystem.vala:449
+#: Utility/TeeJee.FileSystem.vala:509
 msgid "Dir not found"
 msgstr "Папка не найдена"
 
-#: Gtk/SettingsDialog.vala:161
+#: Gtk/SettingsDialog.vala:162
 msgid "Display"
 msgstr "Вид"
 
-#: Common/LinuxKernel.vala:87
+#: Gtk/SettingsDialog.vala:203
+msgid "Display GRUB menu during boot"
+msgstr ""
+
+#: Common/LinuxKernel.vala:89
 msgid "Distribution"
 msgstr "Дистрибутив"
 
@@ -164,7 +157,7 @@ msgstr "Дистрибутив"
 msgid "Documenters"
 msgstr "Составители документации"
 
-#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:460
+#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:450
 msgid "Donate"
 msgstr "Пожертвования"
 
@@ -185,7 +178,7 @@ msgstr "Спонсоры"
 msgid "Download packages for specified kernel"
 msgstr "Скачать пакеты для указанного ядра"
 
-#: Common/LinuxKernel.vala:1054
+#: Common/LinuxKernel.vala:1080
 #, c-format
 msgid "Downloading"
 msgstr "Загрузка"
@@ -194,96 +187,64 @@ msgstr "Загрузка"
 msgid "E"
 msgstr "E"
 
-#: Common/LinuxKernel.vala:1080
+#: Common/LinuxKernel.vala:1107
 #, c-format
 msgid "ERROR"
 msgstr "ОШИБКА"
-
-#: Utility/Device.vala:1247
-msgid "Encrypted Device"
-msgstr "Зашифрованное устройство"
-
-#: Utility/Device.vala:1248
-#, c-format
-msgid "Enter passphrase to unlock '%s'"
-msgstr "Введите ключевую фразу для разблокировки '%s'"
-
-#: Utility/GtkHelper.vala:860
-msgid "Enter path or browse for directory"
-msgstr "Введите путь или откройте папку"
 
 #: Utility/GtkHelper.vala:18
 msgid "Error"
 msgstr "Ошибка"
 
-#: Utility/CronTab.vala:83
-msgid "Failed to add cron job"
-msgstr "Не удалось добавить задачу в cron"
-
-#: Utility/TeeJee.FileSystem.vala:191
+#: Utility/TeeJee.FileSystem.vala:221
 msgid "Failed to copy file"
 msgstr "Не удалось скопировать файл"
 
-#: Utility/TeeJee.FileSystem.vala:310
+#: Utility/TeeJee.FileSystem.vala:359
 msgid "Failed to create dir"
 msgstr "Не удалось создать папку"
 
-#: Utility/TeeJee.FileSystem.vala:100
+#: Utility/TeeJee.FileSystem.vala:106
 msgid "Failed to delete file"
 msgstr "Не удалось удалить файл"
 
-#: Utility/CronTab.vala:208
-msgid "Failed to export crontab file"
-msgstr "Не удалось экспортировать файл crontab"
-
-#: Utility/Device.vala:541
-msgid "Failed to get partition list"
-msgstr "Не удалось получить список разделов"
-
-#: Utility/CronTab.vala:191
-msgid "Failed to install crontab file"
-msgstr "Не удалось установить файл crontab"
-
-#: Utility/TeeJee.FileSystem.vala:210
+#: Utility/TeeJee.FileSystem.vala:253
 msgid "Failed to move file"
 msgstr "Не удалось переместить файл"
 
-#: Utility/CronTab.vala:31
-msgid "Failed to read cron tab"
-msgstr "Не удалось прочитать crontab"
-
-#: Utility/TeeJee.FileSystem.vala:148
+#: Utility/TeeJee.FileSystem.vala:162
 msgid "Failed to read file"
 msgstr "Не удалось прочитать файл"
 
-#: Utility/CronTab.vala:164
-msgid "Failed to remove cron job"
-msgstr "Не удалось удалить задачу cron"
-
-#: Utility/Device.vala:1174 Utility/Device.vala:1228 Utility/Device.vala:1253
-#: Utility/Device.vala:1274 Utility/Device.vala:1294
-msgid "Failed to unlock device"
-msgstr "Не удалось разблокировать устройство"
-
-#: Utility/Device.vala:1528
-msgid "Failed to unmount"
-msgstr "Не удалось отмонтировать"
-
-#: Utility/TeeJee.FileSystem.vala:175
+#: Utility/TeeJee.FileSystem.vala:197
 msgid "Failed to write file"
 msgstr "Не удалось записать файл"
 
-#: Common/LinuxKernel.vala:376
+#: Common/LinuxKernel.vala:385
 msgid "Fetching index from kernel.ubuntu.com..."
 msgstr "Получение сведений с kernel.ubuntu.com..."
 
-#: Utility/TeeJee.FileSystem.vala:602 Utility/TeeJee.FileSystem.vala:651
+#: Utility/TeeJee.FileSystem.vala:210 Utility/TeeJee.FileSystem.vala:213
+#, fuzzy
+msgid "File copied"
+msgstr "Не удалось скопировать файл"
+
+#: Utility/TeeJee.FileSystem.vala:97 Utility/TeeJee.FileSystem.vala:100
+#, fuzzy
+msgid "File deleted"
+msgstr "Не удалось удалить файл"
+
+#: Utility/TeeJee.FileSystem.vala:662 Utility/TeeJee.FileSystem.vala:711
 msgid "File is missing"
 msgstr "Файл отсутствует"
 
-#: Common/LinuxKernel.vala:924 Utility/RsyncTask.vala:226
-#: Utility/CronTab.vala:176 Utility/TeeJee.FileSystem.vala:205
-#: Utility/TeeJee.FileSystem.vala:478
+#: Utility/TeeJee.FileSystem.vala:245 Utility/TeeJee.FileSystem.vala:248
+#, fuzzy
+msgid "File moved"
+msgstr "Удалить"
+
+#: Common/LinuxKernel.vala:943 Utility/TeeJee.FileSystem.vala:231
+#: Utility/TeeJee.FileSystem.vala:538
 msgid "File not found"
 msgstr "Файл не найден"
 
@@ -292,20 +253,30 @@ msgstr "Файл не найден"
 msgid "File not found: %s"
 msgstr "Файл не найден: %s"
 
-#: Utility/Device.vala:1745
-#, c-format
-msgid "Filesystem"
+#: Utility/TeeJee.FileSystem.vala:152 Utility/TeeJee.FileSystem.vala:155
+#, fuzzy
+msgid "File read"
+msgstr "Не удалось прочитать файл"
+
+#: Utility/TeeJee.FileSystem.vala:187 Utility/TeeJee.FileSystem.vala:190
+#, fuzzy
+msgid "File saved"
 msgstr "Файловая система"
 
-#: Gtk/SettingsDialog.vala:180
+#: Gtk/SettingsDialog.vala:192
+#, fuzzy
+msgid "GRUB Options"
+msgstr "Параметры"
+
+#: Gtk/SettingsDialog.vala:181
 msgid "Hide kernels older than 4.0"
 msgstr "Скрыть ядра старше версии 4.0"
 
-#: Gtk/SettingsDialog.vala:169
+#: Gtk/SettingsDialog.vala:170
 msgid "Hide unstable and RC releases"
 msgstr "Скрыть нестабильные и релиз-кандидат версии"
 
-#: Gtk/SettingsDialog.vala:152
+#: Gtk/SettingsDialog.vala:153
 msgid "Hour(s)"
 msgstr "Час(ов)"
 
@@ -313,15 +284,15 @@ msgstr "Час(ов)"
 msgid "Ignore this update"
 msgstr "Игнорировать это обновление"
 
-#: Common/LinuxKernel.vala:252
+#: Common/LinuxKernel.vala:254
 msgid "Index is fresh"
 msgstr "Сведения актуальны"
 
-#: Common/LinuxKernel.vala:249
+#: Common/LinuxKernel.vala:251
 msgid "Index is stale"
 msgstr "Сведения устарели"
 
-#: Gtk/MainWindow.vala:381 Gtk/UpdateNotificationWindow.vala:144
+#: Gtk/MainWindow.vala:352 Gtk/UpdateNotificationWindow.vala:144
 msgid "Install"
 msgstr "Установить"
 
@@ -333,68 +304,92 @@ msgstr "Установить указанную ветку ядра"
 msgid "Install this kernel"
 msgstr "Установить это ядро"
 
-#: Common/LinuxKernel.vala:1125
+#: Common/LinuxKernel.vala:1155
 msgid "Installation completed with errors"
 msgstr "Установка завершена с ошибками"
 
-#: Common/LinuxKernel.vala:1122
+#: Common/LinuxKernel.vala:1152
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Установка завершена. Обязательно выполните перезагрузку, чтобы использовать "
 "новое ядро."
 
-#: Common/LinuxKernel.vala:1033 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
 msgid "Installed"
 msgstr "Установлено"
 
-#: Console/AppConsole.vala:341 Gtk/MainWindow.vala:516
+#: Utility/TeeJee.System.vala:275 Gtk/MainWindow.vala:84
+#: Gtk/MainWindow.vala:343 Gtk/MainWindow.vala:621
 msgid "Internet connection is not active"
 msgstr "Интернет соединение не активно"
 
-#: Gtk/MainWindow.vala:140
+#: Gtk/MainWindow.vala:145
 msgid "Kernel"
 msgstr "Ядро"
 
-#: Gtk/MainWindow.vala:500
+#: Gtk/MainWindow.vala:492
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Программа для обновления ядра для дистрибутивов на базе Ubuntu"
-
-#: Utility/Device.vala:1746
-#, c-format
-msgid "Label"
-msgstr "Метка"
 
 #: Console/AppConsole.vala:87
 msgid "List all available mainline kernels"
 msgstr "Список всех доступных основных ядер"
 
-#: Utility/GtkHelper.vala:262
+#: Gtk/MainWindow.vala:665
+msgid ""
+"Mainline kernels can sometimes cause problems if there are proprietary "
+"drivers installed on your system. These issues include:\n"
+"\n"
+"▰ WiFi not working\n"
+"▰ Black screen on startup\n"
+"▰ Random system freeze\n"
+"\n"
+"If you face any of these issues there is no need to panic.\n"
+"\n"
+"▰ Reboot your system\n"
+"▰ Select 'Advanced Boot Options' from the GRUB boot menu\n"
+"▰ Select an older kernel from the list displayed on this screen\n"
+"▰ Your system will boot using the selected kernel\n"
+"▰ You can now uninstall the kernel that is causing issues\n"
+msgstr ""
+
+#: Utility/GtkHelper.vala:272
 msgid "Missing Icon"
 msgstr "Значок отсутствует"
 
-#: Utility/Device.vala:1729
-#, c-format
-msgid "Model"
-msgstr "Модель"
+#: Gtk/MainWindow.vala:361
+msgid "Multiple Kernels Selected"
+msgstr ""
 
-#: Utility/Device.vala:1378
-#, c-format
-msgid "Mounted"
-msgstr "Примонтировано"
+#: Console/AppConsole.vala:201
+msgid "Multiple kernels selected for installation. Select only one."
+msgstr ""
 
-#: Console/AppConsole.vala:335
+#: Utility/Gtk/CustomMessageDialog.vala:177
+msgid "No"
+msgstr ""
+
+#: Gtk/MainWindow.vala:84 Gtk/MainWindow.vala:343 Gtk/MainWindow.vala:621
+msgid "No Internet"
+msgstr ""
+
+#: Console/AppConsole.vala:371
 msgid "No updates found"
 msgstr "Обновлений не найдено"
 
-#: Gtk/SettingsDialog.vala:66
+#: Gtk/MainWindow.vala:364 Gtk/MainWindow.vala:375
+msgid "Not Selected"
+msgstr ""
+
+#: Gtk/SettingsDialog.vala:67
 msgid "Notification"
 msgstr "Уведомления"
 
-#: Gtk/SettingsDialog.vala:73
+#: Gtk/SettingsDialog.vala:74
 msgid "Notify if a major release is available"
 msgstr "Уведомлять, если доступно крупное обновление"
 
-#: Gtk/SettingsDialog.vala:84
+#: Gtk/SettingsDialog.vala:85
 msgid "Notify if a point release is available"
 msgstr "Уведомлять, если доступно небольшое обновление"
 
@@ -402,42 +397,53 @@ msgstr "Уведомлять, если доступно небольшое об�
 msgid "Notify if kernel update is available"
 msgstr "Уведомлять, если доступно обновление ядра"
 
-#: Common/LinuxKernel.vala:1071 Utility/Gtk/DonationWindow.vala:95
+#: Common/LinuxKernel.vala:1098 Utility/Gtk/CustomMessageDialog.vala:167
+#: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
 msgstr "OK"
 
-#: Gtk/UpdateNotificationWindow.vala:161
-msgid "Open"
-msgstr "Открыть"
-
-#: Gtk/UpdateNotificationWindow.vala:162
+#: Gtk/UpdateNotificationWindow.vala:161 Gtk/UpdateNotificationWindow.vala:162
 msgid "Open Ukuu"
 msgstr "Открыть Ukuu"
 
-#: Console/AppConsole.vala:83 Gtk/AppGtk.vala:178
+#: Console/AppConsole.vala:83 Gtk/AppGtk.vala:168
 msgid "Options"
 msgstr "Параметры"
 
-#: Utility/Device.vala:1741
+#: Common/LinuxKernel.vala:922
 #, c-format
-msgid "Parent Device"
-msgstr "Основное устройство"
+msgid "Packages Available (DEB)"
+msgstr ""
 
-#: Common/Main.vala:105
+#: Common/LinuxKernel.vala:930
+#, fuzzy, c-format
+msgid "Packages Installed"
+msgstr "Установлено"
+
+#: Common/Main.vala:103
 msgid "Please install required packages and try again"
 msgstr "Установить необходимые пакеты и попробуйте снова"
 
-#: Gtk/AppGtk.vala:180
+#: Common/LinuxKernel.vala:1176
+msgid "Preparing to remove selected kernels"
+msgstr ""
+
+#: Gtk/AppGtk.vala:170
 msgid "Print debug information"
 msgstr "Распечатать отладочную информацию"
 
-#: Gtk/MainWindow.vala:520
+#: Gtk/MainWindow.vala:336
+#, fuzzy
+msgid "Refresh"
+msgstr "Обновление..."
+
+#: Gtk/MainWindow.vala:506
 msgid "Refreshing..."
 msgstr "Обновление..."
 
-#: Gtk/MainWindow.vala:392
+#: Gtk/MainWindow.vala:369
 msgid "Remove"
 msgstr "Удалить"
 
@@ -449,66 +455,61 @@ msgstr "Удалить файлы из кэша программы"
 msgid "Remove specified mainline kernel"
 msgstr "Удалить указанную ветку ядра"
 
-#: Utility/Device.vala:1731
-#, c-format
-msgid "Revision"
-msgstr "Редакция"
-
-#: Gtk/AppGtk.vala:104
-msgid "Root Access Required"
-msgstr "Требуются права Root"
-
-#: Gtk/AppGtk.vala:102
-msgid "Root access is required for running this application."
-msgstr "Для запуска этой программы требуются права Root"
-
-#: Console/AppConsole.vala:205
+#: Console/AppConsole.vala:223
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr "Выполните 'ukuu --list' и используйте версию из первого столбца"
 
-#: Console/AppConsole.vala:100 Gtk/AppGtk.vala:103
-msgid "Run the application as root or using gksu/sudo."
+#: Console/AppConsole.vala:108
+#, fuzzy
+msgid "Run the application as admin with pkexec or sudo."
 msgstr "Запустите программу с правами Root или используйте gksu/sudo."
 
-#: Common/LinuxKernel.vala:1033 Gtk/MainWindow.vala:228
+#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
 msgid "Running"
 msgstr "Используется"
 
-#: Utility/GtkHelper.vala:870
-msgid "Select Path"
-msgstr "Выберите путь"
+#: Gtk/MainWindow.vala:361
+msgid "Select a single kernel to install"
+msgstr ""
+
+#: Gtk/MainWindow.vala:364
+msgid "Select the kernel to install"
+msgstr ""
+
+#: Gtk/MainWindow.vala:375
+msgid "Select the kernels to remove"
+msgstr ""
+
+#: Common/LinuxKernel.vala:1171
+#, fuzzy
+msgid ""
+"Selected kernel is currently running and cannot be removed.\n"
+" Install another kernel before removing this one."
+msgstr ""
+"Это ядро в настоящий момент работает и не может быть удалено.\n"
+" Установите другое ядро, прежде чем удалять его."
 
 #: Utility/Gtk/DonationWindow.vala:81
 msgid "Send Email"
 msgstr "Отправить email"
 
-#: Utility/Device.vala:1730
-#, c-format
-msgid "Serial"
-msgstr "Серия"
-
-#: Gtk/SettingsDialog.vala:56 Gtk/MainWindow.vala:439
+#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:429
 msgid "Settings"
 msgstr "Настройки"
 
-#: Gtk/AppGtk.vala:181
+#: Gtk/AppGtk.vala:171
 msgid "Show all options"
 msgstr "Показать все параметры"
 
-#: Gtk/SettingsDialog.vala:95
+#: Gtk/SettingsDialog.vala:96
 msgid "Show notification bubble on desktop"
 msgstr "Показывать окно оповещений на рабочем столе"
 
-#: Gtk/SettingsDialog.vala:106
+#: Gtk/SettingsDialog.vala:107
 msgid "Show notification dialog"
 msgstr "Показывать окно оповещений"
 
-#: Utility/Device.vala:1733 Utility/Device.vala:1748
-#, c-format
-msgid "Size"
-msgstr "Размер"
-
-#: Gtk/MainWindow.vala:216
+#: Gtk/MainWindow.vala:191
 msgid "Status"
 msgstr "Состояние"
 
@@ -516,16 +517,11 @@ msgstr "Состояние"
 msgid "Stopped"
 msgstr "Остановлено"
 
-#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:176
+#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:166
 msgid "Syntax"
 msgstr "Синтаксис"
 
-#: Utility/Device.vala:1754
-#, c-format
-msgid "System"
-msgstr "Система"
-
-#: Common/LinuxKernel.vala:101
+#: Common/LinuxKernel.vala:103
 msgid "System architecture"
 msgstr "Системная архитектура"
 
@@ -534,15 +530,11 @@ msgstr "Системная архитектура"
 msgid "Third Party Tools"
 msgstr "Сторонние инструменты"
 
-#: Utility/Device.vala:1173
-msgid "This device is not encrypted"
-msgstr "Устройство не зашифровано"
-
-#: Common/LinuxKernel.vala:1094 Gtk/MainWindow.vala:630
+#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:616
 msgid "This kernel is already installed."
 msgstr "Это ядро уже установлено."
 
-#: Common/LinuxKernel.vala:1139
+#: Common/LinuxKernel.vala:1229
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -550,69 +542,55 @@ msgstr ""
 "Это ядро в настоящий момент работает и не может быть удалено.\n"
 " Установите другое ядро, прежде чем удалять его."
 
+#: Gtk/SettingsDialog.vala:223
+msgid ""
+"Time (in seconds) to display the GRUB menu\n"
+"\n"
+"0 = Do not show menu\n"
+"-1 = Show indefinitely till user selects"
+msgstr ""
+
 #: Utility/Gtk/AboutWindow.vala:356
 #, c-format
 msgid "Translators"
 msgstr "Переводчики"
 
-#: Utility/Device.vala:1744
-#, c-format
-msgid "Type"
-msgstr "Тип"
-
-#: Utility/Device.vala:1743
-#, c-format
-msgid "UUID"
-msgstr "UUID"
-
-#: Common/LinuxKernel.vala:1179
+#: Common/LinuxKernel.vala:1213 Common/LinuxKernel.vala:1271
 msgid "Un-install completed"
 msgstr "Удаление завершено"
 
-#: Common/LinuxKernel.vala:1182
+#: Common/LinuxKernel.vala:1216 Common/LinuxKernel.vala:1274
 msgid "Un-install completed with errors"
 msgstr "Удаление завершено с ошибками"
 
-#: Console/AppConsole.vala:240 Gtk/AppGtk.vala:164
+#: Console/AppConsole.vala:276 Gtk/AppGtk.vala:154
 msgid "Unknown option"
 msgstr "Неизвестный параметр"
 
-#: Utility/Device.vala:1184 Utility/Device.vala:1300
-#, c-format
-msgid "Unlocked device is mapped to '%s'"
-msgstr "Разблокированное устройство связано с '%s'"
+#: Gtk/SettingsDialog.vala:210
+msgid ""
+"Updates the GRUB menu after installing or removing kernels, so that the menu "
+"is displayed for 2 seconds at boot time. This will help you recover from a "
+"bad kernel update by selecting another kernel to boot. During boot, use the "
+"'Advanced options for Ubuntu' menu entry to select another kernel.\n"
+"\n"
+"0 = Do not show menu\n"
+"-1 = Show indefinitely till user selects"
+msgstr ""
 
-#: Utility/Device.vala:1299
-msgid "Unlocked successfully"
-msgstr "Успешно разблокировано"
-
-#: Utility/Device.vala:1517
-msgid "Unmounting from"
-msgstr "Отмонтирование от"
+#: Common/LinuxKernel.vala:1342
+msgid "Updating GRUB menu"
+msgstr ""
 
 #: Console/AppConsole.vala:91
 msgid "Use specified user's cache directory"
 msgstr "Использовать указанную пользователем папку для кэша"
 
-#: Utility/Device.vala:1751
-#, c-format
-msgid "Used"
-msgstr "Используется"
-
-#: Utility/Device.vala:1254
-msgid "User cancelled the password prompt"
-msgstr "Пользователь отменил подсказку пароля"
-
-#: Console/AppConsole.vala:141 Gtk/AppGtk.vala:112
+#: Console/AppConsole.vala:150 Gtk/AppGtk.vala:102
 msgid "Using cache directory"
 msgstr "Используемая кэш-папка"
 
-#: Utility/Device.vala:1728
-#, c-format
-msgid "Vendor"
-msgstr "Производитель"
-
-#: Gtk/MainWindow.vala:189
+#: Gtk/MainWindow.vala:174
 msgid "Version"
 msgstr "Версия"
 
@@ -624,26 +602,140 @@ msgstr "Посетить сайт"
 msgid "W"
 msgstr "W"
 
-#: Gtk/SettingsDialog.vala:156
+#: Gtk/SettingsDialog.vala:157
 msgid "Week(s)"
 msgstr "Неделю(ли)"
 
-#: Utility/Device.vala:1227 Utility/Device.vala:1273
-msgid "Wrong password"
-msgstr "Неверный пароль"
+#: Utility/Gtk/CustomMessageDialog.vala:176
+msgid "Yes"
+msgstr ""
 
-#: Utility/AppLock.vala:55
+#: Utility/AppLock.vala:56
 msgid "[Warning] Deleted invalid lock"
 msgstr "[Внимание] Удалена неправильная блокировка"
 
-#: Utility/CronTab.vala:212
-msgid "crontab file exported"
-msgstr "crontab файл экспортирован"
+#~ msgid "Could not find file"
+#~ msgstr "Не удалось найти файл"
 
-#: Utility/CronTab.vala:195
-msgid "crontab file installed"
-msgstr "crontab файл установлен"
+#~ msgid "Cron job added"
+#~ msgstr "Задача для cron добавлена"
 
-#: Utility/Device.vala:1378
-msgid "device"
-msgstr "устройство"
+#~ msgid "Cron job removed"
+#~ msgstr "Задача для cron удалена"
+
+#~ msgid "Device"
+#~ msgstr "Устройство"
+
+#~ msgid "Device is unlocked"
+#~ msgstr "Устройство разблокировано"
+
+#~ msgid "Device name is empty!"
+#~ msgstr "Имя устройства отсутствует!"
+
+#~ msgid "Encrypted Device"
+#~ msgstr "Зашифрованное устройство"
+
+#~ msgid "Enter passphrase to unlock '%s'"
+#~ msgstr "Введите ключевую фразу для разблокировки '%s'"
+
+#~ msgid "Enter path or browse for directory"
+#~ msgstr "Введите путь или откройте папку"
+
+#~ msgid "Failed to add cron job"
+#~ msgstr "Не удалось добавить задачу в cron"
+
+#~ msgid "Failed to export crontab file"
+#~ msgstr "Не удалось экспортировать файл crontab"
+
+#~ msgid "Failed to get partition list"
+#~ msgstr "Не удалось получить список разделов"
+
+#~ msgid "Failed to install crontab file"
+#~ msgstr "Не удалось установить файл crontab"
+
+#~ msgid "Failed to read cron tab"
+#~ msgstr "Не удалось прочитать crontab"
+
+#~ msgid "Failed to remove cron job"
+#~ msgstr "Не удалось удалить задачу cron"
+
+#~ msgid "Failed to unlock device"
+#~ msgstr "Не удалось разблокировать устройство"
+
+#~ msgid "Failed to unmount"
+#~ msgstr "Не удалось отмонтировать"
+
+#~ msgid "Label"
+#~ msgstr "Метка"
+
+#~ msgid "Model"
+#~ msgstr "Модель"
+
+#~ msgid "Mounted"
+#~ msgstr "Примонтировано"
+
+#~ msgid "Open"
+#~ msgstr "Открыть"
+
+#~ msgid "Parent Device"
+#~ msgstr "Основное устройство"
+
+#~ msgid "Revision"
+#~ msgstr "Редакция"
+
+#~ msgid "Root Access Required"
+#~ msgstr "Требуются права Root"
+
+#~ msgid "Root access is required for running this application."
+#~ msgstr "Для запуска этой программы требуются права Root"
+
+#~ msgid "Select Path"
+#~ msgstr "Выберите путь"
+
+#~ msgid "Serial"
+#~ msgstr "Серия"
+
+#~ msgid "Size"
+#~ msgstr "Размер"
+
+#~ msgid "System"
+#~ msgstr "Система"
+
+#~ msgid "This device is not encrypted"
+#~ msgstr "Устройство не зашифровано"
+
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Unlocked device is mapped to '%s'"
+#~ msgstr "Разблокированное устройство связано с '%s'"
+
+#~ msgid "Unlocked successfully"
+#~ msgstr "Успешно разблокировано"
+
+#~ msgid "Unmounting from"
+#~ msgstr "Отмонтирование от"
+
+#~ msgid "Used"
+#~ msgstr "Используется"
+
+#~ msgid "User cancelled the password prompt"
+#~ msgstr "Пользователь отменил подсказку пароля"
+
+#~ msgid "Vendor"
+#~ msgstr "Производитель"
+
+#~ msgid "Wrong password"
+#~ msgstr "Неверный пароль"
+
+#~ msgid "crontab file exported"
+#~ msgstr "crontab файл экспортирован"
+
+#~ msgid "crontab file installed"
+#~ msgstr "crontab файл установлен"
+
+#~ msgid "device"
+#~ msgstr "устройство"

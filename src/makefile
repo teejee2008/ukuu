@@ -16,22 +16,27 @@ vte_version=$(shell { ((ldconfig -p | grep libvte-2.91*.so) >/dev/null && echo '
 define_symbols=$(shell { ((ldconfig -p | grep libvte-2.91*.so) >/dev/null && echo '-D VTE_291') || echo ''; } )
 
 all:
-	#build binaries
-	
-	#app-gtk
+
+	# app-gtk
 	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" ${define_symbols} --thread \
 		Common/*.vala Gtk/*.vala Utility/*.vala Utility/Gtk/*.vala \
 		-o ${app_name}-gtk \
 		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg $(vte_version)
 
-	#app
+	# app
 	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" --thread \
 		Common/*.vala Console/*.vala Utility/*.vala Utility/Gtk/*.vala Gtk/UpdateNotificationWindow.vala \
 		-o ${app_name} \
 		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0 --pkg $(vte_version)
 
-	#update translation template
-	find . -iname "*.vala" | xargs xgettext --from-code=UTF-8 --language=C --keyword=_ --copyright-holder='Tony George (teejeetech@gmail.com)' --package-name='${app_name}' --package-version='2.2' --msgid-bugs-address='teejeetech@gmail.com' --escape --sort-output -o ../${app_name}.pot
+	# update translation template
+	find . -iname "*.vala" | xargs xgettext --from-code=UTF-8 --language=C --keyword=_ --copyright-holder='Tony George (teejeetech@gmail.com)' --package-name="${app_name}" --package-version='1.6' --msgid-bugs-address='teejeetech@gmail.com' --escape --sort-output -o ../${app_name}.pot
+	
+	# update translation files
+	# am ar az bg ca cs da de el en_GB es et eu fr he hi hr hu ia id is it ko lt nb ne nl pl pt pt_BR ro ru sk sr sv tr uk vi zh_CN
+	for lang in fr nl pl ru sv; do \
+		msgmerge --update -v ../po/${app_name}-$$lang.po ../${app_name}.pot ; \
+	done
 
 clean:
 	rm -rfv ../release/{source,i386,amd64,armel,armhf}
@@ -50,54 +55,52 @@ install:
 	mkdir -p "$(DESTDIR)$(sharedir)/${app_name}"
 	mkdir -p "$(DESTDIR)$(sharedir)/pixmaps"
 
-	#binary
+	# binary
 	install -m 0755 ${app_name} "$(DESTDIR)$(bindir)"
 	install -m 0755 ${app_name}-gtk "$(DESTDIR)$(bindir)"
 	install -m 0755 ${app_name}-uninstall "$(DESTDIR)$(bindir)"
 
-	#shared files
+	# shared files
 	cp -dpr --no-preserve=ownership -t "$(DESTDIR)$(sharedir)/${app_name}" ./share/${app_name}/*
 	chmod --recursive 0755 $(DESTDIR)$(sharedir)/${app_name}/*
 
-	#polkit policy file
+	# polkit policy file
 	#install -m 0644 ./share/polkit-1/actions/in.teejeetech.pkexec.ukuu-gtk.policy "$(DESTDIR)$(polkitdir)"
 	#rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu-gtk.policy" 
 
-	#launcher
+	# launcher
 	install -m 0755 ${app_name}.desktop "$(DESTDIR)$(launcherdir)"
 	
-	#app icon
+	# app icon
 	install -m 0755 ./share/pixmaps/${app_name}.* "$(DESTDIR)$(sharedir)/pixmaps"
 
-	#translations
-	mkdir -p "$(DESTDIR)$(localedir)/sv/LC_MESSAGES"
-	msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/sv/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-sv.po
-	mkdir -p "$(DESTDIR)$(localedir)/ru/LC_MESSAGES"
-	msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/ru/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-ru.po
-	mkdir -p "$(DESTDIR)$(localedir)/pl/LC_MESSAGES"
-	msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/pl/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-pl.po
+	# translations
+	for lang in fr nl pl ru sv do \
+		mkdir -p "$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES"; \
+		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-$$lang.po ; \
+	done
 
 uninstall:
 
-	#binary
+	# binary
 	rm -f "$(DESTDIR)$(bindir)/${app_name}"
 	rm -f "$(DESTDIR)$(bindir)/${app_name}-uninstall"
 
-	#shared files
+	# shared files
 	rm -rf "$(DESTDIR)$(sharedir)/${app_name}"
 
-	#polkit policy file
+	# polkit policy file
 	#rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu-gtk.policy"
 
-	#launcher
+	# launcher
 	rm -f "$(DESTDIR)$(launcherdir)/${app_name}.desktop"
 	
-	#app icon
+	# app icon
 	rm -f "$(DESTDIR)$(sharedir)/pixmaps/${app_name}.png"
 
-    #translations
+    # translations
 	rm -f $(DESTDIR)$(localedir)/*/LC_MESSAGES/${app_name}.mo
 
-	#startup scripts
+	# startup scripts
 	rm -f $(DESTDIR)/home/*/.config/ukuu-notify.sh
 	rm -f $(DESTDIR)/home/*/.config/autostart/ukuu.desktop

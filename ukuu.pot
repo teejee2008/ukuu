@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ukuu 2.2\n"
+"Project-Id-Version: ukuu 1.6\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-12-16 12:22+0530\n"
+"POT-Creation-Date: 2017-12-16 12:44+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Admin access is required for running this application."
 msgstr ""
 
-#: Utility/AppLock.vala:50
+#: Utility/AppLock.vala:51
 msgid "Another instance of this application is running"
 msgstr ""
 
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: Gtk/MainWindow.vala:663
+#: Gtk/MainWindow.vala:664
 msgid "Booting previous kernels"
 msgstr ""
 
@@ -295,7 +295,7 @@ msgid "Installed"
 msgstr ""
 
 #: Utility/TeeJee.System.vala:275 Gtk/MainWindow.vala:84
-#: Gtk/MainWindow.vala:343 Gtk/MainWindow.vala:620
+#: Gtk/MainWindow.vala:343 Gtk/MainWindow.vala:621
 msgid "Internet connection is not active"
 msgstr ""
 
@@ -303,7 +303,7 @@ msgstr ""
 msgid "Kernel"
 msgstr ""
 
-#: Gtk/MainWindow.vala:491
+#: Gtk/MainWindow.vala:492
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr ""
 
@@ -311,7 +311,7 @@ msgstr ""
 msgid "List all available mainline kernels"
 msgstr ""
 
-#: Gtk/MainWindow.vala:664
+#: Gtk/MainWindow.vala:665
 msgid ""
 "Mainline kernels can sometimes cause problems if there are proprietary "
 "drivers installed on your system. These issues include:\n"
@@ -345,7 +345,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: Gtk/MainWindow.vala:84 Gtk/MainWindow.vala:343 Gtk/MainWindow.vala:620
+#: Gtk/MainWindow.vala:84 Gtk/MainWindow.vala:343 Gtk/MainWindow.vala:621
 msgid "No Internet"
 msgstr ""
 
@@ -414,7 +414,7 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: Gtk/MainWindow.vala:505
+#: Gtk/MainWindow.vala:506
 msgid "Refreshing..."
 msgstr ""
 
@@ -501,7 +501,7 @@ msgstr ""
 msgid "Third Party Tools"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:615
+#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:616
 msgid "This kernel is already installed."
 msgstr ""
 
@@ -579,6 +579,6 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: Utility/AppLock.vala:55
+#: Utility/AppLock.vala:56
 msgid "[Warning] Deleted invalid lock"
 msgstr ""

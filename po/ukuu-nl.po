@@ -7,27 +7,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-04-30 11:13+0200\n"
+"POT-Creation-Date: 2017-12-16 12:44+0530\n"
 "PO-Revision-Date: 2017-04-30 11:50+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl_NL\n"
 
-#: Gtk/MainWindow.vala:458
+#: Gtk/MainWindow.vala:462
 msgid "About"
 msgstr "Over"
 
-#: Console/AppConsole.vala:101
+#: Console/AppConsole.vala:105
 msgid "Admin access is required for running this application."
 msgstr ""
 "U heeft administrator-rechten nodig om deze applicatie te kunnen draaien."
 
-#: Utility/AppLock.vala:50
+#: Utility/AppLock.vala:51
 msgid "Another instance of this application is running"
 msgstr "Er is al een venster geopend van deze applicatie"
 
@@ -41,7 +41,7 @@ msgstr "Artiesten"
 msgid "Authors"
 msgstr "Auteurs"
 
-#: Common/LinuxKernel.vala:1057
+#: Common/LinuxKernel.vala:1035
 msgid "Available Kernels"
 msgstr "Beschikbare kernels"
 
@@ -49,16 +49,17 @@ msgstr "Beschikbare kernels"
 msgid "Back"
 msgstr "Terug"
 
-#: Gtk/MainWindow.vala:658
+#: Gtk/MainWindow.vala:664
 msgid "Booting previous kernels"
 msgstr "Opstarten van vorige kernels"
 
-#: Utility/GtkHelper.vala:122 Gtk/ProgressWindow.vala:138
-#: Gtk/UpdateNotificationWindow.vala:176 Gtk/TerminalWindow.vala:166
+#: Utility/Gtk/CustomMessageDialog.vala:172 Utility/GtkHelper.vala:122
+#: Gtk/ProgressWindow.vala:138 Gtk/UpdateNotificationWindow.vala:176
+#: Gtk/TerminalWindow.vala:168
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: Gtk/MainWindow.vala:414
+#: Gtk/MainWindow.vala:418
 msgid "Changes"
 msgstr "Wijzigingen"
 
@@ -70,7 +71,7 @@ msgstr "Controleer elke"
 msgid "Check for kernel updates"
 msgstr "Controleren op kernel-updates"
 
-#: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:176
+#: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:178
 msgid "Close"
 msgstr "Sluiten"
 
@@ -83,7 +84,7 @@ msgstr "De onderstaande opdrachten zijn niet beschikbaar op dit systeem"
 msgid "Contributions"
 msgstr "Bijdragen"
 
-#: Console/AppConsole.vala:212 Gtk/MainWindow.vala:98
+#: Console/AppConsole.vala:219 Gtk/MainWindow.vala:101
 msgid "Could not find requested version"
 msgstr "De vereiste versie kan niet worden gevonden"
 
@@ -155,7 +156,7 @@ msgstr "Distributie"
 msgid "Documenters"
 msgstr "Documenteerders"
 
-#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:446
+#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:450
 msgid "Donate"
 msgstr "Doneren"
 
@@ -176,7 +177,7 @@ msgstr "Donaties"
 msgid "Download packages for specified kernel"
 msgstr "Pakketten downloaden voor opgegeven kernel"
 
-#: Common/LinuxKernel.vala:1102
+#: Common/LinuxKernel.vala:1080
 #, c-format
 msgid "Downloading"
 msgstr "Bezig met downloaden"
@@ -185,14 +186,10 @@ msgstr "Bezig met downloaden"
 msgid "E"
 msgstr "E"
 
-#: Common/LinuxKernel.vala:1129
+#: Common/LinuxKernel.vala:1107
 #, c-format
 msgid "ERROR"
 msgstr "FOUT"
-
-#: Utility/GtkHelper.vala:870
-msgid "Enter path or browse for directory"
-msgstr "Voer een pad in of blader naar een map"
 
 #: Utility/GtkHelper.vala:18
 msgid "Error"
@@ -242,7 +239,7 @@ msgstr "Bestand ontbreekt"
 msgid "File moved"
 msgstr "Bestand verplaatst"
 
-#: Common/LinuxKernel.vala:965 Utility/TeeJee.FileSystem.vala:231
+#: Common/LinuxKernel.vala:943 Utility/TeeJee.FileSystem.vala:231
 #: Utility/TeeJee.FileSystem.vala:538
 msgid "File not found"
 msgstr "Bestand niet gevonden"
@@ -288,7 +285,7 @@ msgstr "De index is up-to-date"
 msgid "Index is stale"
 msgstr "De index is verouderd"
 
-#: Gtk/MainWindow.vala:348 Gtk/UpdateNotificationWindow.vala:144
+#: Gtk/MainWindow.vala:352 Gtk/UpdateNotificationWindow.vala:144
 msgid "Install"
 msgstr "Installeren"
 
@@ -300,29 +297,30 @@ msgstr "Opgegeven mainline-kernel installeren"
 msgid "Install this kernel"
 msgstr "Deze kernel installeren"
 
-#: Common/LinuxKernel.vala:1177
+#: Common/LinuxKernel.vala:1155
 msgid "Installation completed with errors"
 msgstr "De installatie is foutloos voltooid"
 
-#: Common/LinuxKernel.vala:1174
+#: Common/LinuxKernel.vala:1152
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "De installatie is voltooid. Herstart de computer om de nieuwe kernel te "
 "gebruiken."
 
-#: Common/LinuxKernel.vala:1074 Gtk/MainWindow.vala:200
+#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
 msgid "Installed"
 msgstr "Geïnstalleerd"
 
-#: Utility/TeeJee.System.vala:263 Utility/TeeJee.System.vala:265
+#: Utility/TeeJee.System.vala:275 Gtk/MainWindow.vala:84
+#: Gtk/MainWindow.vala:343 Gtk/MainWindow.vala:621
 msgid "Internet connection is not active"
 msgstr "U bent niet verbonden met het internet"
 
-#: Gtk/MainWindow.vala:142
+#: Gtk/MainWindow.vala:145
 msgid "Kernel"
 msgstr "Kernel"
 
-#: Gtk/MainWindow.vala:487
+#: Gtk/MainWindow.vala:492
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
 msgstr "Kernel-upgradehulpmiddel voor op Ubuntu-gebaseerde distributies"
 
@@ -330,23 +328,23 @@ msgstr "Kernel-upgradehulpmiddel voor op Ubuntu-gebaseerde distributies"
 msgid "List all available mainline kernels"
 msgstr "Alle beschikbare mainline-kernels weergeven"
 
-#: Gtk/MainWindow.vala:659
+#: Gtk/MainWindow.vala:665
+#, fuzzy
 msgid ""
 "Mainline kernels can sometimes cause problems if there are proprietary "
 "drivers installed on your system. These issues include:\n"
 "\n"
-"\\342\\226\\260 WiFi not working\n"
-"\\342\\226\\260 Black screen on startup\n"
-"\\342\\226\\260 Random system freeze\n"
+"▰ WiFi not working\n"
+"▰ Black screen on startup\n"
+"▰ Random system freeze\n"
 "\n"
 "If you face any of these issues there is no need to panic.\n"
 "\n"
-"\\342\\226\\260 Reboot your system\n"
-"\\342\\226\\260 Select 'Advanced Boot Options' from the GRUB boot menu\n"
-"\\342\\226\\260 Select an older kernel from the list displayed on this "
-"screen\n"
-"\\342\\226\\260 Your system will boot using the selected kernel\n"
-"\\342\\226\\260 You can now uninstall the kernel that is causing issues\n"
+"▰ Reboot your system\n"
+"▰ Select 'Advanced Boot Options' from the GRUB boot menu\n"
+"▰ Select an older kernel from the list displayed on this screen\n"
+"▰ Your system will boot using the selected kernel\n"
+"▰ You can now uninstall the kernel that is causing issues\n"
 msgstr ""
 "Mainline-kernels kunnen soms problemen geven als er gesloten drivers "
 "geïnstalleerd zijn op het systeem. Deze problemen zijn o.a.:\n"
@@ -368,25 +366,29 @@ msgstr ""
 msgid "Missing Icon"
 msgstr "Ontbrekend pictogram"
 
-#: Gtk/MainWindow.vala:357
+#: Gtk/MainWindow.vala:361
 msgid "Multiple Kernels Selected"
 msgstr "Meerdere kernels geselecteerd"
 
-#: Console/AppConsole.vala:194
+#: Console/AppConsole.vala:201
 msgid "Multiple kernels selected for installation. Select only one."
 msgstr ""
 "Er zijn meerdere te installeren kernels geselecteerd. Selecteer er slechts "
 "één."
 
-#: Utility/TeeJee.System.vala:265
+#: Utility/Gtk/CustomMessageDialog.vala:177
+msgid "No"
+msgstr ""
+
+#: Gtk/MainWindow.vala:84 Gtk/MainWindow.vala:343 Gtk/MainWindow.vala:621
 msgid "No Internet"
 msgstr "Geen internetverbinding"
 
-#: Console/AppConsole.vala:364
+#: Console/AppConsole.vala:371
 msgid "No updates found"
 msgstr "Geen updates gevonden"
 
-#: Gtk/MainWindow.vala:360 Gtk/MainWindow.vala:371
+#: Gtk/MainWindow.vala:364 Gtk/MainWindow.vala:375
 msgid "Not Selected"
 msgstr "Niet geselecteerd"
 
@@ -406,30 +408,27 @@ msgstr "Melding weergeven als er een puntupdate beschikbaar is"
 msgid "Notify if kernel update is available"
 msgstr "Melding weergeven als er een kernelupdate beschikbaar is"
 
-#: Common/LinuxKernel.vala:1120 Utility/Gtk/DonationWindow.vala:95
+#: Common/LinuxKernel.vala:1098 Utility/Gtk/CustomMessageDialog.vala:167
+#: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
 msgid "OK"
 msgstr "Oké"
 
-#: Gtk/UpdateNotificationWindow.vala:161
-msgid "Open"
-msgstr "Openen"
-
-#: Gtk/UpdateNotificationWindow.vala:162
+#: Gtk/UpdateNotificationWindow.vala:161 Gtk/UpdateNotificationWindow.vala:162
 msgid "Open Ukuu"
 msgstr "Ukuu openen"
 
-#: Console/AppConsole.vala:83 Gtk/AppGtk.vala:178
+#: Console/AppConsole.vala:83 Gtk/AppGtk.vala:168
 msgid "Options"
 msgstr "Opties"
 
-#: Common/LinuxKernel.vala:944
+#: Common/LinuxKernel.vala:922
 #, c-format
 msgid "Packages Available (DEB)"
 msgstr "Beschikbare pakketten (DEB)"
 
-#: Common/LinuxKernel.vala:952
+#: Common/LinuxKernel.vala:930
 #, c-format
 msgid "Packages Installed"
 msgstr "Geïnstalleerde pakketten"
@@ -438,23 +437,23 @@ msgstr "Geïnstalleerde pakketten"
 msgid "Please install required packages and try again"
 msgstr "Installeer de vereiste pakketten en probeer het opnieuw"
 
-#: Common/LinuxKernel.vala:1198
+#: Common/LinuxKernel.vala:1176
 msgid "Preparing to remove selected kernels"
 msgstr "Bezig met voorbereiden van verwijderen van geselecteerde kernels"
 
-#: Gtk/AppGtk.vala:180
+#: Gtk/AppGtk.vala:170
 msgid "Print debug information"
 msgstr "Foutopsporingsinformatie printen"
 
-#: Gtk/MainWindow.vala:333
+#: Gtk/MainWindow.vala:336
 msgid "Refresh"
 msgstr "Verversen"
 
-#: Gtk/MainWindow.vala:501
+#: Gtk/MainWindow.vala:506
 msgid "Refreshing..."
 msgstr "Bezig met verversen..."
 
-#: Gtk/MainWindow.vala:365
+#: Gtk/MainWindow.vala:369
 msgid "Remove"
 msgstr "Verwijderen"
 
@@ -466,45 +465,34 @@ msgstr "Bestanden verwijderen uit applicatie-cache"
 msgid "Remove specified mainline kernel"
 msgstr "Opgegeven mainline-kernel verwijderen"
 
-#: Gtk/AppGtk.vala:104
-msgid "Root Access Required"
-msgstr "Root-toegang benodigd"
-
-#: Gtk/AppGtk.vala:102
-msgid "Root access is required for running this application."
-msgstr "U heeft root-toegang nodig om deze applicatie te kunnen draaien."
-
-#: Console/AppConsole.vala:216
+#: Console/AppConsole.vala:223
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
 "Draai het commando 'ukuu --list' en gebruik de versiestring uit de eerste "
 "kolom"
 
-#: Console/AppConsole.vala:102 Gtk/AppGtk.vala:103
-msgid "Run the application as root or using gksu/sudo."
+#: Console/AppConsole.vala:108
+#, fuzzy
+msgid "Run the application as admin with pkexec or sudo."
 msgstr "Draai de applicatie als root of m.b.v. gksu/sudo."
 
-#: Common/LinuxKernel.vala:1074 Gtk/MainWindow.vala:200
+#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
 msgid "Running"
 msgstr "Bezig met draaien"
 
-#: Utility/GtkHelper.vala:880
-msgid "Select Path"
-msgstr "Selecteer pad"
-
-#: Gtk/MainWindow.vala:357
+#: Gtk/MainWindow.vala:361
 msgid "Select a single kernel to install"
 msgstr "Selecteer een enkele te installeren kernel"
 
-#: Gtk/MainWindow.vala:360
+#: Gtk/MainWindow.vala:364
 msgid "Select the kernel to install"
 msgstr "Selecteer de te installeren kernel"
 
-#: Gtk/MainWindow.vala:371
+#: Gtk/MainWindow.vala:375
 msgid "Select the kernels to remove"
 msgstr "Selecteer de te verwijderen kernels"
 
-#: Common/LinuxKernel.vala:1193
+#: Common/LinuxKernel.vala:1171
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -517,11 +505,11 @@ msgstr ""
 msgid "Send Email"
 msgstr "E-mail versturen"
 
-#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:425
+#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:429
 msgid "Settings"
 msgstr "Instellingen"
 
-#: Gtk/AppGtk.vala:181
+#: Gtk/AppGtk.vala:171
 msgid "Show all options"
 msgstr "Alle opties weergeven"
 
@@ -533,7 +521,7 @@ msgstr "Bureaubladmelding weergeven"
 msgid "Show notification dialog"
 msgstr "Meldingsvenster weergeven"
 
-#: Gtk/MainWindow.vala:188
+#: Gtk/MainWindow.vala:191
 msgid "Status"
 msgstr "Status"
 
@@ -541,7 +529,7 @@ msgstr "Status"
 msgid "Stopped"
 msgstr "Gestopt"
 
-#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:176
+#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:166
 msgid "Syntax"
 msgstr "Syntax"
 
@@ -554,11 +542,11 @@ msgstr "Systeemarchitectuur"
 msgid "Third Party Tools"
 msgstr "Externe hulpmiddelen"
 
-#: Common/LinuxKernel.vala:1143 Gtk/MainWindow.vala:611
+#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:616
 msgid "This kernel is already installed."
 msgstr "Deze kernel is al geïnstalleerd."
 
-#: Common/LinuxKernel.vala:1251
+#: Common/LinuxKernel.vala:1229
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -583,15 +571,15 @@ msgstr ""
 msgid "Translators"
 msgstr "Vertalers"
 
-#: Common/LinuxKernel.vala:1235 Common/LinuxKernel.vala:1293
+#: Common/LinuxKernel.vala:1213 Common/LinuxKernel.vala:1271
 msgid "Un-install completed"
 msgstr "Deïnstalleren voltooid"
 
-#: Common/LinuxKernel.vala:1238 Common/LinuxKernel.vala:1296
+#: Common/LinuxKernel.vala:1216 Common/LinuxKernel.vala:1274
 msgid "Un-install completed with errors"
 msgstr "Deïnstalleren voltooid, maar met fouten"
 
-#: Console/AppConsole.vala:269 Gtk/AppGtk.vala:164
+#: Console/AppConsole.vala:276 Gtk/AppGtk.vala:154
 msgid "Unknown option"
 msgstr "Onbekende optie"
 
@@ -614,7 +602,7 @@ msgstr ""
 "0 = Menu niet weergeven\n"
 "-1 = Menu weergeven totdat de gebruiker een selectie maakt"
 
-#: Common/LinuxKernel.vala:1364
+#: Common/LinuxKernel.vala:1342
 msgid "Updating GRUB menu"
 msgstr "Bezig met bijwerken van GRUB-menu"
 
@@ -622,11 +610,11 @@ msgstr "Bezig met bijwerken van GRUB-menu"
 msgid "Use specified user's cache directory"
 msgstr "Gebruik de opgegeven gebruikerscache-map"
 
-#: Console/AppConsole.vala:143 Gtk/AppGtk.vala:112
+#: Console/AppConsole.vala:150 Gtk/AppGtk.vala:102
 msgid "Using cache directory"
 msgstr "Cachemap"
 
-#: Gtk/MainWindow.vala:171
+#: Gtk/MainWindow.vala:174
 msgid "Version"
 msgstr "Versie"
 
@@ -642,6 +630,25 @@ msgstr "W"
 msgid "Week(s)"
 msgstr "we(e)k(en)"
 
-#: Utility/AppLock.vala:55
+#: Utility/Gtk/CustomMessageDialog.vala:176
+msgid "Yes"
+msgstr ""
+
+#: Utility/AppLock.vala:56
 msgid "[Warning] Deleted invalid lock"
 msgstr "[Waarschuwing] Ongeldige lock verwijderd"
+
+#~ msgid "Enter path or browse for directory"
+#~ msgstr "Voer een pad in of blader naar een map"
+
+#~ msgid "Open"
+#~ msgstr "Openen"
+
+#~ msgid "Root Access Required"
+#~ msgstr "Root-toegang benodigd"
+
+#~ msgid "Root access is required for running this application."
+#~ msgstr "U heeft root-toegang nodig om deze applicatie te kunnen draaien."
+
+#~ msgid "Select Path"
+#~ msgstr "Selecteer pad"

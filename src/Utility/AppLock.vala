@@ -28,6 +28,7 @@ using TeeJee.ProcessHelper;
 using TeeJee.Misc;
  
 public class AppLock : GLib.Object {
+	
 	public string lock_file = "";
 	public string lock_message = "";
 	

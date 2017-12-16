@@ -12,5 +12,7 @@ release/*.run
 *.mo
 *.c
 *.o
+*~
 .git
 .bzr
+
