@@ -282,15 +282,19 @@ namespace TeeJee.System{
 		
 		string std_err, std_out;
 
-		string cmd = "url='http://google.com'\n";
+		string cmd = "url='http://google.com' \n";
 		
-		cmd += "httpCode=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' $url)";
+		cmd += "httpCode=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' $url) \n";
 		
-		cmd += "test $httpCode -lt 400 && test $httpCode -gt 0\n";
+		cmd += "test $httpCode -lt 400 -a $httpCode -gt 0 \n";
 		
 		cmd += "exit $?";
 		
 		int status = exec_script_sync(cmd, out std_out, out std_err, false);
+
+		if (std_err.length > 0){
+			log_error(std_err);
+		}
 
 	    return (status == 0);
 	}
