@@ -11,7 +11,7 @@ namespace TeeJee.GtkHelper{
 
 	using Gtk;
 
-	// messages -----------
+	// messages ----------------------------------------
 	
 	public void show_err_log(Gtk.Window parent, bool disable_log = true){
 		if ((err_log != null) && (err_log.length > 0)){
@@ -156,7 +156,7 @@ namespace TeeJee.GtkHelper{
 		window.destroy();
 	}
 	
-	// combo ---------
+	// combo ------------------------------------
 	
 	public bool gtk_combobox_set_value (ComboBox combo, int index, string val){
 
@@ -227,7 +227,7 @@ namespace TeeJee.GtkHelper{
 		return val;
 	}
 
-	// icon -------
+	// icon ----------------------------------------------
 	
 	public Gdk.Pixbuf? get_app_icon(int icon_size, string format = ".png"){
 		var img_icon = get_shared_icon(AppShortName, AppShortName + format,icon_size,"pixmaps");
@@ -415,6 +415,14 @@ namespace TeeJee.GtkHelper{
 		return label;
 	}
 
+	public int get_display_width(){
+		return Gdk.Screen.get_default().get_width();
+	}
+
+	public int get_display_height(){
+		return Gdk.Screen.get_default().get_height();
+	}
+
 	// misc
 	
 	public bool gtk_container_has_child(Gtk.Container container, Gtk.Widget widget){
@@ -426,31 +434,6 @@ namespace TeeJee.GtkHelper{
 		return false;
 	}
 
-
-	private void text_view_append(Gtk.TextView view, string text){
-		TextIter iter;
-		view.buffer.get_end_iter(out iter);
-		view.buffer.insert(ref iter, text, text.length);
-	}
-
-	private void text_view_prepend(Gtk.TextView view, string text){
-		TextIter iter;
-		view.buffer.get_start_iter(out iter);
-		view.buffer.insert(ref iter, text, text.length);
-	}
-
-	private void text_view_scroll_to_end(Gtk.TextView view){
-		TextIter iter;
-		view.buffer.get_end_iter(out iter);
-		view.scroll_to_iter(iter, 0.0, false, 0.0, 0.0);
-	}
-
-	private void text_view_scroll_to_start(Gtk.TextView view){
-		TextIter iter;
-		view.buffer.get_start_iter(out iter);
-		view.scroll_to_iter(iter, 0.0, false, 0.0, 0.0);
-	}
-	
 	// file chooser ----------------
 	
 	public Gtk.FileFilter create_file_filter(string group_name, string[] patterns) {
@@ -461,447 +444,6 @@ namespace TeeJee.GtkHelper{
 		}
 		return filter;
 	}
-
-	// utility ------------------
-
-	// add_notebook
-	private Gtk.Notebook add_notebook(
-		Gtk.Box box, bool show_tabs = true, bool show_border = true){
-			
-        // notebook
-		var book = new Gtk.Notebook();
-		book.margin = 0;
-		book.show_tabs = show_tabs;
-		book.show_border = show_border;
-		
-		box.pack_start(book, true, true, 0);
-		
-		return book;
-	}
-
-	// add_tab
-	private Gtk.Box add_tab(
-		Gtk.Notebook book, string title, int margin = 12, int spacing = 6){
-			
-		// label
-		var label = new Gtk.Label(title);
-
-        // vbox
-        var vbox = new Box (Gtk.Orientation.VERTICAL, spacing);
-        vbox.margin = margin;
-        book.append_page (vbox, label);
-
-        return vbox;
-	}
-
-	// add_treeview
-	private Gtk.TreeView add_treeview(Gtk.Box box,
-		Gtk.SelectionMode selection_mode = Gtk.SelectionMode.SINGLE){
-			
-		// TreeView
-		var treeview = new TreeView();
-		treeview.get_selection().mode = selection_mode;
-		treeview.set_rules_hint (true);
-		treeview.show_expanders = true;
-		treeview.enable_tree_lines = true;
-
-		// ScrolledWindow
-		var scrollwin = new ScrolledWindow(null, null);
-		scrollwin.set_shadow_type (ShadowType.ETCHED_IN);
-		scrollwin.add (treeview);
-		scrollwin.expand = true;
-		box.add(scrollwin);
-
-		return treeview;
-	}
-
-	// add_column_text
-	private Gtk.TreeViewColumn add_column_text(
-		Gtk.TreeView treeview, string title, out Gtk.CellRendererText cell){
-			
-		// TreeViewColumn
-		var col = new Gtk.TreeViewColumn();
-		col.title = title;
-		
-		cell = new Gtk.CellRendererText();
-		cell.xalign = (float) 0.0;
-		col.pack_start (cell, false);
-		treeview.append_column(col);
-		
-		return col;
-	}
-
-
-	// add_column_icon
-	private Gtk.TreeViewColumn add_column_icon(
-		Gtk.TreeView treeview, string title, out Gtk.CellRendererPixbuf cell){
-		
-		// TreeViewColumn
-		var col = new Gtk.TreeViewColumn();
-		col.title = title;
-		
-		cell = new Gtk.CellRendererPixbuf();
-		cell.xpad = 2;
-		col.pack_start (cell, false);
-		treeview.append_column(col);
-
-		return col;
-	}
-
-	// add_column_icon_and_text
-	private Gtk.TreeViewColumn add_column_icon_and_text(
-		Gtk.TreeView treeview, string title,
-		out Gtk.CellRendererPixbuf cell_pix, out Gtk.CellRendererText cell_text){
-			
-		// TreeViewColumn
-		var col = new Gtk.TreeViewColumn();
-		col.title = title;
-
-		cell_pix = new Gtk.CellRendererPixbuf();
-		cell_pix.xpad = 2;
-		col.pack_start (cell_pix, false);
-		
-		cell_text = new Gtk.CellRendererText();
-		cell_text.xalign = (float) 0.0;
-		col.pack_start (cell_text, false);
-		treeview.append_column(col);
-
-		return col;
-	}
-
-	// add_column_radio_and_text
-	private Gtk.TreeViewColumn add_column_radio_and_text(
-		Gtk.TreeView treeview, string title,
-		out Gtk.CellRendererToggle cell_radio, out Gtk.CellRendererText cell_text){
-			
-		// TreeViewColumn
-		var col = new Gtk.TreeViewColumn();
-		col.title = title;
-
-		cell_radio = new Gtk.CellRendererToggle();
-		cell_radio.xpad = 2;
-		cell_radio.radio = true;
-		cell_radio.activatable = true;
-		col.pack_start (cell_radio, false);
-		
-		cell_text = new Gtk.CellRendererText();
-		cell_text.xalign = (float) 0.0;
-		col.pack_start (cell_text, false);
-		treeview.append_column(col);
-
-		return col;
-	}
-
-	// add_column_icon_radio_text
-	private Gtk.TreeViewColumn add_column_icon_radio_text(
-		Gtk.TreeView treeview, string title,
-		out Gtk.CellRendererPixbuf cell_pix,
-		out Gtk.CellRendererToggle cell_radio,
-		out Gtk.CellRendererText cell_text){
-			
-		// TreeViewColumn
-		var col = new Gtk.TreeViewColumn();
-		col.title = title;
-
-		cell_pix = new Gtk.CellRendererPixbuf();
-		cell_pix.xpad = 2;
-		col.pack_start (cell_pix, false);
-
-		cell_radio = new Gtk.CellRendererToggle();
-		cell_radio.xpad = 2;
-		cell_radio.radio = true;
-		cell_radio.activatable = true;
-		col.pack_start (cell_radio, false);
-		
-		cell_text = new Gtk.CellRendererText();
-		cell_text.xalign = (float) 0.0;
-		col.pack_start (cell_text, false);
-		treeview.append_column(col);
-
-		return col;
-	}
-
-	// add_label_scrolled
-	private Gtk.Label add_label_scrolled(
-		Gtk.Box box, string text,
-		bool show_border = false, bool wrap = false, int ellipsize_chars = 40){
-
-		// ScrolledWindow
-		var scroll = new Gtk.ScrolledWindow(null, null);
-		scroll.hscrollbar_policy = PolicyType.NEVER;
-		scroll.vscrollbar_policy = PolicyType.ALWAYS;
-		scroll.expand = true;
-		box.add(scroll);
-		
-		var label = new Gtk.Label(text);
-		label.xalign = (float) 0.0;
-		label.yalign = (float) 0.0;
-		label.margin = 6;
-		label.set_use_markup(true);
-		scroll.add(label);
-
-		if (wrap){
-			label.wrap = true;
-			label.wrap_mode = Pango.WrapMode.WORD;
-		}
-		else {
-			label.wrap = false;
-			label.ellipsize = Pango.EllipsizeMode.MIDDLE;
-			label.max_width_chars = ellipsize_chars;
-		}
-
-		if (show_border){
-			scroll.set_shadow_type (ShadowType.ETCHED_IN);
-		}
-		else{
-			label.margin_left = 0;
-		}
-		
-		return label;
-	}
-
-	// add_text_view
-	private Gtk.TextView add_text_view(
-		Gtk.Box box, string text){
-
-		// ScrolledWindow
-		var scrolled = new Gtk.ScrolledWindow(null, null);
-		scrolled.hscrollbar_policy = PolicyType.NEVER;
-		scrolled.vscrollbar_policy = PolicyType.ALWAYS;
-		scrolled.expand = true;
-		box.add(scrolled);
-		
-		var view = new Gtk.TextView();
-		view.wrap_mode = Gtk.WrapMode.WORD_CHAR;
-		view.accepts_tab = false;
-		view.editable = false;
-		view.cursor_visible = false;
-		view.buffer.text = text;
-		view.sensitive = false;
-		scrolled.add (view);
-
-		return view;
-	}
-		
-	// add_label
-	private Gtk.Label add_label(
-		Gtk.Box box, string text, bool bold = false,
-		bool italic = false, bool large = false){
-			
-		string msg = "<span%s%s%s>%s</span>".printf(
-			(bold ? " weight=\"bold\"" : ""),
-			(italic ? " style=\"italic\"" : ""),
-			(large ? " size=\"x-large\"" : ""),
-			text);
-			
-		var label = new Gtk.Label(msg);
-		label.set_use_markup(true);
-		label.xalign = (float) 0.0;
-		label.wrap = true;
-		label.wrap_mode = Pango.WrapMode.WORD;
-		box.add(label);
-		return label;
-	}
-
-	private string format_text(
-		string text,
-		bool bold = false, bool italic = false, bool large = false){
-			
-		string msg = "<span%s%s%s>%s</span>".printf(
-			(bold ? " weight=\"bold\"" : ""),
-			(italic ? " style=\"italic\"" : ""),
-			(large ? " size=\"x-large\"" : ""),
-			escape_html(text));
-			
-		return msg;
-	}
-
-	// add_label_header
-	private Gtk.Label add_label_header(
-		Gtk.Box box, string text, bool large_heading = false){
-		
-		var label = add_label(box, escape_html(text), true, false, large_heading);
-		label.margin_bottom = 12;
-		return label;
-	}
-
-	// add_label_subnote
-	private Gtk.Label add_label_subnote(
-		Gtk.Box box, string text){
-		
-		var label = add_label(box, text, false, true);
-		label.margin_left = 6;
-		return label;
-	}
-
-	// add_radio
-	private Gtk.RadioButton add_radio(
-		Gtk.Box box, string text, Gtk.RadioButton? another_radio_in_group){
-
-		Gtk.RadioButton radio = null;
-
-		if (another_radio_in_group == null){
-			radio = new Gtk.RadioButton(null);
-		}
-		else{
-			radio = new Gtk.RadioButton.from_widget(another_radio_in_group);
-		}
-
-		radio.label = text;
-		
-		box.add(radio);
-
-		foreach(var child in radio.get_children()){
-			if (child is Gtk.Label){
-				var label = (Gtk.Label) child;
-				label.use_markup = true;
-				break;
-			}
-		}
-		
-		return radio;
-	}
-
-	// add_checkbox
-	private Gtk.CheckButton add_checkbox(
-		Gtk.Box box, string text){
-
-		var chk = new Gtk.CheckButton.with_label(text);
-		chk.label = text;
-		box.add(chk);
-
-		foreach(var child in chk.get_children()){
-			if (child is Gtk.Label){
-				var label = (Gtk.Label) child;
-				label.use_markup = true;
-				break;
-			}
-		}
-		
-		/*
-		chk.toggled.connect(()=>{
-			chk.active;
-		});
-		*/
-
-		return chk;
-	}
-
-	// add_spin
-	private Gtk.SpinButton add_spin(
-		Gtk.Box box, double min, double max, double val,
-		int digits = 0, double step = 1, double step_page = 1){
-
-		var adj = new Gtk.Adjustment(val, min, max, step, step_page, 0);
-		var spin  = new Gtk.SpinButton(adj, step, digits);
-		spin.xalign = (float) 0.5;
-		box.add(spin);
-
-		/*
-		spin.value_changed.connect(()=>{
-			label.sensitive = spin.sensitive;
-		});
-		*/
-
-		return spin;
-	}
-
-	// add_button
-	private Gtk.Button add_button(
-		Gtk.Box box, string text, string tooltip,
-		ref Gtk.SizeGroup? size_group,
-		Gtk.Image? icon = null){
-			
-		var button = new Gtk.Button();
-        box.add(button);
-
-        button.set_label(text);
-        button.set_tooltip_text(tooltip);
-
-        if (icon != null){
-			button.set_image(icon);
-			button.set_always_show_image(true);
-		}
-
-		if (size_group == null){
-			size_group = new Gtk.SizeGroup(SizeGroupMode.HORIZONTAL);
-		}
-		
-		size_group.add_widget(button);
-		
-        return button;
-	}
-
-	// add_toggle_button
-	private Gtk.ToggleButton add_toggle_button(
-		Gtk.Box box, string text, string tooltip,
-		ref Gtk.SizeGroup? size_group,
-		Gtk.Image? icon = null){
-			
-		var button = new Gtk.ToggleButton();
-        box.add(button);
-
-        button.set_label(text);
-        button.set_tooltip_text(tooltip);
-
-        if (icon != null){
-			button.set_image(icon);
-			button.set_always_show_image(true);
-		}
-
-		if (size_group == null){
-			size_group = new Gtk.SizeGroup(SizeGroupMode.HORIZONTAL);
-		}
-		
-		size_group.add_widget(button);
-		
-        return button;
-	}
-	
-	// add_directory_chooser
-	private Gtk.Entry add_directory_chooser(
-		Gtk.Box box, string selected_directory, Gtk.Window parent_window){
-			
-		// Entry
-		var entry = new Gtk.Entry();
-		entry.hexpand = true;
-		//entry.margin_left = 6;
-		entry.secondary_icon_stock = "gtk-open";
-		entry.placeholder_text = _("Enter path or browse for directory");
-		box.add (entry);
-
-		if ((selected_directory != null) && dir_exists(selected_directory)){
-			entry.text = selected_directory;
-		}
-
-		entry.icon_release.connect((p0, p1) => {
-			//chooser
-			var chooser = new Gtk.FileChooserDialog(
-			    _("Select Path"),
-			    parent_window,
-			    FileChooserAction.SELECT_FOLDER,
-			    "_Cancel",
-			    Gtk.ResponseType.CANCEL,
-			    "_Open",
-			    Gtk.ResponseType.ACCEPT
-			);
-
-			chooser.select_multiple = false;
-			chooser.set_filename(selected_directory);
-
-			if (chooser.run() == Gtk.ResponseType.ACCEPT) {
-				entry.text = chooser.get_filename();
-
-				//App.repo = new SnapshotRepo.from_path(entry.text, this);
-				//check_backup_location();
-			}
-
-			chooser.destroy();
-		});
-
-		return entry;
-	}
-
 
 }
 

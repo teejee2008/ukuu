@@ -80,7 +80,9 @@ public class MainWindow : Gtk.Window{
 			tmr_init = 0;
 		}
 
-		check_internet_connectivity(this);
+		if (!check_internet_connectivity()){
+			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
+		}
 
 		refresh_cache();
 
@@ -337,7 +339,8 @@ public class MainWindow : Gtk.Window{
 		
 		button.clicked.connect(() => {
 
-			if (!check_internet_connectivity(this)){
+			if (!check_internet_connectivity()){
+				gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
 				return;
 			}
 		
@@ -418,7 +421,7 @@ public class MainWindow : Gtk.Window{
 		
 		button.clicked.connect(() => {
 			if ((selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file)){
-				xdg_open_textfile(selected_kernels[0].changes_file);
+				xdg_open(selected_kernels[0].changes_file);
 			}
 		});
 
@@ -613,7 +616,8 @@ public class MainWindow : Gtk.Window{
 			return;
 		}
 
-		if (!check_internet_connectivity(this)){
+		if (!check_internet_connectivity()){
+			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
 			return;
 		}
 		
