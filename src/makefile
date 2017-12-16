@@ -15,29 +15,40 @@ app_name=ukuu
 vte_version=$(shell { ((ldconfig -p | grep libvte-2.91*.so) >/dev/null && echo 'vte-2.91') || echo 'vte-2.90'; } )
 define_symbols=$(shell { ((ldconfig -p | grep libvte-2.91*.so) >/dev/null && echo '-D VTE_291') || echo ''; } )
 
-all:
+all: app app-gtk app-translations
 
+app-gtk:
 	# app-gtk
 	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" ${define_symbols} --thread \
 		Common/*.vala Gtk/*.vala Utility/*.vala Utility/Gtk/*.vala \
 		-o ${app_name}-gtk \
 		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg $(vte_version)
 
+app:
 	# app
 	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" --thread \
 		Common/*.vala Console/*.vala Utility/*.vala Utility/Gtk/*.vala Gtk/UpdateNotificationWindow.vala \
 		-o ${app_name} \
 		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0 --pkg $(vte_version)
 
+	
+
+app-translations:
+
 	# update translation template
-	find . -iname "*.vala" | xargs xgettext --from-code=UTF-8 --language=C --keyword=_ --copyright-holder='Tony George (teejeetech@gmail.com)' --package-name="${app_name}" --package-version='1.6' --msgid-bugs-address='teejeetech@gmail.com' --escape --sort-output -o ../${app_name}.pot
+	find . -iname "*.vala" | xargs xgettext --from-code=UTF-8 --language=C --keyword=_ \
+		--copyright-holder='Tony George (teejeetech@gmail.com)' \
+		--package-name="${app_name}" \
+		--package-version='1.6' \
+		--msgid-bugs-address='teejeetech@gmail.com' \
+		--escape --sort-output -o ../${app_name}.pot
 	
 	# update translation files
 	# am ar az bg ca cs da de el en_GB es et eu fr he hi hr hu ia id is it ko lt nb ne nl pl pt pt_BR ro ru sk sr sv tr uk vi zh_CN
 	for lang in fr nl pl ru sv; do \
 		msgmerge --update -v ../po/${app_name}-$$lang.po ../${app_name}.pot ; \
 	done
-
+	
 clean:
 	rm -rfv ../release/{source,i386,amd64,armel,armhf}
 	rm -rfv ../release/*.{run,deb}
