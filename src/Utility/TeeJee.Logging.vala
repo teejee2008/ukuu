@@ -147,16 +147,6 @@ namespace TeeJee.Logging{
 		log_msg(string.nfill(70,'='));
 	}
 
-	public void show_err_log(Gtk.Window parent, bool disable_log = true){
-		if ((err_log != null) && (err_log.length > 0)){
-			//gtk_messagebox(_("Error"), err_log, parent, true);
-		}
-
-		if (disable_log){
-			err_log_disable();
-		}
-	}
-
 	public void err_log_clear(){
 		err_log = "";
 	}

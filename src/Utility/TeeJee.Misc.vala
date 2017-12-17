@@ -26,57 +26,9 @@ namespace TeeJee.Misc {
 
 	/* Various utility functions */
 
-	using Gtk;
 	using TeeJee.Logging;
 	using TeeJee.FileSystem;
 	using TeeJee.ProcessHelper;
-
-	// color format -------------------
-	
-	public static Gdk.RGBA hex_to_rgba (string hex_color){
-
-		/* Converts the color in hex to RGBA */
-
-		string hex = hex_color.strip().down();
-		if (hex.has_prefix("#") == false){
-			hex = "#" + hex;
-		}
-
-		Gdk.RGBA color = Gdk.RGBA();
-		if(color.parse(hex) == false){
-			color.parse("#000000");
-		}
-		color.alpha = 255;
-
-		return color;
-	}
-
-	public static string rgba_to_hex (Gdk.RGBA color, bool alpha = false, bool prefix_hash = true){
-
-		/* Converts the color in RGBA to hex */
-
-		string hex = "";
-
-		if (alpha){
-			hex = "%02x%02x%02x%02x".printf((uint)(Math.round(color.red*255)),
-									(uint)(Math.round(color.green*255)),
-									(uint)(Math.round(color.blue*255)),
-									(uint)(Math.round(color.alpha*255)))
-									.up();
-		}
-		else {
-			hex = "%02x%02x%02x".printf((uint)(Math.round(color.red*255)),
-									(uint)(Math.round(color.green*255)),
-									(uint)(Math.round(color.blue*255)))
-									.up();
-		}
-
-		if (prefix_hash){
-			hex = "#" + hex;
-		}
-
-		return hex;
-	}
 
 	// localization --------------------
 

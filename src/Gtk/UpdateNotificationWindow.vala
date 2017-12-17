@@ -171,8 +171,8 @@ public class UpdateNotificationWindow : Gtk.Window {
 		button.clicked.connect(()=>{
 			this.destroy();
 			if (App.command == "notify"){
-				App.exit_app();
-				exit(0);
+				Gtk.main_quit();
+				App.exit_app(0);
 			}
 		});
 	}

@@ -27,9 +27,9 @@ app-gtk:
 app:
 	# app
 	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" --thread \
-		Common/*.vala Console/*.vala Utility/*.vala Utility/Gtk/*.vala \
+		Common/*.vala Console/*.vala Utility/*.vala \
 		-o ${app_name} \
-		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0
+		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0
 
 app-translations:
 

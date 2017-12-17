@@ -397,8 +397,7 @@ public class MainWindow : Gtk.Window{
 				});
 
 				string sh = "";
-				sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY";
-				sh += " ukuu --user %s".printf(App.user_login);
+				sh += "ukuu --user %s".printf(App.user_login);
 				if (LOG_DEBUG){
 					sh += " --debug";
 				}
@@ -548,7 +547,7 @@ public class MainWindow : Gtk.Window{
 		while (LinuxKernel.task_is_running) {
 
 			if (App.cancelled){
-				exit(1);
+				App.exit_app(1);
 			}
 			
 			App.status_line = LinuxKernel.status_line;
@@ -666,14 +665,13 @@ public class MainWindow : Gtk.Window{
 			}
 			else{
 				this.destroy();
-				App.exit_app();
-				exit(0);
+				Gtk.main_quit();
+				App.exit_app(0);
 			}
 		});
 
 		string sh = "";
-		sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY";
-		sh += " ukuu --user %s".printf(App.user_login);
+		sh += "ukuu --user %s".printf(App.user_login);
 		if (LOG_DEBUG){
 			sh += " --debug";
 		}
@@ -787,8 +785,8 @@ public class MainWindow : Gtk.Window{
 		gtk_messagebox(title, msg, this, false);
 
 		if (App.command != "list"){
-			App.exit_app();
-			exit(0);
+			Gtk.main_quit();
+			App.exit_app(0);
 		}
 	}
 }

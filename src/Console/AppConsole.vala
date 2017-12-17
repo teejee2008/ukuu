@@ -22,7 +22,6 @@
  */
 
 using GLib;
-using Gtk;
 using Gee;
 using Soup;
 using Json;
@@ -47,9 +46,8 @@ const string LOCALE_DIR = "/usr/share/locale";
 public class AppConsole : GLib.Object {
 
 	public static int main (string[] args) {
+		
 		set_locale();
-
-		Gtk.init(ref args);
 
 		init_tmp(AppShortName);
 
@@ -61,7 +59,7 @@ public class AppConsole : GLib.Object {
 		
 		var console =  new AppConsole();
 		bool is_success = console.parse_arguments(args);
-		//App.exit_app();
+		//App.();
 
 		App.fix_startup_script_error();
 
@@ -113,10 +111,6 @@ public class AppConsole : GLib.Object {
 	}
 
 	public bool parse_arguments(string[] args) {
-
-		bool show_desc = false;
-		bool no_prompt = false;
-		bool ok = false;
 
 		// check argument count -----------------
 		

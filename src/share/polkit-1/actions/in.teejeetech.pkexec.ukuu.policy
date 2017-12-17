@@ -6,7 +6,7 @@
   <vendor>Tony George</vendor>
   <vendor_url>https://github.com/teejee2008</vendor_url>
   <action id="in.teejeetech.pkexec.ukuu">
-    <message>Authentication is required to install or remove kernel packages</message>
+    <message>Authentication is required to manage kernel packages</message>
     <icon_name>ukuu</icon_name>
     <defaults>
       <allow_any>auth_admin_keep</allow_any>

@@ -22,7 +22,6 @@
  */
 
 using GLib;
-using Gtk;
 using Gee;
 using Json;
 
@@ -201,9 +200,9 @@ public class Main : GLib.Object{
 		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}
 
-	public void exit_app(){
+	public void exit_app(int exit_code){
 		save_app_config();
-		Gtk.main_quit();
+		exit(exit_code);
 	}
 
 	// begin ------------
