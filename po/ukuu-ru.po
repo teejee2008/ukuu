@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-12-16 12:44+0530\n"
+"POT-Creation-Date: 2017-12-17 10:19+0530\n"
 "PO-Revision-Date: 2016-12-13 16:46+0300\n"
 "Last-Translator: Faust3000 <slavusik1988@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -40,7 +40,7 @@ msgstr "Художники"
 msgid "Authors"
 msgstr "Авторы"
 
-#: Common/LinuxKernel.vala:1035
+#: Common/LinuxKernel.vala:1036
 msgid "Available Kernels"
 msgstr "Доступные ядра"
 
@@ -178,7 +178,7 @@ msgstr "Спонсоры"
 msgid "Download packages for specified kernel"
 msgstr "Скачать пакеты для указанного ядра"
 
-#: Common/LinuxKernel.vala:1080
+#: Common/LinuxKernel.vala:1081
 #, c-format
 msgid "Downloading"
 msgstr "Загрузка"
@@ -187,7 +187,7 @@ msgstr "Загрузка"
 msgid "E"
 msgstr "E"
 
-#: Common/LinuxKernel.vala:1107
+#: Common/LinuxKernel.vala:1108
 #, c-format
 msgid "ERROR"
 msgstr "ОШИБКА"
@@ -304,17 +304,17 @@ msgstr "Установить указанную ветку ядра"
 msgid "Install this kernel"
 msgstr "Установить это ядро"
 
-#: Common/LinuxKernel.vala:1155
+#: Common/LinuxKernel.vala:1156
 msgid "Installation completed with errors"
 msgstr "Установка завершена с ошибками"
 
-#: Common/LinuxKernel.vala:1152
+#: Common/LinuxKernel.vala:1153
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Установка завершена. Обязательно выполните перезагрузку, чтобы использовать "
 "новое ядро."
 
-#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:203
 msgid "Installed"
 msgstr "Установлено"
 
@@ -397,7 +397,7 @@ msgstr "Уведомлять, если доступно небольшое об�
 msgid "Notify if kernel update is available"
 msgstr "Уведомлять, если доступно обновление ядра"
 
-#: Common/LinuxKernel.vala:1098 Utility/Gtk/CustomMessageDialog.vala:167
+#: Common/LinuxKernel.vala:1099 Utility/Gtk/CustomMessageDialog.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
@@ -426,7 +426,7 @@ msgstr "Установлено"
 msgid "Please install required packages and try again"
 msgstr "Установить необходимые пакеты и попробуйте снова"
 
-#: Common/LinuxKernel.vala:1176
+#: Common/LinuxKernel.vala:1177
 msgid "Preparing to remove selected kernels"
 msgstr ""
 
@@ -464,7 +464,7 @@ msgstr "Выполните 'ukuu --list' и используйте версию 
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Запустите программу с правами Root или используйте gksu/sudo."
 
-#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:203
 msgid "Running"
 msgstr "Используется"
 
@@ -480,7 +480,7 @@ msgstr ""
 msgid "Select the kernels to remove"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1171
+#: Common/LinuxKernel.vala:1172
 #, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
@@ -530,11 +530,11 @@ msgstr "Системная архитектура"
 msgid "Third Party Tools"
 msgstr "Сторонние инструменты"
 
-#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:616
+#: Common/LinuxKernel.vala:1122 Gtk/MainWindow.vala:616
 msgid "This kernel is already installed."
 msgstr "Это ядро уже установлено."
 
-#: Common/LinuxKernel.vala:1229
+#: Common/LinuxKernel.vala:1230
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -555,11 +555,11 @@ msgstr ""
 msgid "Translators"
 msgstr "Переводчики"
 
-#: Common/LinuxKernel.vala:1213 Common/LinuxKernel.vala:1271
+#: Common/LinuxKernel.vala:1214 Common/LinuxKernel.vala:1272
 msgid "Un-install completed"
 msgstr "Удаление завершено"
 
-#: Common/LinuxKernel.vala:1216 Common/LinuxKernel.vala:1274
+#: Common/LinuxKernel.vala:1217 Common/LinuxKernel.vala:1275
 msgid "Un-install completed with errors"
 msgstr "Удаление завершено с ошибками"
 
@@ -578,7 +578,7 @@ msgid ""
 "-1 = Show indefinitely till user selects"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1342
+#: Common/LinuxKernel.vala:1343
 msgid "Updating GRUB menu"
 msgstr ""
 

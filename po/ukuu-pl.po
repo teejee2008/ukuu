@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-12-16 12:44+0530\n"
+"POT-Creation-Date: 2017-12-17 10:19+0530\n"
 "PO-Revision-Date: 2017-08-12 15:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: Polish\n"
@@ -38,7 +38,7 @@ msgstr "Artyści"
 msgid "Authors"
 msgstr "Аutorzy"
 
-#: Common/LinuxKernel.vala:1035
+#: Common/LinuxKernel.vala:1036
 msgid "Available Kernels"
 msgstr "Dostępne jądra"
 
@@ -174,7 +174,7 @@ msgstr "Wsparcie"
 msgid "Download packages for specified kernel"
 msgstr "Pobierz pakiety dla wybranego jądra"
 
-#: Common/LinuxKernel.vala:1080
+#: Common/LinuxKernel.vala:1081
 #, c-format
 msgid "Downloading"
 msgstr "Pobieranie"
@@ -183,7 +183,7 @@ msgstr "Pobieranie"
 msgid "E"
 msgstr "E"
 
-#: Common/LinuxKernel.vala:1107
+#: Common/LinuxKernel.vala:1108
 #, c-format
 msgid "ERROR"
 msgstr "BŁĄD"
@@ -294,17 +294,17 @@ msgstr "Zainstaluj wybrane jądro"
 msgid "Install this kernel"
 msgstr "Zainstaluj to jądro"
 
-#: Common/LinuxKernel.vala:1155
+#: Common/LinuxKernel.vala:1156
 msgid "Installation completed with errors"
 msgstr "Instalacja zakończona z błędami"
 
-#: Common/LinuxKernel.vala:1152
+#: Common/LinuxKernel.vala:1153
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Instalacja zakończona. Aby korzystać z nowego jądra, konieczne jest ponowne "
 "uruchomienie."
 
-#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:203
 msgid "Installed"
 msgstr "Zainstalowany"
 
@@ -402,7 +402,7 @@ msgstr "Powiadom, jeśli pojawi się wersja punktowa"
 msgid "Notify if kernel update is available"
 msgstr "Powiadom, jeśli pojawi się aktualizacja jądra"
 
-#: Common/LinuxKernel.vala:1098 Utility/Gtk/CustomMessageDialog.vala:167
+#: Common/LinuxKernel.vala:1099 Utility/Gtk/CustomMessageDialog.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
@@ -431,7 +431,7 @@ msgstr "Pakiety zainstalowane"
 msgid "Please install required packages and try again"
 msgstr "Zainstaluj wymagane pakiety i spróbuj ponownie"
 
-#: Common/LinuxKernel.vala:1176
+#: Common/LinuxKernel.vala:1177
 msgid "Preparing to remove selected kernels"
 msgstr "Przygotowanie do usunięcia wybranych jąder"
 
@@ -468,7 +468,7 @@ msgstr "Uruchom 'ukuu --list' i użyj wersji wyświetlonej w pierwszej kolumnie"
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Uruchom aplikację jako root albo użyj gksu/sudo."
 
-#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:203
 msgid "Running"
 msgstr "Uruchomiony"
 
@@ -484,7 +484,7 @@ msgstr "Wybierz pojedyncze do instalacji"
 msgid "Select the kernels to remove"
 msgstr "Wybierz jądro do usunięcia"
 
-#: Common/LinuxKernel.vala:1171
+#: Common/LinuxKernel.vala:1172
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -533,11 +533,11 @@ msgstr "Architektura systemu"
 msgid "Third Party Tools"
 msgstr "Narzędzia osób trzecich"
 
-#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:616
+#: Common/LinuxKernel.vala:1122 Gtk/MainWindow.vala:616
 msgid "This kernel is already installed."
 msgstr "To jądro jest już zainstalowane."
 
-#: Common/LinuxKernel.vala:1229
+#: Common/LinuxKernel.vala:1230
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -562,11 +562,11 @@ msgstr ""
 msgid "Translators"
 msgstr "Tłumacze"
 
-#: Common/LinuxKernel.vala:1213 Common/LinuxKernel.vala:1271
+#: Common/LinuxKernel.vala:1214 Common/LinuxKernel.vala:1272
 msgid "Un-install completed"
 msgstr "De-instalacja zakończona"
 
-#: Common/LinuxKernel.vala:1216 Common/LinuxKernel.vala:1274
+#: Common/LinuxKernel.vala:1217 Common/LinuxKernel.vala:1275
 msgid "Un-install completed with errors"
 msgstr "De-instalacja zakończona z błędami"
 
@@ -593,7 +593,7 @@ msgstr ""
 "0 = Nie pokazuj\n"
 "-1 = Wyświetlaj do momentu wybrania przez użytkownika"
 
-#: Common/LinuxKernel.vala:1342
+#: Common/LinuxKernel.vala:1343
 msgid "Updating GRUB menu"
 msgstr "Aktualizacja menu GRUB"
 

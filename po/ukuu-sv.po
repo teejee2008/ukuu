@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu 2.2\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-12-16 12:44+0530\n"
+"POT-Creation-Date: 2017-12-17 10:19+0530\n"
 "PO-Revision-Date: 2016-11-08 10:22+0100\n"
 "Last-Translator: Åke Engelbrektson <https://svenskasprakfiler.se>\n"
 "Language-Team: \n"
@@ -40,7 +40,7 @@ msgstr "Artister"
 msgid "Authors"
 msgstr "Utvecklare"
 
-#: Common/LinuxKernel.vala:1035
+#: Common/LinuxKernel.vala:1036
 msgid "Available Kernels"
 msgstr "Tillgängliga kärnor"
 
@@ -178,7 +178,7 @@ msgstr "Donationer"
 msgid "Download packages for specified kernel"
 msgstr "Ladda ner paket för specificerad kärna"
 
-#: Common/LinuxKernel.vala:1080
+#: Common/LinuxKernel.vala:1081
 #, c-format
 msgid "Downloading"
 msgstr "Laddar ner"
@@ -187,7 +187,7 @@ msgstr "Laddar ner"
 msgid "E"
 msgstr "F"
 
-#: Common/LinuxKernel.vala:1107
+#: Common/LinuxKernel.vala:1108
 #, c-format
 msgid "ERROR"
 msgstr "FEL"
@@ -303,15 +303,15 @@ msgstr "Installera specificerad kärna"
 msgid "Install this kernel"
 msgstr "Installera denna kärna"
 
-#: Common/LinuxKernel.vala:1155
+#: Common/LinuxKernel.vala:1156
 msgid "Installation completed with errors"
 msgstr "Installation slutförd med fel"
 
-#: Common/LinuxKernel.vala:1152
+#: Common/LinuxKernel.vala:1153
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr "Installation slutförd. Omstart krävs för att tillämpa den nya kärnan."
 
-#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:203
 msgid "Installed"
 msgstr "Installerad"
 
@@ -394,7 +394,7 @@ msgstr "Meddela om en ny (mindre) uppdatering finns tillgänglig"
 msgid "Notify if kernel update is available"
 msgstr "Meddela om en kärnuppdatering finns tillgänglig"
 
-#: Common/LinuxKernel.vala:1098 Utility/Gtk/CustomMessageDialog.vala:167
+#: Common/LinuxKernel.vala:1099 Utility/Gtk/CustomMessageDialog.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
@@ -423,7 +423,7 @@ msgstr "Installerad"
 msgid "Please install required packages and try again"
 msgstr "Installera nödvändiga paket och försök igen"
 
-#: Common/LinuxKernel.vala:1176
+#: Common/LinuxKernel.vala:1177
 msgid "Preparing to remove selected kernels"
 msgstr ""
 
@@ -463,7 +463,7 @@ msgstr ""
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Kör programmet som root, eller använd gksu/sudo."
 
-#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:203
 msgid "Running"
 msgstr "Körs"
 
@@ -479,7 +479,7 @@ msgstr ""
 msgid "Select the kernels to remove"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1171
+#: Common/LinuxKernel.vala:1172
 #, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
@@ -529,11 +529,11 @@ msgstr "Systemarkitektur"
 msgid "Third Party Tools"
 msgstr "Tredjepartsverktyg &amp; mjukvara"
 
-#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:616
+#: Common/LinuxKernel.vala:1122 Gtk/MainWindow.vala:616
 msgid "This kernel is already installed."
 msgstr "Denna kärna är redan installerad"
 
-#: Common/LinuxKernel.vala:1229
+#: Common/LinuxKernel.vala:1230
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -554,11 +554,11 @@ msgstr ""
 msgid "Translators"
 msgstr "Översättare"
 
-#: Common/LinuxKernel.vala:1213 Common/LinuxKernel.vala:1271
+#: Common/LinuxKernel.vala:1214 Common/LinuxKernel.vala:1272
 msgid "Un-install completed"
 msgstr "Avinstallation slutförd"
 
-#: Common/LinuxKernel.vala:1216 Common/LinuxKernel.vala:1274
+#: Common/LinuxKernel.vala:1217 Common/LinuxKernel.vala:1275
 msgid "Un-install completed with errors"
 msgstr "Avinstallation slutförd med fel"
 
@@ -577,7 +577,7 @@ msgid ""
 "-1 = Show indefinitely till user selects"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1342
+#: Common/LinuxKernel.vala:1343
 msgid "Updating GRUB menu"
 msgstr ""
 

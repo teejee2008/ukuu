@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-12-16 12:44+0530\n"
+"POT-Creation-Date: 2017-12-17 10:19+0530\n"
 "PO-Revision-Date: 2017-04-13 \n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
@@ -39,7 +39,7 @@ msgstr "Artistes"
 msgid "Authors"
 msgstr "Auteurs"
 
-#: Common/LinuxKernel.vala:1035
+#: Common/LinuxKernel.vala:1036
 msgid "Available Kernels"
 msgstr "Kernels disponibles"
 
@@ -178,7 +178,7 @@ msgstr "Спонсоры"
 msgid "Download packages for specified kernel"
 msgstr "Télécharger les paquets spécifiques des kernels"
 
-#: Common/LinuxKernel.vala:1080
+#: Common/LinuxKernel.vala:1081
 #, c-format
 msgid "Downloading"
 msgstr "Téélhargement"
@@ -187,7 +187,7 @@ msgstr "Téélhargement"
 msgid "E"
 msgstr "E"
 
-#: Common/LinuxKernel.vala:1107
+#: Common/LinuxKernel.vala:1108
 #, c-format
 msgid "ERROR"
 msgstr "Erreur"
@@ -304,17 +304,17 @@ msgstr "Installer le kernel principal spécifié"
 msgid "Install this kernel"
 msgstr "Installer ce kernel"
 
-#: Common/LinuxKernel.vala:1155
+#: Common/LinuxKernel.vala:1156
 msgid "Installation completed with errors"
 msgstr "Installation terminée avec des erreurs"
 
-#: Common/LinuxKernel.vala:1152
+#: Common/LinuxKernel.vala:1153
 msgid "Installation completed. A reboot is required to use the new kernel."
 msgstr ""
 "Installation complétée. Un redémarrage est nécessaire pour utiliser le "
 "nouveau noyau."
 
-#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:203
 msgid "Installed"
 msgstr "Installé"
 
@@ -399,7 +399,7 @@ msgstr "Notifiez si une version stable Release est disponible"
 msgid "Notify if kernel update is available"
 msgstr "Notifier si la mise à jour du kernel est disponible"
 
-#: Common/LinuxKernel.vala:1098 Utility/Gtk/CustomMessageDialog.vala:167
+#: Common/LinuxKernel.vala:1099 Utility/Gtk/CustomMessageDialog.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/DonationWindow.vala:95
 #: Utility/GtkHelper.vala:121
 #, c-format
@@ -428,7 +428,7 @@ msgstr "Installé"
 msgid "Please install required packages and try again"
 msgstr "Veuillez installer les paquets requis et réessayer"
 
-#: Common/LinuxKernel.vala:1176
+#: Common/LinuxKernel.vala:1177
 msgid "Preparing to remove selected kernels"
 msgstr ""
 
@@ -468,7 +468,7 @@ msgstr ""
 msgid "Run the application as admin with pkexec or sudo."
 msgstr "Exécutez l'application en tant que root ou utilisez gksu / sudo."
 
-#: Common/LinuxKernel.vala:1052 Gtk/MainWindow.vala:203
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:203
 msgid "Running"
 msgstr "En cours"
 
@@ -484,7 +484,7 @@ msgstr ""
 msgid "Select the kernels to remove"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1171
+#: Common/LinuxKernel.vala:1172
 #, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
@@ -534,11 +534,11 @@ msgstr "Architecture du système"
 msgid "Third Party Tools"
 msgstr "Outils tiers"
 
-#: Common/LinuxKernel.vala:1121 Gtk/MainWindow.vala:616
+#: Common/LinuxKernel.vala:1122 Gtk/MainWindow.vala:616
 msgid "This kernel is already installed."
 msgstr "Ce noyau est déjà installé."
 
-#: Common/LinuxKernel.vala:1229
+#: Common/LinuxKernel.vala:1230
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -559,11 +559,11 @@ msgstr ""
 msgid "Translators"
 msgstr "Traducteurs"
 
-#: Common/LinuxKernel.vala:1213 Common/LinuxKernel.vala:1271
+#: Common/LinuxKernel.vala:1214 Common/LinuxKernel.vala:1272
 msgid "Un-install completed"
 msgstr "Désinstallation complète"
 
-#: Common/LinuxKernel.vala:1216 Common/LinuxKernel.vala:1274
+#: Common/LinuxKernel.vala:1217 Common/LinuxKernel.vala:1275
 msgid "Un-install completed with errors"
 msgstr "Désinstallation terminée avec des erreurs"
 
@@ -582,7 +582,7 @@ msgid ""
 "-1 = Show indefinitely till user selects"
 msgstr ""
 
-#: Common/LinuxKernel.vala:1342
+#: Common/LinuxKernel.vala:1343
 msgid "Updating GRUB menu"
 msgstr ""
 

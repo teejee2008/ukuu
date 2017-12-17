@@ -1030,6 +1030,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	// actions
 
 	public static void print_list(){
+		
 		log_msg("");
 		log_draw_line();
 		log_msg(_("Available Kernels"));
@@ -1051,7 +1052,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			extra = extra.has_prefix("-") ? extra[1:extra.length] : extra;
 			var desc = kern.is_running ? _("Running") : (kern.is_installed ? _("Installed") : "");
 			
-			log_msg("%-30s %-15s %-15s %s".printf(kern.name, kern.version_main, extra, desc));
+			log_msg("%-30s %-25s %s".printf(kern.name, kern.version_main, desc));
 		}
 	}
 
