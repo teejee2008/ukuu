@@ -74,7 +74,7 @@ install:
 	chmod --recursive 0755 $(DESTDIR)$(sharedir)/${app_name}/*
 
 	# polkit policy file
-	install -m 0644 ./share/polkit-1/actions/in.teejeetech.pkexec.ukuu.policy "$(DESTDIR)$(polkitdir)"
+	#install -m 0644 ./share/polkit-1/actions/in.teejeetech.pkexec.ukuu.policy "$(DESTDIR)$(polkitdir)"
 
 	# launcher
 	install -m 0755 ${app_name}.desktop "$(DESTDIR)$(launcherdir)"
@@ -98,7 +98,7 @@ uninstall:
 	rm -rf "$(DESTDIR)$(sharedir)/${app_name}"
 
 	# polkit policy file
-	rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu.policy"
+	#rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu.policy"
 
 	# launcher
 	rm -f "$(DESTDIR)$(launcherdir)/${app_name}.desktop"
