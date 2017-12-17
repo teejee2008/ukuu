@@ -52,11 +52,11 @@ public class Main : GLib.Object{
 	public int64 progress_total = 0;
 	public int64 progress_count = 0;
 	public bool cancelled = false;
-	
+
 	// state flags ----------
 	
 	public bool GUI_MODE = false;
-	public bool INSTALL_MODE = false;
+	public string command = "list";
 	public string requested_version = "";
 	
 	public bool notify_major = true;

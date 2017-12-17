@@ -88,7 +88,9 @@ public class MainWindow : Gtk.Window{
 
 		tv_refresh();
 
-		if (App.INSTALL_MODE){
+		switch (App.command){
+		case "install":
+		
 			LinuxKernel kern_requested = null;
 			foreach(var kern in LinuxKernel.kernel_list){
 				if (kern.name == App.requested_version){
@@ -101,12 +103,18 @@ public class MainWindow : Gtk.Window{
 				var msg = _("Could not find requested version");
 				msg += ": %s".printf(App.requested_version);
 				log_error(msg);
-				
 				exit(1);
 			}
 			else{
 				install(kern_requested);
 			}
+			
+			break;
+			
+		case "notify":
+
+			notify_user();
+			break;
 		}
 
 		return false;
@@ -466,6 +474,7 @@ public class MainWindow : Gtk.Window{
 	}
 
 	private void btn_about_clicked () {
+		
 		var dialog = new AboutWindow();
 		dialog.set_transient_for (this);
 
@@ -503,6 +512,22 @@ public class MainWindow : Gtk.Window{
 	}
 
 	private void refresh_cache(bool download_index = true){
+
+		if (App.command != "list"){
+			
+			// refresh without GUI and return -----------------
+			
+			LinuxKernel.query(false);
+
+			while (LinuxKernel.task_is_running) {
+				
+				sleep(200);
+				gtk_do_events();
+			}
+			
+			return;
+		}
+		
 		string message = _("Refreshing...");
 		var dlg = new ProgressWindow.with_parent(this, message, true);
 		dlg.show_all();
@@ -539,11 +564,9 @@ public class MainWindow : Gtk.Window{
 			}
 
 			if (App.progress_total > 0){
-				dlg.update_message(
-					message + " %lld/%lld (%s)".printf(
-						App.progress_count,
-						App.progress_total,
-						msg_remaining));
+				
+				dlg.update_message("%s %lld/%lld (%s)".printf(
+					message, App.progress_count, App.progress_total, msg_remaining));
 			}
 					
 			dlg.update_status_line();
@@ -562,6 +585,7 @@ public class MainWindow : Gtk.Window{
 
 
 	private void init_infobar(){
+		
 		// scrolled
 		var scrolled = new ScrolledWindow(null, null);
 		scrolled.set_shadow_type (ShadowType.ETCHED_IN);
@@ -588,9 +612,10 @@ public class MainWindow : Gtk.Window{
 	}
 
 	private void set_infobar(){
+		
 		if (LinuxKernel.kernel_active != null){
-			lbl_info.label = "Running <b>Linux %s</b>".printf(
-				LinuxKernel.kernel_active.version_main);
+			
+			lbl_info.label = "Running <b>Linux %s</b>".printf(LinuxKernel.kernel_active.version_main);
 
 			if (LinuxKernel.kernel_active.is_mainline){
 				lbl_info.label += " (mainline)";
@@ -634,15 +659,15 @@ public class MainWindow : Gtk.Window{
 			
 			show_grub_message();
 			
-			if (App.INSTALL_MODE){
-				this.close();
-				//Gtk.main_quit();
-				//exit(0);
-			}
-			else{
+			if (App.command == "list"){
 				this.present();
 				refresh_cache();
 				tv_refresh();
+			}
+			else{
+				this.destroy();
+				App.exit_app();
+				exit(0);
 			}
 		});
 
@@ -660,10 +685,111 @@ public class MainWindow : Gtk.Window{
 		term.execute_script(save_bash_script_temp(sh));
 	}
 
+	private void notify_user(){
+
+		LinuxKernel.check_updates();
+
+		var kern = LinuxKernel.kernel_update_major;
+		
+		if ((kern != null) && App.notify_major){
+			
+			var title = "Linux v%s Available".printf(kern.version_main);
+			var message = "Major update available for installation";
+
+			if (App.notify_bubble){
+				
+				OSDNotify.notify_send(title,message,3000,"normal","info");
+			}
+			
+			if (App.notify_dialog){
+				
+				var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					null,
+					kern);
+					
+				win.destroy.connect(()=>{
+					log_debug("UpdateNotificationWindow destroyed");
+					Gtk.main_quit();
+				});
+				
+				Gtk.main(); // start event loop
+			}
+			
+			log_msg(title);
+			log_msg(message);
+			return;
+		}
+
+		kern = LinuxKernel.kernel_update_minor;
+		
+		if ((kern != null) && App.notify_minor){
+			
+			var title = "Linux v%s Available".printf(kern.version_main);
+			var message = "Minor update available for installation";
+
+			if (App.notify_bubble){
+				
+				OSDNotify.notify_send(title,message,3000,"normal","info");
+			}
+			
+			if (App.notify_dialog){
+				
+				var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					this,
+					kern);
+					
+				win.destroy.connect(()=>{
+					log_debug("UpdateNotificationWindow destroyed");
+					Gtk.main_quit();
+				});
+				
+				Gtk.main(); // start event loop
+			}
+			
+			log_msg(title);
+			log_msg(message);
+			return;
+		}
+
+		// dummy
+
+		/*
+		var title = "Linux v4.7 Available";
+		var message = "Minor update available for installation";
+		
+		if (App.notify_bubble){
+			OSDNotify.notify_send(title,message,3000,"normal","info");
+		}
+		
+		if (App.notify_dialog){
+			
+			var win = new UpdateNotificationWindow(
+					AppName,
+					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
+					null);
+					
+			win.destroy.connect(Gtk.main_quit);
+			Gtk.main(); // start event loop
+		}
+		* */
+
+		log_msg(_("No updates found"));
+	}
+
 	public void show_grub_message(){
+		
 		string title = _("Booting previous kernels");
 		string msg = _("Mainline kernels can sometimes cause problems if there are proprietary drivers installed on your system. These issues include:\n\n▰ WiFi not working\n▰ Black screen on startup\n▰ Random system freeze\n\nIf you face any of these issues there is no need to panic.\n\n▰ Reboot your system\n▰ Select 'Advanced Boot Options' from the GRUB boot menu\n▰ Select an older kernel from the list displayed on this screen\n▰ Your system will boot using the selected kernel\n▰ You can now uninstall the kernel that is causing issues\n");
 		gtk_messagebox(title, msg, this, false);
+
+		if (App.command != "list"){
+			App.exit_app();
+			exit(0);
+		}
 	}
 }
 

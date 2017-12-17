@@ -287,62 +287,46 @@ public class AppConsole : GLib.Object {
 		LinuxKernel.check_updates();
 
 		var kern = LinuxKernel.kernel_update_major;
+		
 		if ((kern != null) && App.notify_major){
+			
 			var title = "Linux v%s Available".printf(kern.version_main);
 			var message = "Major update available for installation";
 
 			if (App.notify_bubble){
 				OSDNotify.notify_send(title,message,3000,"normal","info");
 			}
-			
-			if (App.notify_dialog){
-				
-				var win = new UpdateNotificationWindow(
-					AppName,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null,
-					kern);
-					
-				win.destroy.connect(()=>{
-					log_debug("UpdateNotificationWindow destroyed");
-					Gtk.main_quit();
-				});
-				
-				Gtk.main(); // start event loop
-			}
-			
+
 			log_msg(title);
 			log_msg(message);
+			
+			if (App.notify_dialog){
+				exec_script_async("ukuu-gtk --notify");
+				exit(0);
+			}
+
 			return;
 		}
 
 		kern = LinuxKernel.kernel_update_minor;
+		
 		if ((kern != null) && App.notify_minor){
+			
 			var title = "Linux v%s Available".printf(kern.version_main);
 			var message = "Minor update available for installation";
 
 			if (App.notify_bubble){
 				OSDNotify.notify_send(title,message,3000,"normal","info");
 			}
-			
-			if (App.notify_dialog){
-				
-				var win = new UpdateNotificationWindow(
-					AppName,
-					"<span size=\"large\" weight=\"bold\">%s</span>\n\n%s".printf(title, message),
-					null,
-					kern);
-					
-				win.destroy.connect(()=>{
-					log_debug("UpdateNotificationWindow destroyed");
-					Gtk.main_quit();
-				});
-				
-				Gtk.main(); // start event loop
-			}
-			
+
 			log_msg(title);
 			log_msg(message);
+			
+			if (App.notify_dialog){				
+				exec_script_async("ukuu-gtk --notify");
+				exit(0);
+			}
+
 			return;
 		}
 

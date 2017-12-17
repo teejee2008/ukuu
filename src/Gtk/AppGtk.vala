@@ -47,6 +47,7 @@ const string LOCALE_DIR = "/usr/share/locale";
 public class AppGtk : GLib.Object {
 
 	public static int main (string[] args) {
+		
 		set_locale();
 
 		Gtk.init(ref args);
@@ -67,22 +68,27 @@ public class AppGtk : GLib.Object {
 		App = new Main(args, true);
 		parse_arguments(args);
 
+		// create main window --------------------------------------
+
 		var window = new MainWindow ();
+		
 		window.destroy.connect(()=>{
 			log_debug("MainWindow destroyed");
 			Gtk.main_quit();
 		});
+		
 		window.delete_event.connect((event)=>{
 			log_debug("MainWindow closed");
 			Gtk.main_quit();
 			return true;
 		});
-		
-		if (!App.INSTALL_MODE){
+
+		if (App.command == "list"){
 			window.show_all();
 		}
 
-		//start event loop
+		//start event loop -------------------------------------
+		
 		Gtk.main();
 
 		App.save_app_config();
@@ -91,6 +97,7 @@ public class AppGtk : GLib.Object {
 	}
 
 	private static void set_locale() {
+		
 		Intl.setlocale(GLib.LocaleCategory.MESSAGES, "ukuu");
 		Intl.textdomain(GETTEXT_PACKAGE);
 		Intl.bind_textdomain_codeset(GETTEXT_PACKAGE, "utf-8");
@@ -100,14 +107,18 @@ public class AppGtk : GLib.Object {
 	public static bool parse_arguments(string[] args) {
 
 		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
+
+		App.command = "";
 		
 		//parse options
 		for (int k = 1; k < args.length; k++) // Oth arg is app path
 		{
 			switch (args[k].down()) {
+				
 			case "--debug":
 				LOG_DEBUG = true;
 				break;
+
 			case "--help":
 			case "--h":
 			case "-h":
@@ -126,14 +137,16 @@ public class AppGtk : GLib.Object {
 			// commands ------------------------------------
 
 			case "--install":
-			
-				App.INSTALL_MODE = true;
+				App.command = "install";
 				App.requested_version = args[++k];
 				break;
 
+			case "--notify":
+				App.command = "notify";
+				break;
+				
 			// options without argument --------------------------
 			
-			case "--option-without-argument": //dummy
 			case "--help":
 			case "--h":
 			case "-h":
@@ -143,7 +156,6 @@ public class AppGtk : GLib.Object {
 
 			// options with argument --------------------------
 
-			case "--option-with-argument": //dummy
 			case "--user":
 				k += 1;
 				// already handled - do nothing
@@ -161,6 +173,7 @@ public class AppGtk : GLib.Object {
 	}
 
 	public static string help_message() {
+		
 		string msg = "\n" + AppName + " v" + AppVersion + " by Tony George (teejeetech@gmail.com)" + "\n";
 		msg += "\n";
 		msg += _("Syntax") + ": ukuu-gtk [options]\n";

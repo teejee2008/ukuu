@@ -34,6 +34,7 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public class UpdateNotificationWindow : Gtk.Window {
+	
 	private Gtk.Box vbox_main;
 	private Gtk.Label lbl_msg;
 	private Gtk.ScrolledWindow sw_msg;
@@ -43,19 +44,20 @@ public class UpdateNotificationWindow : Gtk.Window {
 	private Gtk.MessageType msg_type;
 
 	private LinuxKernel kern_update;
+	private MainWindow main_window;
 	
-	public UpdateNotificationWindow(
-		string _msg_title, string _msg_body, Window? parent, LinuxKernel _kern_update) {
+	public UpdateNotificationWindow(string _msg_title, string _msg_body, MainWindow? _window, LinuxKernel _kern_update) {
 
 		window_position = WindowPosition.CENTER;
 		
-		set_transient_for(parent);
+		set_transient_for(_window);
 		set_modal(true);
 
 		msg_title = _msg_title;
 		msg_body = _msg_body;
 		msg_type = Gtk.MessageType.INFO;
 		kern_update = _kern_update;
+		main_window = _window;
 		
 		init_window();
 
@@ -72,7 +74,8 @@ public class UpdateNotificationWindow : Gtk.Window {
 	}
 
 	public void init_window () {
-		title = msg_title;
+		
+		title = AppName;
 		window_position = WindowPosition.CENTER_ON_PARENT;
 		icon = get_app_icon(16);
 		resizable = false;
@@ -146,30 +149,18 @@ public class UpdateNotificationWindow : Gtk.Window {
 		hbox_actions.add(button);
 
 		button.clicked.connect(()=>{
-			string sh = "ukuu-gtk";
-			if (LOG_DEBUG){
-				sh += " --debug";
-			}
-			sh += " --install %s".printf(kern_update.name);
-			//sh += " &";
-			exec_script_async(sh);
-			Gtk.main_quit();
-			//exit(0);
+			this.hide();
+			main_window.install(kern_update);
 		});
 
 		// open ukuu
-		button = new Gtk.Button.with_label("    " + _("Open Ukuu") + "    ");
-		button.set_tooltip_text(_("Open Ukuu"));
+		button = new Gtk.Button.with_label("    " + _("Show") + "    ");
+		button.set_tooltip_text(_("List available kernels"));
 		hbox_actions.add(button);
 
 		button.clicked.connect(()=>{
-			string sh = "ukuu-gtk";
-			if (LOG_DEBUG){
-				sh += " --debug";
-			}
-			//sh += " &";
-			exec_script_async(sh);
-			Gtk.main_quit();
+			this.hide();
+			main_window.show_all();
 		});
 		
 		// ignore
@@ -179,6 +170,10 @@ public class UpdateNotificationWindow : Gtk.Window {
 
 		button.clicked.connect(()=>{
 			this.destroy();
+			if (App.command == "notify"){
+				App.exit_app();
+				exit(0);
+			}
 		});
 	}
 }
