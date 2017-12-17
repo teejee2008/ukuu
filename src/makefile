@@ -31,8 +31,6 @@ app:
 		-o ${app_name} \
 		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0 --pkg $(vte_version)
 
-	
-
 app-translations:
 
 	# update translation template
@@ -76,8 +74,7 @@ install:
 	chmod --recursive 0755 $(DESTDIR)$(sharedir)/${app_name}/*
 
 	# polkit policy file
-	#install -m 0644 ./share/polkit-1/actions/in.teejeetech.pkexec.ukuu-gtk.policy "$(DESTDIR)$(polkitdir)"
-	#rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu-gtk.policy" 
+	install -m 0644 ./share/polkit-1/actions/in.teejeetech.pkexec.ukuu.policy "$(DESTDIR)$(polkitdir)"
 
 	# launcher
 	install -m 0755 ${app_name}.desktop "$(DESTDIR)$(launcherdir)"
@@ -86,7 +83,7 @@ install:
 	install -m 0755 ./share/pixmaps/${app_name}.* "$(DESTDIR)$(sharedir)/pixmaps"
 
 	# translations
-	for lang in fr nl pl ru sv do \
+	for lang in fr nl pl ru sv; do \
 		mkdir -p "$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES"; \
 		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-$$lang.po ; \
 	done
@@ -101,7 +98,7 @@ uninstall:
 	rm -rf "$(DESTDIR)$(sharedir)/${app_name}"
 
 	# polkit policy file
-	#rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu-gtk.policy"
+	rm -f "$(DESTDIR)$(polkitdir)/in.teejeetech.pkexec.ukuu.policy"
 
 	# launcher
 	rm -f "$(DESTDIR)$(launcherdir)/${app_name}.desktop"
