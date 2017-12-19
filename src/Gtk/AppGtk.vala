@@ -37,7 +37,7 @@ using TeeJee.Misc;
 public Main App;
 public const string AppName = "Ubuntu Kernel Update Utility";
 public const string AppShortName = "ukuu";
-public const string AppVersion = "17.12";
+public const string AppVersion = "17.12.1";
 public const string AppAuthor = "Tony George";
 public const string AppAuthorEmail = "teejeetech@gmail.com";
 
@@ -108,7 +108,7 @@ public class AppGtk : GLib.Object {
 
 		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
 
-		App.command = "";
+		App.command = "list";
 		
 		//parse options
 		for (int k = 1; k < args.length; k++) // Oth arg is app path

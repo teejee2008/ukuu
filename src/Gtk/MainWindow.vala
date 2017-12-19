@@ -54,7 +54,7 @@ public class MainWindow : Gtk.Window{
 	
 	public MainWindow() {
 		
-		title = "%s (Ukuu) v%s".printf(AppName, AppVersion);
+		title = AppName; //"%s (Ukuu) v%s".printf(AppName, AppVersion);
         window_position = WindowPosition.CENTER;
         icon = get_app_icon(16,".svg");
 
@@ -78,10 +78,6 @@ public class MainWindow : Gtk.Window{
 		if (tmr_init > 0) {
 			Source.remove(tmr_init);
 			tmr_init = 0;
-		}
-
-		if (!check_internet_connectivity()){
-			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
 		}
 
 		refresh_cache();
@@ -512,6 +508,11 @@ public class MainWindow : Gtk.Window{
 	}
 
 	private void refresh_cache(bool download_index = true){
+
+		if (!check_internet_connectivity()){
+			gtk_messagebox(_("No Internet"), _("Internet connection is not active"), this, true);
+			return;
+		}
 
 		if (App.command != "list"){
 			
