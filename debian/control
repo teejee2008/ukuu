@@ -8,7 +8,7 @@ Homepage: http://teejeetech.blogspot.in/p/ukuu.html
 
 Package: ukuu
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, rsync, aptitude, aria2
+Depends: ${shlibs:Depends}, ${misc:Depends}, rsync, aptitude, aria2, curl
 Recommends: 
 Description: Kernel Update Utility for Ubuntu-based distributions
  Utility for installing mainline Linux kernels on Ubuntu-based distributions.
