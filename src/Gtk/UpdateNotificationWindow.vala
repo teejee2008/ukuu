@@ -80,8 +80,8 @@ public class UpdateNotificationWindow : Gtk.Window {
 		icon = get_app_icon(16);
 		resizable = false;
 		deletable = false;
-		skip_taskbar_hint = true;
-		skip_pager_hint = true;
+		//skip_taskbar_hint = true;
+		//skip_pager_hint = true;
 		
 		//vbox_main
 		vbox_main = new Gtk.Box (Orientation.VERTICAL, 6);
