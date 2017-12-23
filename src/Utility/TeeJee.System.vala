@@ -282,7 +282,7 @@ namespace TeeJee.System{
 		
 		string std_err, std_out;
 
-		string cmd = "url='http://google.com' \n";
+		string cmd = "url='http://kernel.ubuntu.com/~kernel-ppa/mainline' \n";
 		
 		cmd += "httpCode=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' $url) \n";
 		

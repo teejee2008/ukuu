@@ -59,7 +59,7 @@ public class MainWindow : Gtk.Window{
         icon = get_app_icon(16,".svg");
 
         // vbox_main
-        vbox_main = new Gtk.Box (Orientation.VERTICAL, 6);
+        vbox_main = new Gtk.Box(Orientation.VERTICAL, 6);
         vbox_main.margin = 6;
         vbox_main.set_size_request(window_width, window_height);
         add (vbox_main);
@@ -125,7 +125,7 @@ public class MainWindow : Gtk.Window{
 	private void init_treeview(){
 
 		// hbox
-		hbox_list = new Gtk.Box (Orientation.HORIZONTAL, 6);
+		hbox_list = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		//hbox.margin = 6;
 		vbox_main.add(hbox_list);
 		
@@ -333,7 +333,7 @@ public class MainWindow : Gtk.Window{
 
 	private void init_actions(){
 
-		var hbox = new Gtk.Box (Orientation.VERTICAL, 6);
+		var hbox = new Gtk.Box(Orientation.VERTICAL, 6);
 		hbox_list.add (hbox);
 
 		// refresh
@@ -597,7 +597,7 @@ public class MainWindow : Gtk.Window{
 		vbox_main.add(scrolled);
 
 		// hbox
-		var hbox = new Gtk.Box (Orientation.HORIZONTAL, 6);
+		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		//hbox.margin = 6;
 		scrolled.add(hbox);
 

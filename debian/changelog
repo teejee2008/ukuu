@@ -3,12 +3,12 @@ ukuu (17.12.1) xenial; urgency=medium
   * Added support for running ukuu in Wayland session
 
   * Removed Gtk and Gdk dependencies for console version ('ukuu').
-  It can now be used on headless servers where display is not available.
+  It can now be used on systems where display server is not available.
 
   * Added --notify action for GTK version ('ukuu-gtk')
 
   * Code for checking internet connectivity now uses 'curl'
-  instead of 'ping'. This supports corporate systems where ping
+  instead of 'ping'. This supports systems where ping
   may be disabled, and on systems using internet proxies.
 
   * Installers now use XZ compression and are smaller in size
@@ -16,6 +16,15 @@ ukuu (17.12.1) xenial; urgency=medium
  -- Tony George <tony.george.kol@gmail.com>  Sat, 23 Dec 2017 10:00:00 +0530
 
 
+ukuu (17.12.1) xenial; urgency=medium
+
+  * Added support for Wayland session
+  * Added support for running console app (ukuu) without display
+  * Display notification window in taskbar
+  * Compress installers with XZ to reduce file size
+
+ -- Tony George <tony.george.kol@gmail.com>  Sat, 09 Dec 2017 14:00:00 +0530
+ 
 ukuu (17.12) xenial; urgency=medium
 
   * Fixed: Use xdg-open to open CHANGES file instead of exo-open

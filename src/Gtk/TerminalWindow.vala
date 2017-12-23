@@ -94,7 +94,7 @@ public class TerminalWindow : Gtk.Window {
 		
 		// vbox_main ---------------
 		
-		vbox_main = new Gtk.Box (Orientation.VERTICAL, 0);
+		vbox_main = new Gtk.Box(Orientation.VERTICAL, 0);
 		vbox_main.set_size_request (def_width, def_height);
 		add (vbox_main);
 
@@ -154,7 +154,7 @@ public class TerminalWindow : Gtk.Window {
 		
 		// add cancel button --------------
 
-		var hbox = new Gtk.Box (Orientation.HORIZONTAL, 6);
+		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		hbox.homogeneous = true;
 		vbox_main.add (hbox);
 
