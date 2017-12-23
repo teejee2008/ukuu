@@ -15,16 +15,6 @@ ukuu (17.12.1) xenial; urgency=medium
 
  -- Tony George <tony.george.kol@gmail.com>  Sat, 23 Dec 2017 10:00:00 +0530
 
-
-ukuu (17.12.1) xenial; urgency=medium
-
-  * Added support for Wayland session
-  * Added support for running console app (ukuu) without display
-  * Display notification window in taskbar
-  * Compress installers with XZ to reduce file size
-
- -- Tony George <tony.george.kol@gmail.com>  Sat, 09 Dec 2017 14:00:00 +0530
- 
 ukuu (17.12) xenial; urgency=medium
 
   * Fixed: Use xdg-open to open CHANGES file instead of exo-open
