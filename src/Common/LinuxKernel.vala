@@ -669,7 +669,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	
 	// helpers
 	
-	public void split_version_string(string version_string, out string ver_main, out string ver_extra){
+	public void split_version_string(string _version_string, out string ver_main, out string ver_extra){
 
 		ver_main = "";
 		ver_extra = "";
@@ -677,7 +677,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		version_min = 0;
 		version_point = 0;
 
-		if (version_string.length == 0){ return; }
+		if (_version_string.length == 0){ return; }
+
+		var version_string = _version_string.split("~")[0];
 
 		var match = regex_match("""[v]*([0-9]+|r+c+)""", version_string);
 
