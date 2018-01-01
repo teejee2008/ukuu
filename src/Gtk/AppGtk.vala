@@ -50,6 +50,8 @@ public class AppGtk : GLib.Object {
 		
 		set_locale();
 
+		log_msg("%s v%s".printf(AppShortName, AppVersion));
+
 		Gtk.init(ref args);
 
 		init_tmp("ukuu-gtk");
@@ -106,7 +108,8 @@ public class AppGtk : GLib.Object {
 
 	public static bool parse_arguments(string[] args) {
 
-		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
+		log_msg(_("Cache") + ": %s".printf(LinuxKernel.CACHE_DIR));
+		log_msg(_("Temp") + ": %s".printf(TEMP_DIR));
 
 		App.command = "list";
 		
@@ -127,8 +130,6 @@ public class AppGtk : GLib.Object {
 				return true;
 			}
 		}
-
-		//log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
 
 		for (int k = 1; k < args.length; k++) // Oth arg is app path
 		{

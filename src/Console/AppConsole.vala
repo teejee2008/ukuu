@@ -49,7 +49,9 @@ public class AppConsole : GLib.Object {
 		
 		set_locale();
 
-		init_tmp(AppShortName);
+		log_msg("%s v%s".printf(AppShortName, AppVersion));
+
+		init_tmp("ukuu");
 
 		//check_if_admin();
 		
@@ -140,7 +142,8 @@ public class AppConsole : GLib.Object {
 			}
 		}
 
-		log_msg(_("Using cache directory") + ": %s".printf(LinuxKernel.CACHE_DIR));
+		log_msg(_("Cache") + ": %s".printf(LinuxKernel.CACHE_DIR));
+		log_msg(_("Temp") + ": %s".printf(TEMP_DIR));
 
 		// then parse commands ---------------------------
 		
