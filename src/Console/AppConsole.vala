@@ -84,6 +84,8 @@ public class AppConsole : GLib.Object {
 		msg += "  --check           " + _("Check for kernel updates") + "\n";
 		msg += "  --notify          " + _("Check for kernel updates and notify current user") + "\n";
 		msg += "  --list            " + _("List all available mainline kernels") + "\n";
+		msg += "  --update-latest   " + _("Update to the latest kernel") + "\n";
+		msg += "  --update-point    " + _("Update to the latest point update of current kernel series") + "\n";
 		msg += "  --install <name>  " + _("Install specified mainline kernel") + "\n";
 		msg += "  --remove <name>   " + _("Remove specified mainline kernel") + "\n";
 		msg += "  --download <name> " + _("Download packages for specified kernel") + "\n";
@@ -165,24 +167,28 @@ public class AppConsole : GLib.Object {
 
 			case "--check":
 
-				check_if_internet_is_active(false);
-				
-				LinuxKernel.query(true);
-				
 				print_updates();
 
 				break;
 
 			case "--notify":
 
-				check_if_internet_is_active(false);
-				
-				LinuxKernel.query(true);
-				
 				notify_user();
 				
 				break;
 
+			case "--update-latest":
+
+				installed_latest_update(false);
+
+				break;
+
+			case "--update-point":
+
+				installed_latest_update(true);
+
+				break;
+				
 			case "--clean-cache":
 
 				LinuxKernel.clean_cache();
@@ -289,6 +295,10 @@ public class AppConsole : GLib.Object {
 
 	private void print_updates(){
 
+		check_if_internet_is_active(false);
+				
+		LinuxKernel.query(true);
+
 		LinuxKernel.check_updates();
 
 		var kern_major = LinuxKernel.kernel_update_major;
@@ -313,6 +323,10 @@ public class AppConsole : GLib.Object {
 	}
 
 	private void notify_user(){
+
+		check_if_internet_is_active(false);
+				
+		LinuxKernel.query(true);
 
 		LinuxKernel.check_updates();
 
@@ -385,7 +399,6 @@ public class AppConsole : GLib.Object {
 		log_msg(_("No updates found"));
 	}
 
-
 	public void check_if_internet_is_active(bool exit_app = true){
 		
 		if (!check_internet_connectivity()){
@@ -395,6 +408,59 @@ public class AppConsole : GLib.Object {
 			if (exit_app){
 				exit(1);
 			}
+		}
+	}
+
+	private void installed_latest_update(bool point_update){
+
+		check_if_admin();
+
+		check_if_internet_is_active(true);
+
+		LinuxKernel.query(true);
+
+		LinuxKernel.check_updates();
+
+		var kern_major = LinuxKernel.kernel_update_major;
+		
+		if ((kern_major != null) && !point_update){
+			
+			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
+			log_msg(message);
+			
+			install_kernel(kern_major);
+			return;
+		}
+
+		var kern_minor = LinuxKernel.kernel_update_minor;
+
+		if (kern_minor != null){
+			
+			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
+			log_msg(message);
+
+			install_kernel(kern_minor);
+			return;
+		}
+
+		if ((kern_major == null) && (kern_minor == null)){
+			log_msg(_("No updates found"));
+		}
+
+		log_msg(string.nfill(70, '-'));
+	}
+
+	
+	private void install_kernel(LinuxKernel kern){
+
+		var message = "\n" + _("Install Linux v%s ? (y/n): ").printf(kern.version_main);
+		stdout.printf(message);
+		stdout.flush();
+		
+		int ch = stdin.getc();
+
+		if (ch == 'y'){
+			kern.install(true);
 		}
 	}
 }
