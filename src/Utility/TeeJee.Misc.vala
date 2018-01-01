@@ -326,4 +326,65 @@ namespace TeeJee.Misc {
 		}
 	}
 
+	private static void print_progress_bar_start(string message){
+
+		log_msg("\n%s\n".printf(message));
+	}
+
+	private static void print_progress_bar(double fraction){
+
+		string txt = "";
+
+		double length = 30.0;
+
+		double length_complete = fraction * length;
+
+		double length_remaining = length - length_complete;
+
+		double length_partial = length - length_remaining - Math.floor(length_complete);
+
+		double length_char = 1.0 / length;
+
+		var partial_chars = new string[] { " ", "▏","▎","▍","▌","▋","▊","▉","█" };
+
+		int partial_index = (int) (length_partial * 8.0);
+
+		if (partial_index < 0){
+			partial_index = 0;
+		}
+		else if (partial_index > 8){
+			partial_index = 8;
+		}
+		
+		var char_partial = partial_chars[partial_index];
+
+		if (length_complete > 0){
+			for(int i = 0; i < length_complete; i++){
+				txt += "▓";
+			}
+		}
+
+		if (length_remaining > 0){
+			for(int i = 0; i < length_remaining; i++){
+				txt += "░";
+			}
+		}
+
+		txt += " %0.0f %% ".printf(fraction * 100.0);
+		
+		stdout.printf("\r%s".printf(txt));
+
+		//stdout.printf("com: %f, rem: %f, part: %f, char_partial='%s', index=%d".printf(
+			//length_complete, length_remaining, length_partial, char_partial, partial_index));
+			
+		stdout.flush();
+	}
+
+	private static void print_progress_bar_finish(){
+
+		print_progress_bar(1.0);
+		stdout.printf("\n\n");
+		stdout.flush();
+	}
+
 }

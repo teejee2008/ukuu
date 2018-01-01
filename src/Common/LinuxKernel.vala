@@ -6,6 +6,7 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
+	
 	public string name = "";
 	public string version = "";
 	public string version_main = "";
@@ -100,7 +101,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		int status = exec_sync("dpkg --print-architecture", out std_out, out std_err);
 		if ((status == 0) && (std_out != null)){
 			arch = std_out.strip();
-			log_msg(_("System architecture") + ": %s".printf(arch));
+			log_msg(_("Architecture") + ": %s".printf(arch));
 		}
 
 		return arch;
@@ -345,16 +346,21 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			mgr.prg_count_total = progress_total;
 			mgr.execute();
 
+			print_progress_bar_start(_("Fetching index..."));
+
 			while (mgr.is_running()){
 				progress_count = mgr.prg_count;
+				print_progress_bar((progress_count * 1.0) / progress_total);
 				sleep(300);
 			}
+
+			print_progress_bar_finish();
 
 			foreach(var kern in kernels_to_update){
 				kern.load_cached_page();
 			}
 		}
-		
+
 		check_installed();
 
 		check_updates();
@@ -363,7 +369,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		
 		task_is_running = false;
 	}
-	
+
 	private static bool download_index(){
 
 		check_if_initialized();
@@ -445,6 +451,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static void check_installed(){
 
 		log_debug("check_installed");
+
+		log_msg(string.nfill(70, '-'));
 		
 		foreach(var kern in kernel_list){
 			kern.is_installed = false;
@@ -553,6 +561,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		kernel_list.sort((a,b)=>{
 			return a.compare_to(b) * -1;
 		});
+
+		log_msg(string.nfill(70, '-'));
 	}
 
 	public static void check_available(){
