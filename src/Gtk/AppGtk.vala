@@ -52,7 +52,7 @@ public class AppGtk : GLib.Object {
 
 		Gtk.init(ref args);
 
-		init_tmp(AppShortName);
+		init_tmp("ukuu-gtk");
 		
 		//check_if_admin();
 
