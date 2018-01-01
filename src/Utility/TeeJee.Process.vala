@@ -34,6 +34,7 @@ namespace TeeJee.ProcessHelper{
 	// execute process ---------------------------------
 	
     public static void init_tmp(string subdir_name){
+		
 		string std_out, std_err;
 
 		TEMP_DIR = Environment.get_tmp_dir() + "/" + subdir_name + "/" + random_string();

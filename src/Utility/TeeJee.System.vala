@@ -282,13 +282,13 @@ namespace TeeJee.System{
 		
 		string std_err, std_out;
 
-		string cmd = "url='http://kernel.ubuntu.com/~kernel-ppa/mainline' \n";
+		string cmd = "url='https://www.google.com' \n";
 		
-		cmd += "httpCode=$(curl -o /dev/null --silent --head --write-out '%{http_code}\n' $url) \n";
+		cmd += "httpCode=$(curl -o /dev/null --silent --max-time 1 --head --write-out '%{http_code}\n' $url) \n"; 
 		
 		cmd += "test $httpCode -lt 400 -a $httpCode -gt 0 \n";
-		
-		cmd += "exit $?";
+
+		cmd += "exit $?"; 
 		
 		int status = exec_script_sync(cmd, out std_out, out std_err, false);
 

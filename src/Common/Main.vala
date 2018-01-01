@@ -85,6 +85,7 @@ public class Main : GLib.Object{
 	// helpers ------------
 	
 	public static bool check_dependencies(out string msg) {
+		
 		string[] dependencies = { "aptitude", "apt-get", "aria2c", "dpkg", "uname", "lsb_release", "ping" };
 
 		msg = "";
@@ -109,8 +110,6 @@ public class Main : GLib.Object{
 	}
 
 	public void init_paths(string custom_user_login = ""){
-		// temp dir 
-		init_tmp(AppShortName);
 
 		// user info
 		user_login = get_username();
