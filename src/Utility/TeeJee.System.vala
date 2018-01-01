@@ -264,27 +264,13 @@ namespace TeeJee.System{
 	
 	public bool check_internet_connectivity(){
 		
-		bool connected = false;
-		connected = check_internet_connectivity_test();
-
-		if (connected){
-			return connected;
-		}
-		
-		if (!connected){
-			log_error(_("Internet connection is not active"));
-		}
-
-	    return connected;
-	}
-
-	public bool check_internet_connectivity_test(){
-		
 		string std_err, std_out;
 
 		string cmd = "url='https://www.google.com' \n";
+
+		// Note: minimum of 2 seconds is required for timeout, to avoid wrong results
 		
-		cmd += "httpCode=$(curl -o /dev/null --silent --max-time 1 --head --write-out '%{http_code}\n' $url) \n"; 
+		cmd += "httpCode=$(curl -o /dev/null --silent --max-time 2 --head --write-out '%{http_code}\n' $url) \n"; 
 		
 		cmd += "test $httpCode -lt 400 -a $httpCode -gt 0 \n";
 
@@ -293,7 +279,13 @@ namespace TeeJee.System{
 		int status = exec_script_sync(cmd, out std_out, out std_err, false);
 
 		if (std_err.length > 0){
+			
 			log_error(std_err);
+		}
+
+		if (status != 0){
+
+			log_error(_("Internet connection is not active"));
 		}
 
 	    return (status == 0);

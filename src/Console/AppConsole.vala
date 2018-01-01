@@ -82,7 +82,7 @@ public class AppConsole : GLib.Object {
 		msg += _("Options") + ":\n";
 		msg += "\n";
 		msg += "  --check           " + _("Check for kernel updates") + "\n";
-		msg += "  --notify          " + _("Notify if kernel update is available") + "\n";
+		msg += "  --notify          " + _("Check for kernel updates and notify current user") + "\n";
 		msg += "  --list            " + _("List all available mainline kernels") + "\n";
 		msg += "  --install <name>  " + _("Install specified mainline kernel") + "\n";
 		msg += "  --remove <name>   " + _("Remove specified mainline kernel") + "\n";
@@ -153,7 +153,6 @@ public class AppConsole : GLib.Object {
 
 			// commands ------------------------------------
 			
-			case "--check":
 			case "--list":
 			
 				check_if_internet_is_active(false);
@@ -161,6 +160,16 @@ public class AppConsole : GLib.Object {
 				LinuxKernel.query(true);
 				
 				LinuxKernel.print_list();
+
+				break;
+
+			case "--check":
+
+				check_if_internet_is_active(false);
+				
+				LinuxKernel.query(true);
+				
+				print_updates();
 
 				break;
 
@@ -276,6 +285,31 @@ public class AppConsole : GLib.Object {
 		}
 
 		return true;
+	}
+
+	private void print_updates(){
+
+		LinuxKernel.check_updates();
+
+		var kern_major = LinuxKernel.kernel_update_major;
+		
+		if (kern_major != null){
+			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
+			log_msg(message);
+		}
+
+		var kern_minor = LinuxKernel.kernel_update_minor;
+
+		if (kern_minor != null){
+			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
+			log_msg(message);
+		}
+
+		if ((kern_major == null) && (kern_minor == null)){
+			log_msg(_("No updates found"));
+		}
+
+		log_msg(string.nfill(70, '-'));
 	}
 
 	private void notify_user(){
