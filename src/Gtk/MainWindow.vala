@@ -487,6 +487,8 @@ public class MainWindow : Gtk.Window{
 			"Åke Engelbrektson (Swedish):eson@svenskasprakfiler.se",
 			"Иннусик (Russian): slavusik1988@gmail.com",
 			"Waldemar Konik (Polish): valdi74@github"
+			"gogo (Croatian): trebelnik2@gmail.com"
+
 		};
 
 		dialog.documenters = null;
