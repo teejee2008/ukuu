@@ -676,7 +676,128 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		}
 	}
 
-	
+	public static void purge_old_kernels(bool confirm){
+
+		check_installed();
+
+		var list = new Gee.ArrayList<LinuxKernel>();
+
+		var kern_running = new LinuxKernel.from_version(LinuxKernel.RUNNING_KERNEL);
+
+		bool found_running_kernel = false;
+		
+		foreach(var kern in LinuxKernel.kernel_list){
+			
+			// skip invalid
+			if (!kern.is_valid){ continue; }
+
+			// skip not installed
+			if (!kern.is_installed){ continue; }
+
+			// skip running kernel
+			if (kern.version_main == kern_running.version_main){
+				found_running_kernel = true;
+				continue;
+			}
+
+			// skip newer kernels
+			if (kern.compare_to(kern_running) > 0){ continue; }
+
+			list.add(kern);
+		}
+
+		if (!found_running_kernel){
+			log_error(_("Could not find running kernel in list!"));
+			log_msg(string.nfill(70, '-'));
+			return;
+		}
+
+		if (list.size == 0){
+			log_msg(_("Could not find any kernels to remove"));
+			log_msg(string.nfill(70, '-'));
+			return;
+		}
+
+		// confirm -------------------------------
+
+		if (confirm){
+			
+			var message = "\n%s:\n".printf(_("Following kernels will be removed"));
+			
+			foreach(var kern in list){
+
+				message += " > %s".printf(kern.version_main);
+			}
+
+			message += "\n%s (y/n): ".printf(_("Continue ?"));
+
+			stdout.printf(message);
+			stdout.flush();
+			
+			int ch = stdin.getc();
+
+			if (ch != 'y'){ return; }
+		}
+
+		// remove --------------------------------
+		
+		foreach(var kern in list){
+
+			kern.remove(true);
+		}
+	}
+
+	public static void install_latest(bool point_update, bool confirm){
+
+		query(true);
+
+		check_updates();
+
+		var kern_major = LinuxKernel.kernel_update_major;
+		
+		if ((kern_major != null) && !point_update){
+			
+			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
+			log_msg(message);
+			
+			install_update(kern_major, confirm);
+			return;
+		}
+
+		var kern_minor = LinuxKernel.kernel_update_minor;
+
+		if (kern_minor != null){
+			
+			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
+			log_msg(message);
+
+			install_update(kern_minor, confirm);
+			return;
+		}
+
+		if ((kern_major == null) && (kern_minor == null)){
+			log_msg(_("No updates found"));
+		}
+
+		log_msg(string.nfill(70, '-'));
+	}
+
+	public static void install_update(LinuxKernel kern, bool confirm){
+
+		if (confirm){
+			
+			var message = "\n" + _("Install Linux v%s ? (y/n): ").printf(kern.version_main);
+			stdout.printf(message);
+			stdout.flush();
+			
+			int ch = stdin.getc();
+
+			if (ch != 'y'){ return; }
+		}
+
+		kern.install(true);
+	}
+
 	// helpers
 	
 	public void split_version_string(string _version_string, out string ver_main, out string ver_extra){

@@ -65,6 +65,8 @@ public class Main : GLib.Object{
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
 
+	public bool confirm = true;
+
 	// constructors ------------
 	
 	public Main(string[] arg0, bool _gui_mode){

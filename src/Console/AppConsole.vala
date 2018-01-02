@@ -77,20 +77,24 @@ public class AppConsole : GLib.Object {
 	private static string help_message() {
 		string msg = "\n" + AppName + " v" + AppVersion + " by Tony George (teejeetech@gmail.com)" + "\n";
 		msg += "\n";
-		msg += _("Syntax") + ": ukuu [options]\n";
+		msg += _("Syntax") + ": ukuu <command> [options]\n";
 		msg += "\n";
-		msg += _("Options") + ":\n";
+		msg += _("Commands") + ":\n";
 		msg += "\n";
 		msg += "  --check           " + _("Check for kernel updates") + "\n";
 		msg += "  --notify          " + _("Check for kernel updates and notify current user") + "\n";
 		msg += "  --list            " + _("List all available mainline kernels") + "\n";
-		msg += "  --update-latest   " + _("Update to the latest kernel") + "\n";
-		msg += "  --update-point    " + _("Update to the latest point update of current kernel series") + "\n";
+		msg += "  --install-latest  " + _("Install latest kernel") + "\n";
+		msg += "  --install-point   " + _("Install latest point update of current kernel series") + "\n";
 		msg += "  --install <name>  " + _("Install specified mainline kernel") + "\n";
 		msg += "  --remove <name>   " + _("Remove specified mainline kernel") + "\n";
 		msg += "  --download <name> " + _("Download packages for specified kernel") + "\n";
-		msg += "  --user <username> " + _("Use specified user's cache directory") + "\n";
 		msg += "  --clean-cache     " + _("Remove files from application cache") + "\n";
+		msg += "\n";
+		msg += _("Options") + ":\n";
+		msg += "\n";
+		msg += "  --clean-cache     " + _("Remove files from application cache") + "\n";
+		msg += "  --yes             " + _("Assume Yes for all prompts (non-interactive mode)") + "\n";
 		msg += "\n";
 		msg += "Notes:\n";
 		msg += "1. Comma separated list of version strings can be specified for --remove and --download\n";
@@ -131,11 +135,17 @@ public class AppConsole : GLib.Object {
 			case "--debug":
 				LOG_DEBUG = true;
 				break;
+
+			case "--yes":
+				App.confirm = false;
+				break;
+				
 			case "--user":
 				string custom_user_login = args[++k];
 				App.init_paths(custom_user_login);
 				App.load_app_config();
 				break;
+				
 			case "--help":
 			case "--h":
 			case "-h":
@@ -177,15 +187,31 @@ public class AppConsole : GLib.Object {
 				
 				break;
 
-			case "--update-latest":
+			case "--install-latest":
 
-				installed_latest_update(false);
+				check_if_admin();
+
+				check_if_internet_is_active(true);
+
+				LinuxKernel.install_latest(false, App.confirm);
+				
+				break;
+
+			case "--install-point":
+
+				check_if_admin();
+
+				check_if_internet_is_active(true);
+
+				LinuxKernel.install_latest(true, App.confirm);
 
 				break;
 
-			case "--update-point":
+			case "--purge-old-kernels":
 
-				installed_latest_update(true);
+				check_if_admin();
+
+				LinuxKernel.purge_old_kernels(App.confirm);
 
 				break;
 				
@@ -411,57 +437,5 @@ public class AppConsole : GLib.Object {
 		}
 	}
 
-	private void installed_latest_update(bool point_update){
-
-		check_if_admin();
-
-		check_if_internet_is_active(true);
-
-		LinuxKernel.query(true);
-
-		LinuxKernel.check_updates();
-
-		var kern_major = LinuxKernel.kernel_update_major;
-		
-		if ((kern_major != null) && !point_update){
-			
-			var message = "%s: %s".printf(_("Latest update"), kern_major.version_main);
-			log_msg(message);
-			
-			install_kernel(kern_major);
-			return;
-		}
-
-		var kern_minor = LinuxKernel.kernel_update_minor;
-
-		if (kern_minor != null){
-			
-			var message = "%s: %s".printf(_("Latest point update"), kern_minor.version_main);
-			log_msg(message);
-
-			install_kernel(kern_minor);
-			return;
-		}
-
-		if ((kern_major == null) && (kern_minor == null)){
-			log_msg(_("No updates found"));
-		}
-
-		log_msg(string.nfill(70, '-'));
-	}
-
-	
-	private void install_kernel(LinuxKernel kern){
-
-		var message = "\n" + _("Install Linux v%s ? (y/n): ").printf(kern.version_main);
-		stdout.printf(message);
-		stdout.flush();
-		
-		int ch = stdin.getc();
-
-		if (ch == 'y'){
-			kern.install(true);
-		}
-	}
 }
 
