@@ -41,6 +41,7 @@ public class MainWindow : Gtk.Window{
 	private Gtk.Button btn_refresh;
 	private Gtk.Button btn_install;
 	private Gtk.Button btn_remove;
+	private Gtk.Button btn_purge;
 	private Gtk.Button btn_changes;
 	private Gtk.Label lbl_info;
 	
@@ -322,11 +323,13 @@ public class MainWindow : Gtk.Window{
 		if (selected_kernels.size == 0){
 			btn_install.sensitive = false;
 			btn_remove.sensitive = false;
+			btn_purge.sensitive = true;
 			btn_changes.sensitive = false;
 		}
 		else{
 			btn_install.sensitive = (selected_kernels.size == 1) && !selected_kernels[0].is_installed;
 			btn_remove.sensitive = selected_kernels[0].is_installed && !selected_kernels[0].is_running;
+			btn_purge.sensitive = true;
 			btn_changes.sensitive = (selected_kernels.size == 1) && file_exists(selected_kernels[0].changes_file);
 		}
 	}
@@ -416,6 +419,45 @@ public class MainWindow : Gtk.Window{
 				
 				term.execute_script(save_bash_script_temp(sh));
 			}
+		});
+
+		// purge
+		button = new Gtk.Button.with_label (_("Purge"));
+		button.set_tooltip_text(_("Remove installed kernels older than running kernel"));
+		hbox.pack_start (button, true, true, 0);
+		btn_purge = button;
+		
+		button.clicked.connect(() => {
+
+			var term = new TerminalWindow.with_parent(this, false, true);
+			
+			term.script_complete.connect(()=>{
+				term.allow_window_close();
+			});
+			
+			term.destroy.connect(()=>{
+				this.present();
+				refresh_cache();
+				tv_refresh();
+			});
+
+			string sh = "";
+			sh += "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY "; 
+			sh += "ukuu --user %s".printf(App.user_login);
+			if (LOG_DEBUG){
+				sh += " --debug";
+			}
+
+			sh += " --purge-old-kernels\n";
+
+			log_debug(sh);
+			
+			sh += "echo ''\n";
+			sh += "echo 'Close window to exit...'\n";
+
+			this.hide();
+			
+			term.execute_script(save_bash_script_temp(sh));
 		});
 
 		// changes

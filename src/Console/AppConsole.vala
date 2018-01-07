@@ -122,6 +122,12 @@ public class AppConsole : GLib.Object {
 
 	public bool parse_arguments(string[] args) {
 
+		string txt = "ukuu ";
+		for (int k = 1; k < args.length; k++) {
+			txt += "'%s' ".printf(args[k]);
+		}
+		log_debug(txt);
+		
 		// check argument count -----------------
 		
 		if (args.length == 1) {
@@ -148,7 +154,7 @@ public class AppConsole : GLib.Object {
 				
 			case "--user":
 				if (++k < args.length){
-					string custom_user_login = args[++k];
+					string custom_user_login = args[k];
 					App.init_paths(custom_user_login);
 					App.load_app_config();
 				}
