@@ -175,14 +175,24 @@ public class Main : GLib.Object{
 	public void load_app_config(){
 	
 		var f = File.new_for_path(APP_CONFIG_FILE);
-		if (!f.query_exists()) { return; }
+		
+		if (!f.query_exists()) {
+			// initialize static
+			LinuxKernel.hide_unstable = true;
+			LinuxKernel.hide_older = true;
+			LinuxKernel.show_grub_menu = true;
+			LinuxKernel.grub_timeout = 2;
+			return;
+		}
 
 		var parser = new Json.Parser();
+		
         try{
 			parser.load_from_file(APP_CONFIG_FILE);
 		} catch (Error e) {
 	        log_error (e.message);
 	    }
+	    
         var node = parser.get_root();
         var config = node.get_object();
 

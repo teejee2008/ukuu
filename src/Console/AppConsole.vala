@@ -36,7 +36,7 @@ using TeeJee.Misc;
 public Main App;
 public const string AppName = "Ubuntu Kernel Update Utility";
 public const string AppShortName = "ukuu";
-public const string AppVersion = "17.12.1";
+public const string AppVersion = "18.1";
 public const string AppAuthor = "Tony George";
 public const string AppAuthorEmail = "teejeetech@gmail.com";
 
@@ -75,21 +75,23 @@ public class AppConsole : GLib.Object {
 	}
 
 	private static string help_message() {
+		
 		string msg = "\n" + AppName + " v" + AppVersion + " by Tony George (teejeetech@gmail.com)" + "\n";
 		msg += "\n";
 		msg += _("Syntax") + ": ukuu <command> [options]\n";
 		msg += "\n";
 		msg += _("Commands") + ":\n";
 		msg += "\n";
-		msg += "  --check           " + _("Check for kernel updates") + "\n";
-		msg += "  --notify          " + _("Check for kernel updates and notify current user") + "\n";
-		msg += "  --list            " + _("List all available mainline kernels") + "\n";
-		msg += "  --install-latest  " + _("Install latest kernel") + "\n";
-		msg += "  --install-point   " + _("Install latest point update of current kernel series") + "\n";
-		msg += "  --install <name>  " + _("Install specified mainline kernel") + "\n";
-		msg += "  --remove <name>   " + _("Remove specified mainline kernel") + "\n";
-		msg += "  --download <name> " + _("Download packages for specified kernel") + "\n";
-		msg += "  --clean-cache     " + _("Remove files from application cache") + "\n";
+		msg += "  --check             " + _("Check for kernel updates") + "\n";
+		msg += "  --notify            " + _("Check for kernel updates and notify current user") + "\n";
+		msg += "  --list              " + _("List all available mainline kernels") + "\n";
+		msg += "  --install-latest    " + _("Install latest kernel") + "\n";
+		msg += "  --install-point     " + _("Install latest point update of current kernel series") + "\n";
+		msg += "  --install <name>    " + _("Install specified mainline kernel") + "\n";
+		msg += "  --remove <name>     " + _("Remove specified kernel") + "\n";
+		msg += "  --purge-old-kernels " + _("Remove installed kernels older than running kernel") + "\n";
+		msg += "  --download <name>   " + _("Download packages for specified kernel") + "\n";
+		msg += "  --clean-cache       " + _("Remove files from application cache") + "\n";
 		msg += "\n";
 		msg += _("Options") + ":\n";
 		msg += "\n";
@@ -127,6 +129,9 @@ public class AppConsole : GLib.Object {
 			return false;
 		}
 
+		string cmd = "";
+		string cmd_versions = "";
+			
 		// parse options first --------------
 		
 		for (int k = 1; k < args.length; k++) // Oth arg is app path
@@ -141,179 +146,181 @@ public class AppConsole : GLib.Object {
 				break;
 				
 			case "--user":
-				string custom_user_login = args[++k];
-				App.init_paths(custom_user_login);
-				App.load_app_config();
+				if (++k < args.length){
+					string custom_user_login = args[++k];
+					App.init_paths(custom_user_login);
+					App.load_app_config();
+				}
 				break;
+
+			case "--list":
+			case "--check":
+			case "--notify":
+			case "--install-latest":
+			case "--install-point":
+			case "--purge-old-kernels":
+			case "--clean-cache":
+				cmd = args[k].down();
+				break;
+			
+			case "--download":
+			case "--install":
+			case "--remove":
+				cmd = args[k].down();
 				
+				if (++k < args.length){
+					cmd_versions = args[k];
+				}
+				break;
+
 			case "--help":
 			case "--h":
 			case "-h":
 				log_msg(help_message());
 				return true;
+				
+			default:
+				// unknown option
+				log_error(_("Unknown option") + ": %s".printf(args[k]));
+				log_error(_("Run 'ukuu --help' to list all options"));
+				return false;
 			}
 		}
 
 		log_msg(_("Cache") + ": %s".printf(LinuxKernel.CACHE_DIR));
 		log_msg(_("Temp") + ": %s".printf(TEMP_DIR));
 
-		// then parse commands ---------------------------
+		// run command --------------------------------------
 		
-		for (int k = 1; k < args.length; k++) // Oth arg is app path
-		{
-			switch (args[k].down()) {
-
-			// commands ------------------------------------
+		switch (cmd) {
+		case "--list":
+		
+			check_if_internet_is_active(false);
 			
-			case "--list":
+			LinuxKernel.query(true);
 			
-				check_if_internet_is_active(false);
+			LinuxKernel.print_list();
+
+			break;
+
+		case "--check":
+
+			print_updates();
+
+			break;
+
+		case "--notify":
+
+			notify_user();
+			
+			break;
+
+		case "--install-latest":
+
+			check_if_admin();
+
+			check_if_internet_is_active(true);
+
+			LinuxKernel.install_latest(false, App.confirm);
+			
+			break;
+
+		case "--install-point":
+
+			check_if_admin();
+
+			check_if_internet_is_active(true);
+
+			LinuxKernel.install_latest(true, App.confirm);
+
+			break;
+
+		case "--purge-old-kernels":
+
+			check_if_admin();
+
+			LinuxKernel.purge_old_kernels(App.confirm);
+
+			break;
+			
+		case "--clean-cache":
+
+			LinuxKernel.clean_cache();
+			
+			break;
+
+		case "--download":
+		case "--install":
+		case "--remove":
+
+			check_if_admin();
+
+			if ((cmd == "--install") || (cmd == "--download")){
+				check_if_internet_is_active();
+			}
+			
+			LinuxKernel.query(true);
+
+			if (cmd_versions.length == 0){
+				log_error(_("No kernels specified"));
+				exit(1);
+			}
+
+			string[] requested_versions = cmd_versions.split(",");
+			if ((requested_versions.length > 1) && (cmd == "--install")){
+				log_error(_("Multiple kernels selected for installation. Select only one."));
+				exit(1);
+			}
+
+			var list = new Gee.ArrayList<LinuxKernel>();
+
+			foreach(string requested_version in requested_versions){
 				
-				LinuxKernel.query(true);
-				
-				LinuxKernel.print_list();
-
-				break;
-
-			case "--check":
-
-				print_updates();
-
-				break;
-
-			case "--notify":
-
-				notify_user();
-				
-				break;
-
-			case "--install-latest":
-
-				check_if_admin();
-
-				check_if_internet_is_active(true);
-
-				LinuxKernel.install_latest(false, App.confirm);
-				
-				break;
-
-			case "--install-point":
-
-				check_if_admin();
-
-				check_if_internet_is_active(true);
-
-				LinuxKernel.install_latest(true, App.confirm);
-
-				break;
-
-			case "--purge-old-kernels":
-
-				check_if_admin();
-
-				LinuxKernel.purge_old_kernels(App.confirm);
-
-				break;
-				
-			case "--clean-cache":
-
-				LinuxKernel.clean_cache();
-				
-				break;
-
-			case "--download":
-			case "--install":
-			case "--remove":
-
-				check_if_admin();
-
-				if ((args[k] == "--install") || (args[k] == "--download")){
-					check_if_internet_is_active();
+				LinuxKernel kern_requested = null;
+				foreach(var kern in LinuxKernel.kernel_list){
+					if (kern.name == requested_version){
+						kern_requested = kern;
+						break;
+					}
 				}
-				
-				LinuxKernel.query(true);
 
-				string[] requested_versions = args[++k].split(",");
-				if ((requested_versions.length > 1) && (args[k - 1] == "--install")){
-					log_error(_("Multiple kernels selected for installation. Select only one."));
+				if (kern_requested == null){
+					
+					var msg = _("Could not find requested version");
+					msg += ": %s".printf(requested_version);
+					log_error(msg);
+					
+					log_error(_("Run 'ukuu --list' and use the version string listed in first column"));
+					
 					exit(1);
 				}
 
-				var list = new Gee.ArrayList<LinuxKernel>();
-
-				foreach(string requested_version in requested_versions){
-					
-					LinuxKernel kern_requested = null;
-					foreach(var kern in LinuxKernel.kernel_list){
-						if (kern.name == requested_version){
-							kern_requested = kern;
-							break;
-						}
-					}
-
-					if (kern_requested == null){
-						
-						var msg = _("Could not find requested version");
-						msg += ": %s".printf(requested_version);
-						log_error(msg);
-						
-						log_error(_("Run 'ukuu --list' and use the version string listed in first column"));
-						
-						exit(1);
-					}
-
-					list.add(kern_requested);
-				}
-
-				if (list.size > 1){
-					if (args[k-1] == "--remove"){
-						return LinuxKernel.remove_kernels(list);
-					}
-					else if (args[k-1] == "--download"){
-						return LinuxKernel.download_kernels(list);
-					}
-					else{
-						exit(1); // not supported
-					}
-				}
-				else{
-					if (args[k-1] == "--remove"){
-						return list[0].remove(true);
-					}
-					else if (args[k-1] == "--install"){
-						return list[0].install(true);
-					}
-					else{
-						return list[0].download_packages();
-					}
-				}
-
-				break;
-
-			// options without argument --------------------------
-			
-			//case "--option-without-argument": //dummy
-			case "--help":
-			case "--h":
-			case "-h":
-			case "--debug":
-				// already handled - do nothing
-				break;
-
-			// options with argument --------------------------
-
-			//case "--option-with-argument": //dummy
-			case "--user":
-				k += 1;
-				// already handled - do nothing
-				break;
-
-			default:
-				//unknown option - show help and exit
-				log_error(_("Unknown option") + ": %s".printf(args[k]));
-				log_msg(help_message());
-				return false;
+				list.add(kern_requested);
 			}
+
+			if (list.size == 0){
+				log_error(_("No kernels specified"));
+				exit(1);
+			}
+
+			switch(cmd){
+			case "--download":
+				return LinuxKernel.download_kernels(list);
+	
+			case "--remove":
+				return LinuxKernel.remove_kernels(list);
+				
+			case "--install":
+				return list[0].install(true);
+			}
+
+			break;
+			
+		default:
+			// unknown option
+			log_error(_("Command not specified"));
+			log_error(_("Run 'ukuu --help' to list all commands"));
+			break;
 		}
 
 		return true;

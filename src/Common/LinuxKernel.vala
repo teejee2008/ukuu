@@ -356,7 +356,8 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			print_progress_bar_finish();
 
-			foreach(var kern in kernels_to_update){
+			foreach(var kern
+			 in kernels_to_update){
 				kern.load_cached_page();
 			}
 		}
@@ -726,7 +727,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			
 			foreach(var kern in list){
 
-				message += " > %s".printf(kern.version_main);
+				message += " ▰ v%s\n".printf(kern.version_main);
 			}
 
 			message += "\n%s (y/n): ".printf(_("Continue ?"));
@@ -1073,7 +1074,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		var list = new Gee.HashMap<string,string>();
 
 		if (!file_exists(cached_page)){
-			log_error("load_cached_page: " + _("File not found") + ": %s".printf(cached_page));
+			//log_error("load_cached_page: " + _("File not found") + ": %s".printf(cached_page));
 			return;
 		}
 
