@@ -85,6 +85,7 @@ public class AppConsole : GLib.Object {
 		msg += "  --check             " + _("Check for kernel updates") + "\n";
 		msg += "  --notify            " + _("Check for kernel updates and notify current user") + "\n";
 		msg += "  --list              " + _("List all available mainline kernels") + "\n";
+		msg += "  --list-installed    " + _("List installed kernels") + "\n";
 		msg += "  --install-latest    " + _("Install latest kernel") + "\n";
 		msg += "  --install-point     " + _("Install latest point update of current kernel series") + "\n";
 		msg += "  --install <name>    " + _("Install specified mainline kernel") + "\n";
@@ -154,6 +155,7 @@ public class AppConsole : GLib.Object {
 				break;
 
 			case "--list":
+			case "--list-installed":
 			case "--check":
 			case "--notify":
 			case "--install-latest":
@@ -201,6 +203,12 @@ public class AppConsole : GLib.Object {
 			
 			LinuxKernel.print_list();
 
+			break;
+
+		case "--list-installed":
+		
+			LinuxKernel.check_installed();
+			
 			break;
 
 		case "--check":
