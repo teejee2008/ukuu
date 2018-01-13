@@ -1,3 +1,26 @@
+ukuu (18.1) xenial; urgency=medium
+
+  * Console: Added command: --install-latest
+
+  * Console: Added command: --install-point
+  
+  * Console: Added command: --list-installed
+  
+  * Console: Added command: --purge-old-kernels
+
+  * Gtk: Added button for removing older kernels
+
+  * Console: Show progressbar while fetching index
+
+  * Console: --check prints update info instead of listing kernels
+
+  * Added 3 sec timeout when testing internet connectivity
+
+  * Add Croatian translation by gogo
+
+ -- Tony George <tony.george.kol@gmail.com>  Sun, 14 Jan 2018 10:00:00 +0530
+
+
 ukuu (17.12.1) xenial; urgency=medium
 
   * Added support for running ukuu in Wayland session
@@ -14,6 +37,7 @@ ukuu (17.12.1) xenial; urgency=medium
   * Installers now use XZ compression and are smaller in size
 
  -- Tony George <tony.george.kol@gmail.com>  Sat, 23 Dec 2017 10:00:00 +0530
+
 
 ukuu (17.12) xenial; urgency=medium
 

@@ -1204,6 +1204,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 		check_if_initialized();
 
 		foreach(string file_name in deb_list.keys){
+			
 			string file_path = "%s/%s/%s".printf(cache_subdir, NATIVE_ARCH, file_name);
 
 			if (file_exists(file_path) && !file_exists(file_path + ".aria2c")){
@@ -1223,6 +1224,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			mgr.execute();
 
 			while (mgr.is_running()){
+				
 				sleep(200);
 
 				stdout.printf("\r%-60s".printf(mgr.status_line.replace("\n","")));

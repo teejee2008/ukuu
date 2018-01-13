@@ -18,28 +18,28 @@ long_line_column=80
 
 [files]
 current_page=7
-FILE_NAME_0=1017;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FMain.vala;0;4
-FILE_NAME_1=1492;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FConsole%2FAppConsole.vala;0;4
-FILE_NAME_2=797;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FAppGtk.vala;0;4
-FILE_NAME_3=15027;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FMainWindow.vala;0;4
+FILE_NAME_0=1232;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FMain.vala;0;4
+FILE_NAME_1=4125;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FConsole%2FAppConsole.vala;0;4
+FILE_NAME_2=1792;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FAppGtk.vala;0;4
+FILE_NAME_3=10398;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FMainWindow.vala;0;4
 FILE_NAME_4=3432;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2Fmakefile;0;4
-FILE_NAME_5=7530;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FDownloadManager.vala;0;4
+FILE_NAME_5=3756;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FDownloadManager.vala;0;4
 FILE_NAME_6=4258;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FPackage.vala;0;4
-FILE_NAME_7=1068;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FLinuxKernel.vala;0;4
+FILE_NAME_7=26956;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FLinuxKernel.vala;0;4
 FILE_NAME_8=3613;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FTerminalWindow.vala;0;4
 FILE_NAME_9=3323;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FProgressWindow.vala;0;4
 FILE_NAME_10=227;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fmakefile;0;4
 FILE_NAME_11=7099;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FSettingsDialog.vala;0;4
 FILE_NAME_12=71;Conf;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2Fukuu.desktop;0;4
 FILE_NAME_13=3662;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FUpdateNotificationWindow.vala;0;4
-FILE_NAME_14=603;None;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fdebian%2Fchangelog;0;4
+FILE_NAME_14=665;None;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fdebian%2Fchangelog;0;4
 FILE_NAME_15=402;Conf;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fdebian%2Fcontrol;0;4
 FILE_NAME_16=1276;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FAppLock.vala;0;4
 FILE_NAME_17=2457;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FAsyncTask.vala;0;4
 FILE_NAME_18=886;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FOSDNotify.vala;0;4
 FILE_NAME_19=7069;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.FileSystem.vala;0;4
 FILE_NAME_20=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Json.vala;0;4
-FILE_NAME_21=3063;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Logging.vala;0;4
+FILE_NAME_21=2543;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Logging.vala;0;4
 FILE_NAME_22=874;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Misc.vala;0;4
 FILE_NAME_23=4175;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Process.vala;0;4
 FILE_NAME_24=6651;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.System.vala;0;4
@@ -49,10 +49,10 @@ FILE_NAME_27=352;None;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%
 FILE_NAME_28=395;XML;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2Fshare%2Fpolkit-1%2Factions%2Fin.teejeetech.pkexec.ukuu.policy;0;4
 FILE_NAME_29=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FGtk%2FAboutWindow.vala;0;4
 FILE_NAME_30=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FGtk%2FDonationWindow.vala;0;4
-FILE_NAME_31=722;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FGtk%2FGtkHelper.vala;0;4
+FILE_NAME_31=2913;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FGtk%2FGtkHelper.vala;0;4
 
 [VTE]
-last_dir=/mnt/sdcard/projects/linux/ukuu
+last_dir=/data/projects/linux/ukuu
 
 [build-menu]
 ValaFT_00_LB=_Compile

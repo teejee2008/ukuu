@@ -86,8 +86,8 @@ public class AppConsole : GLib.Object {
 		msg += "  --notify            " + _("Check for kernel updates and notify current user") + "\n";
 		msg += "  --list              " + _("List all available mainline kernels") + "\n";
 		msg += "  --list-installed    " + _("List installed kernels") + "\n";
-		msg += "  --install-latest    " + _("Install latest kernel") + "\n";
-		msg += "  --install-point     " + _("Install latest point update of current kernel series") + "\n";
+		msg += "  --install-latest    " + _("Install latest mainline kernel") + "\n";
+		msg += "  --install-point     " + _("Install latest point update for current series") + "\n";
 		msg += "  --install <name>    " + _("Install specified mainline kernel") + "\n";
 		msg += "  --remove <name>     " + _("Remove specified kernel") + "\n";
 		msg += "  --purge-old-kernels " + _("Remove installed kernels older than running kernel") + "\n";
