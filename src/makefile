@@ -43,7 +43,7 @@ app-translations:
 	
 	# update translation files
 	# am ar az bg ca cs da de el en_GB es et eu fr he hi hr hu ia id is it ko lt nb ne nl pl pt pt_BR ro ru sk sr sv tr uk vi zh_CN
-	for lang in fr hr nl pl ru sv; do \
+	for lang in es fr hr nl pl ru sv; do \
 		msgmerge --update -v ../po/${app_name}-$$lang.po ../${app_name}.pot ; \
 	done
 	
@@ -83,7 +83,7 @@ install:
 	install -m 0755 ./share/pixmaps/${app_name}.* "$(DESTDIR)$(sharedir)/pixmaps"
 
 	# translations
-	for lang in fr hr nl pl ru sv; do \
+	for lang in es fr hr nl pl ru sv; do \
 		mkdir -p "$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES"; \
 		msgfmt --check --verbose -o "$(DESTDIR)$(localedir)/$$lang/LC_MESSAGES/${app_name}.mo" ../po/${app_name}-$$lang.po ; \
 	done
