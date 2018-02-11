@@ -1053,7 +1053,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			list += "%s\n".printf(deb);
 		}
 		if (list.length > 0){
-			txt += "<b>%s</b>\n\n%s\n".printf(_("Packages Available (DEB)"), list);
+			txt += "<b>%s</b>\n\n%s".printf(_("Packages Available (DEB)"), list);
 		}
 
 		list = "";
@@ -1061,7 +1061,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			list += "%s\n".printf(deb);
 		}
 		if (list.length > 0){
-			txt += "<b>%s</b>\n\n%s\n".printf(_("Packages Installed"), list);
+			txt += "<b>%s</b>\n\n%s".printf(_("Packages Installed"), list);
 		}
 		
 		return txt;
