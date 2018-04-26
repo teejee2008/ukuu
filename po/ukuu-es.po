@@ -1,0 +1,641 @@
+# Spanish translation for ukuu
+# This file is distributed under the same license as the ukuu package.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ukuu\n"
+"Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
+"POT-Creation-Date: 2017-12-17 16:41+0530\n"
+"PO-Revision-Date: 2018-01-03 02:03-0600\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
+"X-Generator: Poedit 2.0.5\n"
+
+#: Gtk/MainWindow.vala:470
+msgid "About"
+msgstr "Acerca de"
+
+#: Console/AppConsole.vala:103
+msgid "Admin access is required for running this application."
+msgstr ""
+"Se necesitan privilegios administrativos para ejecutar esta aplicación."
+
+#: Utility/AppLock.vala:51
+msgid "Another instance of this application is running"
+msgstr "Se está ejecutando otra instancia de esta aplicación"
+
+#: Utility/Gtk/AboutWindow.vala:348
+#, c-format
+msgid "Artists"
+msgstr "Artistas"
+
+#: Utility/Gtk/AboutWindow.vala:324
+#, c-format
+msgid "Authors"
+msgstr "Autores"
+
+#: Common/LinuxKernel.vala:1036
+msgid "Available Kernels"
+msgstr "Núcleos disponibles"
+
+#: Utility/Gtk/AboutWindow.vala:295
+msgid "Back"
+msgstr "Atrás"
+
+#: Gtk/MainWindow.vala:785
+msgid "Booting previous kernels"
+msgstr "Arrancando núcleos anteriores"
+
+#: Utility/Gtk/CustomMessageDialog.vala:172 Utility/Gtk/GtkHelper.vala:122
+#: Gtk/ProgressWindow.vala:138 Gtk/UpdateNotificationWindow.vala:167
+#: Gtk/TerminalWindow.vala:168
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: Gtk/MainWindow.vala:426
+msgid "Changes"
+msgstr "Cambios"
+
+#: Gtk/SettingsDialog.vala:122
+msgid "Check every"
+msgstr "Comprobar cada"
+
+#: Console/AppConsole.vala:83
+msgid "Check for kernel updates"
+msgstr "Buscar actualizaciones del núcleo"
+
+#: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:178
+msgid "Close"
+msgstr "Cerrar"
+
+#: Common/Main.vala:101
+msgid "Commands listed below are not available on this system"
+msgstr ""
+"Las órdenes enumeradas a continuación no están disponibles en este sistema"
+
+#: Utility/Gtk/AboutWindow.vala:332
+#, c-format
+msgid "Contributions"
+msgstr "Contribuciones"
+
+#: Console/AppConsole.vala:213 Gtk/MainWindow.vala:103
+msgid "Could not find requested version"
+msgstr "No se pudo encontrar la versión solicitada"
+
+#: Utility/TeeJee.FileSystem.vala:349 Utility/TeeJee.FileSystem.vala:352
+#: Utility/TeeJee.FileSystem.vala:378
+msgid "Created directory"
+msgstr "Se creó el directorio"
+
+#: Utility/Gtk/AboutWindow.vala:282 Utility/Gtk/AboutWindow.vala:299
+msgid "Credits"
+msgstr "Créditos"
+
+#: Gtk/SettingsDialog.vala:155
+msgid "Day(s)"
+msgstr "Días"
+
+#: Utility/TeeJee.FileSystem.vala:375
+msgid "Deleted directory"
+msgstr "Se eliminó el directorio"
+
+#: Utility/Gtk/DonationWindow.vala:54
+msgid ""
+"Did you find this software useful?\n"
+"\n"
+"You can buy me a coffee or make a donation via PayPal to show your support. "
+"Or just drop me an email and say Hi. This application is completely free and "
+"will continue to remain that way. Your contributions will help in keeping "
+"this project alive and improving it further.\n"
+"\n"
+"Feel free to send me an email if you find any issues in this application or "
+"if you need any changes. Suggestions and feedback are always welcome.\n"
+"\n"
+"Thanks,\n"
+"Tony George\n"
+"(teejeetech@gmail.com)"
+msgstr ""
+"¿Le pareció de utilidad este programa?\n"
+"\n"
+"Puede comprarme un café o realizar un donativo a través de PayPal para "
+"mostrar su apoyo. O bien, escríbame un mensaje para saludar. Esta aplicación "
+"es completamente gratuita y seguirá siéndolo. Sus contribuciones ayudan a "
+"que este proyecto permanezca activo y en mejora.\n"
+"\n"
+"No dude en enviarme un mensaje por correo electrónico si halla problemas en "
+"la aplicación o si necesita que se le hagan modificaciones. Se acogen con "
+"satisfacción las sugerencias y los comentarios.\n"
+"\n"
+"Gracias.\n"
+"Tony George\n"
+"(teejeetech@gmail.com)"
+
+#: Utility/TeeJee.FileSystem.vala:509
+msgid "Dir not found"
+msgstr "No se encontró el directorio"
+
+#: Gtk/SettingsDialog.vala:162
+msgid "Display"
+msgstr "Mostrar"
+
+#: Gtk/SettingsDialog.vala:203
+msgid "Display GRUB menu during boot"
+msgstr "Mostrar menú de GRUB durante el arranque"
+
+#: Common/LinuxKernel.vala:89
+msgid "Distribution"
+msgstr "Distribución"
+
+#: Utility/Gtk/AboutWindow.vala:364
+#, c-format
+msgid "Documenters"
+msgstr "Documentadores"
+
+#: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:458
+msgid "Donate"
+msgstr "Donar"
+
+#: Utility/Gtk/DonationWindow.vala:74
+msgid "Donate with Google Wallet"
+msgstr "Donar con Google Wallet"
+
+#: Utility/Gtk/DonationWindow.vala:67
+msgid "Donate with PayPal"
+msgstr "Donar con PayPal"
+
+#: Utility/Gtk/AboutWindow.vala:372
+#, c-format
+msgid "Donations"
+msgstr "Donaciones"
+
+#: Console/AppConsole.vala:88
+msgid "Download packages for specified kernel"
+msgstr "Descargar paquetes del núcleo especificado"
+
+#: Common/LinuxKernel.vala:1081
+#, c-format
+msgid "Downloading"
+msgstr "Descargando"
+
+#: Utility/TeeJee.Logging.vala:89
+msgid "E"
+msgstr "E"
+
+#: Common/LinuxKernel.vala:1108
+#, c-format
+msgid "ERROR"
+msgstr "ERROR"
+
+#: Utility/Gtk/GtkHelper.vala:18
+msgid "Error"
+msgstr "Error"
+
+#: Utility/TeeJee.FileSystem.vala:221
+msgid "Failed to copy file"
+msgstr "Falló la copia del archivo"
+
+#: Utility/TeeJee.FileSystem.vala:359
+msgid "Failed to create dir"
+msgstr "Falló la creación del directorio"
+
+#: Utility/TeeJee.FileSystem.vala:106
+msgid "Failed to delete file"
+msgstr "Falló la eliminación del archivo"
+
+#: Utility/TeeJee.FileSystem.vala:253
+msgid "Failed to move file"
+msgstr "Falló el traslado del archivo"
+
+#: Utility/TeeJee.FileSystem.vala:162
+msgid "Failed to read file"
+msgstr "Falló la lectura del archivo"
+
+#: Utility/TeeJee.FileSystem.vala:197
+msgid "Failed to write file"
+msgstr "Falló la escritura del archivo"
+
+#: Common/LinuxKernel.vala:385
+msgid "Fetching index from kernel.ubuntu.com..."
+msgstr "Recuperando índice de kernel.ubuntu.com…"
+
+#: Utility/TeeJee.FileSystem.vala:210 Utility/TeeJee.FileSystem.vala:213
+msgid "File copied"
+msgstr "Se copió el archivo"
+
+#: Utility/TeeJee.FileSystem.vala:97 Utility/TeeJee.FileSystem.vala:100
+msgid "File deleted"
+msgstr "Se eliminó el archivo"
+
+#: Utility/TeeJee.FileSystem.vala:662 Utility/TeeJee.FileSystem.vala:711
+msgid "File is missing"
+msgstr "Falta el archivo"
+
+#: Utility/TeeJee.FileSystem.vala:245 Utility/TeeJee.FileSystem.vala:248
+msgid "File moved"
+msgstr "Se trasladó el archivo"
+
+#: Common/LinuxKernel.vala:943 Utility/TeeJee.FileSystem.vala:231
+#: Utility/TeeJee.FileSystem.vala:538
+msgid "File not found"
+msgstr "No se encontró el archivo"
+
+#: Common/Package.vala:133 Common/Package.vala:195
+#, c-format
+msgid "File not found: %s"
+msgstr "No se encontró el archivo: %s"
+
+#: Utility/TeeJee.FileSystem.vala:152 Utility/TeeJee.FileSystem.vala:155
+msgid "File read"
+msgstr "Se consultó el archivo"
+
+#: Utility/TeeJee.FileSystem.vala:187 Utility/TeeJee.FileSystem.vala:190
+msgid "File saved"
+msgstr "Se guardó el archivo"
+
+#: Gtk/SettingsDialog.vala:192
+msgid "GRUB Options"
+msgstr "Opciones de GRUB"
+
+#: Gtk/SettingsDialog.vala:181
+msgid "Hide kernels older than 4.0"
+msgstr "Ocultar núcleos anteriores a 4.0"
+
+#: Gtk/SettingsDialog.vala:170
+msgid "Hide unstable and RC releases"
+msgstr "Ocultar versiones inestables y RC"
+
+#: Gtk/SettingsDialog.vala:153
+msgid "Hour(s)"
+msgstr "Horas"
+
+#: Gtk/UpdateNotificationWindow.vala:168
+msgid "Ignore this update"
+msgstr "Ignorar esta actualización"
+
+#: Common/LinuxKernel.vala:254
+msgid "Index is fresh"
+msgstr "El índice está al día"
+
+#: Common/LinuxKernel.vala:251
+msgid "Index is stale"
+msgstr "El índice es obsoleto"
+
+#: Gtk/MainWindow.vala:360 Gtk/UpdateNotificationWindow.vala:147
+msgid "Install"
+msgstr "Instalar"
+
+#: Console/AppConsole.vala:86
+msgid "Install specified mainline kernel"
+msgstr "Instalar núcleo troncal especificado"
+
+#: Gtk/UpdateNotificationWindow.vala:148
+msgid "Install this kernel"
+msgstr "Instalar este núcleo"
+
+#: Common/LinuxKernel.vala:1156
+msgid "Installation completed with errors"
+msgstr "Instalación finalizada con errores"
+
+#: Common/LinuxKernel.vala:1153
+msgid "Installation completed. A reboot is required to use the new kernel."
+msgstr ""
+"Instalación finalizada. Se necesita reiniciar para utilizar el núcleo nuevo."
+
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:211
+msgid "Installed"
+msgstr "Instalado"
+
+#: Utility/TeeJee.System.vala:275 Gtk/MainWindow.vala:84
+#: Gtk/MainWindow.vala:351 Gtk/MainWindow.vala:646
+msgid "Internet connection is not active"
+msgstr "La conexión a Internet está inactiva"
+
+#: Gtk/MainWindow.vala:153
+msgid "Kernel"
+msgstr "Núcleo"
+
+#: Gtk/MainWindow.vala:501
+msgid "Kernel upgrade utility for Ubuntu-based distributions"
+msgstr ""
+"Herramienta de renovación de núcleo para distribuciones basadas en Ubuntu"
+
+#: Console/AppConsole.vala:85
+msgid "List all available mainline kernels"
+msgstr "Mostrar todos los núcleos troncales disponibles"
+
+#: Gtk/UpdateNotificationWindow.vala:158
+msgid "List available kernels"
+msgstr "Mostrar núcleos disponibles"
+
+#: Gtk/MainWindow.vala:786
+msgid ""
+"Mainline kernels can sometimes cause problems if there are proprietary "
+"drivers installed on your system. These issues include:\n"
+"\n"
+"\\342\\226\\260 WiFi not working\n"
+"\\342\\226\\260 Black screen on startup\n"
+"\\342\\226\\260 Random system freeze\n"
+"\n"
+"If you face any of these issues there is no need to panic.\n"
+"\n"
+"\\342\\226\\260 Reboot your system\n"
+"\\342\\226\\260 Select 'Advanced Boot Options' from the GRUB boot menu\n"
+"\\342\\226\\260 Select an older kernel from the list displayed on this "
+"screen\n"
+"\\342\\226\\260 Your system will boot using the selected kernel\n"
+"\\342\\226\\260 You can now uninstall the kernel that is causing issues\n"
+msgstr ""
+"Los núcleos troncales en ocasiones pueden causar problemas si se instalaron "
+"controladores privativos en el sistema, por mencionar algunos:\n"
+"\n"
+"\\342\\226\\260 Wifi disfuncional\n"
+"\\342\\226\\260 Pantalla negra al arrancar\n"
+"\\342\\226\\260 Bloqueos del sistema fortuitos\n"
+"\n"
+"No se alarme si se topa con alguno de estos problemas.\n"
+"\n"
+"\\342\\226\\260 Reinicie el sistema\n"
+"\\342\\226\\260 Seleccione «Opciones de arranque avanzadas» en el menú de "
+"GRUB\n"
+"\\342\\226\\260 Elija un núcleo anterior de la lista que aparece en "
+"pantalla\n"
+"\\342\\226\\260 El sistema arrancará utilizando el núcleo seleccionado\n"
+"\\342\\226\\260 Ahora podrá desinstalar el núcleo problemático\n"
+
+#: Utility/Gtk/GtkHelper.vala:272
+msgid "Missing Icon"
+msgstr "Falta el icono"
+
+#: Gtk/MainWindow.vala:369
+msgid "Multiple Kernels Selected"
+msgstr "Se seleccionaron varios núcleos"
+
+#: Console/AppConsole.vala:195
+msgid "Multiple kernels selected for installation. Select only one."
+msgstr "Se seleccionaron varios núcleos para su instalación. Elija solo uno."
+
+#: Utility/Gtk/CustomMessageDialog.vala:177
+msgid "No"
+msgstr "No"
+
+#: Gtk/MainWindow.vala:84 Gtk/MainWindow.vala:351 Gtk/MainWindow.vala:646
+msgid "No Internet"
+msgstr "No hay Internet"
+
+#: Console/AppConsole.vala:349 Gtk/MainWindow.vala:780
+msgid "No updates found"
+msgstr "No se encontró ninguna actualización"
+
+#: Gtk/MainWindow.vala:372 Gtk/MainWindow.vala:383
+msgid "Not Selected"
+msgstr "No seleccionado"
+
+#: Gtk/SettingsDialog.vala:67
+msgid "Notification"
+msgstr "Notificación"
+
+#: Gtk/SettingsDialog.vala:74
+msgid "Notify if a major release is available"
+msgstr "Notificar si hay una versión importante disponible"
+
+#: Gtk/SettingsDialog.vala:85
+msgid "Notify if a point release is available"
+msgstr "Notificar si hay una versión puntual disponible"
+
+#: Console/AppConsole.vala:84
+msgid "Notify if kernel update is available"
+msgstr "Notificar si hay una actualización de núcleo disponible"
+
+#: Common/LinuxKernel.vala:1099 Utility/Gtk/CustomMessageDialog.vala:167
+#: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/GtkHelper.vala:121
+#: Utility/Gtk/DonationWindow.vala:95
+#, c-format
+msgid "OK"
+msgstr "Aceptar"
+
+#: Console/AppConsole.vala:81 Gtk/AppGtk.vala:181
+msgid "Options"
+msgstr "Opciones"
+
+#: Common/LinuxKernel.vala:922
+#, c-format
+msgid "Packages Available (DEB)"
+msgstr "Paquetes disponibles (DEB)"
+
+#: Common/LinuxKernel.vala:930
+#, c-format
+msgid "Packages Installed"
+msgstr "Paquetes instalados"
+
+#: Common/Main.vala:102
+msgid "Please install required packages and try again"
+msgstr "Instale los paquetes requeridos e inténtelo de nuevo"
+
+#: Common/LinuxKernel.vala:1177
+msgid "Preparing to remove selected kernels"
+msgstr "Preparándose para desinstalar los núcleos seleccionados"
+
+#: Gtk/AppGtk.vala:183
+msgid "Print debug information"
+msgstr "Mostrar información de depuración"
+
+#: Gtk/MainWindow.vala:344
+msgid "Refresh"
+msgstr "Actualizar"
+
+#: Gtk/MainWindow.vala:531
+msgid "Refreshing..."
+msgstr "Actualizando…"
+
+#: Gtk/MainWindow.vala:377
+msgid "Remove"
+msgstr "Quitar"
+
+#: Console/AppConsole.vala:90
+msgid "Remove files from application cache"
+msgstr "Quitar archivos de la antememoria de la aplicación"
+
+#: Console/AppConsole.vala:87
+msgid "Remove specified mainline kernel"
+msgstr "Quitar el núcleo troncal especificado"
+
+#: Console/AppConsole.vala:217
+msgid "Run 'ukuu --list' and use the version string listed in first column"
+msgstr ""
+"Ejecute «ukuu --list» y use la cadena de versión mostrada en la primera "
+"columna"
+
+#: Console/AppConsole.vala:106
+msgid "Run the application as admin with pkexec or sudo."
+msgstr "Ejecute la aplicación con permisos administrativos con pkexec o sudo."
+
+#: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:211
+msgid "Running"
+msgstr "En ejecución"
+
+#: Gtk/MainWindow.vala:369
+msgid "Select a single kernel to install"
+msgstr "Seleccione un solo núcleo para instalarlo"
+
+#: Gtk/MainWindow.vala:372
+msgid "Select the kernel to install"
+msgstr "Seleccione el núcleo que se instalará"
+
+#: Gtk/MainWindow.vala:383
+msgid "Select the kernels to remove"
+msgstr "Seleccione los núcleos que se desinstalarán"
+
+#: Common/LinuxKernel.vala:1172
+msgid ""
+"Selected kernel is currently running and cannot be removed.\n"
+" Install another kernel before removing this one."
+msgstr ""
+"El núcleo seleccionado está en ejecución y no puede desinstalarse.\n"
+"Instale otro núcleo antes de desinstalar este."
+
+#: Utility/Gtk/DonationWindow.vala:81
+msgid "Send Email"
+msgstr "Enviar correo electrónico"
+
+#: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:437
+msgid "Settings"
+msgstr "Configuración"
+
+#: Gtk/UpdateNotificationWindow.vala:157
+msgid "Show"
+msgstr "Mostrar"
+
+#: Gtk/AppGtk.vala:184
+msgid "Show all options"
+msgstr "Mostrar todas las opciones"
+
+#: Gtk/SettingsDialog.vala:96
+msgid "Show notification bubble on desktop"
+msgstr "Mostrar globo de notificación en el escritorio"
+
+#: Gtk/SettingsDialog.vala:107
+msgid "Show notification dialog"
+msgstr "Mostrar cuadro de diálogo de notificación"
+
+#: Gtk/MainWindow.vala:199
+msgid "Status"
+msgstr "Estado"
+
+#: Utility/TeeJee.Process.vala:511
+msgid "Stopped"
+msgstr "Detenido"
+
+#: Console/AppConsole.vala:79 Gtk/AppGtk.vala:179
+msgid "Syntax"
+msgstr "Sintaxis"
+
+#: Common/LinuxKernel.vala:103
+msgid "System architecture"
+msgstr "Arquitectura del sistema"
+
+#: Utility/Gtk/AboutWindow.vala:340
+#, c-format
+msgid "Third Party Tools"
+msgstr "Herramientas de terceros"
+
+#: Common/LinuxKernel.vala:1122 Gtk/MainWindow.vala:641
+msgid "This kernel is already installed."
+msgstr "Este núcleo ya se instaló."
+
+#: Common/LinuxKernel.vala:1230
+msgid ""
+"This kernel is currently running and cannot be removed.\n"
+" Install another kernel before removing this one."
+msgstr ""
+"Este núcleo está en ejecución y no se puede desinstalar.\n"
+"Instale otro núcleo antes de desinstalar este."
+
+#: Gtk/SettingsDialog.vala:223
+msgid ""
+"Time (in seconds) to display the GRUB menu\n"
+"\n"
+"0 = Do not show menu\n"
+"-1 = Show indefinitely till user selects"
+msgstr ""
+"Tiempo (en segundos) para mostrar el menú de GRUB\n"
+"\n"
+"0 = No mostrar el menú\n"
+"-1 = Mostrar indefinidamente hasta que el usuario seleccione algo"
+
+#: Utility/Gtk/AboutWindow.vala:356
+#, c-format
+msgid "Translators"
+msgstr "Traductores"
+
+#: Common/LinuxKernel.vala:1214 Common/LinuxKernel.vala:1272
+msgid "Un-install completed"
+msgstr "Desinstalación finalizada"
+
+#: Common/LinuxKernel.vala:1217 Common/LinuxKernel.vala:1275
+msgid "Un-install completed with errors"
+msgstr "Desinstalación finalizada con errores"
+
+#: Console/AppConsole.vala:270 Gtk/AppGtk.vala:166
+msgid "Unknown option"
+msgstr "Opción desconocida"
+
+#: Gtk/SettingsDialog.vala:210
+msgid ""
+"Updates the GRUB menu after installing or removing kernels, so that the menu "
+"is displayed for 2 seconds at boot time. This will help you recover from a "
+"bad kernel update by selecting another kernel to boot. During boot, use the "
+"'Advanced options for Ubuntu' menu entry to select another kernel.\n"
+"\n"
+"0 = Do not show menu\n"
+"-1 = Show indefinitely till user selects"
+msgstr ""
+"Actualiza el menú de GRUB tras instalar o quitar núcleos para que este "
+"aparezca por dos segundos durante el arranque. Esto le ayudará a recuperarse "
+"de una actualización de núcleo problemática permitiéndole elegir otro núcleo "
+"para arrancar. Durante el arranque, utilice «Opciones avanzadas para Ubuntu» "
+"para elegir otro núcleo.\n"
+"\n"
+"0 = No mostrar el menú\n"
+"-1 = Mostrar indefinidamente hasta que el usuario seleccione algo"
+
+#: Common/LinuxKernel.vala:1343
+msgid "Updating GRUB menu"
+msgstr "Actualizando menú de GRUB"
+
+#: Console/AppConsole.vala:89
+msgid "Use specified user's cache directory"
+msgstr "Utilizar directorio de antememoria de usuario especificado"
+
+#: Console/AppConsole.vala:144 Gtk/AppGtk.vala:109
+msgid "Using cache directory"
+msgstr "Utilizando directorio de antememoria"
+
+#: Gtk/MainWindow.vala:182
+msgid "Version"
+msgstr "Versión"
+
+#: Utility/Gtk/DonationWindow.vala:88
+msgid "Visit Website"
+msgstr "Visitar sitio web"
+
+#: Utility/TeeJee.Logging.vala:89
+msgid "W"
+msgstr "W"
+
+#: Gtk/SettingsDialog.vala:157
+msgid "Week(s)"
+msgstr "Semanas"
+
+#: Utility/Gtk/CustomMessageDialog.vala:176
+msgid "Yes"
+msgstr "Sí"
+
+#: Utility/AppLock.vala:56
+msgid "[Warning] Deleted invalid lock"
+msgstr "[Atención] Se eliminó un bloqueo no válido"
