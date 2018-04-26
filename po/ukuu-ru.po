@@ -146,7 +146,7 @@ msgstr "Вид"
 
 #: Gtk/SettingsDialog.vala:203
 msgid "Display GRUB menu during boot"
-msgstr ""
+msgstr "Отображать меню GRUB во время загрузки"
 
 #: Common/LinuxKernel.vala:89
 msgid "Distribution"
@@ -264,9 +264,8 @@ msgid "File saved"
 msgstr "Файловая система"
 
 #: Gtk/SettingsDialog.vala:192
-#, fuzzy
 msgid "GRUB Options"
-msgstr "Параметры"
+msgstr "Настройки GRUB"
 
 #: Gtk/SettingsDialog.vala:181
 msgid "Hide kernels older than 4.0"
@@ -329,7 +328,7 @@ msgstr "Ядро"
 
 #: Gtk/MainWindow.vala:501
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
-msgstr "Программа для обновления ядра для дистрибутивов на базе Ubuntu"
+msgstr "Программа обновления ядра для дистрибутивов на базе Ubuntu"
 
 #: Console/AppConsole.vala:85
 msgid "List all available mainline kernels"
@@ -436,9 +435,8 @@ msgid "Print debug information"
 msgstr "Распечатать отладочную информацию"
 
 #: Gtk/MainWindow.vala:344
-#, fuzzy
 msgid "Refresh"
-msgstr "Обновление..."
+msgstr "Обновить"
 
 #: Gtk/MainWindow.vala:531
 msgid "Refreshing..."
@@ -447,6 +445,14 @@ msgstr "Обновление..."
 #: Gtk/MainWindow.vala:377
 msgid "Remove"
 msgstr "Удалить"
+
+#: Gtk/MainWindow.vala:425
+msgid "Purge"
+msgstr "Очистить"
+
+#: Gtk/MainWindow.vala:426
+msgid "Remove installed kernels older than running kernel"
+msgstr "Удалить более старшие установленные ядра, чем используемое"
 
 #: Console/AppConsole.vala:90
 msgid "Remove files from application cache"
@@ -554,6 +560,10 @@ msgid ""
 "0 = Do not show menu\n"
 "-1 = Show indefinitely till user selects"
 msgstr ""
+"Время отображения меню GRUB (в секундах)\n"
+"\n"
+"0 = Не отображать меню\n"
+"-1 = Отображать до выбора пользователя"
 
 #: Utility/Gtk/AboutWindow.vala:356
 #, c-format
@@ -582,10 +592,17 @@ msgid ""
 "0 = Do not show menu\n"
 "-1 = Show indefinitely till user selects"
 msgstr ""
+"Обновляет меню GRUB после установки или удаления ядер, после чего оно "
+"отображается на 2 секунды после загрузки. Это даст возможность выбрать "
+"другое ядро после неудачного обновления. Во время загрузки выберите "
+"пункт меню 'Advanced options for Ubuntu' для запуска другого ядра.\n"
+"\n"
+"0 = Не отображать меню\n"
+"-1 = Отображать до выбора пользователя"
 
 #: Common/LinuxKernel.vala:1343
 msgid "Updating GRUB menu"
-msgstr ""
+msgstr "Обновление меню GRUB"
 
 #: Console/AppConsole.vala:89
 msgid "Use specified user's cache directory"
@@ -618,132 +635,3 @@ msgstr ""
 #: Utility/AppLock.vala:56
 msgid "[Warning] Deleted invalid lock"
 msgstr "[Внимание] Удалена неправильная блокировка"
-
-#~ msgid "Open Ukuu"
-#~ msgstr "Открыть Ukuu"
-
-#~ msgid "Could not find file"
-#~ msgstr "Не удалось найти файл"
-
-#~ msgid "Cron job added"
-#~ msgstr "Задача для cron добавлена"
-
-#~ msgid "Cron job removed"
-#~ msgstr "Задача для cron удалена"
-
-#~ msgid "Device"
-#~ msgstr "Устройство"
-
-#~ msgid "Device is unlocked"
-#~ msgstr "Устройство разблокировано"
-
-#~ msgid "Device name is empty!"
-#~ msgstr "Имя устройства отсутствует!"
-
-#~ msgid "Encrypted Device"
-#~ msgstr "Зашифрованное устройство"
-
-#~ msgid "Enter passphrase to unlock '%s'"
-#~ msgstr "Введите ключевую фразу для разблокировки '%s'"
-
-#~ msgid "Enter path or browse for directory"
-#~ msgstr "Введите путь или откройте папку"
-
-#~ msgid "Failed to add cron job"
-#~ msgstr "Не удалось добавить задачу в cron"
-
-#~ msgid "Failed to export crontab file"
-#~ msgstr "Не удалось экспортировать файл crontab"
-
-#~ msgid "Failed to get partition list"
-#~ msgstr "Не удалось получить список разделов"
-
-#~ msgid "Failed to install crontab file"
-#~ msgstr "Не удалось установить файл crontab"
-
-#~ msgid "Failed to read cron tab"
-#~ msgstr "Не удалось прочитать crontab"
-
-#~ msgid "Failed to remove cron job"
-#~ msgstr "Не удалось удалить задачу cron"
-
-#~ msgid "Failed to unlock device"
-#~ msgstr "Не удалось разблокировать устройство"
-
-#~ msgid "Failed to unmount"
-#~ msgstr "Не удалось отмонтировать"
-
-#~ msgid "Label"
-#~ msgstr "Метка"
-
-#~ msgid "Model"
-#~ msgstr "Модель"
-
-#~ msgid "Mounted"
-#~ msgstr "Примонтировано"
-
-#~ msgid "Open"
-#~ msgstr "Открыть"
-
-#~ msgid "Parent Device"
-#~ msgstr "Основное устройство"
-
-#~ msgid "Revision"
-#~ msgstr "Редакция"
-
-#~ msgid "Root Access Required"
-#~ msgstr "Требуются права Root"
-
-#~ msgid "Root access is required for running this application."
-#~ msgstr "Для запуска этой программы требуются права Root"
-
-#~ msgid "Select Path"
-#~ msgstr "Выберите путь"
-
-#~ msgid "Serial"
-#~ msgstr "Серия"
-
-#~ msgid "Size"
-#~ msgstr "Размер"
-
-#~ msgid "System"
-#~ msgstr "Система"
-
-#~ msgid "This device is not encrypted"
-#~ msgstr "Устройство не зашифровано"
-
-#~ msgid "Type"
-#~ msgstr "Тип"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
-
-#~ msgid "Unlocked device is mapped to '%s'"
-#~ msgstr "Разблокированное устройство связано с '%s'"
-
-#~ msgid "Unlocked successfully"
-#~ msgstr "Успешно разблокировано"
-
-#~ msgid "Unmounting from"
-#~ msgstr "Отмонтирование от"
-
-#~ msgid "Used"
-#~ msgstr "Используется"
-
-#~ msgid "User cancelled the password prompt"
-#~ msgstr "Пользователь отменил подсказку пароля"
-
-#~ msgid "Vendor"
-#~ msgstr "Производитель"
-
-#~ msgid "Wrong password"
-#~ msgstr "Неверный пароль"
-
-#~ msgid "crontab file exported"
-#~ msgstr "crontab файл экспортирован"
-
-#~ msgid "crontab file installed"
-#~ msgstr "crontab файл установлен"
-
-#~ msgid "device"
-#~ msgstr "устройство"
