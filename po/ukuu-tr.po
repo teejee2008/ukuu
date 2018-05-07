@@ -1,108 +1,108 @@
-# French translation for ukuu
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Tony George (teejeetech@gmail.com)
 # This file is distributed under the same license as the ukuu package.
-# Yolateng0 <yolateng0ATyo.nohost.me>, 2017.
+# Gökhan Gökkaya <gokhanlnx@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-12-17 16:41+0530\n"
-"PO-Revision-Date: 2017-04-13 \n"
-"Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
-"Language-Team: French\n"
-"Language: fr\n"
+"POT-Creation-Date: 2018-03-24 21:00+0300\n"
+"PO-Revision-Date: 2018-03-30 20:59+0300\n"
+"Language-Team: Turkish\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
-"X-Generator: \n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Last-Translator: Gökhan Gökkaya <gokhanlnx@gmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: Gtk/MainWindow.vala:470
 msgid "About"
-msgstr "A propos"
+msgstr "Hakkında"
 
 #: Console/AppConsole.vala:103
 msgid "Admin access is required for running this application."
-msgstr "Accès administrateur indispensable pour cette application."
+msgstr "Bu uygulamayı çalıştırmak için yönetici izni gerekiyor."
 
 #: Utility/AppLock.vala:51
 msgid "Another instance of this application is running"
-msgstr "Une autre instance de l'application est en cours"
+msgstr "Bu uygulamanın başka bir örneği çalışıyor"
 
 #: Utility/Gtk/AboutWindow.vala:348
 #, c-format
 msgid "Artists"
-msgstr "Artistes"
+msgstr "Sanatçılar"
 
 #: Utility/Gtk/AboutWindow.vala:324
 #, c-format
 msgid "Authors"
-msgstr "Auteurs"
+msgstr "Yazar"
 
 #: Common/LinuxKernel.vala:1036
 msgid "Available Kernels"
-msgstr "Kernels disponibles"
+msgstr "Mevcut Çekirdekler"
 
 #: Utility/Gtk/AboutWindow.vala:295
 msgid "Back"
-msgstr "Retour"
+msgstr "Geri"
 
 #: Gtk/MainWindow.vala:785
 msgid "Booting previous kernels"
-msgstr "Booter sur un kernel précédent"
+msgstr "Önceki çekirdeklerin önyüklenmesi"
 
 #: Utility/Gtk/CustomMessageDialog.vala:172 Utility/Gtk/GtkHelper.vala:122
 #: Gtk/ProgressWindow.vala:138 Gtk/UpdateNotificationWindow.vala:167
 #: Gtk/TerminalWindow.vala:168
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "İptal"
 
 #: Gtk/MainWindow.vala:426
 msgid "Changes"
-msgstr "Changements"
+msgstr "Değişiklikler"
 
 #: Gtk/SettingsDialog.vala:122
 msgid "Check every"
-msgstr "Vérifier toutes les "
+msgstr "Kontrol aralığı"
 
 #: Console/AppConsole.vala:83
 msgid "Check for kernel updates"
-msgstr "Checker les mises à jour des kernels"
+msgstr "Çekirdek güncellemelerini kontrol et"
 
 #: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:178
 msgid "Close"
-msgstr "Fermer"
+msgstr "Kapat"
 
 #: Common/Main.vala:101
 msgid "Commands listed below are not available on this system"
-msgstr "Les commandes listées ne sont pas valables pour ce système"
+msgstr "Aşağıda listelenen komutlar bu sistemde mevcut değil"
 
 #: Utility/Gtk/AboutWindow.vala:332
 #, c-format
 msgid "Contributions"
-msgstr "Contributions"
+msgstr "Destek verenler"
 
 #: Console/AppConsole.vala:213 Gtk/MainWindow.vala:103
 msgid "Could not find requested version"
-msgstr "Impossible de trouver la version demandée"
+msgstr "İstenen sürüm bulunamadı"
 
 #: Utility/TeeJee.FileSystem.vala:349 Utility/TeeJee.FileSystem.vala:352
 #: Utility/TeeJee.FileSystem.vala:378
-#, fuzzy
 msgid "Created directory"
-msgstr "Utiliser le dossier cache"
+msgstr "Dizin oluşturuldu"
 
 #: Utility/Gtk/AboutWindow.vala:282 Utility/Gtk/AboutWindow.vala:299
 msgid "Credits"
-msgstr "Crédits"
+msgstr "Katkı sağlayanlar"
 
 #: Gtk/SettingsDialog.vala:155
 msgid "Day(s)"
-msgstr "Jour(s)"
+msgstr "Gün"
 
 #: Utility/TeeJee.FileSystem.vala:375
 msgid "Deleted directory"
-msgstr "Dossier éffacé"
+msgstr "Silinen dizin"
 
 #: Utility/Gtk/DonationWindow.vala:54
 msgid ""
@@ -120,447 +120,439 @@ msgid ""
 "Tony George\n"
 "(teejeetech@gmail.com)"
 msgstr ""
-"Vous trouvez ce logiciel super utile?\n"
+"Bu yazılımı faydalı buldunuz mu?\n"
 "\n"
-"Vous pouvez m'acheter un café ou faire un don via PayPal pour montrer votre "
-"soutien. Ou envoyez-moi simplement un courriel et dites moi bonjour. Cette "
-"application est entièrement gratuite et continuera de rester de cette façon. "
-"Vos contributions contribueront à maintenir ce projet vivant et l'améliorer "
-"encore.\n"
+"Bana bir kahve ısmarlayabilir ya da PayPal ile bağışta bulunarak desteğinizi "
+"gösterebilirsiniz. Ya da bana bir e posta bırakıp Merhaba (Hi) "
+"diyebilirsiniz. Bu yazılım tamamen özgürdür ve öyle kalmaya devam edecktir. "
+"Katkılarınız bu projeyi canlı tutmak ve daha da geliştirmek için yardımcı "
+"olacaktır.\n"
 "\n"
-"N'hésitez pas à m'envoyer un courriel si vous trouvez des problèmes dans "
-"cette application ou si vous avez besoin de modifications. Les suggestions "
-"et les commentaires sont toujours les bienvenus.\n"
+"Eğer bir sorun bulursanız veya bir değişikliğe ihtiyaç duyuyorsanız bana bir "
+"e-posta göndermekten çekinmeyin. Öneri ve geribildirim her zaman açığız.\n"
 "\n"
-"Merci beaucoup \n"
+"Teşekkürler,\n"
 "Tony George\n"
 "(teejeetech@gmail.com)"
 
 #: Utility/TeeJee.FileSystem.vala:509
 msgid "Dir not found"
-msgstr "Dossier non trouvé"
+msgstr "Dizin bulunamadı"
 
 #: Gtk/SettingsDialog.vala:162
 msgid "Display"
-msgstr "Afficher"
+msgstr "Gösterim"
 
 #: Gtk/SettingsDialog.vala:203
 msgid "Display GRUB menu during boot"
-msgstr "Afficher le menu du GRUB durant le boot"
+msgstr "Açılış sırasında GRUB menüsü gösterimi"
 
 #: Common/LinuxKernel.vala:89
 msgid "Distribution"
-msgstr "Distribution"
+msgstr "Dağıtım"
 
 #: Utility/Gtk/AboutWindow.vala:364
 #, c-format
 msgid "Documenters"
-msgstr "Documentalistes"
+msgstr "Belgelendirenler"
 
 #: Utility/Gtk/DonationWindow.vala:36 Gtk/MainWindow.vala:458
 msgid "Donate"
-msgstr "Dons"
+msgstr "Bağış"
 
 #: Utility/Gtk/DonationWindow.vala:74
 msgid "Donate with Google Wallet"
-msgstr "Dons par Google Wallet"
+msgstr "Google Wallet ile bağış"
 
 #: Utility/Gtk/DonationWindow.vala:67
 msgid "Donate with PayPal"
-msgstr "Dons avec PayPal"
+msgstr "Paypal ile bağış"
 
 #: Utility/Gtk/AboutWindow.vala:372
 #, c-format
 msgid "Donations"
-msgstr "Donations"
+msgstr "Bağışlar"
 
 #: Console/AppConsole.vala:88
 msgid "Download packages for specified kernel"
-msgstr "Télécharger les paquets pour des kernels spécifiques"
+msgstr "Belirtilen çekirdek için paketleri indir"
 
 #: Common/LinuxKernel.vala:1081
 #, c-format
 msgid "Downloading"
-msgstr "Téélhargement"
+msgstr "İndiriliyor"
 
 #: Utility/TeeJee.Logging.vala:89
 msgid "E"
-msgstr "E"
+msgstr "H"
 
 #: Common/LinuxKernel.vala:1108
 #, c-format
 msgid "ERROR"
-msgstr "Erreur"
+msgstr "HATA"
 
 #: Utility/Gtk/GtkHelper.vala:18
 msgid "Error"
-msgstr "Erreur"
+msgstr "Hata"
 
 #: Utility/TeeJee.FileSystem.vala:221
 msgid "Failed to copy file"
-msgstr "Impossible de copier le fichier"
+msgstr "Dosya kopyalama başarısız"
 
 #: Utility/TeeJee.FileSystem.vala:359
 msgid "Failed to create dir"
-msgstr "Impossible de créer un nouveau dossier"
+msgstr "Dizin oluşturma başarısız"
 
 #: Utility/TeeJee.FileSystem.vala:106
 msgid "Failed to delete file"
-msgstr "Impossible d effacer le fichier"
+msgstr "Dosya silme başarısız"
 
 #: Utility/TeeJee.FileSystem.vala:253
 msgid "Failed to move file"
-msgstr "Impossible de bouger le fichier"
+msgstr "Dosya taşıma başarısız"
 
 #: Utility/TeeJee.FileSystem.vala:162
 msgid "Failed to read file"
-msgstr "Impossible de lire le fichier"
+msgstr "Dosya okuma başarısız"
 
 #: Utility/TeeJee.FileSystem.vala:197
 msgid "Failed to write file"
-msgstr "Impossible d écrire le fichier"
+msgstr "Dosya yazma başarısız"
 
 #: Common/LinuxKernel.vala:385
 msgid "Fetching index from kernel.ubuntu.com..."
-msgstr "Index de récupération de kernel.ubuntu.com..."
+msgstr "kernel.ubuntu.com alanından içerik listesi alınıyor ..."
 
 #: Utility/TeeJee.FileSystem.vala:210 Utility/TeeJee.FileSystem.vala:213
-#, fuzzy
 msgid "File copied"
-msgstr "Fichier copié"
+msgstr "Dosya kopyalandı"
 
 #: Utility/TeeJee.FileSystem.vala:97 Utility/TeeJee.FileSystem.vala:100
-#, fuzzy
 msgid "File deleted"
-msgstr "Fichier éffacé"
+msgstr "Dosya silindi"
 
 #: Utility/TeeJee.FileSystem.vala:662 Utility/TeeJee.FileSystem.vala:711
 msgid "File is missing"
-msgstr "Fichier disparu"
+msgstr "Dosya eksik"
 
 #: Utility/TeeJee.FileSystem.vala:245 Utility/TeeJee.FileSystem.vala:248
-#, fuzzy
 msgid "File moved"
-msgstr "Supprimer"
+msgstr "Dosya taşındı"
 
 #: Common/LinuxKernel.vala:943 Utility/TeeJee.FileSystem.vala:231
 #: Utility/TeeJee.FileSystem.vala:538
 msgid "File not found"
-msgstr "Fichier non trouvé"
+msgstr "Dosya bulunamadı"
 
 #: Common/Package.vala:133 Common/Package.vala:195
 #, c-format
 msgid "File not found: %s"
-msgstr "Fichier non trouvé: %s"
+msgstr "Şu dosya bulunamadı: %s"
 
 #: Utility/TeeJee.FileSystem.vala:152 Utility/TeeJee.FileSystem.vala:155
-#, fuzzy
 msgid "File read"
-msgstr "Impossible de lire le fichier"
+msgstr "Dosya okundu"
 
 #: Utility/TeeJee.FileSystem.vala:187 Utility/TeeJee.FileSystem.vala:190
-#, fuzzy
 msgid "File saved"
-msgstr "Fichier sauvegardé"
+msgstr "Dosya kaydedildi"
 
 #: Gtk/SettingsDialog.vala:192
-#, fuzzy
 msgid "GRUB Options"
-msgstr "GRUB Options"
+msgstr "GRUB seçenekleri"
 
 #: Gtk/SettingsDialog.vala:181
 msgid "Hide kernels older than 4.0"
-msgstr "Masquer les noyaux antérieurs à la version 4,0"
+msgstr "4.0 sürümden düşük çekirdekleri gizle"
 
 #: Gtk/SettingsDialog.vala:170
 msgid "Hide unstable and RC releases"
-msgstr "Cacher les publications instables et version RC"
+msgstr "Kararsız ve RC sürümleri gizle"
 
 #: Gtk/SettingsDialog.vala:153
 msgid "Hour(s)"
-msgstr "Heure(s)"
+msgstr "Saat"
 
 #: Gtk/UpdateNotificationWindow.vala:168
 msgid "Ignore this update"
-msgstr "Ignorer cette mise à jour"
+msgstr "Bu güncellemeyi yoksay"
 
 #: Common/LinuxKernel.vala:254
 msgid "Index is fresh"
-msgstr "L index est à jour"
+msgstr "İçerik listesi güncel"
 
 #: Common/LinuxKernel.vala:251
 msgid "Index is stale"
-msgstr "L'index est obsolète"
+msgstr "İçerik listesi eski"
 
 #: Gtk/MainWindow.vala:360 Gtk/UpdateNotificationWindow.vala:147
 msgid "Install"
-msgstr "Installer"
+msgstr "Kur"
 
 #: Console/AppConsole.vala:86
 msgid "Install specified mainline kernel"
-msgstr "Installer le kernel principal spécifié"
+msgstr "Belirtilen mainline çekirdeğini kur"
 
 #: Gtk/UpdateNotificationWindow.vala:148
 msgid "Install this kernel"
-msgstr "Installer ce kernel"
+msgstr "Bu çekirdeği kur"
 
 #: Common/LinuxKernel.vala:1156
 msgid "Installation completed with errors"
-msgstr "Installation terminée avec des erreurs"
+msgstr "Kurulum hatalarla tamamlandı"
 
 #: Common/LinuxKernel.vala:1153
 msgid "Installation completed. A reboot is required to use the new kernel."
-msgstr "Installation compléte. Un redémarrage est nécessaire pour utiliser le nouveau kernel."
-
+msgstr ""
+"Kurulum tamamlandı. Yeni çekirdeği kullanmak için yeniden başlatma gerekiyor."
 
 #: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:211
 msgid "Installed"
-msgstr "Installé"
+msgstr "Kurulu"
 
 #: Utility/TeeJee.System.vala:275 Gtk/MainWindow.vala:84
 #: Gtk/MainWindow.vala:351 Gtk/MainWindow.vala:646
 msgid "Internet connection is not active"
-msgstr "Connection internet inexistante"
+msgstr "İnternet bağlantısı aktif değil"
 
 #: Gtk/MainWindow.vala:153
 msgid "Kernel"
-msgstr "Kernel"
+msgstr "Çekirdek"
 
 #: Gtk/MainWindow.vala:501
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
-msgstr "Utilitaire de mise à niveau des noyau Kernel pour les distributions basées pour Ubuntu"
+msgstr "Ubuntu tabanlı dağıtımlar için çekirdek güncelleme aracı"
 
 #: Console/AppConsole.vala:85
 msgid "List all available mainline kernels"
-msgstr "Liste de tous les principaux noyaux kernels"
+msgstr "Tüm mainline çekirdeklerini listele"
 
 #: Gtk/UpdateNotificationWindow.vala:158
-#, fuzzy
 msgid "List available kernels"
-msgstr "Liste de tous les principaux noyaux kernels"
+msgstr "Tüm çekirdekleri listele"
 
 #: Gtk/MainWindow.vala:786
 msgid ""
 "Mainline kernels can sometimes cause problems if there are proprietary "
 "drivers installed on your system. These issues include:\n"
 "\n"
-"▰ WiFi not working\n"
-"▰ Black screen on startup\n"
-"▰ Random system freeze\n"
+"\\342\\226\\260 WiFi not working\n"
+"\\342\\226\\260 Black screen on startup\n"
+"\\342\\226\\260 Random system freeze\n"
 "\n"
 "If you face any of these issues there is no need to panic.\n"
 "\n"
-"▰ Reboot your system\n"
-"▰ Select 'Advanced Boot Options' from the GRUB boot menu\n"
-"▰ Select an older kernel from the list displayed on this screen\n"
-"▰ Your system will boot using the selected kernel\n"
-"▰ You can now uninstall the kernel that is causing issues\n"
+"\\342\\226\\260 Reboot your system\n"
+"\\342\\226\\260 Select 'Advanced Boot Options' from the GRUB boot menu\n"
+"\\342\\226\\260 Select an older kernel from the list displayed on this "
+"screen\n"
+"\\342\\226\\260 Your system will boot using the selected kernel\n"
+"\\342\\226\\260 You can now uninstall the kernel that is causing issues\n"
 msgstr ""
-"Certains kernel peuvent poser probleme du à l'absence de drivers"
-"proprietaires installés sur votre systeme. Cela se présente par:\n"
+"Eğer sisteminizde sahipli/tescilli sürücüler kurulu ise, mainline "
+"çekirdekleri bazen sorunlara neden olabilir. Bunlar arasında aşağıdakiler "
+"olabilir:\n"
 "\n"
-"▰ WiFi qui ne fonctionne pas\n"
-"▰ Ecran noir au démarrage\n"
-"▰ Le systeme freeze et se bloque\n"
+"\\342\\226\\260 Kablosuz ağ aygıtının çalışmaması\n"
+"\\342\\226\\260 Sistem açılışının siyah ekranda kalması\n"
+"\\342\\226\\260 Rsstgele sistem donmaları\n"
 "\n"
-"Si vous etes face à ces problemes pas de panique.\n"
+"Bu sorunlardan herhangi biriyle karşılaşırsanız paniğe kapılmayın.\n"
 "\n"
-"▰ Rebooter votre systeme\n"
-"▰ Selectionner 'Advanced Boot Options' dans le menu GRUB boot \n"
-"▰ Selectionner un ancien kernel qui fonctionne\n"
-"▰ Votre système va redémarrer avec le kernel selectionné\n"
-"▰ Vous pouvez supprimer le kernel responsable de cette erreur\n"
+"\\342\\226\\260 Sisteminizi yeniden başlatın\n"
+"\\342\\226\\260 GRUB açılış menüsünden 'Gelişmiş Açılış Seçenekleri'ni "
+"seçin\n"
+"\\342\\226\\260 Bu ekranda listelenenlerden önceki bir çekirdeği seçin\n"
+"\\342\\226\\260 Sisteminiz seçilen çekirdek kullanılarak başlatılacaktır\n"
+"\\342\\226\\260 Şimdi sorun oluşturan çekirdeği kaldırabilirsiniz\n"
 
 #: Utility/Gtk/GtkHelper.vala:272
 msgid "Missing Icon"
-msgstr "Icon introuvable"
+msgstr "Eksik Simge"
 
 #: Gtk/MainWindow.vala:369
 msgid "Multiple Kernels Selected"
-msgstr "Plusieurs kernels selectionnés"
+msgstr "Çoklu Çekirdek Seçildi"
 
 #: Console/AppConsole.vala:195
 msgid "Multiple kernels selected for installation. Select only one."
-msgstr "Multiple kernels selectionnés pour etre installer. Selectionner seulement un."
+msgstr "Kurulum için çoklu çekirdek seçildi. Sadece bir tane seçiniz."
 
 #: Utility/Gtk/CustomMessageDialog.vala:177
 msgid "No"
-msgstr "Non"
+msgstr "Hayır"
 
 #: Gtk/MainWindow.vala:84 Gtk/MainWindow.vala:351 Gtk/MainWindow.vala:646
 msgid "No Internet"
-msgstr "Pas d'Internet"
+msgstr "İnternet Yok"
 
 #: Console/AppConsole.vala:349 Gtk/MainWindow.vala:780
 msgid "No updates found"
-msgstr "Aucune mise à jour trouvée"
+msgstr "Güncelleme bulunamadı"
 
 #: Gtk/MainWindow.vala:372 Gtk/MainWindow.vala:383
 msgid "Not Selected"
-msgstr "Non selectionné"
+msgstr "Seçilen Yok"
 
 #: Gtk/SettingsDialog.vala:67
 msgid "Notification"
-msgstr "Notification"
+msgstr "Bildirim"
 
 #: Gtk/SettingsDialog.vala:74
 msgid "Notify if a major release is available"
-msgstr "Notifiez si une version stable et majeure est disponible"
+msgstr "Ana sürüm mevcutsa bildir"
 
 #: Gtk/SettingsDialog.vala:85
 msgid "Notify if a point release is available"
-msgstr "Notifiez si une version stable Release est disponible"
+msgstr "Ara sürüm mevcutsa bildir"
 
 #: Console/AppConsole.vala:84
 msgid "Notify if kernel update is available"
-msgstr "Notifier si la mise à jour du kernel est disponible"
+msgstr "Çekirdek güncellemesi mevcutsa bildir"
 
 #: Common/LinuxKernel.vala:1099 Utility/Gtk/CustomMessageDialog.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/GtkHelper.vala:121
 #: Utility/Gtk/DonationWindow.vala:95
 #, c-format
 msgid "OK"
-msgstr "OK"
+msgstr "TAMAM"
 
 #: Console/AppConsole.vala:81 Gtk/AppGtk.vala:181
 msgid "Options"
-msgstr "Options"
+msgstr "Seçenekler"
 
 #: Common/LinuxKernel.vala:922
 #, c-format
 msgid "Packages Available (DEB)"
-msgstr "Paquets disponibles (DEB)"
+msgstr "Mevcut Paketler (DEB)"
 
 #: Common/LinuxKernel.vala:930
-#, fuzzy, c-format
+#, c-format
 msgid "Packages Installed"
-msgstr "Paquets Installés"
+msgstr "Paketler Kuruldu"
 
 #: Common/Main.vala:102
 msgid "Please install required packages and try again"
-msgstr "Veuillez installer les paquets requis et réessayer"
+msgstr "Lütfen gerekli paketleri yükleyin ve tekrar deneyin"
 
 #: Common/LinuxKernel.vala:1177
 msgid "Preparing to remove selected kernels"
-msgstr "Préparation à la suppression des kernels selectionnés"
+msgstr "Seçilen çekirdekleri kaldırmak için hazırlanıyor"
 
 #: Gtk/AppGtk.vala:183
 msgid "Print debug information"
-msgstr "Afficher les informations de débogage"
+msgstr "Hata ayıklama bilgisini yazdır"
 
 #: Gtk/MainWindow.vala:344
-#, fuzzy
 msgid "Refresh"
-msgstr "Relancer"
+msgstr "Yenile"
 
 #: Gtk/MainWindow.vala:531
 msgid "Refreshing..."
-msgstr "Rafraichir..."
+msgstr "Yenileniyor..."
 
 #: Gtk/MainWindow.vala:377
 msgid "Remove"
-msgstr "Supprimer"
+msgstr "Kaldır"
 
 #: Console/AppConsole.vala:90
 msgid "Remove files from application cache"
-msgstr "Supprimer les fichiers du cache de l'application"
+msgstr "Dosyaları uygulama önbelleğinden sil"
 
 #: Console/AppConsole.vala:87
 msgid "Remove specified mainline kernel"
-msgstr "Supprimer le Kernel principal sélectionner"
+msgstr "Belirtilen mainline çekirdeğini kaldır"
 
 #: Console/AppConsole.vala:217
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
-"Exécutez 'ukuu --list' et utilisez la chaîne de la version indiquée dans la "
-"première colonne"
+"'ukuu --list' komutunu çalıştırın ve ilk sütunda listelenen sürüm dizesini "
+"kullanın"
 
 #: Console/AppConsole.vala:106
-#, fuzzy
 msgid "Run the application as admin with pkexec or sudo."
-msgstr "Exécutez l'application en tant que root ou utilisez gksu / sudo."
+msgstr "Bu uygulamayı pkexec yada sudo ile yönetici haklarıyla çalıştırın."
 
 #: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:211
 msgid "Running"
-msgstr "En cours"
+msgstr "Çalışıyor"
 
 #: Gtk/MainWindow.vala:369
 msgid "Select a single kernel to install"
-msgstr "Selectionner un seul kernel à installer"
+msgstr "Kurulum için tek çekirdek seçin"
 
 #: Gtk/MainWindow.vala:372
 msgid "Select the kernel to install"
-msgstr "Selectionner le kernel à installer"
+msgstr "Kurulum için çekirdek seçin"
 
 #: Gtk/MainWindow.vala:383
 msgid "Select the kernels to remove"
-msgstr "Selectionner les kernels à supprimer"
+msgstr "Kaldırma için çekirdek seçin"
 
 #: Common/LinuxKernel.vala:1172
-#, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
 msgstr ""
-"Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
-" Installez un autre noyau avant de retirer celui-ci."
+"Seçilen çekirdek şu anda çalışıyor ve kaldırılamıyor.\n"
+" Bunu kaldırmadan önce başka bir çekirdek yükleyin."
 
 #: Utility/Gtk/DonationWindow.vala:81
 msgid "Send Email"
-msgstr "Envoyer courriel"
+msgstr "E Posta Gönder"
 
 #: Gtk/SettingsDialog.vala:57 Gtk/MainWindow.vala:437
 msgid "Settings"
-msgstr "Paramètres"
+msgstr "Ayarlar"
 
 #: Gtk/UpdateNotificationWindow.vala:157
 msgid "Show"
-msgstr "Afficher"
+msgstr "Göster"
 
 #: Gtk/AppGtk.vala:184
 msgid "Show all options"
-msgstr "Afficher toutes les options"
+msgstr "Tüm seçenekleri göster"
 
 #: Gtk/SettingsDialog.vala:96
 msgid "Show notification bubble on desktop"
-msgstr "Afficher la bulle de notification sur le bureau"
+msgstr "Masaüstünde bildirim baloncuğu göster"
 
 #: Gtk/SettingsDialog.vala:107
 msgid "Show notification dialog"
-msgstr "Afficher les notifications"
+msgstr "Bildirim iletişimini göster"
 
 #: Gtk/MainWindow.vala:199
 msgid "Status"
-msgstr "Statut"
+msgstr "Durum"
 
 #: Utility/TeeJee.Process.vala:511
 msgid "Stopped"
-msgstr "Arrếter"
+msgstr "Durduruldu"
 
 #: Console/AppConsole.vala:79 Gtk/AppGtk.vala:179
 msgid "Syntax"
-msgstr "Syntaxe"
+msgstr "Sözdizimi"
 
 #: Common/LinuxKernel.vala:103
 msgid "System architecture"
-msgstr "Architecture du système"
+msgstr "Sistem mimarisi"
 
 #: Utility/Gtk/AboutWindow.vala:340
 #, c-format
 msgid "Third Party Tools"
-msgstr "Outils tiers"
+msgstr "Üçüncü Parti Araçlar"
 
 #: Common/LinuxKernel.vala:1122 Gtk/MainWindow.vala:641
 msgid "This kernel is already installed."
-msgstr "Ce noyau est déjà installé."
+msgstr "Bu çekirdek zaten kurulu."
 
 #: Common/LinuxKernel.vala:1230
 msgid ""
 "This kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
 msgstr ""
-"Ce noyau est en cours d'exécution et ne peut pas être supprimé.\n"
-" Installez un autre noyau avant de retirer celui-ci."
+"Bu çekirdek şu anda çalışıyor ve bu sebeple kaldırılamaz.\n"
+"Bunu kaldırmadan önce başka bir çekirdek yükleyin."
 
 #: Gtk/SettingsDialog.vala:223
 msgid ""
@@ -569,27 +561,27 @@ msgid ""
 "0 = Do not show menu\n"
 "-1 = Show indefinitely till user selects"
 msgstr ""
-"Temps (en secondes) pur afficher le menu GRUB \n"
+"GRUB menüsünün görüntüleneceği süre (saniye cinsinden)\n"
 "\n"
-"0 = Ne pas afficher de menu\n"
-"-1 = Afficher indefiniment les menus jusqu au choix de l utilisateur."
+"0 = Menüyü gösterme\n"
+"-1 = Kullanıcı seçimine kadar süresiz göster"
 
 #: Utility/Gtk/AboutWindow.vala:356
 #, c-format
 msgid "Translators"
-msgstr "Traducteurs"
+msgstr "Çevirenler"
 
 #: Common/LinuxKernel.vala:1214 Common/LinuxKernel.vala:1272
 msgid "Un-install completed"
-msgstr "Désinstallation complète"
+msgstr "Kaldırma tamamlandı"
 
 #: Common/LinuxKernel.vala:1217 Common/LinuxKernel.vala:1275
 msgid "Un-install completed with errors"
-msgstr "Désinstallation terminée avec des erreurs"
+msgstr "Kaldırma hatalarla tamamlandı"
 
 #: Console/AppConsole.vala:270 Gtk/AppGtk.vala:166
 msgid "Unknown option"
-msgstr "Option inconnue"
+msgstr "Bilinmeyen seçenek"
 
 #: Gtk/SettingsDialog.vala:210
 msgid ""
@@ -601,176 +593,47 @@ msgid ""
 "0 = Do not show menu\n"
 "-1 = Show indefinitely till user selects"
 msgstr ""
-"Mise à jour du menu GRUB après installation ou suppression. "
-"Vous aurez 2 secondes au lancement pour changer de kernel "
-" au démarrage et choisir un kernel fonctionnant. Durant le boot, selectionnez "
-" 'Option avancées Ubuntu', entrer et selectionner un autre kernel.\n"
+"Çekirdekleri kurduktan ya da kaldırdıktan sonra GRUB menüsünü günceller, "
+"böylece önyükleme zamanında menü belirlenen saniye görüntülenir. Böylece "
+"önyükleme için başka bir çekirdek seçerek, hatalı bir çekirdek "
+"güncellemesinden kurtarmanıza yardımcı olur. Önyükleme sırasında \"Gelişmiş "
+"seçenekler...\" menü girdisinden başka bir çekirdeği seçebilirsiniz.\n"
 "\n"
-"0 = ne pasafficher de menu\n"
-"-1 = Afficher jusqu au choix de l utilisateur"
+"0 = Menüyü gösterme\n"
+"-1 = Kullanıcı seçimine kadar süresiz göster"
 
 #: Common/LinuxKernel.vala:1343
 msgid "Updating GRUB menu"
-msgstr "Mise à jour du menu GRUB"
+msgstr "GRUB menüsü güncelleniyor"
 
 #: Console/AppConsole.vala:89
 msgid "Use specified user's cache directory"
-msgstr "Utiliser le répertoire de cache de l'utilisateur sélectionné"
+msgstr "Kullanıcının belirlediği önbellek dizinini kullan"
 
 #: Console/AppConsole.vala:144 Gtk/AppGtk.vala:109
 msgid "Using cache directory"
-msgstr "Utiliser le dossier cache"
+msgstr "Önbellek dizini kullanımı"
 
 #: Gtk/MainWindow.vala:182
 msgid "Version"
-msgstr "Version"
+msgstr "Sürüm"
 
 #: Utility/Gtk/DonationWindow.vala:88
 msgid "Visit Website"
-msgstr "Visiter mon site"
+msgstr "Websitesini Ziyaret Et"
 
 #: Utility/TeeJee.Logging.vala:89
 msgid "W"
-msgstr "W"
+msgstr "U"
 
 #: Gtk/SettingsDialog.vala:157
 msgid "Week(s)"
-msgstr "Semaine(s)"
+msgstr "Hafta"
 
 #: Utility/Gtk/CustomMessageDialog.vala:176
 msgid "Yes"
-msgstr "Oui"
+msgstr "Evet"
 
 #: Utility/AppLock.vala:56
 msgid "[Warning] Deleted invalid lock"
-msgstr "[Attention] invalider le verrouillage est supprimé"
-
-#~ msgid "Open Ukuu"
-#~ msgstr "Lancer Ukuu"
-
-#~ msgid "Could not find file"
-#~ msgstr "Impossible de trouver le fichier"
-
-#~ msgid "Cron job added"
-#~ msgstr "Cron ajouter"
-
-#~ msgid "Cron job removed"
-#~ msgstr "Activités "
-
-#~ msgid "Device"
-#~ msgstr "Matériel"
-
-#~ msgid "Device is unlocked"
-#~ msgstr "Le matériel est vérouillé"
-
-#~ msgid "Device name is empty!"
-#~ msgstr "Le nom du matériel est absent ou vide!"
-
-#~ msgid "Encrypted Device"
-#~ msgstr "Matériel chiffré"
-
-#~ msgid "Enter passphrase to unlock '%s'"
-#~ msgstr "Entrer votre passphrase '%s'"
-
-#~ msgid "Enter path or browse for directory"
-#~ msgstr "Spécifier l emplacement ou naviger dans vos dossiers"
-
-#~ msgid "Failed to add cron job"
-#~ msgstr "Impossible d'ajouter une nouvelle planification de travail "
-
-#~ msgid "Failed to export crontab file"
-#~ msgstr "Impossible d exporter le fichier de planification CronTab"
-
-#~ msgid "Failed to get partition list"
-#~ msgstr "Impossible de relever la liste des partitions"
-
-#~ msgid "Failed to install crontab file"
-#~ msgstr "Impossible d installer le fichier de planification CronTab "
-
-#~ msgid "Failed to read cron tab"
-#~ msgstr "Impossible de lire le fichier de planification Cron"
-
-#~ msgid "Failed to remove cron job"
-#~ msgstr "Impossible de supprimer le fichier de plannification Cron"
-
-#~ msgid "Failed to unlock device"
-#~ msgstr "Impossible de débloquer ce matériel"
-
-#~ msgid "Failed to démonter le matériel"
-#~ msgstr "Impossibilité de "
-
-#~ msgid "Label"
-#~ msgstr "Étiquette"
-
-#~ msgid "Model"
-#~ msgstr "Modèle"
-
-#~ msgid "Mounted"
-#~ msgstr "Monté"
-
-#~ msgid "Open"
-#~ msgstr "Ouvert"
-
-#~ msgid "Parent Device"
-#~ msgstr "Matériel identique"
-
-#~ msgid "Revision"
-#~ msgstr "Revision"
-
-#~ msgid "Root Access Required"
-#~ msgstr "Accès administrateur requis"
-
-#~ msgid "Root access is required for running this application."
-#~ msgstr ""
-#~ "L'accès administrateur est requis pour l'exécution de cette application."
-
-#~ msgid "Select Path"
-#~ msgstr "Выберите путь"
-
-#~ msgid "Serial"
-#~ msgstr "Série"
-
-#~ msgid "Size"
-#~ msgstr "Taille"
-
-#~ msgid "System"
-#~ msgstr "Système"
-
-#~ msgid "This device is not encrypted"
-#~ msgstr "Cet appareil n'est pas chiffré"
-
-#~ msgid "Type"
-#~ msgstr "Type"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
-
-#~ msgid "Unlocked device is mapped to '%s'"
-#~ msgstr "Dispositif de déverrouillage est mis en correspondance '%s'"
-
-#~ msgid "Unlocked successfully"
-#~ msgstr "Débloqué avec succès"
-
-#~ msgid "Unmounting from"
-#~ msgstr "Non monté pour"
-
-#~ msgid "Used"
-#~ msgstr "Utilisé"
-
-#~ msgid "User cancelled the password prompt"
-#~ msgstr "L'utilisateur a annulé l'invite de mot de pass"
-
-#~ msgid "Vendor"
-#~ msgstr "Fabricant"
-
-#~ msgid "Wrong password"
-#~ msgstr "Mauvais mot de pass"
-
-#~ msgid "crontab file exported"
-#~ msgstr "Le fichier CronTab est exporté"
-
-#~ msgid "crontab file installed"
-#~ msgstr "Le fichier de planification Crontab est installé"
-
-#~ msgid "device"
-#~ msgstr "matériel"
+msgstr "[Uyarı] Geçersiz kilit silindi"
