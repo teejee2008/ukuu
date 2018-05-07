@@ -1,3 +1,12 @@
+ukuu (18.5) xenial; urgency=medium
+
+  * Fixed: Install linux-modules package if available
+
+  * Grub timeout will not be changed by default; Added option in Settings;
+
+ -- Tony George <tony.george.kol@gmail.com>  Mon, 07 May 2018 10:00:00 +0530
+
+
 ukuu (18.1) xenial; urgency=medium
 
   * Console: Added command: --install-latest

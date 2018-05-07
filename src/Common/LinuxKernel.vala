@@ -44,11 +44,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string RUNNING_KERNEL;
 	public static string CURRENT_USER;
 	public static string CURRENT_USER_HOME;
+	
 	public static bool hide_older;
 	public static bool hide_unstable;
-	public static bool show_grub_menu;
-	public static int grub_timeout;
 
+	public static int grub_timeout;
+	public static bool update_grub_timeout;
+		
 	public static LinuxKernel kernel_active;
 	public static LinuxKernel kernel_update_major;
 	public static LinuxKernel kernel_update_minor;
@@ -1482,7 +1484,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			file_changed = true;
 		}
 		
-		if (file_changed && show_grub_menu){
+		if (file_changed && update_grub_timeout){
 			file_write(grub_file, txt);
 		}
 
