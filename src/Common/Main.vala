@@ -41,6 +41,7 @@ public class Main : GLib.Object{
 	public string APP_CONFIG_FILE = "";
 	public string STARTUP_SCRIPT_FILE = "";
 	public string STARTUP_DESKTOP_FILE = "";
+
 	public int startup_delay = 300;
 	public string user_login = "";
 	public string user_home = "";
@@ -143,8 +144,9 @@ public class Main : GLib.Object{
 		config.set_string_member("hide_older", LinuxKernel.hide_older.to_string());
 		config.set_string_member("notify_interval_unit", notify_interval_unit.to_string());
 		config.set_string_member("notify_interval_value", notify_interval_value.to_string());
-		config.set_string_member("show_grub_menu", LinuxKernel.show_grub_menu.to_string());
-		config.set_string_member("grub_timeout", LinuxKernel.grub_timeout.to_string());
+		//config.set_string_member("show_grub_menu", LinuxKernel.show_grub_menu.to_string());
+		config.set_string_member("grub_timeout", LinuxKernel.grub_timeout.to_string()); 
+		config.set_string_member("update_grub_timeout", LinuxKernel.update_grub_timeout.to_string());
 
 		var json = new Json.Generator();
 		json.pretty = true;
@@ -180,7 +182,7 @@ public class Main : GLib.Object{
 			// initialize static
 			LinuxKernel.hide_unstable = true;
 			LinuxKernel.hide_older = true;
-			LinuxKernel.show_grub_menu = true;
+			LinuxKernel.update_grub_timeout = false;
 			LinuxKernel.grub_timeout = 2;
 			return;
 		}
@@ -205,8 +207,9 @@ public class Main : GLib.Object{
 
 		LinuxKernel.hide_unstable = json_get_bool(config, "hide_unstable", true);
 		LinuxKernel.hide_older = json_get_bool(config, "hide_older", true);
-		LinuxKernel.show_grub_menu = json_get_bool(config, "show_grub_menu", true);
+		//LinuxKernel.show_grub_menu = json_get_bool(config, "show_grub_menu", true);
 		LinuxKernel.grub_timeout = json_get_int(config, "grub_timeout", 2);
+		LinuxKernel.update_grub_timeout = json_get_bool(config, "update_grub_timeout", false);
 
 		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}

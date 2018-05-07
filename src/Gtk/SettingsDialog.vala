@@ -41,7 +41,7 @@ public class SettingsDialog : Gtk.Dialog {
 	private Gtk.CheckButton chk_notify_dialog;
 	private Gtk.CheckButton chk_hide_unstable;
 	private Gtk.CheckButton chk_hide_older;
-	private Gtk.CheckButton chk_show_grub_menu;
+	private Gtk.CheckButton chk_update_grub_timeout;
 		
 	public SettingsDialog.with_parent(Window parent) {
 		set_transient_for(parent);
@@ -199,18 +199,18 @@ public class SettingsDialog : Gtk.Dialog {
 		hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
 		vbox_main.add(hbox);
 		
-		// chk_show_grub_menu
-		chk = new CheckButton.with_label(_("Display GRUB menu during boot"));
-		chk.active = LinuxKernel.show_grub_menu;
+		// chk_update_grub_timeout
+		chk = new CheckButton.with_label(_("Set GRUB menu timeout"));
+		chk.active = LinuxKernel.update_grub_timeout;
 		chk.margin_left = 6;
 		chk.hexpand = true;
 		hbox.add(chk);
-		chk_show_grub_menu = chk;
+		chk_update_grub_timeout = chk;
 
 		chk.set_tooltip_text(_("Updates the GRUB menu after installing or removing kernels, so that the menu is displayed for 2 seconds at boot time. This will help you recover from a bad kernel update by selecting another kernel to boot. During boot, use the 'Advanced options for Ubuntu' menu entry to select another kernel.\n\n0 = Do not show menu\n-1 = Show indefinitely till user selects"));
 		
 		chk.toggled.connect(()=>{
-			LinuxKernel.show_grub_menu = chk_show_grub_menu.active;
+			LinuxKernel.update_grub_timeout = chk_update_grub_timeout.active;
 		});
 
 		adjustment = new Gtk.Adjustment(LinuxKernel.grub_timeout, 1, 9999, 1, 1, 0);
@@ -226,11 +226,11 @@ public class SettingsDialog : Gtk.Dialog {
 			LinuxKernel.grub_timeout = (int) spin_grub.get_value();
 		});
 
-		chk_show_grub_menu.toggled.connect(()=>{
-			spin_grub.sensitive = chk_show_grub_menu.active;
+		chk_update_grub_timeout.toggled.connect(()=>{
+			spin_grub.sensitive = chk_update_grub_timeout.active;
 		});
 		
-		chk_show_grub_menu.toggled();
+		chk_update_grub_timeout.toggled();
 		
 		// actions -------------------------
 		
