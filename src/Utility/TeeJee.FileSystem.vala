@@ -149,10 +149,10 @@ namespace TeeJee.FileSystem{
 			GLib.FileUtils.get_contents (file_path, out txt, out size);
 
 			if (show_message){
-				log_msg(_("File read") + ": %s".printf(file_path));
+				//log_msg(_("File read") + ": %s".printf(file_path));
 			}
 			else{
-				log_debug(_("File read") + ": %s".printf(file_path));
+				//log_debug(_("File read") + ": %s".printf(file_path));
 			}
 				
 			return txt;
