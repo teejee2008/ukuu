@@ -1057,18 +1057,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		string list = "";
 		foreach(string deb in deb_list.keys){
-			list += "%s\n".printf(deb);
+			list += "\n%s".printf(deb);
 		}
 		if (list.length > 0){
-			txt += "<b>%s</b>\n\n%s\n".printf(_("Packages Available (DEB)"), list);
+			txt += "<b>%s</b>\n%s".printf(_("Packages Available (DEB)"), list);
 		}
 
 		list = "";
 		foreach(string deb in apt_pkg_list.keys){
-			list += "%s\n".printf(deb);
+			list += "\n%s".printf(deb);
 		}
 		if (list.length > 0){
-			txt += "<b>%s</b>\n\n%s\n".printf(_("Packages Installed"), list);
+			txt += "<b>%s</b>\n%s".printf(_("Packages Installed"), list);
 		}
 		
 		return txt;
