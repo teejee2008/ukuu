@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
 "POT-Creation-Date: 2017-12-17 16:41+0530\n"
-"PO-Revision-Date: 2017-04-13 \n"
+"PO-Revision-Date: 2018-08-03 17:39+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -15,19 +15,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-04-13 11:48+0000\n"
-"X-Generator: \n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: Gtk/MainWindow.vala:470
 msgid "About"
-msgstr "A propos"
+msgstr "À propos"
 
 #: Console/AppConsole.vala:103
 msgid "Admin access is required for running this application."
-msgstr "Accès administrateur indispensable pour cette application."
+msgstr "Accès administrateur requis pour lancer cette application."
 
 #: Utility/AppLock.vala:51
 msgid "Another instance of this application is running"
-msgstr "Une autre instance de l'application est en cours"
+msgstr "Une autre instance de l'application est en cours d'exécution"
 
 #: Utility/Gtk/AboutWindow.vala:348
 #, c-format
@@ -41,7 +41,7 @@ msgstr "Auteurs"
 
 #: Common/LinuxKernel.vala:1036
 msgid "Available Kernels"
-msgstr "Kernels disponibles"
+msgstr "Noyaux disponibles"
 
 #: Utility/Gtk/AboutWindow.vala:295
 msgid "Back"
@@ -49,7 +49,7 @@ msgstr "Retour"
 
 #: Gtk/MainWindow.vala:785
 msgid "Booting previous kernels"
-msgstr "Booter sur un kernel précédent"
+msgstr "Démarrer sur un noyau précédent"
 
 #: Utility/Gtk/CustomMessageDialog.vala:172 Utility/Gtk/GtkHelper.vala:122
 #: Gtk/ProgressWindow.vala:138 Gtk/UpdateNotificationWindow.vala:167
@@ -63,11 +63,11 @@ msgstr "Changements"
 
 #: Gtk/SettingsDialog.vala:122
 msgid "Check every"
-msgstr "Vérifier toutes les "
+msgstr "Vérifier toutes les"
 
 #: Console/AppConsole.vala:83
 msgid "Check for kernel updates"
-msgstr "Checker les mises à jour des kernels"
+msgstr "Vérifier les mises à jour des noyaux"
 
 #: Utility/Gtk/AboutWindow.vala:305 Gtk/TerminalWindow.vala:178
 msgid "Close"
@@ -88,9 +88,8 @@ msgstr "Impossible de trouver la version demandée"
 
 #: Utility/TeeJee.FileSystem.vala:349 Utility/TeeJee.FileSystem.vala:352
 #: Utility/TeeJee.FileSystem.vala:378
-#, fuzzy
 msgid "Created directory"
-msgstr "Utiliser le dossier cache"
+msgstr "Dossier créé"
 
 #: Utility/Gtk/AboutWindow.vala:282 Utility/Gtk/AboutWindow.vala:299
 msgid "Credits"
@@ -108,13 +107,12 @@ msgstr "Dossier éffacé"
 msgid ""
 "Did you find this software useful?\n"
 "\n"
-"You can buy me a coffee or make a donation via PayPal to show your support. "
-"Or just drop me an email and say Hi. This application is completely free and "
-"will continue to remain that way. Your contributions will help in keeping "
-"this project alive and improving it further.\n"
+"You can buy me a coffee or make a donation via PayPal to show your support. Or just drop me "
+"an email and say Hi. This application is completely free and will continue to remain that "
+"way. Your contributions will help in keeping this project alive and improving it further.\n"
 "\n"
-"Feel free to send me an email if you find any issues in this application or "
-"if you need any changes. Suggestions and feedback are always welcome.\n"
+"Feel free to send me an email if you find any issues in this application or if you need any "
+"changes. Suggestions and feedback are always welcome.\n"
 "\n"
 "Thanks,\n"
 "Tony George\n"
@@ -122,15 +120,14 @@ msgid ""
 msgstr ""
 "Vous trouvez ce logiciel super utile?\n"
 "\n"
-"Vous pouvez m'acheter un café ou faire un don via PayPal pour montrer votre "
-"soutien. Ou envoyez-moi simplement un courriel et dites moi bonjour. Cette "
-"application est entièrement gratuite et continuera de rester de cette façon. "
-"Vos contributions contribueront à maintenir ce projet vivant et l'améliorer "
-"encore.\n"
+"Vous pouvez m'acheter un café ou faire un don via PayPal pour montrer votre soutien. Ou "
+"envoyez-moi simplement un courriel et dites moi bonjour. Cette application est entièrement "
+"gratuite et continuera de rester de cette façon. Vos contributions contribueront à maintenir "
+"ce projet vivant et l'améliorer encore.\n"
 "\n"
-"N'hésitez pas à m'envoyer un courriel si vous trouvez des problèmes dans "
-"cette application ou si vous avez besoin de modifications. Les suggestions "
-"et les commentaires sont toujours les bienvenus.\n"
+"N'hésitez pas à m'envoyer un courriel si vous trouvez des problèmes dans cette application "
+"ou si vous avez besoin de modifications. Les suggestions et les commentaires sont toujours "
+"les bienvenus.\n"
 "\n"
 "Merci beaucoup \n"
 "Tony George\n"
@@ -146,7 +143,7 @@ msgstr "Afficher"
 
 #: Gtk/SettingsDialog.vala:203
 msgid "Display GRUB menu during boot"
-msgstr "Afficher le menu du GRUB durant le boot"
+msgstr "Afficher le menu GRUB durant le démarrage"
 
 #: Common/LinuxKernel.vala:89
 msgid "Distribution"
@@ -163,7 +160,7 @@ msgstr "Dons"
 
 #: Utility/Gtk/DonationWindow.vala:74
 msgid "Donate with Google Wallet"
-msgstr "Dons par Google Wallet"
+msgstr "Donner par Google Wallet"
 
 #: Utility/Gtk/DonationWindow.vala:67
 msgid "Donate with PayPal"
@@ -176,12 +173,12 @@ msgstr "Donations"
 
 #: Console/AppConsole.vala:88
 msgid "Download packages for specified kernel"
-msgstr "Télécharger les paquets pour des kernels spécifiques"
+msgstr "Télécharger les paquets pour des noyaux spécifiques"
 
 #: Common/LinuxKernel.vala:1081
 #, c-format
 msgid "Downloading"
-msgstr "Téélhargement"
+msgstr "Téléchargement"
 
 #: Utility/TeeJee.Logging.vala:89
 msgid "E"
@@ -190,7 +187,7 @@ msgstr "E"
 #: Common/LinuxKernel.vala:1108
 #, c-format
 msgid "ERROR"
-msgstr "Erreur"
+msgstr "ERREUR"
 
 #: Utility/Gtk/GtkHelper.vala:18
 msgid "Error"
@@ -202,15 +199,15 @@ msgstr "Impossible de copier le fichier"
 
 #: Utility/TeeJee.FileSystem.vala:359
 msgid "Failed to create dir"
-msgstr "Impossible de créer un nouveau dossier"
+msgstr "Impossible de créer le nouveau dossier"
 
 #: Utility/TeeJee.FileSystem.vala:106
 msgid "Failed to delete file"
-msgstr "Impossible d effacer le fichier"
+msgstr "Impossible d'effacer le fichier"
 
 #: Utility/TeeJee.FileSystem.vala:253
 msgid "Failed to move file"
-msgstr "Impossible de bouger le fichier"
+msgstr "Impossible de déplacer le fichier"
 
 #: Utility/TeeJee.FileSystem.vala:162
 msgid "Failed to read file"
@@ -218,30 +215,27 @@ msgstr "Impossible de lire le fichier"
 
 #: Utility/TeeJee.FileSystem.vala:197
 msgid "Failed to write file"
-msgstr "Impossible d écrire le fichier"
+msgstr "Impossible d'écrire le fichier"
 
 #: Common/LinuxKernel.vala:385
 msgid "Fetching index from kernel.ubuntu.com..."
-msgstr "Index de récupération de kernel.ubuntu.com..."
+msgstr "Récupération de l'index depuis kernel.ubuntu.com..."
 
 #: Utility/TeeJee.FileSystem.vala:210 Utility/TeeJee.FileSystem.vala:213
-#, fuzzy
 msgid "File copied"
 msgstr "Fichier copié"
 
 #: Utility/TeeJee.FileSystem.vala:97 Utility/TeeJee.FileSystem.vala:100
-#, fuzzy
 msgid "File deleted"
-msgstr "Fichier éffacé"
+msgstr "Fichier effacé"
 
 #: Utility/TeeJee.FileSystem.vala:662 Utility/TeeJee.FileSystem.vala:711
 msgid "File is missing"
 msgstr "Fichier disparu"
 
 #: Utility/TeeJee.FileSystem.vala:245 Utility/TeeJee.FileSystem.vala:248
-#, fuzzy
 msgid "File moved"
-msgstr "Supprimer"
+msgstr "Fichier déplacé"
 
 #: Common/LinuxKernel.vala:943 Utility/TeeJee.FileSystem.vala:231
 #: Utility/TeeJee.FileSystem.vala:538
@@ -254,27 +248,24 @@ msgid "File not found: %s"
 msgstr "Fichier non trouvé: %s"
 
 #: Utility/TeeJee.FileSystem.vala:152 Utility/TeeJee.FileSystem.vala:155
-#, fuzzy
 msgid "File read"
-msgstr "Impossible de lire le fichier"
+msgstr "Fichier lu"
 
 #: Utility/TeeJee.FileSystem.vala:187 Utility/TeeJee.FileSystem.vala:190
-#, fuzzy
 msgid "File saved"
 msgstr "Fichier sauvegardé"
 
 #: Gtk/SettingsDialog.vala:192
-#, fuzzy
 msgid "GRUB Options"
-msgstr "GRUB Options"
+msgstr "Options GRUB"
 
 #: Gtk/SettingsDialog.vala:181
 msgid "Hide kernels older than 4.0"
-msgstr "Masquer les noyaux antérieurs à la version 4,0"
+msgstr "Masquer les noyaux antérieurs à la version 4.0"
 
 #: Gtk/SettingsDialog.vala:170
 msgid "Hide unstable and RC releases"
-msgstr "Cacher les publications instables et version RC"
+msgstr "Cacher les versions instables et RC"
 
 #: Gtk/SettingsDialog.vala:153
 msgid "Hour(s)"
@@ -286,7 +277,7 @@ msgstr "Ignorer cette mise à jour"
 
 #: Common/LinuxKernel.vala:254
 msgid "Index is fresh"
-msgstr "L index est à jour"
+msgstr "L'index est à jour"
 
 #: Common/LinuxKernel.vala:251
 msgid "Index is stale"
@@ -298,11 +289,11 @@ msgstr "Installer"
 
 #: Console/AppConsole.vala:86
 msgid "Install specified mainline kernel"
-msgstr "Installer le kernel principal spécifié"
+msgstr "Installer le noyau principal spécifié"
 
 #: Gtk/UpdateNotificationWindow.vala:148
 msgid "Install this kernel"
-msgstr "Installer ce kernel"
+msgstr "Installer ce noyau"
 
 #: Common/LinuxKernel.vala:1156
 msgid "Installation completed with errors"
@@ -310,39 +301,37 @@ msgstr "Installation terminée avec des erreurs"
 
 #: Common/LinuxKernel.vala:1153
 msgid "Installation completed. A reboot is required to use the new kernel."
-msgstr "Installation compléte. Un redémarrage est nécessaire pour utiliser le nouveau kernel."
-
+msgstr "Installation complétée. Un redémarrage est nécessaire pour utiliser le nouveau noyau."
 
 #: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:211
 msgid "Installed"
 msgstr "Installé"
 
-#: Utility/TeeJee.System.vala:275 Gtk/MainWindow.vala:84
-#: Gtk/MainWindow.vala:351 Gtk/MainWindow.vala:646
+#: Utility/TeeJee.System.vala:275 Gtk/MainWindow.vala:84 Gtk/MainWindow.vala:351
+#: Gtk/MainWindow.vala:646
 msgid "Internet connection is not active"
-msgstr "Connection internet inexistante"
+msgstr "Connexion internet inexistante"
 
 #: Gtk/MainWindow.vala:153
 msgid "Kernel"
-msgstr "Kernel"
+msgstr "Noyau"
 
 #: Gtk/MainWindow.vala:501
 msgid "Kernel upgrade utility for Ubuntu-based distributions"
-msgstr "Utilitaire de mise à niveau des noyau Kernel pour les distributions basées pour Ubuntu"
+msgstr "Utilitaire de mise à niveau des noyaux pour les distributions basées pour Ubuntu"
 
 #: Console/AppConsole.vala:85
 msgid "List all available mainline kernels"
-msgstr "Liste de tous les principaux noyaux kernels"
+msgstr "Lister tous les noyaux mainline disponibles"
 
 #: Gtk/UpdateNotificationWindow.vala:158
-#, fuzzy
 msgid "List available kernels"
-msgstr "Liste de tous les principaux noyaux kernels"
+msgstr "Lister les noyaux disponibles"
 
 #: Gtk/MainWindow.vala:786
 msgid ""
-"Mainline kernels can sometimes cause problems if there are proprietary "
-"drivers installed on your system. These issues include:\n"
+"Mainline kernels can sometimes cause problems if there are proprietary drivers installed on "
+"your system. These issues include:\n"
 "\n"
 "▰ WiFi not working\n"
 "▰ Black screen on startup\n"
@@ -356,32 +345,32 @@ msgid ""
 "▰ Your system will boot using the selected kernel\n"
 "▰ You can now uninstall the kernel that is causing issues\n"
 msgstr ""
-"Certains kernel peuvent poser probleme du à l'absence de drivers"
-"proprietaires installés sur votre systeme. Cela se présente par:\n"
+"Certains noyaux peuvent poser problème à cause de l'absence de drivers propriétaires "
+"installés sur votre système. Cela se présente par :\n"
 "\n"
-"▰ WiFi qui ne fonctionne pas\n"
-"▰ Ecran noir au démarrage\n"
-"▰ Le systeme freeze et se bloque\n"
+"▰ Le WiFi qui ne fonctionne pas\n"
+"▰ Un écran noir au démarrage\n"
+"▰ Le système qui se fige et se bloque\n"
 "\n"
-"Si vous etes face à ces problemes pas de panique.\n"
+"Si vous êtes face à ces problèmes, pas de panique.\n"
 "\n"
-"▰ Rebooter votre systeme\n"
-"▰ Selectionner 'Advanced Boot Options' dans le menu GRUB boot \n"
-"▰ Selectionner un ancien kernel qui fonctionne\n"
-"▰ Votre système va redémarrer avec le kernel selectionné\n"
-"▰ Vous pouvez supprimer le kernel responsable de cette erreur\n"
+"▰ Redémarrer votre système\n"
+"▰ Sélectionner 'Advanced Boot Options' dans le menu GRUB boot \n"
+"▰ Sélectionner un ancien noyau qui fonctionne\n"
+"▰ Votre système va redémarrer avec le noyau sélectionné\n"
+"▰ Vous pouvez supprimer le noyau responsable de cette erreur\n"
 
 #: Utility/Gtk/GtkHelper.vala:272
 msgid "Missing Icon"
-msgstr "Icon introuvable"
+msgstr "Icône introuvable"
 
 #: Gtk/MainWindow.vala:369
 msgid "Multiple Kernels Selected"
-msgstr "Plusieurs kernels selectionnés"
+msgstr "Plusieurs noyaux sélectionnés"
 
 #: Console/AppConsole.vala:195
 msgid "Multiple kernels selected for installation. Select only one."
-msgstr "Multiple kernels selectionnés pour etre installer. Selectionner seulement un."
+msgstr "Plusieurs noyaux sélectionnés pour être installés. Sélectionnez en seulement un."
 
 #: Utility/Gtk/CustomMessageDialog.vala:177
 msgid "No"
@@ -393,7 +382,7 @@ msgstr "Pas d'Internet"
 
 #: Console/AppConsole.vala:349 Gtk/MainWindow.vala:780
 msgid "No updates found"
-msgstr "Aucune mise à jour trouvée"
+msgstr "Aucune mise à jour disponible"
 
 #: Gtk/MainWindow.vala:372 Gtk/MainWindow.vala:383
 msgid "Not Selected"
@@ -405,15 +394,15 @@ msgstr "Notification"
 
 #: Gtk/SettingsDialog.vala:74
 msgid "Notify if a major release is available"
-msgstr "Notifiez si une version stable et majeure est disponible"
+msgstr "Notifier si une version stable majeure est disponible"
 
 #: Gtk/SettingsDialog.vala:85
 msgid "Notify if a point release is available"
-msgstr "Notifiez si une version stable Release est disponible"
+msgstr "Notifier si une version stable mineure est disponible"
 
 #: Console/AppConsole.vala:84
 msgid "Notify if kernel update is available"
-msgstr "Notifier si la mise à jour du kernel est disponible"
+msgstr "Notifier si une mise à jour du noyau est disponible"
 
 #: Common/LinuxKernel.vala:1099 Utility/Gtk/CustomMessageDialog.vala:167
 #: Utility/Gtk/CustomMessageDialog.vala:171 Utility/Gtk/GtkHelper.vala:121
@@ -432,9 +421,9 @@ msgid "Packages Available (DEB)"
 msgstr "Paquets disponibles (DEB)"
 
 #: Common/LinuxKernel.vala:930
-#, fuzzy, c-format
+#, c-format
 msgid "Packages Installed"
-msgstr "Paquets Installés"
+msgstr "Paquets installés"
 
 #: Common/Main.vala:102
 msgid "Please install required packages and try again"
@@ -442,20 +431,19 @@ msgstr "Veuillez installer les paquets requis et réessayer"
 
 #: Common/LinuxKernel.vala:1177
 msgid "Preparing to remove selected kernels"
-msgstr "Préparation à la suppression des kernels selectionnés"
+msgstr "Préparation à la suppression des noyaux sélectionnés"
 
 #: Gtk/AppGtk.vala:183
 msgid "Print debug information"
 msgstr "Afficher les informations de débogage"
 
 #: Gtk/MainWindow.vala:344
-#, fuzzy
 msgid "Refresh"
-msgstr "Relancer"
+msgstr "Actualiser"
 
 #: Gtk/MainWindow.vala:531
 msgid "Refreshing..."
-msgstr "Rafraichir..."
+msgstr "Actualisation..."
 
 #: Gtk/MainWindow.vala:377
 msgid "Remove"
@@ -467,18 +455,16 @@ msgstr "Supprimer les fichiers du cache de l'application"
 
 #: Console/AppConsole.vala:87
 msgid "Remove specified mainline kernel"
-msgstr "Supprimer le Kernel principal sélectionner"
+msgstr "Supprimer le noyau mainline sélectionné"
 
 #: Console/AppConsole.vala:217
 msgid "Run 'ukuu --list' and use the version string listed in first column"
 msgstr ""
-"Exécutez 'ukuu --list' et utilisez la chaîne de la version indiquée dans la "
-"première colonne"
+"Exécutez 'ukuu --list' et utilisez la chaîne de la version indiquée dans la première colonne"
 
 #: Console/AppConsole.vala:106
-#, fuzzy
 msgid "Run the application as admin with pkexec or sudo."
-msgstr "Exécutez l'application en tant que root ou utilisez gksu / sudo."
+msgstr "Exécutez l'application en tant qu'admin avec pkexec or sudo."
 
 #: Common/LinuxKernel.vala:1053 Gtk/MainWindow.vala:211
 msgid "Running"
@@ -486,18 +472,17 @@ msgstr "En cours"
 
 #: Gtk/MainWindow.vala:369
 msgid "Select a single kernel to install"
-msgstr "Selectionner un seul kernel à installer"
+msgstr "Sélectionnez un seul noyau à installer"
 
 #: Gtk/MainWindow.vala:372
 msgid "Select the kernel to install"
-msgstr "Selectionner le kernel à installer"
+msgstr "Sélectionnez le noyau à installer"
 
 #: Gtk/MainWindow.vala:383
 msgid "Select the kernels to remove"
-msgstr "Selectionner les kernels à supprimer"
+msgstr "Sélectionnez les noyaux à supprimer"
 
 #: Common/LinuxKernel.vala:1172
-#, fuzzy
 msgid ""
 "Selected kernel is currently running and cannot be removed.\n"
 " Install another kernel before removing this one."
@@ -535,7 +520,7 @@ msgstr "Statut"
 
 #: Utility/TeeJee.Process.vala:511
 msgid "Stopped"
-msgstr "Arrếter"
+msgstr "Arrêté"
 
 #: Console/AppConsole.vala:79 Gtk/AppGtk.vala:179
 msgid "Syntax"
@@ -569,10 +554,10 @@ msgid ""
 "0 = Do not show menu\n"
 "-1 = Show indefinitely till user selects"
 msgstr ""
-"Temps (en secondes) pur afficher le menu GRUB \n"
+"Temps (en secondes) pour afficher le menu GRUB\n"
 "\n"
 "0 = Ne pas afficher de menu\n"
-"-1 = Afficher indefiniment les menus jusqu au choix de l utilisateur."
+"-1 = Afficher indéfiniment le menu jusqu'au choix de l'utilisateur"
 
 #: Utility/Gtk/AboutWindow.vala:356
 #, c-format
@@ -593,21 +578,20 @@ msgstr "Option inconnue"
 
 #: Gtk/SettingsDialog.vala:210
 msgid ""
-"Updates the GRUB menu after installing or removing kernels, so that the menu "
-"is displayed for 2 seconds at boot time. This will help you recover from a "
-"bad kernel update by selecting another kernel to boot. During boot, use the "
-"'Advanced options for Ubuntu' menu entry to select another kernel.\n"
+"Updates the GRUB menu after installing or removing kernels, so that the menu is displayed "
+"for 2 seconds at boot time. This will help you recover from a bad kernel update by selecting "
+"another kernel to boot. During boot, use the 'Advanced options for Ubuntu' menu entry to "
+"select another kernel.\n"
 "\n"
 "0 = Do not show menu\n"
 "-1 = Show indefinitely till user selects"
 msgstr ""
-"Mise à jour du menu GRUB après installation ou suppression. "
-"Vous aurez 2 secondes au lancement pour changer de kernel "
-" au démarrage et choisir un kernel fonctionnant. Durant le boot, selectionnez "
-" 'Option avancées Ubuntu', entrer et selectionner un autre kernel.\n"
+"Mise à jour du menu GRUB après installation ou suppression. Vous aurez 2 secondes au "
+"lancement pour changer de noyau au démarrage et choisir un noyau fonctionnel. Durant le "
+"démarrage, sélectionnez  'Option avancées Ubuntu' et sélectionner un autre noyau.\n"
 "\n"
-"0 = ne pasafficher de menu\n"
-"-1 = Afficher jusqu au choix de l utilisateur"
+"0 = Ne pas afficher de menu\n"
+"-1 = Afficher jusqu'au choix de l'utilisateur"
 
 #: Common/LinuxKernel.vala:1343
 msgid "Updating GRUB menu"
@@ -643,7 +627,7 @@ msgstr "Oui"
 
 #: Utility/AppLock.vala:56
 msgid "[Warning] Deleted invalid lock"
-msgstr "[Attention] invalider le verrouillage est supprimé"
+msgstr "[Attention] Verrou invalide supprimé"
 
 #~ msgid "Open Ukuu"
 #~ msgstr "Lancer Ukuu"
@@ -721,8 +705,7 @@ msgstr "[Attention] invalider le verrouillage est supprimé"
 #~ msgstr "Accès administrateur requis"
 
 #~ msgid "Root access is required for running this application."
-#~ msgstr ""
-#~ "L'accès administrateur est requis pour l'exécution de cette application."
+#~ msgstr "L'accès administrateur est requis pour l'exécution de cette application."
 
 #~ msgid "Select Path"
 #~ msgstr "Выберите путь"
