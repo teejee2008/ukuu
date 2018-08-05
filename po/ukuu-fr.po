@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ukuu\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
 "POT-Creation-Date: 2017-12-17 16:41+0530\n"
-"PO-Revision-Date: 2018-08-04 12:59+0200\n"
+"PO-Revision-Date: 2018-08-05 15:50+0200\n"
 "Last-Translator: Yolateng0 <yo@yo.nohost.me>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -162,7 +162,7 @@ msgstr "Dons"
 
 #: Utility/Gtk/DonationWindow.vala:74
 msgid "Donate with Google Wallet"
-msgstr "Donner par Google Wallet"
+msgstr "Dons par Google Wallet"
 
 #: Utility/Gtk/DonationWindow.vala:67
 msgid "Donate with PayPal"
