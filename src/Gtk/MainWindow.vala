@@ -521,16 +521,18 @@ public class MainWindow : Gtk.Window{
 		};
 
 		dialog.third_party = {
-			"Elementary project (various icons):https://github.com/elementary/icons",
-			"Tango project (various icons):http://tango.freedesktop.org/Tango_Desktop_Project"
+			"Elementary project (various icons):github.com/elementary/icons",
+			"Tango project (various icons):tango.freedesktop.org/Tango_Desktop_Project"
 		};
 		
 		dialog.translators = {
 			"Åke Engelbrektson (Swedish):eson@svenskasprakfiler.se",
-			"Иннусик (Russian): slavusik1988@gmail.com",
-			"Waldemar Konik (Polish): valdi74@github",
-			"gogo (Croatian): trebelnik2@gmail.com",
-			"Adolfo Jayme Barrientos (Spanish): fitojb@ubuntu.com"
+			"Иннусик (Russian):slavusik1988@gmail.com",
+			"Waldemar Konik (Polish):valdi74@github",
+			"gogo (Croatian):trebelnik2@gmail.com",
+			"Adolfo Jayme Barrientos (Spanish):fitojb@ubuntu.com",
+            "yolateng0 (French):github.com/yolateng0",
+            "Hugo Posnic (French):hugo.posnic@gmail.com"
 		};
 
 		dialog.documenters = null;
@@ -837,4 +839,3 @@ public class MainWindow : Gtk.Window{
 		}
 	}
 }
-
