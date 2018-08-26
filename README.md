@@ -39,7 +39,19 @@ This application fetches kernels from [kernel.ubuntu.com](http://kernel.ubuntu.c
 
 
 ### Downloads & Source Code 
-Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are available from the [GitHub project page](https://github.com/teejee2008/ukuu) 
+Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are available from the [GitHub project page](https://github.com/teejee2008/ukuu).
+
+### Build instruction
+
+#### Ubuntu-based Distributions (Ubuntu, Linux Mint, Elementary, etc)  
+
+ in a terminal window:  
+
+    sudo apt-get install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
+    git clone https://github.com/teejee2008/ukuu.git
+    cd ukuu
+    make all
+    sudo make install
 
 
 ### Support This Project

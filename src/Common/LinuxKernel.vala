@@ -33,6 +33,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public string deb_header_all = "";
 	public string deb_image = "";
 	public string deb_image_extra = "";
+	public string deb_modules = "";
 	
 	// static
 	
@@ -43,11 +44,13 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static string RUNNING_KERNEL;
 	public static string CURRENT_USER;
 	public static string CURRENT_USER_HOME;
+	
 	public static bool hide_older;
 	public static bool hide_unstable;
-	public static bool show_grub_menu;
-	public static int grub_timeout;
 
+	public static int grub_timeout;
+	public static bool update_grub_timeout;
+		
 	public static LinuxKernel kernel_active;
 	public static LinuxKernel kernel_update_major;
 	public static LinuxKernel kernel_update_minor;
@@ -59,6 +62,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 	public static Regex rex_header_all = null;
 	public static Regex rex_image = null;
 	public static Regex rex_image_extra = null;
+	public static Regex rex_modules = null;
 		
 	// global progress  ------------
 	public static string status_line;
@@ -152,6 +156,9 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
 			rex_image_extra = new Regex("""linux-image-extra-[a-zA-Z0-9.\-_]*generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
+
+			//linux-image-extra-3.4.75-030475-generic_3.4.75-030475.201312201255_amd64.deb
+			rex_modules = new Regex("""linux-modules-[a-zA-Z0-9.\-_]*generic_[a-zA-Z0-9.\-]*_""" + NATIVE_ARCH + ".deb");
 		}
 		catch (Error e) {
 			log_error (e.message);
@@ -1050,18 +1057,18 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 		string list = "";
 		foreach(string deb in deb_list.keys){
-			list += "%s\n".printf(deb);
+			list += "\n%s".printf(deb);
 		}
 		if (list.length > 0){
-			txt += "<b>%s</b>\n\n%s\n".printf(_("Packages Available (DEB)"), list);
+			txt += "<b>%s</b>\n%s".printf(_("Packages Available (DEB)"), list);
 		}
 
 		list = "";
 		foreach(string deb in apt_pkg_list.keys){
-			list += "%s\n".printf(deb);
+			list += "\n%s".printf(deb);
 		}
 		if (list.length > 0){
-			txt += "<b>%s</b>\n\n%s\n".printf(_("Packages Installed"), list);
+			txt += "<b>%s</b>\n%s".printf(_("Packages Installed"), list);
 		}
 		
 		return txt;
@@ -1113,6 +1120,11 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 
 					if (rex_image_extra.match(file_name, 0, out match)){
 						deb_image_extra = file_name;
+						add = true;
+					}
+
+					if (rex_modules.match(file_name, 0, out match)){
+						deb_modules = file_name;
 						add = true;
 					}
 
@@ -1472,7 +1484,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			file_changed = true;
 		}
 		
-		if (file_changed && show_grub_menu){
+		if (file_changed && update_grub_timeout){
 			file_write(grub_file, txt);
 		}
 
