@@ -497,11 +497,8 @@ public class MainWindow : Gtk.Window{
 		hbox.pack_start (button, true, true, 0);
 
 		button.clicked.connect(() => {
-			var dlg = new DonationWindow();
-			dlg.set_transient_for(this);
+			var dlg = new DonationWindow(this);
 			dlg.show_all();
-			dlg.run();
-			dlg.destroy();
 		});
 
 		// about
@@ -615,7 +612,9 @@ public class MainWindow : Gtk.Window{
 			}
 					
 			dlg.update_status_line();
+			
 			dlg.update_progressbar();
+			
 			dlg.sleep(200);
 			gtk_do_events();
 

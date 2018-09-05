@@ -1,7 +1,7 @@
 /*
  * DonationWindow.vala
  *
- * Copyright 2016 Tony George <teejeetech@gmail.com>
+ * Copyright 2012-18 Tony George <teejeetech@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,75 +27,172 @@ using TeeJee.Logging;
 using TeeJee.FileSystem;
 using TeeJee.JsonHelper;
 using TeeJee.ProcessHelper;
-using TeeJee.GtkHelper;
 using TeeJee.System;
 using TeeJee.Misc;
+using TeeJee.GtkHelper;
 
-public class DonationWindow : Dialog {
-	public DonationWindow() {
+public class DonationWindow : Gtk.Window {
+
+	private Gtk.Box vbox_main;
+	private string username = "";
+	private string appname = "Ukuu";
+	private bool has_wiki = false;
+
+	public DonationWindow(Gtk.Window window) {
+
 		set_title(_("Donate"));
-		window_position = WindowPosition.CENTER_ON_PARENT;
-		set_destroy_with_parent (true);
-		set_modal (true);
-		set_deletable(true);
-		set_skip_taskbar_hint(false);
-		set_default_size (400, 20);
-		icon = get_app_icon(16);
-
-		//vbox_main
-		Box vbox_main = get_content_area();
-		vbox_main.margin = 6;
-		vbox_main.homogeneous = false;
-
-		get_action_area().visible = false;
-
-		//lbl_message
-		Label lbl_message = new Gtk.Label("");
-		string msg = _("Did you find this software useful?\n\nYou can buy me a coffee or make a donation via PayPal to show your support. Or just drop me an email and say Hi. This application is completely free and will continue to remain that way. Your contributions will help in keeping this project alive and improving it further.\n\nFeel free to send me an email if you find any issues in this application or if you need any changes. Suggestions and feedback are always welcome.\n\nThanks,\nTony George\n(teejeetech@gmail.com)");
-		lbl_message.label = msg;
-		lbl_message.wrap = true;
-		vbox_main.pack_start(lbl_message,true,true,0);
-
-		//vbox_actions
-		Box vbox_actions = new Box (Orientation.VERTICAL, 6);
-		vbox_actions.margin_left = 50;
-		vbox_actions.margin_right = 50;
-		vbox_actions.margin_top = 20;
-		vbox_main.pack_start(vbox_actions,false,false,0);
-
-		//btn_donate_paypal
-		Button btn_donate_paypal = new Button.with_label("   " + _("Donate with PayPal") + "   ");
-		vbox_actions.add(btn_donate_paypal);
-		btn_donate_paypal.clicked.connect(()=>{
-			xdg_open("https://www.paypal.com/cgi-bin/webscr?business=teejeetech@gmail.com&cmd=_xclick&currency_code=USD&amount=10&item_name=Timeshift%20Donation");
-		});
-
-		//btn_donate_wallet
-		Button btn_donate_wallet = new Button.with_label("   " + _("Donate with Google Wallet") + "   ");
-		vbox_actions.add(btn_donate_wallet);
-		btn_donate_wallet.clicked.connect(()=>{
-			xdg_open("https://support.google.com/mail/answer/3141103?hl=en");
-		});
 		
-		//btn_send_email
-		Button btn_send_email = new Button.with_label("   " + _("Send Email") + "   ");
-		vbox_actions.add(btn_send_email);
-		btn_send_email.clicked.connect(()=>{
-			xdg_open("mailto:teejeetech@gmail.com");
-		});
+		set_transient_for(window);
+		set_destroy_with_parent(true);
+		
+		window_position = WindowPosition.CENTER_ON_PARENT;
 
-		//btn_visit
-		Button btn_visit = new Button.with_label("   " + _("Visit Website") + "   ");
-		vbox_actions.add(btn_visit);
-		btn_visit.clicked.connect(()=>{
-			xdg_open("http://www.teejeetech.in");
-		});
+		set_modal(true);
+		set_resizable(false);
+		set_deletable(true);
 
-		//btn_exit
-		Button btn_exit = new Button.with_label("   " + _("OK") + "   ");
-		vbox_actions.add(btn_exit);
-		btn_exit.clicked.connect(() => {
+		// vbox_main
+		vbox_main = new Gtk.Box(Orientation.VERTICAL, 12);
+		vbox_main.margin = 12;
+
+		this.add(vbox_main);
+		
+		if (get_user_id_effective() == 0){
+			username = get_username();
+		}
+
+		// -----------------------------
+
+		string msg = _("This software is free for personal and commercial use. It is distributed in the hope that it is useful but without any warranty. See the GNU General Public License v2 or later for more information");
+
+		add_label(msg);
+
+		msg = _("If you find this application useful, consider making a donation to support the development.");
+
+		add_label(msg);
+		
+		var hbox = add_hbox();
+		
+		add_button(hbox, _("Donate"),
+			"https://www.paypal.com/cgi-bin/webscr?business=teejeetech@gmail.com&cmd=_xclick&currency_code=USD&item_name=%s+Donation".printf(appname));
+
+		add_button(hbox, _("Become a Patron"),
+			"https://www.patreon.com/bePatron?u=3059450");
+			
+		// -----------------------------
+
+		msg = format_heading(_("Support")) + "   ";
+
+		add_label(msg);
+		
+		msg = _("Please avoid reporting issues by email. Use the issue tracker for reporting issues, requesting features, and asking questions.");
+		
+		add_label(msg);
+
+		hbox = add_hbox();
+
+		add_button(hbox, _("Issue Tracker"),
+			"https://github.com/teejee2008/%s/issues".printf(appname.down()));
+
+		if (has_wiki){
+			
+			add_button(hbox, _("Wiki"),
+				"https://github.com/teejee2008/%s/wiki".printf(appname.down()));
+		}
+
+		// -----------------------------
+
+		msg = format_heading(_("Feature Requests")) + "   ";
+
+		add_label(msg);
+		
+		msg = _("This application was created for my own use in my spare time. It's not practical for me to work for free, on every change that is requested. If you need new features or changes to the application, consider making a donation to sponsor the work. If you are a developer, consider contributing to the project, by picking up items from issue tracker and submitting code changes.");
+
+		add_label(msg);
+
+		// close window ---------------------------------------------------------
+
+		hbox = add_hbox();
+		
+		var button = new Gtk.Button.with_label(_("Close"));
+		button.margin_top = 24;
+		hbox.add(button);
+		
+		button.clicked.connect(() => {
 			this.destroy();
+		});
+
+		this.show_all();
+	}
+
+	private void add_heading(string msg){
+		
+		var label = new Gtk.Label("<span weight=\"bold\" size=\"large\" style=\"italic\">%s</span>".printf(msg));
+
+		label.set_use_markup(true);
+		
+		label.wrap = true;
+		label.wrap_mode = Pango.WrapMode.WORD;
+		label.max_width_chars = 80;
+		
+		label.xalign = 0.0f;
+		label.margin_top = 12;
+		vbox_main.add(label);
+	}
+	
+	private string format_heading(string msg){
+
+		return "<span weight=\"bold\" size=\"large\" style=\"italic\">%s</span>".printf(msg);
+	}
+
+	private Gtk.Label add_label(string msg){
+
+		var label = new Gtk.Label(msg);
+		
+		label.set_use_markup(true);
+		
+		label.wrap = true;
+		label.wrap_mode = Pango.WrapMode.WORD;
+		label.max_width_chars = 50;
+		
+		label.xalign = 0.0f;
+
+		vbox_main.add(label);
+		
+		return label;
+	}
+
+	private Gtk.ButtonBox add_hbox(){
+
+		var hbox = new Gtk.ButtonBox(Orientation.HORIZONTAL);
+		hbox.set_layout(Gtk.ButtonBoxStyle.CENTER);
+		hbox.set_spacing(6);
+		vbox_main.add(hbox);
+		return hbox;
+	}
+
+	private void add_button(Gtk.Box box, string text, string url){
+
+		var button = new Gtk.Button.with_label(text);
+		button.set_tooltip_text(url);
+		box.add(button);
+
+		//button.set_size_request(200,-1);
+		
+		button.clicked.connect(() => {
+			xdg_open(url, username);
+		});
+	}
+
+	private void add_link_button(Gtk.Box box, string text, string url){
+
+		var button = new Gtk.LinkButton.with_label("", text);
+		button.set_tooltip_text(url);
+		box.add(button);
+		
+		button.clicked.connect(() => {
+			xdg_open(url, username);
 		});
 	}
 }
+

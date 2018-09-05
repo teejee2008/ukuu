@@ -34,6 +34,7 @@ using TeeJee.System;
 using TeeJee.Misc;
 
 public class ProgressWindow : Gtk.Window {
+	
 	private Gtk.Box vbox_main;
 	private Gtk.Spinner spinner;
 	private Gtk.Label lbl_msg;
@@ -54,12 +55,15 @@ public class ProgressWindow : Gtk.Window {
 	// init
 	
 	public ProgressWindow.with_parent(Window parent, string message, bool allow_cancel = false) {
+		
 		set_transient_for(parent);
 		set_modal(true);
 		set_skip_taskbar_hint(true);
 		set_skip_pager_hint(true);
 		//set_type_hint(Gdk.WindowTypeHint.DIALOG);
 		window_position = WindowPosition.CENTER;
+
+		set_default_size(def_width, def_height);
 
 		icon = get_app_icon(16,".svg");
 		
@@ -89,6 +93,7 @@ public class ProgressWindow : Gtk.Window {
 	}
 	
 	public void init_window () {
+		
 		title = "";
 		icon = get_app_icon(16);
 		resizable = false;
@@ -97,7 +102,6 @@ public class ProgressWindow : Gtk.Window {
 		//vbox_main
 		vbox_main = new Gtk.Box(Orientation.VERTICAL, 6);
 		vbox_main.margin = 12;
-		vbox_main.set_size_request (def_width, def_height);
 		add (vbox_main);
 
 		var hbox_status = new Gtk.Box(Orientation.HORIZONTAL, 6);
@@ -108,39 +112,40 @@ public class ProgressWindow : Gtk.Window {
 		hbox_status.add(spinner);
 		
 		//lbl_msg
-		lbl_msg = new Label (status_message);
+		lbl_msg = new Gtk.Label (status_message);
 		lbl_msg.halign = Align.START;
 		lbl_msg.ellipsize = Pango.EllipsizeMode.END;
 		lbl_msg.max_width_chars = 40;
 		hbox_status.add (lbl_msg);
 
+		var hbox = new Gtk.Box(Orientation.HORIZONTAL, 6);
+		vbox_main.add(hbox);
+		
 		//progressbar
-		progressbar = new ProgressBar();
-		//progressbar.set_size_request(-1, 25);
-		progressbar.pulse_step = 0.1;
-		vbox_main.pack_start (progressbar, false, true, 0);
+		progressbar = new Gtk.ProgressBar();
+		progressbar.set_size_request(300, -1);
+		progressbar.hexpand = true;
+		//progressbar.pulse_step = 0.1;
+		hbox.add(progressbar);
 
 		//lbl_status
-		lbl_status = new Label ("");
+		lbl_status = new Gtk.Label ("");
 		lbl_status.halign = Align.START;
 		lbl_status.ellipsize = Pango.EllipsizeMode.END;
 		lbl_status.max_width_chars = 40;
-		vbox_main.pack_start (lbl_status, false, true, 0);
+		vbox_main.add (lbl_status);
 
 		//box
 		var box = new Gtk.Box(Orientation.HORIZONTAL, 6);
 		box.set_homogeneous(true);
 		vbox_main.add (box);
 
-		var sizegroup = new SizeGroup(SizeGroupMode.HORIZONTAL);
-
 		//btn
 		var button = new Gtk.Button.with_label (_("Cancel"));
 		button.margin_top = 6;
 		box.pack_start (button, false, false, 0);
 		btn_cancel = button;
-		sizegroup.add_widget(button);
-		
+
 		button.clicked.connect(()=>{
 			App.cancelled = true;
 			btn_cancel.sensitive = false;
@@ -154,37 +159,15 @@ public class ProgressWindow : Gtk.Window {
 
 	// common
 
-	public void pulse_start(){
-		tmr_pulse = Timeout.add(100, pulse_timeout);
-	}
-
-	private bool pulse_timeout(){
-		if (tmr_pulse > 0) {
-			Source.remove(tmr_pulse);
-			tmr_pulse = 0;
-		}
-			
-		progressbar.pulse();
-		gtk_do_events();
-
-		tmr_pulse = Timeout.add(100, pulse_timeout);
-		return true;
-	}
-	
-	public void pulse_stop(){
-		if (tmr_pulse > 0) {
-			Source.remove(tmr_pulse);
-			tmr_pulse = 0;
-		}
-	}
-
 	public void update_message(string msg){
+		
 		if (msg.length > 0){
 			lbl_msg.label = msg;
 		}
 	}
 
 	public void update_status_line(bool clear = false){
+		
 		if (clear){
 			lbl_status.label = "";
 		}
@@ -197,18 +180,22 @@ public class ProgressWindow : Gtk.Window {
 	}
 	
 	public void update_progressbar(){
+		
 		double fraction = App.progress_count / (App.progress_total * 1.0);
+		
 		if (fraction > 1.0){
 			fraction = 1.0;
 		}
+		
 		progressbar.fraction = fraction;
-		gtk_do_events();
+		//gtk_do_events();
 	}
 	
 	public void finish(string message = "") {
+		
 		btn_cancel.sensitive = false;
 		
-		pulse_stop();
+		//pulse_stop();
 		progressbar.fraction = 1.0;
 		
 		lbl_msg.label = message;
@@ -221,6 +208,7 @@ public class ProgressWindow : Gtk.Window {
 	}
 
 	private void auto_close_window() {
+		
 		tmr_close = Timeout.add(2000, ()=>{
 			if (tmr_init > 0) {
 				Source.remove(tmr_init);
@@ -234,6 +222,7 @@ public class ProgressWindow : Gtk.Window {
 	}
 	
 	public void sleep(int ms){
+		
 		Thread.usleep ((ulong) ms * 1000);
 		gtk_do_events();
 	}
