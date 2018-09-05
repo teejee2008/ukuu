@@ -47,7 +47,7 @@ Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are availa
 
  in a terminal window:  
 
-    sudo apt-get update libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
+    sudo apt-get install libgee-0.8-dev libjson-glib-dev libvte-2.91-dev valac
     git clone https://github.com/teejee2008/ukuu.git
     cd ukuu
     make all
