@@ -12,8 +12,27 @@ man1dir=$(mandir)/man1
 
 app_name=ukuu
 
-vte_version=$(shell { ((ldconfig -p | grep libvte-2.91*.so) >/dev/null && echo 'vte-2.91') || echo 'vte-2.90'; } )
-define_symbols=$(shell { ((ldconfig -p | grep libvte-2.91*.so) >/dev/null && echo '-D VTE_291') || echo ''; } )
+# vte -----------------------------
+
+vte_symbol = -D VTE_291
+vte_version=$(shell { (pkg-config --modversion vte-2.91 | cut -d. -f 2); } )
+vala_version=$(shell { (valac --version | cut -d. -f 2); } )
+dist_id=$(shell { (lsb_release -i -s); } )
+dist_codename=$(shell { (lsb_release -c -s); } )
+
+ifeq ($(shell { test ${vte_version} -lt 52 ; echo $$? ; } ), 0)
+vte_symbol=$(shell echo '-D VTE_291_OLD')
+else ifeq "${dist_codename}" "bionic"
+vte_symbol=$(shell echo '-D VTE_291_OLD')
+else ifeq "${dist_codename}" "xenial"
+vte_symbol=$(shell echo '-D VTE_291_OLD')
+else
+vte_symbol=$(shell echo '-D VTE_291')
+endif
+
+# symbols --------------------------
+
+define_symbols=$(shell { echo "${vte_symbol}"; } )
 
 all: app app-gtk app-translations
 
@@ -22,7 +41,7 @@ app-gtk:
 	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" ${define_symbols} --thread \
 		Common/*.vala Gtk/*.vala Utility/*.vala Utility/Gtk/*.vala \
 		-o ${app_name}-gtk \
-		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg $(vte_version)
+		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg $(vte_symbol)
 
 app:
 	# app
