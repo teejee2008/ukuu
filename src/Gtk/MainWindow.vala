@@ -661,7 +661,7 @@ public class MainWindow : Gtk.Window{
 		
 		if (LinuxKernel.kernel_active != null){
 			
-			lbl_info.label = "Running <b>Linux %s</b>".printf(LinuxKernel.kernel_active.version_main);
+			lbl_info.label = (_("Running ")) + "<b>Linux %s</b>".printf(LinuxKernel.kernel_active.version_main);
 
 			if (LinuxKernel.kernel_active.is_mainline){
 				lbl_info.label += " (mainline)";
@@ -671,12 +671,12 @@ public class MainWindow : Gtk.Window{
 			}
 			
 			if (LinuxKernel.kernel_latest_stable.compare_to(LinuxKernel.kernel_active) > 0){
-				lbl_info.label += " ~ " + "<b>Linux %s</b> available".printf(
-					LinuxKernel.kernel_latest_stable.version_main);
+				lbl_info.label += " ~ " + "<b>Linux %s</b>".printf(
+					LinuxKernel.kernel_latest_stable.version_main) + (_(" available"));
 			}
 		}
 		else{
-			lbl_info.label = "Running <b>Linux %s</b>".printf(LinuxKernel.RUNNING_KERNEL);
+			lbl_info.label = (_("Running ")) + "<b>Linux %s</b>".printf(LinuxKernel.RUNNING_KERNEL);
 		}
 	}
 
