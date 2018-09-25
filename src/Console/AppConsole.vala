@@ -57,6 +57,12 @@ public class AppConsole : GLib.Object {
 		
 		LOG_TIMESTAMP = false;
 
+		//check dependencies
+		string message;
+		if (!Main.check_dependencies(out message)) {
+			exit(1);
+		}
+
 		App = new Main(args, false);
 		
 		var console =  new AppConsole();
@@ -93,6 +99,7 @@ public class AppConsole : GLib.Object {
 		msg += "  --purge-old-kernels " + _("Remove installed kernels older than running kernel") + "\n";
 		msg += "  --download <name>   " + _("Download packages for specified kernel") + "\n";
 		msg += "  --clean-cache       " + _("Remove files from application cache") + "\n";
+		msg += "  --show-unstable     " + _("Show unstable and RC releases") + "\n";
 		msg += "\n";
 		msg += _("Options") + ":\n";
 		msg += "\n";
@@ -171,6 +178,10 @@ public class AppConsole : GLib.Object {
 				cmd = args[k].down();
 				break;
 			
+			case "--show-unstable":
+				LinuxKernel.hide_unstable = false;
+				break;
+
 			case "--download":
 			case "--install":
 			case "--remove":
