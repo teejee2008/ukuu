@@ -632,7 +632,7 @@ public class LinuxKernel : GLib.Object, Gee.Comparable<LinuxKernel> {
 			}
 			
 			// skip unstable
-			if (kern.is_unstable){
+			if (hide_unstable && kern.is_unstable){
 				continue;
 			}
 
