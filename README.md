@@ -27,7 +27,7 @@ _Console Options_
 Packages are available in Launchpad PPA for supported Ubuntu releases.
 Run the following commands in a terminal window:  
 
-    sudo apt-add-repository -y ppa:teejee2008/ppa
+    sudo apt-add-repository ppa:teejee2008/ppa
     sudo apt-get update
     sudo apt-get install ukuu
 
