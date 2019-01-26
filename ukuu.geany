@@ -17,20 +17,23 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=12
+current_page=15
 FILE_NAME_0=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FPackage.vala;0;4
-FILE_NAME_1=4428;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FMain.vala;0;4
+FILE_NAME_1=4646;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FMain.vala;0;4
 FILE_NAME_2=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FLinuxKernel.vala;0;4
 FILE_NAME_3=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FDownloadManager.vala;0;4
 FILE_NAME_4=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FUpdateNotificationWindow.vala;0;4
-FILE_NAME_5=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FTerminalWindow.vala;0;4
+FILE_NAME_5=4586;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FTerminalWindow.vala;0;4
 FILE_NAME_6=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FSettingsDialog.vala;0;4
 FILE_NAME_7=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FProgressWindow.vala;0;4
-FILE_NAME_8=21229;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FMainWindow.vala;0;4
-FILE_NAME_9=979;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FAppGtk.vala;0;4
-FILE_NAME_10=3451;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FVersionMessageWindow.vala;0;4
+FILE_NAME_8=19568;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FMainWindow.vala;0;4
+FILE_NAME_9=1183;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FAppGtk.vala;0;4
+FILE_NAME_10=3674;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FVersionMessageWindow.vala;0;4
 FILE_NAME_11=6935;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FUtility%2FGtk%2FAboutWindow.vala;0;4
-FILE_NAME_12=1776;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2Fmakefile;0;4
+FILE_NAME_12=946;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2Fmakefile;0;4
+FILE_NAME_13=167;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fmakefile;0;4
+FILE_NAME_14=215;None;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fdebian%2Fchangelog;0;4
+FILE_NAME_15=1312;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FConsole%2FAppConsole.vala;0;4
 
 [VTE]
 last_dir=/data/projects/linux-github/ukuu

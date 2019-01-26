@@ -65,8 +65,7 @@ public class VersionMessageWindow : Gtk.Window {
 
 		show_all();
 
-		set_size_request(400, 200);
-
+		set_size_request(350, 200);
 	}
 
 	public void init_window () {
@@ -126,6 +125,7 @@ public class VersionMessageWindow : Gtk.Window {
 
 		// open web page
 		var button = new Gtk.Button.with_label(_("More Info"));
+		button.set_size_request(100,-1);
 		hbox_actions.add(button);
 
 		var btn_show = button;
@@ -137,6 +137,7 @@ public class VersionMessageWindow : Gtk.Window {
 		
 		// cancel
 		button = new Gtk.Button.with_label(_("OK"));
+		button.set_size_request(100,-1);
 		hbox_actions.add(button);
 
 		var btn_ok = button;
