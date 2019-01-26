@@ -112,6 +112,11 @@ public class MainWindow : Gtk.Window{
 
 			notify_user();
 			break;
+
+		default:
+
+			show_paid_version_message();
+			break;
 		}
 
 		return false;
@@ -835,6 +840,17 @@ public class MainWindow : Gtk.Window{
 		if (App.command != "list"){
 			Gtk.main_quit();
 			App.exit_app(0);
+		}
+	}
+
+	public void show_paid_version_message(){
+		
+		if (!App.message_shown){
+			
+			App.message_shown = true;
+			App.save_app_config();
+
+			var win = new VersionMessageWindow(this);
 		}
 	}
 }

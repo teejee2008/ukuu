@@ -66,6 +66,8 @@ public class Main : GLib.Object{
 	public int notify_interval_unit = 0;
 	public int notify_interval_value = 2;
 
+	public bool message_shown = false;
+
 	public bool confirm = true;
 
 	// constructors ------------
@@ -148,6 +150,8 @@ public class Main : GLib.Object{
 		config.set_string_member("grub_timeout", LinuxKernel.grub_timeout.to_string()); 
 		config.set_string_member("update_grub_timeout", LinuxKernel.update_grub_timeout.to_string());
 
+		config.set_string_member("message_shown", message_shown.to_string());
+
 		var json = new Json.Generator();
 		json.pretty = true;
 		json.indent = 2;
@@ -210,6 +214,8 @@ public class Main : GLib.Object{
 		//LinuxKernel.show_grub_menu = json_get_bool(config, "show_grub_menu", true);
 		LinuxKernel.grub_timeout = json_get_int(config, "grub_timeout", 2);
 		LinuxKernel.update_grub_timeout = json_get_bool(config, "update_grub_timeout", false);
+
+		message_shown = json_get_bool(config, "message_shown", false);
 
 		log_debug("Load config file: %s".printf(APP_CONFIG_FILE));
 	}

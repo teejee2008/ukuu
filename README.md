@@ -1,3 +1,5 @@
+> A [paid version of Ukuu](https://teejeetech.in/tag/ukuu/) is now available with more features and a new UI. This repository contains source code for v18.9 and previous versions.
+
 ### Ubuntu Kernel Update Utility (Ukuu)
 
 This is a tool for installing the latest mainline Linux kernel on Ubuntu-based distributions.
@@ -52,17 +54,3 @@ Ukuu is written using Vala and GTK3 toolkit. Source code and binaries are availa
     cd ukuu
     make all
     sudo make install
-
-
-### Support This Project
-
-This software is free for personal and commercial use and is licensed under the GNU General Public License. If you find this software useful, you can buy me a coffee or make a donation via Paypal to show your support. This application is completely free and will continue to remain that way. Your contributions will help in keeping this project alive and developing it further. 
-
-[![Donate with Paypal](https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg)](https://www.paypal.com/cgi-bin/webscr?business=teejeetech@gmail.com&cmd=_xclick&currency_code=USD&amount=10&item_name=Ukuu%20Donation)
-
-[![Become a Patron](https://2.bp.blogspot.com/-DNeWEUF2INM/WINUBAXAKUI/AAAAAAAAFmw/fTckfRrryy88pLyQGk5lJV0F0ESXeKrXwCLcB/s200/patreon.png)](https://www.patreon.com/bePatron?u=3059450)
-
-Bitcoin: `13yAonCVMbBJ3imgPvB6qf9xyrqpoi6Dt5`
-
-[![](https://4.bp.blogspot.com/-SyKu_mpsPRU/WNYU4qRbUtI/AAAAAAAAGKI/Gaq_AaWnjcQ9MOs55rG9T6U4TvqTitd3gCLcB/s1600/TeeJeeTech-19PWRpwfYA9Fgv6mwWTWGmESAiD5PtWuVJ.png)](bitcoin:13yAonCVMbBJ3imgPvB6qf9xyrqpoi6Dt5?message=Ukuu%20Donation&time=1490517862)
-

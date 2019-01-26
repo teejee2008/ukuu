@@ -7,8 +7,8 @@ detect_indent_width=false
 indent_mode=2
 
 [project]
-name=ukuu
-base_path=/home/teejee/projects/linux/ukuu
+name=ukuu-github
+base_path=/home/teejee/projects/linux-github/ukuu
 description=
 file_patterns=
 
@@ -17,42 +17,23 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=11
-FILE_NAME_0=7098;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FMain.vala;0;4
-FILE_NAME_1=1166;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FConsole%2FAppConsole.vala;0;4
-FILE_NAME_2=1183;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FAppGtk.vala;0;4
-FILE_NAME_3=14185;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FMainWindow.vala;0;4
-FILE_NAME_4=373;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2Fmakefile;0;4
-FILE_NAME_5=4587;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FDownloadManager.vala;0;4
-FILE_NAME_6=4258;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FPackage.vala;0;4
-FILE_NAME_7=15069;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FCommon%2FLinuxKernel.vala;0;4
-FILE_NAME_8=3613;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FTerminalWindow.vala;0;4
-FILE_NAME_9=3323;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FProgressWindow.vala;0;4
-FILE_NAME_10=227;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fmakefile;0;4
-FILE_NAME_11=6722;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FSettingsDialog.vala;0;4
-FILE_NAME_12=71;Conf;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2Fukuu.desktop;0;4
-FILE_NAME_13=4364;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FGtk%2FUpdateNotificationWindow.vala;0;4
-FILE_NAME_14=1036;None;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fdebian%2Fchangelog;0;4
-FILE_NAME_15=402;Conf;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fdebian%2Fcontrol;0;4
-FILE_NAME_16=1276;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FAppLock.vala;0;4
-FILE_NAME_17=2457;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FAsyncTask.vala;0;4
-FILE_NAME_18=886;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FOSDNotify.vala;0;4
-FILE_NAME_19=4416;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.FileSystem.vala;0;4
-FILE_NAME_20=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Json.vala;0;4
-FILE_NAME_21=2543;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Logging.vala;0;4
-FILE_NAME_22=874;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Misc.vala;0;4
-FILE_NAME_23=4175;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.Process.vala;0;4
-FILE_NAME_24=6336;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FTeeJee.System.vala;0;4
-FILE_NAME_25=1822;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FVersion.vala;0;4
-FILE_NAME_26=847;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FGtk%2FCustomMessageDialog.vala;0;4
-FILE_NAME_27=352;None;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Frelease%2Fsanity.config;0;4
-FILE_NAME_28=395;XML;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2Fshare%2Fpolkit-1%2Factions%2Fin.teejeetech.pkexec.ukuu.policy;0;4
-FILE_NAME_29=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FGtk%2FAboutWindow.vala;0;4
-FILE_NAME_30=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FGtk%2FDonationWindow.vala;0;4
-FILE_NAME_31=2913;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Fukuu%2Fsrc%2FUtility%2FGtk%2FGtkHelper.vala;0;4
+current_page=12
+FILE_NAME_0=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FPackage.vala;0;4
+FILE_NAME_1=4428;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FMain.vala;0;4
+FILE_NAME_2=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FLinuxKernel.vala;0;4
+FILE_NAME_3=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FCommon%2FDownloadManager.vala;0;4
+FILE_NAME_4=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FUpdateNotificationWindow.vala;0;4
+FILE_NAME_5=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FTerminalWindow.vala;0;4
+FILE_NAME_6=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FSettingsDialog.vala;0;4
+FILE_NAME_7=0;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FProgressWindow.vala;0;4
+FILE_NAME_8=21229;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FMainWindow.vala;0;4
+FILE_NAME_9=979;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FAppGtk.vala;0;4
+FILE_NAME_10=3451;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FGtk%2FVersionMessageWindow.vala;0;4
+FILE_NAME_11=6935;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2FUtility%2FGtk%2FAboutWindow.vala;0;4
+FILE_NAME_12=1776;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux-github%2Fukuu%2Fukuu%2Fsrc%2Fmakefile;0;4
 
 [VTE]
-last_dir=/data/projects/linux/ukuu
+last_dir=/data/projects/linux-github/ukuu
 
 [build-menu]
 ValaFT_00_LB=_Compile
@@ -63,10 +44,10 @@ NF_00_LB=Build App
 NF_00_CM=make app app-gtk
 NF_00_WD=%p
 EX_00_LB=_Execute (debug)
-EX_00_CM=ukuu-gtk --debug
+EX_00_CM=src/ukuu-gtk --debug
 EX_00_WD=%p
 EX_01_LB=Execute
-EX_01_CM=ukuu-gtk
+EX_01_CM=src/ukuu-gtk
 EX_01_WD=%p
 ValaFT_01_LB=_Build
 ValaFT_01_CM=make app app-gtk
