@@ -1,8 +1,8 @@
-ukuu (18.9.2) xenial; urgency=medium
+ukuu (18.9.3) xenial; urgency=medium
 
-  * Added message for new version
+  * Fix build issue
 
- -- Tony George <tony.george.kol@gmail.com>  Sat, 26 Jan 2019 12:00:00 +0530
+ -- Tony George <tony.george.kol@gmail.com>  Sun, 3 Feb 2019 10:00:00 +0530
 
 
 ukuu (18.9.1) xenial; urgency=medium

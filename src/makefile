@@ -30,14 +30,14 @@ all: app app-gtk app-translations
 
 app-gtk:
 	# app-gtk
-	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" ${define_symbols} --thread \
+	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" ${define_symbols} \
 		Common/*.vala Gtk/*.vala Utility/*.vala Utility/Gtk/*.vala \
 		-o ${app_name}-gtk \
 		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg $(vte_version)
 
 app:
 	# app
-	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" --thread \
+	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" \
 		Common/*.vala Console/*.vala Utility/*.vala \
 		-o ${app_name} \
 		--pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gee-0.8 --pkg libsoup-2.4 --pkg json-glib-1.0
