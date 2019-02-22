@@ -11,3 +11,4 @@ Comment=Kernel Update Utility
 Comment[ru]=Программа обновления ядра
 X-KDE-StartupNotify=false
 Categories=System;
+StartupWMClass=ukuu-gtk
